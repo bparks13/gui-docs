@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Ephys format &#8212; Open Ephys Documentation 0.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NWB format" href="NWB format.html" />
+    <link rel="prev" title="Binary format" href="Binary format (default).html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/oe_logo_circle.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQ</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+          
+              <li class="">
+                  <a href="../Before you begin.html">Before you begin</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Installing the GUI.html">Installing the GUI</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Exploring the user interface.html">Exploring the user interface</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Building a signal chain.html">Building a signal chain</a>
+              </li>
+          
+        
+          
+
+              <li class="active">
+                  <a href="index.html">Recording data</a>
+                  <ul>
+                  
+                      <li class="">
+                          <a href="Binary format (default).html">Binary format</a>
+                      </li>
+                  
+                      <li class="active">
+                          <a href="">Open Ephys format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="NWB format.html">NWB format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="KWIK format.html">KWIK format</a>
+                      </li>
+                  
+                  </ul>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Plugins/index.html">Plugins</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#headers" class="nav-link">Headers</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#continuous-data-files-continuous" class="nav-link">Continuous data files (.continuous)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#event-files-events" class="nav-link">Event files (.events)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#spike-files-spikes" class="nav-link">Spike files (.spikes)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reading-data-into-matlab" class="nav-link">Reading data into MATLAB</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="open-ephys-format">
+<span id="openephysformat"></span><h1>Open Ephys format<a class="headerlink" href="#open-ephys-format" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="headers">
+<h2>Headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<p>All headers are 1024 bytes long, and are written as a MATLAB-compatible string. Therefore, loading the header (regardless of its content), can be done with three lines of code:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">hdr</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="s">&#39;char*1&#39;</span><span class="p">);</span>
+<span class="n">eval</span><span class="p">(</span><span class="n">char</span><span class="p">(</span><span class="n">hdr</span><span class="o">&#39;</span><span class="p">));</span>
+<span class="n">info</span><span class="p">.</span><span class="n">header</span> <span class="p">=</span> <span class="n">header</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This is actually pretty handy, since any changes to the header format won’t affect the code for reading data files. However, note that reading files using this method also creates a security risk if there is any doubt as to the origin of the file, since reading the header involves executing a portion of the file as MATLAB code. Therefore, be careful if you are working with files in one of these formats that you did not create yourself.</p>
+<p>The current header format uses ASCII encoding, and defines a MATLAB struct with the following fields and values:</p>
+<ul class="simple">
+<li><p>format = ‘Open Ephys Data Format’</p></li>
+<li><p>version = 0.4</p></li>
+<li><p>header_bytes = 1024</p></li>
+<li><p>description = ‘(String describing the header)’</p></li>
+<li><p>date_created = ‘dd-Mmm-yyyy hhmmss’</p></li>
+<li><p>channel = ‘(String with channel name)’</p></li>
+<li><p>channelType = ‘(String describing the channel type)’</p></li>
+<li><p>sampleRate = (integer sampling rate)</p></li>
+<li><p>blockLength = 1024</p></li>
+<li><p>bufferSize = 1024</p></li>
+<li><p>bitVolts = (floating point value of microvolts/bit)</p></li>
+</ul>
+<p>For those not using MATLAB, each header entry is on a separate line with the following format:</p>
+<ul class="simple">
+<li><p>field names appear after a “header.” prefix</p></li>
+<li><p>field names and values are separated by ” = “</p></li>
+<li><p>the value of the field is in plain text, with intended strings enclosed in single quotes (as demonstrated above)</p></li>
+<li><p>each line is terminated with a semicolon</p></li>
+</ul>
+</div>
+<div class="section" id="continuous-data-files-continuous">
+<h2>Continuous data files (.continuous)<a class="headerlink" href="#continuous-data-files-continuous" title="Permalink to this headline">¶</a></h2>
+<p>Each continuous channel within each processor has its own file, titled <code class="code docutils literal notranslate"><span class="pre">XXX_CHY.continuous</span></code>, where <code class="code docutils literal notranslate"><span class="pre">XXX</span></code> = the processor ID #, and <code class="code docutils literal notranslate"><span class="pre">Y</span></code> = the channel number. For each record, it saves:</p>
+<ul class="simple">
+<li><p>One little-endian <code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp (actually a sample number; this can be converted to seconds using the sampleRate variable in the header)</p></li>
+<li><p>One little-endian <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> number (N) indicating the samples per record (always 1024, at least for now)</p></li>
+<li><p>One little-endian <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> recording number (version 0.2 and higher)</p></li>
+<li><p>1024 big-endian <code class="code docutils literal notranslate"><span class="pre">int16</span></code> samples</p></li>
+<li><p>10-byte record marker (0 1 2 3 4 5 6 7 8 255)</p></li>
+</ul>
+<p>This makes up a record of 2070 bytes (= 8 + 2 + 2 + 2048 + 10).</p>
+<p>If a file is opened or closed in the middle of a record, the leading or trailing samples are set to zero.</p>
+</div>
+<div class="section" id="event-files-events">
+<h2>Event files (.events)<a class="headerlink" href="#event-files-events" title="Permalink to this headline">¶</a></h2>
+<p>Non-spike events are saved in a different format. Events generated by all channels are dumped into the file <code class="code docutils literal notranslate"><span class="pre">all_channels.events</span></code> with the following data for each event:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp (to align with timestamps from the continuous records)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">int16</span></code> sample position within a buffer</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> event type (all the events that are saved have type TTL = 3 ; Network Event = 5)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> processor ID (the processor this event originated from)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> event ID (code associated with this event, usually 1 or 0)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> event channel (the channel this event is associated with)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> recording number (version 0.2 and higher)</p></li>
+</ul>
+</div>
+<div class="section" id="spike-files-spikes">
+<h2>Spike files (.spikes)<a class="headerlink" href="#spike-files-spikes" title="Permalink to this headline">¶</a></h2>
+<p>Data from each electrode is saved in a separate file. The filename is based on the name of the electrode itself, but without spaces (e.g., <code class="code docutils literal notranslate"><span class="pre">Tetrode1.spikes</span></code>).</p>
+<p>Each record contains an individual spike event (saved for one or more channels), and is written in the following format, defined in <code class="code docutils literal notranslate"><span class="pre">SpikeObject::packSpike()</span></code>:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> eventType (always equal to 4, for spike events)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp (to align with timestamps from the continuous records)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">int64</span></code> software timestamp (not currently used)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> sourceID (electrode number)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> number of channels (N)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> number of samples per spike (M)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> sorted id (used by Spike Sorter)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> electrodeID (unique electrode ID)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> channel (channel within the electrode that triggered spike acquisition)</p></li>
+<li><p>3 <code class="code docutils literal notranslate"><span class="pre">uint8</span></code> color codes (for drawing spikes)</p></li>
+<li><p>2 <code class="code docutils literal notranslate"><span class="pre">float32</span></code> principle component projections (x and y)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> sampling frequency (Hz)</p></li>
+<li><p>N x M <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> samples (individual channels are contiguous)</p></li>
+<li><p>N <code class="code docutils literal notranslate"><span class="pre">float32</span></code> gains (actually gain*1000, to increase resolution)</p></li>
+<li><p>N <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> thresholds used for spike extraction</p></li>
+<li><p>One <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> recording number (version 0.2 and higher)</p></li>
+</ul>
+<p>Since the samples are saved as unsigned integers, converting them to microvolts involves subtracting 32768, dividing by the gain, and multiplying by 1000.</p>
+</div>
+<div class="section" id="reading-data-into-matlab">
+<h2>Reading data into MATLAB<a class="headerlink" href="#reading-data-into-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Here’s some example code for loading the first record from a data file called <code class="code docutils literal notranslate"><span class="pre">102_CH1.continuous</span></code>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fid</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#39;102_CH1.continuous&#39;</span><span class="p">);</span>
+
+<span class="n">hdr</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="s">&#39;char*1&#39;</span><span class="p">);</span>
+
+<span class="n">timestamp</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;int64&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;l&#39;</span><span class="p">);</span>
+
+<span class="n">N</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;uint16&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;l&#39;</span><span class="p">);</span>
+
+<span class="n">recordingNumber</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">);</span>
+
+<span class="n">samples</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="s">&#39;int16&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">);</span>
+
+<span class="n">recordmarker</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;char*1&#39;</span><span class="p">);</span>
+
+<span class="n">fclose</span><span class="p">(</span><span class="n">fid</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Binary format (default).html" title="previous page">Binary format</a>
+    <a class='right-next' id="next-link" href="NWB format.html" title="next page">NWB format</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2020, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

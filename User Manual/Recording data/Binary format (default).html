@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary format &#8212; Open Ephys Documentation 0.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Open Ephys format" href="Open Ephys format.html" />
+    <link rel="prev" title="Recording data" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/oe_logo_circle.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQ</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+          
+              <li class="">
+                  <a href="../Before you begin.html">Before you begin</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Installing the GUI.html">Installing the GUI</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Exploring the user interface.html">Exploring the user interface</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Building a signal chain.html">Building a signal chain</a>
+              </li>
+          
+        
+          
+
+              <li class="active">
+                  <a href="index.html">Recording data</a>
+                  <ul>
+                  
+                      <li class="active">
+                          <a href="">Binary format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Open Ephys format.html">Open Ephys format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="NWB format.html">NWB format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="KWIK format.html">KWIK format</a>
+                      </li>
+                  
+                  </ul>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Plugins/index.html">Plugins</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recording-folders" class="nav-link">Recording folders</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#data-folders" class="nav-link">Data folders</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#continuous-data" class="nav-link">Continuous data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#spikes" class="nav-link">Spikes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#events" class="nav-link">Events</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#text-events" class="nav-link">Text events</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#binary-events" class="nav-link">Binary events</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#ttl-events" class="nav-link">TTL events</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="binary-format">
+<span id="binaryformat"></span><h1>Binary format<a class="headerlink" href="#binary-format" title="Permalink to this headline">¶</a></h1>
+<p>This format stores the continuous data in plain binary files, while all other data is stored in numpy arrays, easy to read in Python and which can be easily converted to plain binary arrays just by stripping their header.</p>
+<div class="section" id="recording-folders">
+<h2>Recording folders<a class="headerlink" href="#recording-folders" title="Permalink to this headline">¶</a></h2>
+<p>Each recording is stored in a subfolder called <code class="code docutils literal notranslate"><span class="pre">experiment&lt;E&gt;/recording&lt;R&gt;/</span></code></p>
+<p>Where <code class="code docutils literal notranslate"><span class="pre">E</span></code> denotes the experiment number and <code class="code docutils literal notranslate"><span class="pre">R</span></code> the recording number. This folder contains the following elements:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">continuous/</span></code>: Folder containing continuous data</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">events/</span></code>: Folder containing event data</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">spikes/</span></code>: Folder containing recorded spikes</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code>: JSON file detailing channel information, channel metadata and event metadata descriptions. Contains a field for each of the recorded elements detailing their folder names, samplerate, channel count and other needed information.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sync_messages.txt</span></code>: Text file with the synchronization messages that contain the start timestamp of the different processors</p></li>
+</ul>
+</div>
+<div class="section" id="data-folders">
+<h2>Data folders<a class="headerlink" href="#data-folders" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="continuous-data">
+<h3>Continuous data<a class="headerlink" href="#continuous-data" title="Permalink to this headline">¶</a></h3>
+<p>Since the GUI allows acquisition from different sources, which might have different sample rates, and recording can be done from the sources or any processor down the line, for each recorded processor the format creates a fileset per combination of recorded processor and data source. These filesets are stored in subfolders whose name can be:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">Processor_Name-&lt;S&gt;</span></code> for source processors</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Processor_Name-&lt;P&gt;_&lt;S&gt;</span></code> for other processors</p></li>
+</ul>
+<p>Where the <code class="code docutils literal notranslate"><span class="pre">Processor_Name</span></code> is the one from the processor being recorded, <code class="code docutils literal notranslate"><span class="pre">S</span></code> represents a <code class="code docutils literal notranslate"><span class="pre">ProcessorID.SubprocessorIDX</span></code> of the source that originated the data and <code class="code docutils literal notranslate"><span class="pre">P</span></code> is the ID of the processor being recorded.</p>
+<p>Each continuous filesets contains the following files:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">continuous.dat</span></code>: A simple binary file containning Nchans x Nsamples 16 bit integers in little endian format.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code>: A numpy array containing Nsamples 64bit integers that represent the timestamps for each sample.</p></li>
+</ul>
+<p>The continuous data is saved as <code class="code docutils literal notranslate"><span class="pre">ch1_samp1,</span> <span class="pre">ch2_samp1,</span> <span class="pre">...</span> <span class="pre">chN_samp1,</span> <span class="pre">ch1_samp2,</span> <span class="pre">ch2_samp2,</span> <span class="pre">...,</span> <span class="pre">chN_sampM</span></code>. The value of the least significant bit needed to convert the 16-bit integres to microvolts is specified in the <code class="code docutils literal notranslate"><span class="pre">bitVolts</span></code> field of the relevant channel in the <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> JSON file.</p>
+</div>
+<div class="section" id="spikes">
+<h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
+<p>For each processor that records spikes, a subfolder is created of the format</p>
+<p><code class="code docutils literal notranslate"><span class="pre">Processor_Name-&lt;P&gt;_&lt;S&gt;</span></code></p>
+<p>Where, similarly to the continuous case, <code class="code docutils literal notranslate"><span class="pre">P</span></code> denotes the ID of the processor which is recording the spikes, while <code class="code docutils literal notranslate"><span class="pre">S</span></code> denotes the ID of the node that is actually extracting the spike data from the continuous signal.</p>
+<p>For convenience, spikes with the same configuration (same source, same number of channels and same metadata) are grouped into single datasets in folders called <code class="code docutils literal notranslate"><span class="pre">spike_group_N</span></code>. Each spike group contains the following files:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">spike_waveforms.npy</span></code>: numpy array of <code class="code docutils literal notranslate"><span class="pre">Nspikes</span></code> x <code class="code docutils literal notranslate"><span class="pre">Nchannels</span></code> x <code class="code docutils literal notranslate"><span class="pre">Nsamples</span></code> int16s containing the spike waveforms</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">spike_times.npy</span></code>: numpy array of <code class="code docutils literal notranslate"><span class="pre">Nspikes</span></code> int64s containing the timestamps corresponding to the peak of each spike</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">spike_electrode_indices.npy</span></code>: numpy array of <code class="code docutils literal notranslate"><span class="pre">Nspikes</span></code> unit16 specifying, for each spike in the group, which of the electrodes grouped in it originated each spike</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">spike_clusters.npy</span></code>: numpy array of <code class="code docutils literal notranslate"><span class="pre">Nspikes</span></code> unit16 containing the sorted cluster id for which spike pertains, if the spike source processor performed spike sorted, all 0 otherwise.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">metadata.npy</span></code>: Optional. If the spikes contain metadata fields, they will be stored as an array of <code class="code docutils literal notranslate"><span class="pre">Nspikes</span></code> lists of fields or, if there is just one field, a Nspikes x Length_of_field array of the relevant type.</p></li>
+</ul>
+<p>Detailed information about the electrodes contained in each spike group as well as the metadata fields, if any, is stored in the <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> JSON file.</p>
+</div>
+<div class="section" id="events">
+<h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+<p>Similarly to continuous data and spikes, each processor that generates events creates its own subfolder names</p>
+<p><code class="code docutils literal notranslate"><span class="pre">Processor_Name-&lt;S&gt;</span></code></p>
+<p>With <code class="code docutils literal notranslate"><span class="pre">S</span></code> being the <code class="code docutils literal notranslate"><span class="pre">ProcessorId.SubprocessorIDX</span></code> of the source processor. Each event channel the processor produces will have its own folder named <code class="code docutils literal notranslate"><span class="pre">TEXT_group_&lt;N&gt;</span></code>, <code class="code docutils literal notranslate"><span class="pre">BINARY_group_&lt;N&gt;</span></code> or <code class="code docutils literal notranslate"><span class="pre">TTL_&lt;N&gt;</span></code>, depending on the type of event.</p>
+<p>Common files in all types of events are:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> Containing Nevents int64 for the timestamps of each event</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">channels.npy</span></code> Containing Nevents uint16 indicating the virtual channel associated to each event (bit of the TTL word in their case)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">metadata.npy</span></code> Optional. If the events contain metadata fields, they will be stored as an array Nevents lists of fields or, if there is just one field, a Nspikes x Length_of_field array of the relevant type.</p></li>
+</ul>
+<div class="section" id="text-events">
+<h4>Text events<a class="headerlink" href="#text-events" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">text.npy</span></code>: numpy array of <code class="code docutils literal notranslate"><span class="pre">Nevents</span></code> strings</p></li>
+</ul>
+</div>
+<div class="section" id="binary-events">
+<h4>Binary events<a class="headerlink" href="#binary-events" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">data_array.npy</span></code>: numpy array of <code class="code docutils literal notranslate"><span class="pre">Nevents</span></code> x <code class="code docutils literal notranslate"><span class="pre">data_length</span></code> elements of the relevant type</p></li>
+</ul>
+</div>
+<div class="section" id="ttl-events">
+<h4>TTL events<a class="headerlink" href="#ttl-events" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">channel_states.npy</span></code>:  Numpy array of Nevents int16. Each event will be written as +CH_number for rising events and -CH_number for falling events</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">full_words.npy</span></code>: Numpy array of Nevents x log2(numBits) uint8 containing the binary representations of the full words received by the TTL source, in case they need to be treated as full qualified binary data.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Recording data</a>
+    <a class='right-next' id="next-link" href="Open Ephys format.html" title="next page">Open Ephys format</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2020, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

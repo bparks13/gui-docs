@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWB format &#8212; Open Ephys Documentation 0.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="KWIK format" href="KWIK format.html" />
+    <link rel="prev" title="Open Ephys format" href="Open Ephys format.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/oe_logo_circle.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQ</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+          
+              <li class="">
+                  <a href="../Before you begin.html">Before you begin</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Installing the GUI.html">Installing the GUI</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Exploring the user interface.html">Exploring the user interface</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Building a signal chain.html">Building a signal chain</a>
+              </li>
+          
+        
+          
+
+              <li class="active">
+                  <a href="index.html">Recording data</a>
+                  <ul>
+                  
+                      <li class="">
+                          <a href="Binary format (default).html">Binary format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Open Ephys format.html">Open Ephys format</a>
+                      </li>
+                  
+                      <li class="active">
+                          <a href="">NWB format</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="KWIK format.html">KWIK format</a>
+                      </li>
+                  
+                  </ul>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Plugins/index.html">Plugins</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#open-ephys-nwb-file-structure-based-on-version-1-0-6" class="nav-link">Open Ephys NWB File Structure (based on version 1.0.6)</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#rules-for-creating-new-files-and-groups" class="nav-link">Rules for creating new files and groups</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="nwb-format">
+<span id="nwbdataformat"></span><h1>NWB format<a class="headerlink" href="#nwb-format" title="Permalink to this headline">¶</a></h1>
+<p>From the NWB website:</p>
+<blockquote class="epigraph">
+<div><p>Neurodata Without Borders: Neurophysiology (NWB:N) is a project to develop a unified data format for cellular-based neurophysiology data, focused on the dynamics of groups of neurons measured under a large range of experimental conditions. The NWB:N team consists of neuroscientists and software developers who recognize that adoption of a unified data format is an important step toward breaking down the barriers to data sharing in neuroscience.</p>
+</div></blockquote>
+<p>We are working on implementing the ability to write directly to an NWB file from the Open Ephys GUI. We’re hoping that NWB becomes a common standard for neuroscience, so saving your data in NWB format will make it much easier to share with other researchers. It also comes with all the advantages (and disadvantages) of HDF5.</p>
+<p>The official format specification can be found on GitHub as raw HTML files. We’ve adapted it for use with Open Ephys by extending some base classes of the NWB specification to hold extra data that might be provided by the software. Extension files for the official NWB API will be provided as per the standard. The resulting format is as follows:</p>
+<div class="section" id="open-ephys-nwb-file-structure-based-on-version-1-0-6">
+<h2>Open Ephys NWB File Structure (based on version 1.0.6)<a class="headerlink" href="#open-ephys-nwb-file-structure-based-on-version-1-0-6" title="Permalink to this headline">¶</a></h2>
+<p><strong>Top-level groups (always created):</strong></p>
+<ul class="simple">
+<li><p>/acquisition</p></li>
+<li><p>/analysis</p></li>
+<li><p>/epochs</p></li>
+<li><p>/general</p></li>
+<li><p>/processing</p></li>
+<li><p>/stimulus</p></li>
+</ul>
+<p><strong>Top-level datasets (always created):</strong></p>
+<ul class="simple">
+<li><p>/file_create_date: date + time in ISO format (text array)</p></li>
+<li><p>/identifier: from text fields in recording options (text)</p></li>
+<li><p>/nwb_version: ‘NWB-1.0.6’ (text)</p></li>
+<li><p>/session_description: &lt;blank string&gt; (text)</p></li>
+<li><p>/session_start_time: date + time in ISO format (text)</p></li>
+</ul>
+<p>/acquisition group:
+All of the data generated during recording should be stored in this group.</p>
+<p>For writing continuous data, we use the NWB <cite>ElectricalSeries</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">continuous</span><span class="o">/</span><span class="n">processor</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span>
+    <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;ElectricalSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">neurodata_type</span><span class="p">:</span> <span class="s1">&#39;TimeSeries&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">source</span><span class="p">:</span> <span class="n">Recorded</span> <span class="n">processor</span> <span class="n">name</span> <span class="o">+</span> <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">From</span> <span class="n">data</span> <span class="n">source</span> <span class="n">processor</span> <span class="n">name</span> <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">help</span><span class="p">:</span> <span class="s1">&#39;Stores acquired voltage data from extracellular recordings&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">data</span><span class="p">:</span> <span class="n">M</span> <span class="n">samples</span> <span class="n">x</span> <span class="n">N</span> <span class="n">channels</span> <span class="p">(</span><span class="n">int16</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">conversion</span><span class="p">:</span> <span class="n">bitVolts</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">resolution</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">^</span><span class="mi">16</span> <span class="o">*</span> <span class="n">bitVolts</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;volt&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">num_samples</span><span class="p">:</span> <span class="n">M</span> <span class="p">(</span><span class="n">int32</span><span class="p">,</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">recording</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">timestamps</span><span class="p">:</span> <span class="n">M</span> <span class="n">timestamps</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">experiment</span> <span class="n">start</span> <span class="n">time</span> <span class="p">(</span><span class="n">float64</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">interval</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="n">int32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;seconds&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">oe_extra_info</span>
+        <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:extra_info/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">channel</span><span class="o">&lt;</span><span class="n">C</span><span class="o">&gt;</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;channel_info&gt;/&#39;</span>
+            <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">source_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">source_type_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">channel_metadata</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                    <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                    <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                    <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                    <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For writing spike data, we use the NWB <cite>SpikeEventSeries</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">spikes</span><span class="o">/</span><span class="n">electrode</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
+    <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;SpikeEventSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">electrode</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">neurodata_type</span><span class="p">:</span> <span class="s1">&#39;TimeSeries&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">source</span><span class="p">:</span> <span class="n">Processor</span> <span class="n">name</span> <span class="o">+</span> <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">help</span><span class="p">:</span> <span class="s1">&#39;Snapshorts of spike events from data&#39;</span> <span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">data</span><span class="p">:</span> <span class="n">X</span> <span class="n">spikes</span> <span class="n">x</span> <span class="n">Y</span> <span class="n">channels</span> <span class="n">x</span> <span class="n">Z</span> <span class="n">samples</span> <span class="p">(</span><span class="n">int16</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">conversion</span><span class="p">:</span> <span class="n">bitVolts</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">resolution</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">^</span><span class="mi">16</span> <span class="o">*</span> <span class="n">bitVolts</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;volt&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">timestamps</span><span class="p">:</span> <span class="n">X</span> <span class="n">timestamps</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">experiment</span> <span class="n">start</span> <span class="n">time</span> <span class="p">(</span><span class="n">float64</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">interval</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="n">int32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;seconds&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">oe_extra_info</span>
+        <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:oe_extra_info/&#39;</span>
+        <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_type_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">channel_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">spike_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For writing messages, we use the NWB <cite>AnnotationSeries</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">events</span><span class="o">/</span><span class="n">text</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+    <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;AnnotationSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">neurodata_type</span><span class="p">:</span> <span class="s1">&#39;TimeSeries&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">source</span><span class="p">:</span> <span class="n">Processor</span> <span class="n">name</span> <span class="o">+</span> <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">help</span><span class="p">:</span> <span class="s1">&#39;Time-stamped annotations about an experiment&#39;</span> <span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">data</span><span class="p">:</span> <span class="n">N</span> <span class="n">messages</span> <span class="k">as</span> <span class="n">text</span> <span class="n">array</span>
+        <span class="o">./</span><span class="n">conversion</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">resolution</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;n/a&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">control</span><span class="p">:</span> <span class="n">N</span> <span class="n">uint8</span> <span class="n">representing</span> <span class="n">virtual</span> <span class="n">channel</span> <span class="n">numbers</span><span class="o">.</span> <span class="n">usually</span> <span class="nb">all</span> <span class="n">zeros</span><span class="o">.</span>
+    <span class="o">./</span><span class="n">num_samples</span><span class="p">:</span> <span class="n">N</span> <span class="p">(</span><span class="n">int32</span><span class="p">,</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">recording</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">timestamps</span><span class="p">:</span> <span class="n">N</span> <span class="n">timestamps</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">experiment</span> <span class="n">start</span> <span class="n">time</span> <span class="p">(</span><span class="n">float64</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">interval</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="n">int32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;seconds&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">oe_extra_info</span>
+        <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:oe_extra_info/&#39;</span>
+        <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span><span class="o">.</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">base</span> <span class="k">class</span> <span class="nc">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_type_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">channel_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">spike_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For writing TTL events, we use a custom derived version of the NWB <cite>IntervalSeries</cite> called <cite>TTLSeries</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">events</span><span class="o">/</span><span class="n">ttl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+    <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;IntervalSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;TTLSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">neurodata_type</span><span class="p">:</span> <span class="s1">&#39;TimeSeries&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">source</span><span class="p">:</span> <span class="n">Processor</span> <span class="n">name</span> <span class="o">+</span> <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">help</span><span class="p">:</span> <span class="s1">&#39;Stores the start and stop times for TTL events&#39;</span> <span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">data</span><span class="p">:</span> <span class="n">N</span> <span class="n">events</span> <span class="p">[</span><span class="o">+</span><span class="p">(</span><span class="n">channel</span><span class="c1">#) for event &#39;on&#39;, -(channel#) for event &#39;off&#39;] (int8 array)</span>
+        <span class="o">./</span><span class="n">conversion</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">resolution</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;n/a&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">control</span><span class="p">:</span> <span class="n">N</span> <span class="n">uint8</span> <span class="n">representing</span> <span class="n">virtual</span> <span class="n">channel</span> <span class="n">numbers</span><span class="o">.</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">absolute</span> <span class="n">value</span> <span class="n">of</span> <span class="n">data</span>
+    <span class="o">./</span><span class="n">num_samples</span><span class="p">:</span> <span class="n">N</span> <span class="p">(</span><span class="n">int32</span><span class="p">,</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">recording</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">timestamps</span><span class="p">:</span> <span class="n">N</span> <span class="n">timestamps</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">experiment</span> <span class="n">start</span> <span class="n">time</span> <span class="p">(</span><span class="n">float64</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">interval</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="n">int32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;seconds&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">full_word</span><span class="p">:</span> <span class="n">N</span> <span class="n">x</span> <span class="n">M</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">where</span> <span class="n">M</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">fit</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">ttl</span> <span class="n">word</span><span class="o">.</span>
+        <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:full_word&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">oe_extra_info</span>
+        <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:oe_extra_info/&#39;</span>
+        <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span><span class="o">.</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">base</span> <span class="k">class</span> <span class="nc">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_type_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">channel_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">event_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For writing Binary events, we use a custom derived version of the NWB  <cite>Timeseries</cite> called <cite>BinarySeries</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">events</span><span class="o">/</span><span class="n">binary</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+    <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;BinarySeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">neurodata_type</span><span class="p">:</span> <span class="s1">&#39;TimeSeries&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">source</span><span class="p">:</span> <span class="n">Processor</span> <span class="n">name</span> <span class="o">+</span> <span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">help</span><span class="p">:</span> <span class="s1">&#39;Stores arbitrary binary data&#39;</span> <span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">data</span><span class="p">:</span> <span class="n">N</span> <span class="n">events</span> <span class="n">x</span> <span class="n">M</span> <span class="n">length</span> <span class="n">of</span> <span class="n">data</span><span class="p">,</span> <span class="nb">any</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">numeric</span> <span class="nb">type</span><span class="o">.</span>
+        <span class="o">./</span><span class="n">conversion</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">resolution</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span> <span class="p">(</span><span class="n">float32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;n/a&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">control</span><span class="p">:</span> <span class="n">N</span> <span class="n">uint8</span> <span class="n">representing</span> <span class="n">virtual</span> <span class="n">channel</span> <span class="n">numbers</span><span class="o">.</span> <span class="n">Usually</span> <span class="nb">all</span> <span class="n">zeros</span><span class="o">.</span>
+    <span class="o">./</span><span class="n">num_samples</span><span class="p">:</span> <span class="n">N</span> <span class="p">(</span><span class="n">int32</span><span class="p">,</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">recording</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">timestamps</span><span class="p">:</span> <span class="n">N</span> <span class="n">timestamps</span> <span class="n">relative</span> <span class="n">to</span> <span class="n">experiment</span> <span class="n">start</span> <span class="n">time</span> <span class="p">(</span><span class="n">float64</span> <span class="n">array</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">interval</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="n">int32</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">unit</span><span class="p">:</span> <span class="s1">&#39;seconds&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="o">./</span><span class="n">oe_extra_info</span>
+        <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:oe_extra_info/&#39;</span>
+        <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">description</span><span class="o">.</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">base</span> <span class="k">class</span> <span class="nc">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">channel</span> <span class="n">info</span> <span class="nb">object</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">source_type_index</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">this</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">source</span> <span class="n">processor</span> <span class="p">(</span><span class="n">uint16</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">channel_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="o">./</span><span class="n">event_metadata</span>
+            <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;metadata&gt;/&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="o">./</span><span class="n">Field_</span><span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">L</span> <span class="n">values</span> <span class="ow">or</span> <span class="n">text</span> <span class="n">string</span>
+                <span class="o">./</span><span class="n">schema_id</span><span class="p">:</span> <span class="s1">&#39;openephys:&lt;text_metadata&gt;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;openephys:&lt;number_metadata&gt;&#39;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">name</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">field</span> <span class="n">name</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>P = processorID_subprocessorID (e.g., 101_1, 102_1, etc.; if there is only one subprocessor, the subprocessor ID is omitted)</p>
+<p>R = index of recording (1, 2, 3, etc.)</p>
+<p>E = index of electrode (1, 2, 3, etc.)</p>
+<p>C = index of recorded channel</p>
+<p>T = index of recorded event of the specific type</p>
+<p>M = index of metadata field (1, 2, 3, etc…)</p>
+<div class="section" id="rules-for-creating-new-files-and-groups">
+<h3>Rules for creating new files and groups<a class="headerlink" href="#rules-for-creating-new-files-and-groups" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>If acquisition is stopped, create a new file (experiment1.nwb, experiment2.nwb, etc.). Timestamps are reset to zero.</p></li>
+<li><p>If recording is stopped (but acquisition is active), create a new group (recording1, recording2, etc.). Timestamps are relative to start of acquisition.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Open Ephys format.html" title="previous page">Open Ephys format</a>
+    <a class='right-next' id="next-link" href="KWIK format.html" title="next page">KWIK format</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2020, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channel Map &#8212; Open Ephys Documentation 0.0.0 documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Common Average Reference" href="Common Average Reference.html" />
+    <link rel="prev" title="Bandpass Filter" href="Bandpass Filter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../index.html">
+      <img src="../../_static/oe_logo_circle.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQ</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+          
+              <li class="">
+                  <a href="../Before you begin.html">Before you begin</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Installing the GUI.html">Installing the GUI</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Exploring the user interface.html">Exploring the user interface</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Building a signal chain.html">Building a signal chain</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="../Recording data/index.html">Recording data</a>
+              </li>
+          
+        
+          
+
+              <li class="active">
+                  <a href="index.html">Plugins</a>
+                  <ul>
+                  
+                      <li class="">
+                          <a href="Arduino Output.html">Arduino Output</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Bandpass Filter.html">Bandpass Filter</a>
+                      </li>
+                  
+                      <li class="active">
+                          <a href="">Channel Map</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Common Average Reference.html">Common Average Reference</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Event Broadcaster.html">Event Broadcaster</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Event Triggered Average.html">Event Triggered Average</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="File Reader.html">File Reader</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Intan Recording Controller.html">Intan Recording Controller</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="LFP Viewer.html">LFP Viewer</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="MATLAB Interface.html">MATLAB Interface</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Merger.html">Merger</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Network Events.html">Network Events</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Neuropixels 3a.html">Neuropixels 3a</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Neuropixels PXI.html">Neuropixels PXI</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="NIDAQmx.html">NIDAQmx</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Phase Calculator.html">Phase Calculator</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Phase Detector.html">Phase Detector</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Probe Viewer.html">Probe Viewer</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Pulse Pal.html">Pulse Pal</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Record Control.html">Record Control</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Rectifier.html">Rectifier</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Rhythm FPGA.html">Rhythm FPGA</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Serial Port.html">Serial Port</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Spike Detector.html">Spike Detector</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Spike Sorter.html">Spike Sorter</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Spike Viewer.html">Spike Viewer</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Splitter.html">Splitter</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="Stream Muxer.html">Stream Muxer</a>
+                      </li>
+                  
+                      <li class="">
+                          <a href="ZMQ Interface.html">ZMQ Interface</a>
+                      </li>
+                  
+                  </ul>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#rearranging-channels" class="nav-link">Rearranging channels</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#selecting-digital-references" class="nav-link">Selecting digital references</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#saving-and-loading-channel-mappings" class="nav-link">Saving and loading channel mappings</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="channel-map">
+<span id="channelmap"></span><h1>Channel Map<a class="headerlink" href="#channel-map" title="Permalink to this headline">¶</a></h1>
+<img alt="Annotated Channel Map settings interface" src="../../_images/channelmap-01.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Used to reorder and delete channels, as well as configure up to four independent digital references.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
+<td><p>Filter</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux, macOS</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Built in?</em></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Key Developers</em></p></td>
+<td><p>Josh Siegle</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/ChannelMappingNode">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/ChannelMappingNode</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="plugin-configuration">
+<h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rearranging-channels">
+<h3>Rearranging channels<a class="headerlink" href="#rearranging-channels" title="Permalink to this headline">¶</a></h3>
+<p>To rearrange channels, click <strong>REMAP</strong> (it will become darker when selected). You can then re-order channels by dragging them around. Double-clicking on a channel will disable it.</p>
+<img alt="Rearrange and disabling channels" src="../../_images/channelmap-02.png" />
+<p>Downstream plugins will receive continuous channels in the new order, and will not receive signals from disabled channels. In the example above, the original channel 2 would appear as channel 1 in any plugins to the right of the Channel Map. And channel 13 would be removed (leaving a total of 15 continuous channels).</p>
+<p>This functionality is useful for reordering channels prior to spike detection, so channels belonging to the same tetrode can be easily grouped together.</p>
+</div>
+<div class="section" id="selecting-digital-references">
+<h3>Selecting digital references<a class="headerlink" href="#selecting-digital-references" title="Permalink to this headline">¶</a></h3>
+<p>There are four available reference banks (A, B, C, and D), which can be used to create digital references.</p>
+<p>To configure a reference bank:</p>
+<ol class="arabic simple">
+<li><p>Make sure the correct bank is selected.</p></li>
+<li><p>Use the “PARAM” drawer on the right side of the plugin to select one channel to serve as the reference.</p></li>
+<li><p>Select the channels in the main area of the editor that will use this reference.</p></li>
+</ol>
+<img alt="Selecting digital references" src="../../_images/channelmap-03.png" />
+<p>In the example above, channels 9-16 are referenced to channel 1.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Do not confuse them with A, B, C, and D that appear on the right of <a class="reference internal" href="Rhythm FPGA.html#rhythmfpga"><span class="std std-ref">Rhythm FPGA</span></a> module, which represent different headstages and have nothing to with A, B, C, and D on the Channel Map module.</p>
+</div>
+</div>
+<div class="section" id="saving-and-loading-channel-mappings">
+<h3>Saving and loading channel mappings<a class="headerlink" href="#saving-and-loading-channel-mappings" title="Permalink to this headline">¶</a></h3>
+<p>By clicking the icons at the top right of the module, you can save or load the settings of the Channel Map module in JSON format. This is helpful in cases where you want to load a channel mapping independently of the rest of the signal chain.</p>
+<p>An example file for two channels is shown below:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">1</span><span class="p">,</span>
+      <span class="mi">2</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">-1</span><span class="p">,</span>
+      <span class="mi">-1</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="kc">true</span><span class="p">,</span>
+      <span class="kc">true</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;refs&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;channels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">0</span><span class="p">,</span>
+      <span class="mi">-1</span><span class="p">,</span>
+      <span class="mi">-1</span><span class="p">,</span>
+      <span class="mi">-1</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;recording&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;channels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="kc">false</span><span class="p">,</span>
+      <span class="kc">false</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Bandpass Filter.html" title="previous page">Bandpass Filter</a>
+    <a class='right-next' id="next-link" href="Common Average Reference.html" title="next page">Common Average Reference</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2020, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
