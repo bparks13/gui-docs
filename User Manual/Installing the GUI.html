@@ -1,17 +1,36 @@
 
-
 <!DOCTYPE html>
 
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Installing the GUI &#8212; Open Ephys Documentation 0.0.0 documentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../_static/css/index.css" rel="stylesheet">
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
     <link rel="stylesheet" href="../_static/_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -20,10 +39,10 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exploring the user interface" href="Exploring the user interface.html" />
-    <link rel="prev" title="Before you begin" href="Before you begin.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <link rel="next" title="Exploring the user interface" href="Exploring%20the%20user%20interface.html" />
+    <link rel="prev" title="Before you begin" href="Before%20you%20begin.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -48,7 +67,7 @@
         </li>
         
         <li class="nav-item ">
-            <a class="nav-link" href="../Developer Guide/index.html">Developer Guide</a>
+            <a class="nav-link" href="../Developer%20Guide/index.html">Developer Guide</a>
         </li>
         
         <li class="nav-item ">
@@ -108,7 +127,7 @@
         
           
               <li class="">
-                  <a href="Before you begin.html">Before you begin</a>
+                  <a href="Before%20you%20begin.html">Before you begin</a>
               </li>
           
         
@@ -120,19 +139,19 @@
         
           
               <li class="">
-                  <a href="Exploring the user interface.html">Exploring the user interface</a>
+                  <a href="Exploring%20the%20user%20interface.html">Exploring the user interface</a>
               </li>
           
         
           
               <li class="">
-                  <a href="Building a signal chain.html">Building a signal chain</a>
+                  <a href="Building%20a%20signal%20chain.html">Building a signal chain</a>
               </li>
           
         
           
               <li class="">
-                  <a href="Recording data/index.html">Recording data</a>
+                  <a href="Recording%20data/index.html">Recording data</a>
               </li>
           
         
@@ -167,15 +186,45 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#windows" class="nav-link">Windows</a>
+            <a href="#windows" class="nav-link">Windows</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#via-installer-recommended" class="nav-link">Via installer (recommended)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#via-zip-file" class="nav-link">Via .zip file</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#linux" class="nav-link">Linux</a>
+            <a href="#linux" class="nav-link">Linux</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#via-installer-ubuntu-only" class="nav-link">Via installer (Ubuntu only)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#via-zip-file-all-distros" class="nav-link">Via .zip file (all distros)</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#macos" class="nav-link">macOS</a>
+            <a href="#macos" class="nav-link">macOS</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#via-dmg-recommended" class="nav-link">Via DMG (recommended)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#id1" class="nav-link">Via .zip file</a>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -196,8 +245,19 @@
 <p>The Open Ephys GUI works equally well on Windows, Linux, and macOS, so which platform you choose is mostly up to you. However, there are some plugins (such as Neuropixels) that are currently only available for Windows. We recommend reading through the documentation of any <a class="reference internal" href="Plugins/index.html#plugins"><span class="std std-ref">Plugins</span></a> you plan to use to find out about potential limitations.</p>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="via-installer-recommended">
+<h3>Via installer (recommended)<a class="headerlink" href="#via-installer-recommended" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Click the “Windows” link on <a class="reference external" href="https://open-ephys.org/gui">this page</a> to download the ZIP file.</p></li>
+<li><p>Click the “Windows” link on <a class="reference external" href="https://open-ephys.org/gui">this page</a> to download the installer.</p></li>
+<li><p>Double-click the downloaded executable to launch the installer.</p></li>
+<li><p>Follow the instructions within the installer.</p></li>
+<li><p>The GUI will be installed in <code class="code docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Open</span> <span class="pre">Ephys\open-ephys.exe</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="via-zip-file">
+<h3>Via .zip file<a class="headerlink" href="#via-zip-file" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Download the Windows <strong>.zip</strong> file from this link: <a class="reference external" href="https://dl.bintray.com/open-ephys-gui/Release/">https://dl.bintray.com/open-ephys-gui/Release/</a></p></li>
 <li><p>Drag and drop the downloaded and unzipped folder to the location of your choice, and rename it “Open Ephys”</p></li>
 <li><p>Run <code class="code docutils literal notranslate"><span class="pre">FrontPanelUSB-DriverOnly-4.4.0.exe</span></code> to install the Open Ephys acquisition board driver.</p></li>
 <li><p>Double-click the <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> executable to run the application.</p></li>
@@ -207,10 +267,23 @@
 <p>If the GUI won’t open due to a missing DLL, you’ll need to install the <a class="reference external" href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">Visual Studio 2015 2017 and 2019 redistributable package</a>.</p>
 </div>
 </div>
+</div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="via-installer-ubuntu-only">
+<h3>Via installer (Ubuntu only)<a class="headerlink" href="#via-installer-ubuntu-only" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Click the “Linux” link on <a class="reference external" href="https://open-ephys.org/gui">this page</a> to download the ZIP file.</p></li>
+<li><p>Click the “Linux” link on <a class="reference external" href="https://open-ephys.org/gui">this page</a> to download the <strong>.deb</strong> file.</p></li>
+<li><p>Open a terminal and set your working directory to the location of the downloaded file.</p></li>
+<li><p>Enter <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg</span> <span class="pre">-i</span> <span class="pre">&lt;name_of_deb_file&gt;</span></code> followed by your password.</p></li>
+<li><p>The GUI will be installed in <code class="code docutils literal notranslate"><span class="pre">/usr/local/bin/open-ephys</span></code>.</p></li>
+<li><p>Type <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> to launch the GUI.</p></li>
+</ol>
+</div>
+<div class="section" id="via-zip-file-all-distros">
+<h3>Via .zip file (all distros)<a class="headerlink" href="#via-zip-file-all-distros" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Download the Linux <strong>.zip</strong> file from this link: <a class="reference external" href="https://dl.bintray.com/open-ephys-gui/Release/">https://dl.bintray.com/open-ephys-gui/Release/</a></p></li>
 <li><p>Drag and drop the downloaded and unzipped folder to the location of your choice, and rename it “Open Ephys”</p></li>
 <li><p>Open a terminal and set your working directory to the folder you just renamed.</p></li>
 <li><p>Enter <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">cp</span> <span class="pre">40-open-ephys.rules</span> <span class="pre">/etc/udev/rules.d</span></code> followed by your password.</p></li>
@@ -218,10 +291,22 @@
 <li><p>Double-click the <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> executable (or enter <code class="code docutils literal notranslate"><span class="pre">./open-ephys</span></code> in the terminal) to run the application.</p></li>
 </ol>
 </div>
+</div>
 <div class="section" id="macos">
 <h2>macOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="via-dmg-recommended">
+<h3>Via DMG (recommended)<a class="headerlink" href="#via-dmg-recommended" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Click the “macOS” link on <a class="reference external" href="https://open-ephys.org/gui">this page</a> to download the ZIP file.</p></li>
+<li><p>Click the “macOS” link on <a class="reference external" href="https://open-ephys.org/gui">this page</a> to download the DMG installer.</p></li>
+<li><p>Double-click on the downloaded file to open it.</p></li>
+<li><p>Drag the Open Ephys file to the “Applications” folder.</p></li>
+<li><p>Double-click on Open Ephys app bundle to launch the GUI.</p></li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h3>Via .zip file<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Download the Mac <strong>.zip</strong> file from this link: <a class="reference external" href="https://dl.bintray.com/open-ephys-gui/Release/">https://dl.bintray.com/open-ephys-gui/Release/</a></p></li>
 <li><p>Drag and drop the downloaded and unzipped folder to the location of your choice, and rename it “Open Ephys”</p></li>
 <li><p>Double-click <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> to run the application.</p></li>
 </ol>
@@ -235,6 +320,7 @@
 </div>
 </div>
 </div>
+</div>
 
 
               </div>
@@ -242,8 +328,8 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="Before you begin.html" title="previous page">Before you begin</a>
-    <a class='right-next' id="next-link" href="Exploring the user interface.html" title="next page">Exploring the user interface</a>
+    <a class='left-prev' id="prev-link" href="Before%20you%20begin.html" title="previous page">Before you begin</a>
+    <a class='right-next' id="next-link" href="Exploring%20the%20user%20interface.html" title="next page">Exploring the user interface</a>
 
               </div>
               
@@ -253,12 +339,15 @@
       </div>
     </div>
 
-    <script src="../_static/js/index.js"></script>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
     <footer class="footer mt-5 mt-md-0">
   <div class="container">
     <p>
           &copy; Copyright 2010-2020, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.1.2.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
     </p>
   </div>
 </footer>
