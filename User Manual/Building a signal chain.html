@@ -239,8 +239,7 @@
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Drag and drop a <a class="reference internal" href="Plugins/Splitter.html#splitter"><span class="std std-ref">Splitter</span></a> to the right of the Record Node, to allow signals to be processed as two independent data streams.</p></li>
-<li><p>Drag and drop a <a class="reference internal" href="Plugins/LFP Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a> to the right of the <a class="reference internal" href="Plugins/Splitter.html#splitter"><span class="std std-ref">Splitter</span></a>.</p></li>
+<li><p>Drag and drop a <a class="reference internal" href="Plugins/LFP Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a> to the right of the Record Node.</p></li>
 <li><p>Click the “tab” button in the upper right of the <a class="reference internal" href="Plugins/LFP Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a>, to open the visualizer in the Viewport.</p></li>
 </ol>
 </div>
@@ -250,7 +249,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple" start="7">
 <li><p>Click the “play” button to begin data acquisition. Once you’ve confirmed that the data appears in the LFP Viewer visualization, click the “play” button again to stop acquisition.</p></li>
 </ol>
 </div>
@@ -260,11 +259,16 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<ol class="arabic simple" start="8">
+<li><p>Drag and drop a <a class="reference internal" href="Plugins/Bandpass Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a> to the right of the <a class="reference internal" href="Plugins/LFP Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a>. With the default settings, this will filter data in a range that’s appropriate for detecting action potential waveforms.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prior to GUI version 0.5.0, it was not possible to continue a signal chain after a “Sink” processor such as the <a class="reference internal" href="Plugins/LFP Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a>. This restriction has now been lifted, in order to simplify the creation of complex signal chains. Data will pass through Sinks the same way it passes through Filters, except it will not be modified in any way.</p>
+</div>
 <ol class="arabic simple" start="9">
-<li><p>Click the lower arrow button of the <a class="reference internal" href="Plugins/Splitter.html#splitter"><span class="std std-ref">Splitter</span></a> to continue building the signal chain.</p></li>
-<li><p>Drag and drop a <a class="reference internal" href="Plugins/Bandpass Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a> to the right of the <a class="reference internal" href="Plugins/Splitter.html#splitter"><span class="std std-ref">Splitter</span></a>. With the default settings, this will filter data in a range that’s appropriate for detecting action potential waveforms.</p></li>
 <li><p>Drag and drop a <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a> to the right of the <a class="reference internal" href="Plugins/Bandpass Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a>. The <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a>’s functionality is a superset of the <a class="reference internal" href="Plugins/Spike Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a>.</p></li>
-<li><p>Use the arrow buttons to increase the number of electrodes to 8. Then, press the <code class="code docutils literal notranslate"><span class="pre">+</span></code> button to add 8 stereotrodes. This will automatically create 8 pairs of channels that capture spike waveforms whenever the signal on one of the two channels crosses a threshold. It’s also possible to create single electrodes (1 linked channel) or tetrodes (4 linked channels).</p></li>
+<li><p>Use the arrow buttons in the upper left of the <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a> to increase the number of electrodes to 8. Then, press the <code class="code docutils literal notranslate"><span class="pre">+</span></code> button to add 8 stereotrodes. This will automatically create 8 pairs of channels that capture spike waveforms whenever the signal on one of the two channels crosses a threshold. It’s also possible to create single electrodes (1 linked channel) or tetrodes (4 linked channels).</p></li>
 </ol>
 </div>
 <div class="section" id="visualizing-spikes">
@@ -273,13 +277,12 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ol class="arabic simple" start="13">
-<li><p>Double-click on the names of the <a class="reference internal" href="Plugins/File Reader.html#filereader"><span class="std std-ref">File Reader</span></a>, Record Node, and <a class="reference internal" href="Plugins/Bandpass Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a> to collapse their plugin editors. Alternatively, you can use the arrow buttons on the far right side of the Signal Chain to browse through active plugin editors.</p></li>
-<li><p>Drag and drop another Record Node to the right of the <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a>. This will be used to save the spikes coming out of this plugin, which are not accessible to the first Record Node.</p></li>
-<li><p>Click on the vertical bars on the <em>left</em> of the new Record Node to expose the subprocessor configuration interface. This Record Node only has one subprocessor (a set of synchronously sampled continuous data channels). Clicking on the vertical bar labeled <code class="code docutils literal notranslate"><span class="pre">SPO</span></code> will show 16 channels highlighted in red. Click the “NONE” button to deselect these channels, since they are already being recorded by the original Record Node. Next, click the red button labeled “RECORD EVENTS” to disable event saving. Importantly, though, the “RECORD SPIKES” button should still be red, to indicate that any incoming spikes will be saved by this Record Node. Lastly, if you changed the data directory for the previous Record Node, you should do so again.</p></li>
+<ol class="arabic simple" start="11">
+<li><p>Double-click on the names of the <a class="reference internal" href="Plugins/File Reader.html#filereader"><span class="std std-ref">File Reader</span></a>, Record Node, and <a class="reference internal" href="Plugins/LFP Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a> to collapse their plugin editors. Alternatively, you can use the arrow buttons on the far right side of the Signal Chain to browse through active plugin editors if some of them have disappeared.</p></li>
+<li><p>Drag and drop another Record Node to the right of the <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a>. This will be used to save the spikes coming out of this plugin, which are not accessible to the first Record Node, since they are generated by a downstream plugin.</p></li>
+<li><p>Click the vertical bars on the <em>left</em> of the new Record Node to expose the subprocessor configuration interface. This Record Node only has one subprocessor (a set of synchronously sampled continuous data channels). Clicking on the vertical bar labeled <code class="code docutils literal notranslate"><span class="pre">SPO</span></code> will show 16 channels highlighted in red. Click the “NONE” button to deselect these channels, since they are already being recorded by the original Record Node. Next, click the red button labeled “RECORD EVENTS” to disable event saving. Importantly, though, the “RECORD SPIKES” button should still be red, to indicate that any incoming spikes will be saved by this Record Node. Lastly, if you changed the data directory for the previous Record Node, you should do so again.</p></li>
 <li><p>Drag and drop a <a class="reference internal" href="Plugins/Spike Viewer.html#spikeviewer"><span class="std std-ref">Spike Viewer</span></a> to the right of the Record Node.</p></li>
 <li><p>Click the tab button in the upper right of the <a class="reference internal" href="Plugins/Spike Viewer.html#spikeviewer"><span class="std std-ref">Spike Viewer</span></a> to open the visualizer in the Viewport.</p></li>
-<li><p>Click the “play” button to re-start acquisition. Now, you should see spikes being displayed by the <a class="reference internal" href="Plugins/Spike Viewer.html#spikeviewer"><span class="std std-ref">Spike Viewer</span></a>.</p></li>
 </ol>
 </div>
 <div class="section" id="listening-to-and-recording-spikes">
@@ -288,8 +291,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ol class="arabic simple" start="13">
-<li><p>While acquisition remains active, press the “MONITOR” button in the <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a> to listen to the spikes from the selected electrode. If you can’t hear anything, check that the volume slider in the Control Panel is activated.</p></li>
+<ol class="arabic simple" start="16">
+<li><p>Click the “play” button to re-start acquisition. You should now see spikes being displayed by the <a class="reference internal" href="Plugins/Spike Viewer.html#spikeviewer"><span class="std std-ref">Spike Viewer</span></a>.</p></li>
+<li><p>While acquisition remains active, press the “MONITOR” button in the <a class="reference internal" href="Plugins/Spike Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a> to listen to the spikes from the selected electrode. If you can’t hear anything, check that the volume slider in the Control Panel is set to a value other than zero and that your computer’s speakers are not muted.</p></li>
 <li><p>Now, press the record button (circle) in the Control Panel to being writing data. This will create a new directory with the following internal structure:</p></li>
 </ol>
 <img alt="Open Ephys data directory structure" src="../_images/buildingasignalchain-08.png" />

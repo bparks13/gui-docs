@@ -353,7 +353,7 @@
 <ul class="simple">
 <li><p><strong>Sources</strong>: bring data into the signal chain. Acquisition won’t start unless every signal chain has at least one source.</p></li>
 <li><p><strong>Filters</strong>: alter the data in some way, either by changing the continuous data or adding TTL events, messages, or spikes to the event buffer.</p></li>
-<li><p><strong>Sinks</strong>: send data to an external source, such as a display, stimulator, etc. Currently, sinks must always be at the end of a signal chain, although this restriction will be lifted soon.</p></li>
+<li><p><strong>Sinks</strong>: send data to an external source, such as a display, stimulator, etc., without altering the underlying data streams. Data should pass through Sinks unchanged.</p></li>
 <li><p><strong>Utilities</strong>: allow the signal chain to be split or merged, or to control the recording state by intercepting TTL events.</p></li>
 <li><p><strong>Record Engines</strong>: define new data formats. These plugins do not appear in the processor list, but instead show up in drop-down menus inside the global record options panel or individual Record Nodes.</p></li>
 </ul>
