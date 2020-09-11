@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploring the user interface &#8212; Open Ephys Documentation 0.0.0 documentation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Building a signal chain" href="Building-a-signal-chain.html" />
+    <link rel="prev" title="Installing the GUI" href="Installing-the-GUI.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../index.html">
+      <img src="../_static/oe_logo_circle.svg" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../FAQ/index.html">FAQ</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+        
+          
+              <li class="">
+                  <a href="Before-you-begin.html">Before you begin</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="Installing-the-GUI.html">Installing the GUI</a>
+              </li>
+          
+        
+          
+              <li class="active">
+                  <a href="">Exploring the user interface</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="Building-a-signal-chain.html">Building a signal chain</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="Recording-data/index.html">Recording data</a>
+              </li>
+          
+        
+          
+              <li class="">
+                  <a href="Plugins/index.html">Plugins</a>
+              </li>
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#main-components" class="nav-link">Main components</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#processor-list" class="nav-link">1. Processor List</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#signal-chain" class="nav-link">2. Signal Chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#message-center" class="nav-link">3. Message Center</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#control-panel" class="nav-link">4. Control Panel</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#global-recording-options" class="nav-link">5. Global Recording Options</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#viewport" class="nav-link">6. Viewport</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#menu-items" class="nav-link">Menu items</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#file" class="nav-link">File</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#edit" class="nav-link">Edit</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#view" class="nav-link">View</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#debug-console" class="nav-link">Debug console</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#linux" class="nav-link">Linux</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#macos" class="nav-link">macOS</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#windows" class="nav-link">Windows</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="exploring-the-user-interface">
+<span id="exploringtheui"></span><h1>Exploring the user interface<a class="headerlink" href="#exploring-the-user-interface" title="Permalink to this headline">¶</a></h1>
+<p>Functionally, the GUI is very similar to traditional programs for acquiring extracellular electrophysiology data. It allows you to control input sources, adjust filter settings, visualize spikes and LFPs, and save all of your data to disk. Conceptually, however, the GUI is more similar to audio processing applications, such as <a class="reference external" href="https://www.ableton.com/en/live/">Ableton Live</a>. Rather than hard-coding the signal chain, the processing pathway can be created dynamically by the user. This feature will hopefully make the GUI easier to comprehend, less painful to modify, and more enjoyable to use. While most open-loop electrophysiology experiments require roughly the same signal chain, closed-loop experiments rarely do. A more flexible user-interface will allow neuroscientists to build up a library of modules that can be re-used and shared, rather than relying on purpose-built code in Matlab or LabVIEW that’s used for one experiment then scrapped.</p>
+<div class="section" id="main-components">
+<h2>Main components<a class="headerlink" href="#main-components" title="Permalink to this headline">¶</a></h2>
+<p>The GUI is designed to ensure all of the most important elements are accessible from a single window, to keep everything organized. However, many components can be collapsed when they are not in use.</p>
+<p>These are the components you’ll be interacting with most often:</p>
+<img alt="The main elements of the GUI's interface" src="../_images/UI_overview-01.png" />
+<div class="section" id="processor-list">
+<h3>1. Processor List<a class="headerlink" href="#processor-list" title="Permalink to this headline">¶</a></h3>
+<p>Here you’ll find all the available modules for building the signal chain, organized by type. “Sources” bring data into the application, either by communicating with an external device, reading data from a file, or generating samples on the fly. “Filters” alter the data in some way, either by modifying continuous signals or creating new events. “Sinks” send data outside the signal chain, for example to a USB device or a display. “Utilities” are used to construct the signal chain or control recording, but they don’t modify data in any way. Finally, “Recording” processors are used for saving data. For the most part, “processors” and synonymous with “plugins,” although some processors are currently built into the GUI, so are not technically plugins.</p>
+</div>
+<div class="section" id="signal-chain">
+<h3>2. Signal Chain<a class="headerlink" href="#signal-chain" title="Permalink to this headline">¶</a></h3>
+<p>The processing pipeline is configured by dragging modules from the Processor List and dropping them in the appropriate order onto the Signal Chain. Once a processor has been added to the Signal Chain, its settings will be accessible through a custom interface. The buttons on the left-hand side of the Signal Chain allow you to toggle between different branches of your signal chain (if it contains multiple sources).</p>
+</div>
+<div class="section" id="message-center">
+<h3>3. Message Center<a class="headerlink" href="#message-center" title="Permalink to this headline">¶</a></h3>
+<p>At the bottom of the user interface, there is a component for sending and receiving messages. The left side displays important notifications that come from the GUI or its plugins, while the right side allows you to record custom messages during an experiment.</p>
+</div>
+<div class="section" id="control-panel">
+<h3>4. Control Panel<a class="headerlink" href="#control-panel" title="Permalink to this headline">¶</a></h3>
+<p>The top of the user interface contains a number of components for controlling the overall behavior of the software, as well as displaying critical status information.</p>
+<p>From left to right:</p>
+<ul class="simple">
+<li><p><strong>CPU Meter</strong>. Displays the fraction of available time that the signal chain takes to complete one processing cycle. The values in this display will differ from your computer’s built-in CPU monitor, and are a better indicator of whether you are hitting your machine’s performance limits. Ideally, the CPU meter should stay below 20% at all times. If it’s spiking to over 50%, it indicates that you are attempting to acquire more channels than your computer can handle, or your signal chain is too complex.</p></li>
+<li><p><strong>Disk Space Meter</strong>. Displays the fraction of available disk space used by the default recording directory. Keep an eye on this meter to ensure that you don’t run out of space for recording data.</p></li>
+<li><p><strong>Volume Slider</strong>. Used to adjust the volume of the GUI’s built-in audio monitor.</p></li>
+<li><p><strong>Gate Slider</strong>. Used to adjust the “gate” of the audio monitor, which enhances the sound of individual spikes while suppressing background noise.</p></li>
+<li><p><strong>Audio Settings</strong>. This button (which displays the audio buffer size in milliseconds) opens the Audio Settings interface. Data acquisition is driven by your computer’s audio card. If you have multiple audio cards installed, this interface can be used to select which one to use. It can also be used to change the size of the audio buffer, which determines the amount of time it takes to complete one processing cycle. If the CPU meter is jumping around a lot, increasing the size of the audio buffer can smooth it out, by giving the GUI more time to process each chunk of data that comes in. However, this will increase the average time it takes for the GUI to deliver closed-loop feedback, if your signal chain includes plugins for trigger stimulation based on incoming neural data.</p></li>
+<li><p><strong>Play</strong>. This button is used to start and stop data acquisition. If there are no processors present in the signal chain, it won’t do anything.</p></li>
+<li><p><strong>Record</strong>. This button is used to start and stop recording. If the play button hasn’t been pressed yet, the record button will also start data acquisition.</p></li>
+<li><p><strong>Clock</strong>. The clock displays the amount of time elapsed since data acquisition started. Or, if data is being recorded, it turns red and displays the amount of time since the current recording began.</p></li>
+</ul>
+</div>
+<div class="section" id="global-recording-options">
+<h3>5. Global Recording Options<a class="headerlink" href="#global-recording-options" title="Permalink to this headline">¶</a></h3>
+<p>Below the control panel is a collapsible interface for changing recording options. For more information about this component, see the <a class="reference internal" href="Recording-data/index.html#recordingdata"><span class="std std-ref">Recording data</span></a> page.</p>
+</div>
+<div class="section" id="viewport">
+<h3>6. Viewport<a class="headerlink" href="#viewport" title="Permalink to this headline">¶</a></h3>
+<p>The center of the user interface is used for a variety of different displays, each contained in a separate tab. By default, the viewport shows a high-level overview of the signal chain that allows you to jump to the configuration interfaces for each processor. It also larger visualizations that do not fit inside the Signal Chain view at the bottom of the window.</p>
+</div>
+</div>
+<div class="section" id="menu-items">
+<h2>Menu items<a class="headerlink" href="#menu-items" title="Permalink to this headline">¶</a></h2>
+<p>Below you’ll find documentation for all of the commands available from the GUI’s menu:</p>
+<div class="section" id="file">
+<h3>File<a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Open</strong>: browse for a previously saved signal chain XML file, and load it into the GUI.</p></li>
+<li><p><strong>Save</strong>: save the current signal chain to an XML file.</p></li>
+<li><p><strong>Save as…</strong>: select a new location to store the current signal chain.</p></li>
+<li><p><strong>Reload on startup</strong>: if checked, the GUI will automatically re-load the signal chain that was active the last time the GUI was closed.</p></li>
+<li><p><strong>Plugin Installer</strong>: open the Plugin Installer interface. See the <a class="reference internal" href="Plugins/index.html#plugins"><span class="std std-ref">Plugins</span></a> page for more details.</p></li>
+</ul>
+</div>
+<div class="section" id="edit">
+<h3>Edit<a class="headerlink" href="#edit" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Undo</strong>: <em>[not implemented]</em> undo the most recent action.</p></li>
+<li><p><strong>Redo</strong>: <em>[not implemented]</em> redo the action that was most recently undone.</p></li>
+<li><p><strong>Copy</strong>: <em>[not implemented]</em> copy the currently selected processor.</p></li>
+<li><p><strong>Paste</strong>: <em>[not implemented]</em> paste the most recently copied processor to the right of the currently selected processor.</p></li>
+<li><p><strong>Clear signal chain</strong>: removes all processors from the signal chain.</p></li>
+<li><p><strong>Timestamp source</strong>: opens an interface for selecting the global timestamp source. Processors that do not generate their own timestamps will inherit them from the global source.</p></li>
+</ul>
+</div>
+<div class="section" id="view">
+<h3>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Processor List</strong>: shows/hides the Processor List interface.</p></li>
+<li><p><strong>Signal Chain</strong>: shows/hides the Signal Chain interface.</p></li>
+<li><p><strong>File Info</strong>: shows/hides the Record Options interface.</p></li>
+<li><p><strong>Reset window bounds</strong>: restores the GUI window to the default size and location (helpful if the window gets lost offscreen).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="debug-console">
+<h2>Debug console<a class="headerlink" href="#debug-console" title="Permalink to this headline">¶</a></h2>
+<p>The GUI is able to send debug messages to a console. In many cases, the information displayed there can help locate and solve an issue. The way to access the debug console varies depending on the operating system.</p>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>To display the debug console on Linux, just run the <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> application in a console terminal, and the output will be displayed there.</p>
+</div>
+<div class="section" id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
+<p>To display the debug console on MacOS, open a terminal, navigate to the directory where the GUI application is located and run it inside the console.</p>
+<p>Due to the structure of MacOS app bundles, the whole command to run the GUI would be <code class="code docutils literal notranslate"><span class="pre">./open-ephys.app/Contents/MacOS/open-ephys</span></code>. Run this command from the directory which contains the App bundle. Do not access the internal App directories and run <code class="code docutils literal notranslate"><span class="pre">./open-ephys</span></code> from there, as some features will not be available that way.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>To display the debug console on Windows, follow the following steps:</p>
+<ol class="arabic simple">
+<li><p>Create a shortcut by right clicking the <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> executable and selecting the “Create shortcut” option</p></li>
+<li><p>Right click the newly created shortcut and select “Properties”</p></li>
+<li><p>In the shortcut properties page, add <code class="code docutils literal notranslate"><span class="pre">--console</span></code> at the end of the Target line, which contains the path to the open ephys executable. Add it after any quotes, if there were any. Click OK once this has been done.</p></li>
+</ol>
+<p>Now, every time you need to open the console, just run the GUI via this shortcut instead of the normal executable.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Installing-the-GUI.html" title="previous page">Installing the GUI</a>
+    <a class='right-next' id="next-link" href="Building-a-signal-chain.html" title="next page">Building a signal chain</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2020, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
