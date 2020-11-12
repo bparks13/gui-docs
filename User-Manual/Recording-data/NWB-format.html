@@ -207,13 +207,37 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#open-ephys-nwb-file-structure-based-on-version-1-0-6" class="nav-link">Open Ephys NWB File Structure (based on version 1.0.6)</a><ul class="nav section-nav flex-column">
+            <a href="#file-organization" class="nav-link">File organization</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#format-details" class="nav-link">Format details</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h3">
-            <a href="#rules-for-creating-new-files-and-groups" class="nav-link">Rules for creating new files and groups</a>
+            <a href="#continuous" class="nav-link">Continuous</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#events" class="nav-link">Events</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#spikes" class="nav-link">Spikes</a>
         </li>
     
             </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reading-data-in-python" class="nav-link">Reading data in Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reading-data-in-matlab" class="nav-link">Reading data in Matlab</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#full-specification" class="nav-link">Full specification</a>
         </li>
     
     </ul>
@@ -231,34 +255,134 @@
                 
   <div class="section" id="nwb-format">
 <span id="nwbdataformat"></span><h1>NWB format<a class="headerlink" href="#nwb-format" title="Permalink to this headline">¶</a></h1>
-<p>From the NWB website:</p>
-<blockquote class="epigraph">
-<div><p>Neurodata Without Borders: Neurophysiology (NWB:N) is a project to develop a unified data format for cellular-based neurophysiology data, focused on the dynamics of groups of neurons measured under a large range of experimental conditions. The NWB:N team consists of neuroscientists and software developers who recognize that adoption of a unified data format is an important step toward breaking down the barriers to data sharing in neuroscience.</p>
-</div></blockquote>
-<p>We are working on implementing the ability to write directly to an NWB file from the Open Ephys GUI. We’re hoping that NWB becomes a common standard for neuroscience, so saving your data in NWB format will make it much easier to share with other researchers. It also comes with all the advantages (and disadvantages) of HDF5.</p>
-<p>The official format specification can be found on GitHub as raw HTML files. We’ve adapted it for use with Open Ephys by extending some base classes of the NWB specification to hold extra data that might be provided by the software. Extension files for the official NWB API will be provided as per the standard. The resulting format is as follows:</p>
-<div class="section" id="open-ephys-nwb-file-structure-based-on-version-1-0-6">
-<h2>Open Ephys NWB File Structure (based on version 1.0.6)<a class="headerlink" href="#open-ephys-nwb-file-structure-based-on-version-1-0-6" title="Permalink to this headline">¶</a></h2>
-<p><strong>Top-level groups (always created):</strong></p>
+<img alt="NWB data file icon" src="../../_images/header2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">This is a data format based on the <a class="reference external" href="https://alleninstitute.github.io/nwb-api/index.html">NWB 1.0 specification</a>, formerly maintained by the Allen Institute, but now deprecated. It will soon be replaced by the NWB 2.0 format. Since it is not available by default, it must be downloaded via the GUI’s Plugin Installer.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux, macOS</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Built in?</em></p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Key Developers</em></p></td>
+<td><p>Aarón Cuevas López</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/NWBFormat">https://github.com/open-ephys-plugins/NWBFormat</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The NWB 1.0 format has been deprecated. It will be replaced by NWB 2.0 in a future version of the GUI.</p>
+</div>
+<p><strong>Advantages</strong></p>
 <ul class="simple">
-<li><p>/acquisition</p></li>
-<li><p>/analysis</p></li>
-<li><p>/epochs</p></li>
-<li><p>/general</p></li>
-<li><p>/processing</p></li>
-<li><p>/stimulus</p></li>
+<li><p>Data is stored in a single HDF5 file, with self-documenting internal structure.</p></li>
+<li><p>Can be read using standard HDF5 tools, such as <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView</a>.</p></li>
 </ul>
-<p><strong>Top-level datasets (always created):</strong></p>
+<p><strong>Limitations</strong></p>
 <ul class="simple">
-<li><p>/file_create_date: date + time in ISO format (text array)</p></li>
-<li><p>/identifier: from text fields in recording options (text)</p></li>
-<li><p>/nwb_version: ‘NWB-1.0.6’ (text)</p></li>
-<li><p>/session_description: &lt;blank string&gt; (text)</p></li>
-<li><p>/session_start_time: date + time in ISO format (text)</p></li>
+<li><p>HDF5 files must be closed gracefully, so data may be irrecoverable if the GUI crashes during acquisition.</p></li>
+<li><p>The NWB 1.0 specification has been deprecated, and will not be developed further.</p></li>
+<li><p>The HDF5 C++ library is not thread-safe, so you cannot write to the NWB format from multiple Record Nodes simultaneously.</p></li>
 </ul>
-<p>/acquisition group:
-All of the data generated during recording should be stored in this group.</p>
-<p>For writing continuous data, we use the NWB <cite>ElectricalSeries</cite>:</p>
+<div class="section" id="file-organization">
+<h2>File organization<a class="headerlink" href="#file-organization" title="Permalink to this headline">¶</a></h2>
+<p>Within a Record Node directory, data for each <strong>experiment</strong> (stop/start acquisition) is contained in a separate NWB file. Individual <strong>recordings</strong> are stored in separate groups inside the file.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/organization2.png"><img alt="NWB data file structure" src="../../_images/organization2.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each NWB file also contains the following information:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">/file_create_date</span></code>: date + time in ISO format (text array)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/identifier</span></code>: from text fields in recording options (text)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/nwb_version</span></code>: ‘NWB-1.0.6’ (text)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/session_description</span></code>: &lt;blank string&gt; (text)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/session_start_time</span></code>: date + time in ISO format (text)</p></li>
+</ul>
+</div>
+<div class="section" id="format-details">
+<h2>Format details<a class="headerlink" href="#format-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="continuous">
+<h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
+<p>Continuous data is grouped by sub-processor (a block of synchronously sampled channels):</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/continuous2.png"><img alt="NWB data continuous format" src="../../_images/continuous2.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each <strong>continuous</strong> group is an NWB <em>ElectricalSeries</em> containing the following datasets:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">data</span></code>: <em>N</em> channels x <em>M</em> samples of 16-bit integers. The <code class="code docutils literal notranslate"><span class="pre">conversion</span></code> attribute stores the “bitVolts” value required to convert these values into volts.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps</span></code>: <em>M</em> 64-bit floats representing the timestamps (in seconds) for each sample.</p></li>
+</ul>
+</div>
+<div class="section" id="events">
+<h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+<p>Event data is organized by “event group” (e.g., <code class="code docutils literal notranslate"><span class="pre">TTL_&lt;N&gt;</span></code>). Each event group can contain data for multiple event channels.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/events2.png"><img alt="NWB data events format" src="../../_images/events2.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>TTL events include the following datasets:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps</span></code>: <em>N</em> 64-bit float representing the timestamps (in seconds) for each event</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">data</span></code>: <em>N</em> event codes indicating ON (+CH_number) and OFF (-CH_number) states</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">control</span></code>: <em>N</em> unsigned 8-bit integers representing virtual channel numbers</p></li>
+</ul>
+</div>
+<div class="section" id="spikes">
+<h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
+<p>Spike data is organized by electrode.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/spikes2.png"><img alt="NWB data spikes format" src="../../_images/spikes2.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each <strong>spikes</strong> group contains the following datasets:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">data</span></code>: array with dimensions <em>S</em> spikes x <em>N</em> channels x <em>M</em> samples containing the spike waveforms. The <code class="code docutils literal notranslate"><span class="pre">conversion</span></code> attribute stores the “bitVolts” value required to convert these values into volts.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps</span></code>: <em>S</em> 64-bit floats containing the timestamps (in seconds) corresponding to the peak of each spike</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="reading-data-in-python">
+<h2>Reading data in Python<a class="headerlink" href="#reading-data-in-python" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Create a <code class="code docutils literal notranslate"><span class="pre">Session</span></code> object using the <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools">open-ephys-python-tools</a> package. The data format will be automatically detected.</p></li>
+</ul>
+</div>
+<div class="section" id="reading-data-in-matlab">
+<h2>Reading data in Matlab<a class="headerlink" href="#reading-data-in-matlab" title="Permalink to this headline">¶</a></h2>
+<p>For now, use Matlab’s <code class="code docutils literal notranslate"><span class="pre">h5read</span></code> method to open datasets within an NWB file, e.g.:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="p">=</span> <span class="n">h5read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>NWB-specific loading functions are coming soon.</p>
+</div>
+<div class="section" id="full-specification">
+<h2>Full specification<a class="headerlink" href="#full-specification" title="Permalink to this headline">¶</a></h2>
+<p>For writing continuous data, we use the NWB <code class="code docutils literal notranslate"><span class="pre">ElectricalSeries</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">continuous</span><span class="o">/</span><span class="n">processor</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span>
     <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;ElectricalSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
     <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
@@ -292,7 +416,7 @@ All of the data generated during recording should be stored in this group.</p>
                     <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For writing spike data, we use the NWB <cite>SpikeEventSeries</cite>:</p>
+<p>For writing spike data, we use the NWB <code class="code docutils literal notranslate"><span class="pre">SpikeEventSeries</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">spikes</span><span class="o">/</span><span class="n">electrode</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span>
     <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;SpikeEventSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
     <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
@@ -330,7 +454,7 @@ All of the data generated during recording should be stored in this group.</p>
                 <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For writing messages, we use the NWB <cite>AnnotationSeries</cite>:</p>
+<p>For writing messages, we use the NWB <code class="code docutils literal notranslate"><span class="pre">AnnotationSeries</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">events</span><span class="o">/</span><span class="n">text</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
     <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;AnnotationSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
     <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
@@ -370,7 +494,7 @@ All of the data generated during recording should be stored in this group.</p>
                 <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For writing TTL events, we use a custom derived version of the NWB <cite>IntervalSeries</cite> called <cite>TTLSeries</cite>:</p>
+<p>For writing TTL events, we use a custom derived version of the NWB <code class="code docutils literal notranslate"><span class="pre">IntervalSeries</span></code> called <code class="code docutils literal notranslate"><span class="pre">TTLSeries</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">events</span><span class="o">/</span><span class="n">ttl</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
     <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;IntervalSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;TTLSeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
     <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
@@ -412,7 +536,7 @@ All of the data generated during recording should be stored in this group.</p>
                 <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For writing Binary events, we use a custom derived version of the NWB  <cite>Timeseries</cite> called <cite>BinarySeries</cite>:</p>
+<p>For writing Binary events, we use a custom derived version of the NWB <code class="code docutils literal notranslate"><span class="pre">Timeseries</span></code> called <code class="code docutils literal notranslate"><span class="pre">BinarySeries</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">acquisition</span><span class="o">/</span><span class="n">timeseries</span><span class="o">/</span><span class="n">recording</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;/</span><span class="n">events</span><span class="o">/</span><span class="n">binary</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
     <span class="o">./</span><span class="n">ancestry</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="s1">&#39;BinarySeries&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">text</span> <span class="n">array</span> <span class="n">attr</span><span class="p">)</span>
     <span class="o">./</span><span class="n">comments</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">empty</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
@@ -451,19 +575,6 @@ All of the data generated during recording should be stored in this group.</p>
                 <span class="o">./</span><span class="n">description</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">description</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
                 <span class="o">./</span><span class="n">identifier</span><span class="p">:</span> <span class="n">metadata</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">text</span> <span class="n">attr</span><span class="p">)</span>
 </pre></div>
-</div>
-<p>P = processorID_subprocessorID (e.g., 101_1, 102_1, etc.; if there is only one subprocessor, the subprocessor ID is omitted)</p>
-<p>R = index of recording (1, 2, 3, etc.)</p>
-<p>E = index of electrode (1, 2, 3, etc.)</p>
-<p>C = index of recorded channel</p>
-<p>T = index of recorded event of the specific type</p>
-<p>M = index of metadata field (1, 2, 3, etc…)</p>
-<div class="section" id="rules-for-creating-new-files-and-groups">
-<h3>Rules for creating new files and groups<a class="headerlink" href="#rules-for-creating-new-files-and-groups" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>If acquisition is stopped, create a new file (experiment1.nwb, experiment2.nwb, etc.). Timestamps are reset to zero.</p></li>
-<li><p>If recording is stopped (but acquisition is active), create a new group (recording1, recording2, etc.). Timestamps are relative to start of acquisition.</p></li>
-</ul>
 </div>
 </div>
 </div>

@@ -207,23 +207,37 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#file-organization" class="nav-link">File organization</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#format-details" class="nav-link">Format details</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
             <a href="#headers" class="nav-link">Headers</a>
         </li>
     
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#continuous-data-files-continuous" class="nav-link">Continuous data files (.continuous)</a>
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#continuous" class="nav-link">Continuous</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#events" class="nav-link">Events</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#spikes" class="nav-link">Spikes</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#event-files-events" class="nav-link">Event files (.events)</a>
+            <a href="#reading-data-in-python" class="nav-link">Reading data in Python</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#spike-files-spikes" class="nav-link">Spike files (.spikes)</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#reading-data-into-matlab" class="nav-link">Reading data into MATLAB</a>
+            <a href="#reading-data-in-matlab" class="nav-link">Reading data in Matlab</a>
         </li>
     
     </ul>
@@ -241,16 +255,58 @@
                 
   <div class="section" id="open-ephys-format">
 <span id="openephysformat"></span><h1>Open Ephys format<a class="headerlink" href="#open-ephys-format" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="headers">
-<h2>Headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
-<p>All headers are 1024 bytes long, and are written as a MATLAB-compatible string. Therefore, loading the header (regardless of its content), can be done with three lines of code:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">hdr</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="s">&#39;char*1&#39;</span><span class="p">);</span>
-<span class="n">eval</span><span class="p">(</span><span class="n">char</span><span class="p">(</span><span class="n">hdr</span><span class="o">&#39;</span><span class="p">));</span>
-<span class="n">info</span><span class="p">.</span><span class="n">header</span> <span class="p">=</span> <span class="n">header</span><span class="p">;</span>
-</pre></div>
+<img alt="Open Ephys data file icons" src="../../_images/header3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<p>This is actually pretty handy, since any changes to the header format won’t affect the code for reading data files. However, note that reading files using this method also creates a security risk if there is any doubt as to the origin of the file, since reading the header involves executing a portion of the file as MATLAB code. Therefore, be careful if you are working with files in one of these formats that you did not create yourself.</p>
-<p>The current header format uses ASCII encoding, and defines a MATLAB struct with the following fields and values:</p>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">This is the original format used by the Open Ephys GUI. It is designed with redundancy in mind, so that data can be readily recovered even if the GUI crashes during acquisition. However, because data for each electrode is stored in a separate file, it doesn’t scale to high channel count recordings. All files are stored in a single directory, with the file names used to identify the data source.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux, macOS</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Built in?</em></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Key Developers</em></p></td>
+<td><p>Josh Siegle, Aarón Cuevas López</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Source/Processors/RecordNode/OpenEphysFormat">https://github.com/open-ephys/plugin-GUI/tree/master/Source/Processors/RecordNode/OpenEphysFormat</a></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advantages</strong></p>
+<ul class="simple">
+<li><p>Data is stored in blocks with well-defined record markers, meaning data recovery is possible even if files are truncated.</p></li>
+<li><p>The file header contains all the information required to load the file.</p></li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul class="simple">
+<li><p>Operating systems impose a limit on the number files that can be written to simultaneously, meaning the Open Ephys format is not compatible with high-channel-count recordings (&gt;256 channels).</p></li>
+<li><p>In order to achieve robustness, files contain redundant information, meaning they use extra space and take longer to load.</p></li>
+</ul>
+<div class="section" id="file-organization">
+<h2>File organization<a class="headerlink" href="#file-organization" title="Permalink to this headline">¶</a></h2>
+<p>All data files are stored within the same Record Node directory, with a completely flat hierarchy. Files for different <strong>experiments</strong> have a number appended after an underscore (starting with <code class="code docutils literal notranslate"><span class="pre">_2</span></code> for the second experiment in a session). Data from different <strong>recordings</strong> is distinguished by the <code class="code docutils literal notranslate"><span class="pre">recording</span> <span class="pre">index</span></code> values within each <code class="code docutils literal notranslate"><span class="pre">.spikes</span></code>, <code class="code docutils literal notranslate"><span class="pre">continuous</span></code>, or <code class="code docutils literal notranslate"><span class="pre">.events</span></code> file.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/organization3.png"><img alt="Open Ephys data directory structure" src="../../_images/organization3.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each Record Node directory also contains <code class="code docutils literal notranslate"><span class="pre">Continuous_Data.openephys</span></code>, an XML file with metadata about the <code class="code docutils literal notranslate"><span class="pre">.continuous</span></code> files, and <code class="code docutils literal notranslate"><span class="pre">messages.events</span></code>, a text file containing text events saved by the GUI.</p>
+</div>
+<div class="section" id="format-details">
+<h2>Format details<a class="headerlink" href="#format-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="headers">
+<h3>Headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h3>
+<p>All headers are 1024 bytes long, and are written as a MATLAB-compatible string with the following fields and values:</p>
 <ul class="simple">
 <li><p>format = ‘Open Ephys Data Format’</p></li>
 <li><p>version = 0.4</p></li>
@@ -272,76 +328,56 @@
 <li><p>each line is terminated with a semicolon</p></li>
 </ul>
 </div>
-<div class="section" id="continuous-data-files-continuous">
-<h2>Continuous data files (.continuous)<a class="headerlink" href="#continuous-data-files-continuous" title="Permalink to this headline">¶</a></h2>
-<p>Each continuous channel within each processor has its own file, titled <code class="code docutils literal notranslate"><span class="pre">XXX_CHY.continuous</span></code>, where <code class="code docutils literal notranslate"><span class="pre">XXX</span></code> = the processor ID #, and <code class="code docutils literal notranslate"><span class="pre">Y</span></code> = the channel number. For each record, it saves:</p>
+<div class="section" id="continuous">
+<h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
+<p>Continuous data for each channel is stored in a separate <code class="code docutils literal notranslate"><span class="pre">.continuous</span></code> file, identified by the processor ID (e.g. <code class="code docutils literal notranslate"><span class="pre">100</span></code>) and channel name (e.g. <code class="code docutils literal notranslate"><span class="pre">CH0</span></code>). After the 1024-byte header, continuous data is organized into “records,” each containing 1024 samples.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/continuous3.png"><img alt="Open Ephys data continuous format" src="../../_images/continuous3.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each record is 2070 bytes long, and is terminated by a 10-byte record marker (0 1 2 3 4 5 6 7 8 255).</p>
+</div>
+<div class="section" id="events">
+<h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+<p>Event from all processors is stored in <code class="code docutils literal notranslate"><span class="pre">all_channels.events</span></code>. Each “record” contains the data for an individual event stored according to the following scheme:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/events3.png"><img alt="Open Ephys data events format" src="../../_images/events3.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="spikes">
+<h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
+<p>Data from each electrode is saved in a separate file. The filename is derived from the electrode type (<code class="code docutils literal notranslate"><span class="pre">SE</span></code> = single electrode, <code class="code docutils literal notranslate"><span class="pre">ST</span></code> = stereotrode, <code class="code docutils literal notranslate"><span class="pre">TT</span></code> = tetrode), the source processor (e.g., <code class="code docutils literal notranslate"><span class="pre">p104.0</span></code>), and the electrode index (e.g., <code class="code docutils literal notranslate"><span class="pre">n0</span></code>, <code class="code docutils literal notranslate"><span class="pre">n1</span></code>, etc.).</p>
+<p>Each record contains an individual spike event (saved for one or more channels), and is written in the following format:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/spikes3.png"><img alt="Open Ephys data spikes format" src="../../_images/spikes3.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Since the samples are saved as 16-bit unsigned integers, converting them to microvolts involves subtracting 32768, dividing by the gain, and multiplying by 1000.</p>
+</div>
+</div>
+<div class="section" id="reading-data-in-python">
+<h2>Reading data in Python<a class="headerlink" href="#reading-data-in-python" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>One little-endian <code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp (actually a sample number; this can be converted to seconds using the sampleRate variable in the header)</p></li>
-<li><p>One little-endian <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> number (N) indicating the samples per record (always 1024, at least for now)</p></li>
-<li><p>One little-endian <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> recording number (version 0.2 and higher)</p></li>
-<li><p>1024 big-endian <code class="code docutils literal notranslate"><span class="pre">int16</span></code> samples</p></li>
-<li><p>10-byte record marker (0 1 2 3 4 5 6 7 8 255)</p></li>
+<li><p><strong>(recommended)</strong> Create a <code class="code docutils literal notranslate"><span class="pre">Session</span></code> object using the <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools">open-ephys-python-tools</a> package. The data format will be automatically detected.</p></li>
+<li><p>Create a <code class="code docutils literal notranslate"><span class="pre">File</span></code> object using the <a class="reference external" href="https://github.com/CINPLA/pyopenephys">pyopenephys</a> package.</p></li>
+<li><p>Use the <code class="code docutils literal notranslate"><span class="pre">loadContinuous</span></code>, <code class="code docutils literal notranslate"><span class="pre">loadEvents</span></code>, or <code class="code docutils literal notranslate"><span class="pre">loadSpikes</span></code> methods from <code class="code docutils literal notranslate"><span class="pre">OpenEphys.py</span></code> in the <a class="reference external" href="https://github.com/open-ephys/analysis-tools/blob/master/Python3/OpenEphys.py">open-ephys/analysis-tools</a> repository.</p></li>
 </ul>
-<p>This makes up a record of 2070 bytes (= 8 + 2 + 2 + 2048 + 10).</p>
-<p>If a file is opened or closed in the middle of a record, the leading or trailing samples are set to zero.</p>
 </div>
-<div class="section" id="event-files-events">
-<h2>Event files (.events)<a class="headerlink" href="#event-files-events" title="Permalink to this headline">¶</a></h2>
-<p>Non-spike events are saved in a different format. Events generated by all channels are dumped into the file <code class="code docutils literal notranslate"><span class="pre">all_channels.events</span></code> with the following data for each event:</p>
+<div class="section" id="reading-data-in-matlab">
+<h2>Reading data in Matlab<a class="headerlink" href="#reading-data-in-matlab" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp (to align with timestamps from the continuous records)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">int16</span></code> sample position within a buffer</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> event type (all the events that are saved have type TTL = 3 ; Network Event = 5)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> processor ID (the processor this event originated from)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> event ID (code associated with this event, usually 1 or 0)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> event channel (the channel this event is associated with)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> recording number (version 0.2 and higher)</p></li>
+<li><p>Use <code class="code docutils literal notranslate"><span class="pre">load_open_ephys_data.m</span></code> from the <a class="reference external" href="https://github.com/open-ephys/analysis-tools/blob/master/load_open_ephys_data.m">open-ephys/analysis-tools</a> repository.</p></li>
 </ul>
-</div>
-<div class="section" id="spike-files-spikes">
-<h2>Spike files (.spikes)<a class="headerlink" href="#spike-files-spikes" title="Permalink to this headline">¶</a></h2>
-<p>Data from each electrode is saved in a separate file. The filename is based on the name of the electrode itself, but without spaces (e.g., <code class="code docutils literal notranslate"><span class="pre">Tetrode1.spikes</span></code>).</p>
-<p>Each record contains an individual spike event (saved for one or more channels), and is written in the following format, defined in <code class="code docutils literal notranslate"><span class="pre">SpikeObject::packSpike()</span></code>:</p>
-<ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint8</span></code> eventType (always equal to 4, for spike events)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp (to align with timestamps from the continuous records)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">int64</span></code> software timestamp (not currently used)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> sourceID (electrode number)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> number of channels (N)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> number of samples per spike (M)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> sorted id (used by Spike Sorter)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> electrodeID (unique electrode ID)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> channel (channel within the electrode that triggered spike acquisition)</p></li>
-<li><p>3 <code class="code docutils literal notranslate"><span class="pre">uint8</span></code> color codes (for drawing spikes)</p></li>
-<li><p>2 <code class="code docutils literal notranslate"><span class="pre">float32</span></code> principle component projections (x and y)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">uint16</span></code> sampling frequency (Hz)</p></li>
-<li><p>N x M <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> samples (individual channels are contiguous)</p></li>
-<li><p>N <code class="code docutils literal notranslate"><span class="pre">float32</span></code> gains (actually gain*1000, to increase resolution)</p></li>
-<li><p>N <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> thresholds used for spike extraction</p></li>
-<li><p>One <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> recording number (version 0.2 and higher)</p></li>
-</ul>
-<p>Since the samples are saved as unsigned integers, converting them to microvolts involves subtracting 32768, dividing by the gain, and multiplying by 1000.</p>
-</div>
-<div class="section" id="reading-data-into-matlab">
-<h2>Reading data into MATLAB<a class="headerlink" href="#reading-data-into-matlab" title="Permalink to this headline">¶</a></h2>
-<p>Here’s some example code for loading the first record from a data file called <code class="code docutils literal notranslate"><span class="pre">102_CH1.continuous</span></code>:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">fid</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#39;102_CH1.continuous&#39;</span><span class="p">);</span>
-
-<span class="n">hdr</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="s">&#39;char*1&#39;</span><span class="p">);</span>
-
-<span class="n">timestamp</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;int64&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;l&#39;</span><span class="p">);</span>
-
-<span class="n">N</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;uint16&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;l&#39;</span><span class="p">);</span>
-
-<span class="n">recordingNumber</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">);</span>
-
-<span class="n">samples</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="s">&#39;int16&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">);</span>
-
-<span class="n">recordmarker</span> <span class="p">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">fid</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;char*1&#39;</span><span class="p">);</span>
-
-<span class="n">fclose</span><span class="p">(</span><span class="n">fid</span><span class="p">);</span>
-</pre></div>
-</div>
 </div>
 </div>
 
