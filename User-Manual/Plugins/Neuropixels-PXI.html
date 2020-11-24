@@ -303,7 +303,15 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#hardware-requirements" class="nav-link">Hardware requirements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#compatible-probes" class="nav-link">Compatible probes</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -311,15 +319,37 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#configuring-probes" class="nav-link">Configuring probes</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
             <a href="#calibrating-probes" class="nav-link">Calibrating probes</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#selecting-individual-data-streams" class="nav-link">Selecting individual data streams</a>
+            <a href="#configuring-probes" class="nav-link">Configuring probes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#saving-loading-and-copying-settings" class="nav-link">Saving, loading, and copying settings</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#default-loading-and-saving" class="nav-link">Default loading and saving</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#copying-settings-between-probes" class="nav-link">Copying settings between probes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#imro-files" class="nav-link">IMRO files</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-data-streams" class="nav-link">Plugin data streams</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#synchronization" class="nav-link">Synchronization</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -328,6 +358,10 @@
     
         <li class="nav-item toc-entry toc-h2">
             <a href="#headstage-tests" class="nav-link">Headstage tests</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#updating-basestation-firmware" class="nav-link">Updating basestation firmware</a>
         </li>
     
     </ul>
@@ -350,7 +384,7 @@
 <div class="line"><br /></div>
 </div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Streams data from a PXI-based data acquisition system for Neuropixels 1.0 probes. It can acquire data from up to 16 probes simultaneously.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Streams data from a PXI-based Neuropixels data acquisition system. It can acquire data from up to 16 probes simultaneously.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -373,54 +407,103 @@
 </tr>
 </tbody>
 </table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Neuropixels PXI plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to the “Neuropix-PXI” plugin, and click the “Install” button.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The Plugin Installer also allows you to upgrade to the latest version. If you’re upgrading your plugin to version 0.2.0 (release on 11/23/2020), you’ll need to close and reopen the GUI following the upgrade.</p>
+</div>
 <div class="section" id="hardware-requirements">
 <h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>One PXI chassis (so far we’ve tested National Instruments PXIe-1071 and PXIe-1082)</p></li>
 <li><p>One PXI remote control module, housed in the PXI chassis (we’ve tested National Instruments PXIe-8381 and PXIe-8398) – requires NIDAQmx driver</p></li>
 <li><p>One PCIe interface card, housed in the computer (we’ve tested National Instruments PCIe-8381 and PCIe-8398)</p></li>
-<li><p><em>(optional)</em> One PXI-based analog and digital I/O module (we’ve tested National Instruments PXI-6133)</p></li>
+<li><p><em>(optional)</em> One PXI-based analog and digital I/O module (see the <a class="reference internal" href="NIDAQmx.html#nidaqmx"><span class="std std-ref">NIDAQmx</span></a> page for a list of hardware we’ve tested)</p></li>
 <li><p>Cables to connect the remote control module to the PCIe card (e.g., National Instruments MXI-Express Cables, Gen 3 x8)</p></li>
-<li><p>1 or 2 Neuropixels PXIe modules (available from IMEC) – requires Enclustra driver, available when downloading the GUI</p></li>
-<li><p>1 to 8 Neuropixels 1.0 cables (black + yellow twisted pair, USB-C to Omnetics, available from IMEC)</p></li>
-<li><p>1 to 8 Neuropixels 1.0 headstages (available from IMEC)</p></li>
-<li><p>1 to 8 Neuropixels 1.0 probes (available from IMEC)</p></li>
+<li><p>One or more Neuropixels PXIe modules (available from IMEC)</p></li>
+<li><p>One or more Neuropixels cables (black + yellow twisted pair, USB-C to Omnetics, available from IMEC)</p></li>
+<li><p>One or more Neuropixels headstages (available from IMEC)</p></li>
+<li><p>One or more Neuropixels probes (available from IMEC)</p></li>
 </ul>
-<p>If you’ve tested the GUI with PXI hardware from a manufacturer other than National Instruments, please let us know. Other possible hardware configurations can be found on the <a class="reference external" href="https://github.com/billkarsh/SpikeGLX/blob/master/Markdown/SystemRequirements_PXI.md">SpikeGLX GitHub</a> – we plan on testing these with Open Ephys as soon as possible.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In order to work properly, your PCIe card <em>must</em> be connected to an <strong>x8</strong>-compatible PCIe slot. Some motherboards only have x16 slots, which will not be able to communicate with the PXI hardware. If you are unsure whether your computer has the appropriate PCIe slots, please get in touch.</p>
 </div>
-<div class="section" id="connecting-to-the-pxi-system">
-<h2>Connecting to the PXI system<a class="headerlink" href="#connecting-to-the-pxi-system" title="Permalink to this headline">¶</a></h2>
-<p>Before using this module, make sure you’ve followed all of the steps in the <a class="reference external" href="https://docs.wixstatic.com/ugd/832f20_d2e8866f7a98448d90faf83d3df56140.pdf">Neuropixels User Manual</a> to set up and configure your hardware.</p>
-<p>Once your PXI system is up and running, you can drag and drop the “Neuropix-PXI” module from the Processor List onto the Editor Viewport. The GUI will freeze while it searches for available probes. After that, the module will be grayed out while the probes are initialized and calibrated.</p>
-<p>The editor will automatically create a probe selection interface for each basestation that’s available. Each basestation can communicate with up to 4 probes, indicated by circles. When the probes are initially detected, they show up as orange. Unconnected probes appear gray. Once they are initialized, connected probes become filled in with green. When the currently selected probe turns light green, it means that all settings have been properly loaded, and the plugin is ready to begin data acquisition. In this example, there are 6 probes connected, and the probe on basestation 2, port 1 is selected.</p>
-<p>Besides the circles representing the four probes, each basestation column has a button to select a folder for writing data (if using the compressed NPX format), and a monitor to indicate buffer filling (from 0-100%).</p>
-<p>On the right-hand side of the editor, there’s an interface for updating sync settings (more information below).</p>
 </div>
-<div class="section" id="configuring-probes">
-<h2>Configuring probes<a class="headerlink" href="#configuring-probes" title="Permalink to this headline">¶</a></h2>
-<p>To open the probe settings interface, press the “window” or “tab” button in the upper-right corner of the editor.</p>
-<img alt="Overview of the Neuropixels settings interface" src="../../_images/neuropix-settings-interface.png" />
+<div class="section" id="compatible-probes">
+<h2>Compatible probes<a class="headerlink" href="#compatible-probes" title="Permalink to this headline">¶</a></h2>
+<p>This plugin can stream data from the following Neuropixels probe types:</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Each probe has its own interface for updating settings. Selecting one of the buttons in the module’s editor allows you to access the parameters for a particular probe.</p>
-<p>The available settings are:</p>
-<ul class="simple">
-<li><p><strong>AP Gain</strong> (amplifier gain for AP channels, 50x-3000x, default = 500x)</p></li>
-<li><p><strong>LFP Gain</strong> (amplifier gain for LFP channels, 50x-3000x, default = 250x)</p></li>
-<li><p><strong>Reference</strong> (External, Tip, plus channels 192, 576, or 959, default = External)</p></li>
-<li><p><strong>AP Filter Cut</strong> (ON = 300 Hz high-pass filter active, OFF = filter inactive)</p></li>
-<li><p>You can also select/deselect electrodes from different banks. By default, the bottom 384 eleectrodes are selected. To select electrodes farther up the probe, use the interface on the left to scroll to the electrodes you want to activate and click the “ENABLE” button. Selecting electrodes on one bank will deactivate the associated electrodes on the other two banks.</p></li>
-</ul>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Saved configurations associate settings with particular probe serial numbers, rather than PXI ports. If you’ve changed the order in which probes are connected to the PXI basestation, please be aware that the settings will be loaded based on probe serial number.</p>
+<table class="colwidths-given table">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 24%" />
+<col style="width: 47%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Probe</strong></p></td>
+<td><p><strong>Channels</strong></p></td>
+<td><p><strong>Notes</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Neuropixels 1.0</p></td>
+<td><p>384 AP, 384 LFP</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Neuropixels NHP Active</p></td>
+<td><p>384 AP, 384 LFP</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Neuropixels NHP Passive</p></td>
+<td><p>128 AP, 128 LFP</p></td>
+<td><p>May require firmware update (see below)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Neuropixels Ultra</p></td>
+<td><p>384 AP, 384 LFP</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Neuropixels 2.0 Single Shank</p></td>
+<td><p>384 wideband</p></td>
+<td><p>May require firmware update (see below)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Neuropixels 2.0 Four Shank</p></td>
+<td><p>384 wideband</p></td>
+<td><p>May require firmware update (see below)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<div class="section" id="connecting-to-the-pxi-system">
+<h2>Connecting to the PXI system<a class="headerlink" href="#connecting-to-the-pxi-system" title="Permalink to this headline">¶</a></h2>
+<p>Before using this plugin, make sure you’ve followed all of the steps in the <a class="reference external" href="https://docs.wixstatic.com/ugd/832f20_d2e8866f7a98448d90faf83d3df56140.pdf">Neuropixels User Manual</a> to set up and configure your hardware. Prior to using your Neuropixels PXI basestation, you must install the Enclustra drivers (available for <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/master/Resources/Enclustra_Win7%268.zip">Windows 7/8</a> and <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/master/Resources/Enclustra_Win10.zip">Windows 10</a>). See section 4.2.2 of the User Manual for installation instructions.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once your PXI system is up and running, you can drag and drop the “Neuropix-PXI” module from the Processor List onto the Editor Viewport. The GUI will automatically connect to any available basestations in your connected PXI chassis. If no PXI basestations are found, the plugin can be run in “simulation” mode.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The editor will automatically create a probe selection interface for each basestation that’s available. Each basestation can communicate with up to 4 probes (for Neuropixels 1.0, NHP, and Ultra) or 8 probes (for 2.0). When the probes are initially detected, they show up as orange circles. Once they are initialized, connected probes become green. When the currently selected probe turns light green, it means that all settings have been properly loaded, and the plugin is ready to begin data acquisition. In the example at the top of this page, there are 6 probes connected, and the probe on basestation 2, port 1 is selected.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Besides the circles representing the four probes, each basestation column has a button to select a folder for writing data (if using the compressed NPX format), and a monitor to indicate buffer filling (from 0-100%).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>On the right-hand side of the editor, there’s an interface for updating sync settings (more information below).</p>
 </div>
 <div class="section" id="calibrating-probes">
 <h2>Calibrating probes<a class="headerlink" href="#calibrating-probes" title="Permalink to this headline">¶</a></h2>
-<p>Probes will be calibrated automatically when the plugin is loaded, provided that calibration files are stored in the correct location:</p>
-<p><code class="code docutils literal notranslate"><span class="pre">&lt;open-ephys-executable-folder&gt;\CalibrationInfo\&lt;probe_serial_number&gt;</span></code></p>
+<p>Probes will be calibrated automatically when the plugin is loaded, provided that calibration files are stored in one of the following locations:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">C:\ProgramData\Open</span> <span class="pre">Ephys\CalibrationInfo\&lt;probe_serial_number&gt;</span></code> (recommended)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">&lt;open-ephys-executable-folder&gt;\CalibrationInfo\&lt;probe_serial_number&gt;</span></code> (if you used the Open Ephys installer, the executable will be located in <code class="code docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Open</span> <span class="pre">Ephys</span></code>)</p></li>
+</ul>
 <p>These files can be obtained from IMEC for every probe that you’ve purchased. There should be two for each probe:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">&lt;probe_serial_number&gt;_ADCCalibration.csv</span></code></p></li>
@@ -429,10 +512,113 @@
 <p>If these files cannot be found, the following warning will pop up:</p>
 <a class="reference internal image-reference" href="../../_images/calibration-files-missing-warning.png"><img alt="Calibration files missing warning" src="../../_images/calibration-files-missing-warning.png" style="width: 500px;" /></a>
 </div>
-<div class="section" id="selecting-individual-data-streams">
-<h2>Selecting individual data streams<a class="headerlink" href="#selecting-individual-data-streams" title="Permalink to this headline">¶</a></h2>
-<p>By default, the Neuropix plugin will send data from all probes through the GUI signal chain. Because each probe generates 384 channels of AP-band and 384 channels of LFP-band data, the number of channels being pushed through the signal chain is 768 x <em>N</em>, where <em>N</em> is the number of connected probes. This adds up quickly, and can lead to heavy CPU usage when recording from many probes simultaneously (as indicated by the CPU monitor, which measures the fraction time of each buffer callback spent processing data, and by the Windows Task Manager CPU meter, which measures overall CPU usage).</p>
-<p>To save CPU cycles during acquisition, it’s recommended to use a <a class="reference internal" href="Stream-Muxer.html#streammuxer"><span class="std std-ref">Stream Muxer</span></a> (stream multiplexer) plugin immediately to the right of the Record Node that’s saving data from the Neuropixels plugin. This will allow you to select one probe to send through the signal chain. All channels will still be recorded, but you’ll only be filtering, referencing, visualizing, etc. one probe at a time.</p>
+<div class="section" id="configuring-probes">
+<h2>Configuring probes<a class="headerlink" href="#configuring-probes" title="Permalink to this headline">¶</a></h2>
+<p>To open the probe settings interface, press the “window” or “tab” button in the upper-right corner of the editor:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/open-settings.png"><img alt="How to open the Neuropixels settings interface" src="../../_images/open-settings.png" style="width: 450px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Each probe has its own interface for updating settings, which will be customized for each probe type. Selecting the green button corresponding to the probe’s basestation and port in the plugin editor allows you to access the parameters for a particular probe:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="Overview of the Neuropixels settings interface" src="../../_images/ui-screenshot.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The interface on the left allows you to select/deselect electrodes from different banks. Use the mini probe overview visualization to scroll to the electrodes you want to activate, click or drag to select them in the zoomed visualization, and then click the “ENABLE” button. Selecting electrodes on one bank will automatically deactivate the electrodes on all other banks that are connected to the same set of channels.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In addition, for 1.0, NHP, and Ultra probes, you can change the following settings:</p>
+<ul class="simple">
+<li><p><strong>AP Gain</strong> (amplifier gain for AP channels, 50x-3000x; default = 500x)</p></li>
+<li><p><strong>LFP Gain</strong> (amplifier gain for LFP channels, 50x-3000x; default = 250x)</p></li>
+<li><p><strong>AP Filter Cut</strong> (ON = 300 Hz high-pass filter active, OFF = filter inactive; default = ON)</p></li>
+</ul>
+<p>For all probe types, you can change the following setting:</p>
+<ul class="simple">
+<li><p><strong>Reference</strong> (External, Tip, Internal Electrodes; default = External)</p></li>
+</ul>
+<p>Settings are applied globally to all channels (i.e., you can’t have a different gain for a subset of channels).</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>When using multiple PXI basestations in the same chassis, some users have reported problems with the External reference. This manifests as randomly occurring saturating events on the LFP channels, combined with a sudden drop in gain on the AP channels. Such events are not seen when using the Tip reference.</p>
+</div>
+</div>
+<div class="section" id="saving-loading-and-copying-settings">
+<h2>Saving, loading, and copying settings<a class="headerlink" href="#saving-loading-and-copying-settings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-loading-and-saving">
+<h3>Default loading and saving<a class="headerlink" href="#default-loading-and-saving" title="Permalink to this headline">¶</a></h3>
+<p>Any changes made to the probe settings will be automatically re-applied when you re-start the GUI, provided you have checked <strong>Reload on startup</strong> from the “File” menu. Settings will first by transferred by probe serial number. If no matching serial number is found, settings will be inherited from a probe of the same type. Settings cannot be transferred between probes of different types (e.g. Neuropixels 1.0 to Neuropixels 2.0).</p>
+</div>
+<div class="section" id="copying-settings-between-probes">
+<h3>Copying settings between probes<a class="headerlink" href="#copying-settings-between-probes" title="Permalink to this headline">¶</a></h3>
+<p>Settings can be transferred between probes using the “COPY”, “PASTE”, and “APPLY TO ALL” buttons:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/probe-settings-buttons.png"><img alt="Probe settings buttons" src="../../_images/probe-settings-buttons.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Settings can only be applied to probes of matching types (e.g. 1.0, NHP, Ultra, 2.0).</p>
+</div>
+<div class="section" id="imro-files">
+<h3>IMRO files<a class="headerlink" href="#imro-files" title="Permalink to this headline">¶</a></h3>
+<p>Settings for individual probes can also be loaded using SpikeGLX “IMec Read Out” (IMRO) tables, using the “LOAD FROM IMRO” button.</p>
+<p>The IMRO format is specified <a class="reference external" href="https://billkarsh.github.io/SpikeGLX/help/imroTables/">here</a>. If you’ve saved a probe configuration using SpikeGLX or some other software, you can apply that configuration to a probe in the Open Ephys GUI by reading in an IMRO file. The only caveat is that Open Ephys does not allow individual channels to have different gain or reference settings, so those will be inherited from the last channel in the file.</p>
+<p>You can save the configuration for a particular probe into IMRO format using the “SAVE TO IMRO” button.</p>
+</div>
+</div>
+<div class="section" id="plugin-data-streams">
+<h2>Plugin data streams<a class="headerlink" href="#plugin-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>The Neuropix-PXI plugin streams data from all connected probes through the GUI signal chain. To disable data transmission, a probe needs to be physically disconnected from the basestation. The plugin should be deleted and re-loaded any time a probe is connected or disconnected from the hardware.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you’re using Neuropixels 1.0, NHP, or Ultra probes, each probe will have two data streams:</p>
+<ul class="simple">
+<li><p>384 channels of AP band data, sampled at 30 kHz</p></li>
+<li><p>384 channels of LFP band data, sampled at 2.5 kHz.</p></li>
+</ul>
+<p>Each data stream is represented by a separate “subprocessor” within the GUI. Even-numbered subprocessors correspond to AP band data, while odd-numbered subprocessors correspond to LFP band data.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you’re using Neuropixels 2.0 probes, each probe will have only one data stream:</p>
+<ul class="simple">
+<li><p>384 channels of wide-band data, sampled at 30 kHz.</p></li>
+</ul>
+<p>Because each probe generates 384 or 768 channels of data, this can lead to heavy CPU usage when acquiring from many probes simultaneously (as indicated by the CPU monitor, which measures the fraction time of each buffer callback spent processing data, and by the Windows Task Manager CPU meter, which measures overall CPU usage).</p>
+<p>For processing Neuropixels data, the recommended signal chain is:</p>
+<ol class="arabic simple">
+<li><p>Neuropix-PXI</p></li>
+<li><p>Record Node</p></li>
+<li><p>LFP Viewer</p></li>
+</ol>
+<p>If you need to add plugins downstream of the LFP Viewer, it’s recommended to use a <a class="reference internal" href="Stream-Muxer.html#streammuxer"><span class="std std-ref">Stream Muxer</span></a> (stream multiplexer) plugin immediately to the right of the LFP Viewer. This will allow you to select one subprocessor at a time to send through the signal chain. All channels will still be recorded, but you’ll only be processing one probe at a time with subsequent plugins.</p>
+</div>
+<div class="section" id="synchronization">
+<h2>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline">¶</a></h2>
+<p>Properly configuring your synchronization signals is critical for Neuropixels recordings. Each probe will have a slightly different sample rate between 29999.9 and 30000.1 Hz, so you cannot simply count samples to figure out how much time has elapsed. Therefore, every data source (including individual basestations, NI hardware, etc.) must share a hardware sync line in order for the data to be accurately aligned offline.</p>
+<p>Each Neuropixels basestation contains one SMA connector for sync input. The behavior of these connectors is configured using the synchronization interface within the plugin editor:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/sync-interface.png"><img alt="Updating sync settings" src="../../_images/sync-interface.png" style="width: 500px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>The top drop-down menu allows you to select one basestation’s SMA connector to serve as the “master” sync. The signal on this line will be copied to the sync inputs of all other basestations.</p></li>
+<li><p>The “+” button allows you to toggle whether or not the sync line is appended to the data stream as a continuous channel. When this button is orange, each subprocessor will include a 385th data channel containing the state of the sync line. This will make the Binary format data files saved by the Record Node compatible with a variety of SpikeGLX offline processing tools. Regardless of whether or not this option is enabled, the sync rising and falling edges will be transmitted as events to downstream processors.</p></li>
+<li><p>The second drop-down menu allows you to configure the master sync SMA as <strong>INPUT</strong> or <strong>OUTPUT</strong>. In <strong>INPUT</strong> mode, an external digital input must be connected to the SMA. In <strong>OUTPUT</strong> mode, the master basestation will generate its own sync signal at 1 Hz or 10 Hz.</p></li>
+</ul>
 </div>
 <div class="section" id="built-in-self-tests">
 <h2>Built-in self tests<a class="headerlink" href="#built-in-self-tests" title="Permalink to this headline">¶</a></h2>
@@ -494,7 +680,30 @@
 <div class="section" id="headstage-tests">
 <h2>Headstage tests<a class="headerlink" href="#headstage-tests" title="Permalink to this headline">¶</a></h2>
 <p>If you have a headstage test module, you can run a suite of tests to ensure the headstage is functioning properly. When the Neuropix plugin is dropped into the signal chain and at least one headstage test module is connected to the PXI system, the GUI will automatically run all headstage tests and output the results in a popup window:</p>
-<img alt="Headstage test board popup window" src="../../_images/HST.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/HST.png"><img alt="Headstage test board popup window" src="../../_images/HST.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="updating-basestation-firmware">
+<h2>Updating basestation firmware<a class="headerlink" href="#updating-basestation-firmware" title="Permalink to this headline">¶</a></h2>
+<p>This plugin is compatible with any recent basestation firmware version. However, if you’re using Neuropixels 2.0 or NHP Passive probes, you’ll need to upgrade to the latest firmware (available <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/master/Resources/Neuropixels_PXI_APIv3_Firmware.zip">here</a>).</p>
+<p>The currently installed firmware version will appear in the info section of the Neuropixels settings interface (upper right text block). If your basesation firmware version is “2.0137” and your basestation connect board firmware version is “3.2176”, you already have the latest firmware installed.</p>
+<p>If you need to update your firmware, first click the “UPDATE FIRMWARE” button to open the firmware update interface:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/firmware_update_interface.png"><img alt="Interface for updating firmware" src="../../_images/firmware_update_interface.png" style="width: 460px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Next, select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the basestation connect board (<code class="code docutils literal notranslate"><span class="pre">QBSC*.bin</span></code>), and click “UPLOAD”. The upload process can take anywhere from 10-15 minutes, so please be patient.</p>
+<p>Immediately after the basestation connect board firmware upload finished, use the lower drop-down menu to select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the basestation (<code class="code docutils literal notranslate"><span class="pre">BS*.bin</span></code>), and click “UPLOAD”.</p>
+<p>Finally, once the basestation firmware is finished uploading, restart your computer and power cycle the PXI chassis for the changes to take effect.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to update the firmware for multiple basestations in one chassis, please perform all firmware updates prior to restarting your chassis/computer. Alternatively, you can update each basestation separately if only one basestation at a time is inserted into the chassis. The Neuropixels plugin can only communicate with sets of basestations that are running the same firmware.</p>
+</div>
 </div>
 </div>
 
