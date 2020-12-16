@@ -130,6 +130,12 @@
           
             
                 <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
                     <a href="../Installing-the-GUI.html">Installing the GUI</a>
                 </li>
             
@@ -262,9 +268,6 @@
   <div class="section" id="binary-format">
 <span id="binaryformat"></span><h1>Binary format<a class="headerlink" href="#binary-format" title="Permalink to this headline">¶</a></h1>
 <img alt="Binary data file icons" src="../../_images/header.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
 <caption><span class="caption-text">This is the default format for the Open Ephys GUI. Continuous data is stored in flat binary files, and everything else is in JSON / numpy format. Takes advantage of widely used open standards to maximize compatibility with existing and future analysis tools.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -301,13 +304,7 @@
 <div class="section" id="file-organization">
 <h2>File organization<a class="headerlink" href="#file-organization" title="Permalink to this headline">¶</a></h2>
 <p>Within a Record Node directory, data for each <strong>experiments</strong> (stop/start acquisition) is contained in its own sub-directory. Experiment directories are further sub-divided for individual <strong>recordings</strong> (stop/start recording).</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/organization.png"><img alt="Binary data directory structure" src="../../_images/organization.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>A recording directory contains sub-directories for <strong>continuous</strong>, <strong>events</strong>, and <strong>spikes</strong> data. It also contains a <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code>, which is a JSON file detailing channel information, channel metadata, and event metadata descriptions.</p>
 </div>
 <div class="section" id="format-details">
@@ -315,13 +312,7 @@
 <div class="section" id="continuous">
 <h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
 <p>Continuous data is grouped by sub-processor (a block of synchronously sampled channels):</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/continuous.png"><img alt="Binary data continuous format" src="../../_images/continuous.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each <strong>continuous</strong> directory contains the following files:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">continuous.dat</span></code>: A simple binary file containing <em>N</em> channels x <em>M</em> samples 16-bit integers in little-endian format. Data is saved as <code class="code docutils literal notranslate"><span class="pre">ch1_samp1,</span> <span class="pre">ch2_samp1,</span> <span class="pre">...</span> <span class="pre">chN_samp1,</span> <span class="pre">ch1_samp2,</span> <span class="pre">ch2_samp2,</span> <span class="pre">...,</span> <span class="pre">chN_sampM</span></code>. The value of the least significant bit needed to convert the 16-bit integres to microvolts is specified in the <code class="code docutils literal notranslate"><span class="pre">bitVolts</span></code> field of the relevant channel in the <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> JSON file.</p></li>
@@ -332,13 +323,7 @@
 <div class="section" id="events">
 <h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
 <p>Event data is organized by processor and by “event group” (e.g., <code class="code docutils literal notranslate"><span class="pre">TTL_&lt;N&gt;</span></code>). Each event group can contain data for multiple event channels.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/events.png"><img alt="Binary data events format" src="../../_images/events.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>All types of events include the following files:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> Contains <em>N</em> 64-bit timestamps for each event</p></li>
@@ -368,13 +353,7 @@
 <div class="section" id="spikes">
 <h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
 <p>Spike data is organized by processor and by “spike group” (a group of spike sources with the same number of channels). If, for example, you have stereotrodes and tetrodes within the same Spike Sorter plugin, the stereotrodes and tetrodes will appear in separate spike groups.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/spikes.png"><img alt="Binary data spikes format" src="../../_images/spikes.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each <strong>spike group</strong> directory contains the following files:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">spike_waveforms.npy</span></code>: numpy array with dimensions <em>S</em> spikes x <em>N</em> channels x <em>M</em> samples containing the spike waveforms</p></li>

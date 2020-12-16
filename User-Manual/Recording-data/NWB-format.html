@@ -130,6 +130,12 @@
           
             
                 <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
                     <a href="../Installing-the-GUI.html">Installing the GUI</a>
                 </li>
             
@@ -294,13 +300,7 @@
 <div class="section" id="file-organization">
 <h2>File organization<a class="headerlink" href="#file-organization" title="Permalink to this headline">¶</a></h2>
 <p>Within a Record Node directory, data for each <strong>experiment</strong> (stop/start acquisition) is contained in a separate NWB file. Individual <strong>recordings</strong> are stored in separate groups inside the file.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/organization2.png"><img alt="NWB data file structure" src="../../_images/organization2.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each NWB file also contains the following information:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">/file_create_date</span></code>: date + time in ISO format (text array)</p></li>
@@ -315,13 +315,7 @@
 <div class="section" id="continuous">
 <h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
 <p>Continuous data is grouped by sub-processor (a block of synchronously sampled channels):</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/continuous2.png"><img alt="NWB data continuous format" src="../../_images/continuous2.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each <strong>continuous</strong> group is an NWB <em>ElectricalSeries</em> containing the following datasets:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">data</span></code>: <em>N</em> channels x <em>M</em> samples of 16-bit integers. The <code class="code docutils literal notranslate"><span class="pre">conversion</span></code> attribute stores the “bitVolts” value required to convert these values into volts.</p></li>
@@ -331,13 +325,7 @@
 <div class="section" id="events">
 <h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
 <p>Event data is organized by “event group” (e.g., <code class="code docutils literal notranslate"><span class="pre">TTL_&lt;N&gt;</span></code>). Each event group can contain data for multiple event channels.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/events2.png"><img alt="NWB data events format" src="../../_images/events2.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>TTL events include the following datasets:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">timestamps</span></code>: <em>N</em> 64-bit float representing the timestamps (in seconds) for each event</p></li>
@@ -348,13 +336,7 @@
 <div class="section" id="spikes">
 <h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
 <p>Spike data is organized by electrode.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/spikes2.png"><img alt="NWB data spikes format" src="../../_images/spikes2.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each <strong>spikes</strong> group contains the following datasets:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">data</span></code>: array with dimensions <em>S</em> spikes x <em>N</em> channels x <em>M</em> samples containing the spike waveforms. The <code class="code docutils literal notranslate"><span class="pre">conversion</span></code> attribute stores the “bitVolts” value required to convert these values into volts.</p></li>

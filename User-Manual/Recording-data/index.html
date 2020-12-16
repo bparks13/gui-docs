@@ -130,6 +130,12 @@
           
             
                 <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
                     <a href="../Installing-the-GUI.html">Installing the GUI</a>
                 </li>
             
@@ -303,14 +309,8 @@
 <p>The continuous channel buffer monitors track the state of the recording buffer for each subprocessor. If these start to fill up, it indicates that your computer can’t keep up with disk writing. In that case, you can try reducing the number of channels being recorded, or split the disk writing duties across multiple record nodes (see below).</p>
 <p>Clicking on one of the continuous channel buffer monitors opens up a <strong>channel selector interface</strong> as shown below. By default, the interface has every channel set to record. Through the interface, you can toggle individual channels on/off, select ALL or NONE, or indicate a custom range of channels using Matlab-style slicing:</p>
 <img alt="Selecting every other channel" src="../../_images/EVERY_OTHER.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Click and drag multi-channel selection is also available:</p>
 <img alt="Selecting every other channel" src="../../_images/FREE_SELECT.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Click anywhere outside the channel selector or use the ESC key to exit.</p>
 </div>
 <div class="section" id="recording-events">
@@ -331,21 +331,9 @@
 <p>The Record Node has a built-in synchronizer module which can perform real-time alignment of timestamps from asynchronous data sources. The synchronizer only works if each data stream has a TTL channel connected to the same physical digital input line. Each time a new event comes in (either a rising or falling edge), the synchronizer will update its estimate of the true sample rate of each subprocessor, based on the total number of samples that have been received since the first event. The Record Node will generate a <code class="code docutils literal notranslate"><span class="pre">sychronized_timestamps.npy</span></code> file containing the timestamps (in seconds) relative to the time of the first event.</p>
 <p>Below each continuous channel buffer monitor is a <strong>sync channel monitor</strong> which provides an interface for designating an input subprocessor as the master clock, as well as selecting a digital input channel for each subprocessor to serve as a sync channel. Again, all of the TTL channels used for synchronization must be connected to the same physical digital input line in order for the synchronizer to work properly. There can only be one sync channel per data source and the active sync channel is always indicated with an orange background.</p>
 <p>The active master subprocessor will be indicated by a letter ‘M’ on its sync channel monitor. This subprocessor will be used as the reference clock, to which all other subprocessors will be synchronized.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <img alt="View of the synchronizer interface" src="../../_images/SynchronizerInterface.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Once the synchronizer has been configured, starting data acquisition as normal will automatically start the synchronizer. Each sync channel monitor will change from gray to orange to indicate the synchronizer is running. Once a subprocessor has been synchronized with the master, the corresponding sync channel monitor will turn green. Data sources with higher sample rates will generally synchronize more quickly than those with lower sample rates.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <img alt="Another view of the synchronizer interface" src="../../_images/recordnode-03.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Currently, the synchronizer will only generate outputs when using the Binary data format for recording. The result is a <code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code> file that contains a double (<code class="code docutils literal notranslate"><span class="pre">float64</span></code>) timestamp for each <code class="code docutils literal notranslate"><span class="pre">int64</span></code> timestamp found in the original, unsynchronized timestamps.npy file for each data source.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

@@ -130,6 +130,12 @@
           
             
                 <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
                     <a href="../Installing-the-GUI.html">Installing the GUI</a>
                 </li>
             
@@ -252,9 +258,6 @@
   <div class="section" id="open-ephys-format">
 <span id="openephysformat"></span><h1>Open Ephys format<a class="headerlink" href="#open-ephys-format" title="Permalink to this headline">¶</a></h1>
 <img alt="Open Ephys data file icons" src="../../_images/header3.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
 <caption><span class="caption-text">This is the original format used by the Open Ephys GUI. It is designed with redundancy in mind, so that data can be readily recovered even if the GUI crashes during acquisition. However, because data for each electrode is stored in a separate file, it doesn’t scale to high channel count recordings. All files are stored in a single directory, with the file names used to identify the data source.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -289,13 +292,7 @@
 <div class="section" id="file-organization">
 <h2>File organization<a class="headerlink" href="#file-organization" title="Permalink to this headline">¶</a></h2>
 <p>All data files are stored within the same Record Node directory, with a completely flat hierarchy. Files for different <strong>experiments</strong> have a number appended after an underscore (starting with <code class="code docutils literal notranslate"><span class="pre">_2</span></code> for the second experiment in a session). Data from different <strong>recordings</strong> is distinguished by the <code class="code docutils literal notranslate"><span class="pre">recording</span> <span class="pre">index</span></code> values within each <code class="code docutils literal notranslate"><span class="pre">.spikes</span></code>, <code class="code docutils literal notranslate"><span class="pre">continuous</span></code>, or <code class="code docutils literal notranslate"><span class="pre">.events</span></code> file.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/organization3.png"><img alt="Open Ephys data directory structure" src="../../_images/organization3.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each Record Node directory also contains <code class="code docutils literal notranslate"><span class="pre">Continuous_Data.openephys</span></code>, an XML file with metadata about the <code class="code docutils literal notranslate"><span class="pre">.continuous</span></code> files, and <code class="code docutils literal notranslate"><span class="pre">messages.events</span></code>, a text file containing text events saved by the GUI.</p>
 </div>
 <div class="section" id="format-details">
@@ -327,37 +324,19 @@
 <div class="section" id="continuous">
 <h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
 <p>Continuous data for each channel is stored in a separate <code class="code docutils literal notranslate"><span class="pre">.continuous</span></code> file, identified by the processor ID (e.g. <code class="code docutils literal notranslate"><span class="pre">100</span></code>) and channel name (e.g. <code class="code docutils literal notranslate"><span class="pre">CH0</span></code>). After the 1024-byte header, continuous data is organized into “records,” each containing 1024 samples.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/continuous3.png"><img alt="Open Ephys data continuous format" src="../../_images/continuous3.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each record is 2070 bytes long, and is terminated by a 10-byte record marker (0 1 2 3 4 5 6 7 8 255).</p>
 </div>
 <div class="section" id="events">
 <h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
 <p>Event from all processors is stored in <code class="code docutils literal notranslate"><span class="pre">all_channels.events</span></code>. Each “record” contains the data for an individual event stored according to the following scheme:</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/events3.png"><img alt="Open Ephys data events format" src="../../_images/events3.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </div>
 <div class="section" id="spikes">
 <h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
 <p>Data from each electrode is saved in a separate file. The filename is derived from the electrode type (<code class="code docutils literal notranslate"><span class="pre">SE</span></code> = single electrode, <code class="code docutils literal notranslate"><span class="pre">ST</span></code> = stereotrode, <code class="code docutils literal notranslate"><span class="pre">TT</span></code> = tetrode), the source processor (e.g., <code class="code docutils literal notranslate"><span class="pre">p104.0</span></code>), and the electrode index (e.g., <code class="code docutils literal notranslate"><span class="pre">n0</span></code>, <code class="code docutils literal notranslate"><span class="pre">n1</span></code>, etc.).</p>
 <p>Each record contains an individual spike event (saved for one or more channels), and is written in the following format:</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/spikes3.png"><img alt="Open Ephys data spikes format" src="../../_images/spikes3.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Since the samples are saved as 16-bit unsigned integers, converting them to microvolts involves subtracting 32768, dividing by the gain, and multiplying by 1000.</p>
 </div>
 </div>

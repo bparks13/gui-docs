@@ -130,6 +130,12 @@
           
             
                 <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
                     <a href="../Installing-the-GUI.html">Installing the GUI</a>
                 </li>
             
@@ -248,9 +254,6 @@
   <div class="section" id="kwik-format">
 <span id="kwikdataformat"></span><h1>KWIK format<a class="headerlink" href="#kwik-format" title="Permalink to this headline">¶</a></h1>
 <img alt="KWIK data file icon" src="../../_images/header1.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
 <caption><span class="caption-text">This format stores data in separate HDF5 files for continuous, spikes, and events. The complete KWIK specification (created by Ken Harris’ lab at UCL) can be found <a class="reference external" href="https://github.com/klusta-team/kwiklib/wiki/Kwik-format">here</a>. Since it is not available by default, it must be downloaded via the GUI’s Plugin Installer.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -291,13 +294,7 @@
 <div class="section" id="file-organization">
 <h2>File organization<a class="headerlink" href="#file-organization" title="Permalink to this headline">¶</a></h2>
 <p>Within a Record Node directory, data for each <strong>experiment</strong> (stop/start acquisition) is stored across three separate HDF5 files. Individual <strong>recordings</strong> are stored in separate groups inside each file.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/organization1.png"><img alt="KWIK data file structure" src="../../_images/organization1.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Continuous data is stored in <strong>.kwd</strong> files (one per processor), event data is stored in <strong>.kwe</strong> files, and spike data is stored in <strong>.kwx</strong> files.</p>
 </div>
 <div class="section" id="format-details">
@@ -305,13 +302,7 @@
 <div class="section" id="continuous">
 <h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
 <p>Inside the <strong>.kwd</strong> file for a particular processor, continuous data is grouped by recording number (0, 1, etc.):</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/continuous1.png"><img alt="KWIK data continuous format" src="../../_images/continuous1.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>The group for each recording contains the following datasets:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">data</span></code>: <em>N</em> channels x <em>M</em> samples of 16-bit integers.</p></li>
@@ -321,13 +312,7 @@
 <div class="section" id="events">
 <h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
 <p>Inside the <strong>.kwe</strong> file, event data is organized by event type (e.g., <code class="code docutils literal notranslate"><span class="pre">TTL</span></code>). All events of a particular type (regardless of the processor they originated from) are stored together. The <strong>.kwe</strong> file is an Open Ephys-specific file that was not defined in the original KWIK format specification.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/events1.png"><img alt="KWIK data events format" src="../../_images/events1.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>The top-level <strong>events</strong> group contains the following datasets:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">recording</span></code>: the recording index for each event (0, 1, etc.)</p></li>
@@ -343,13 +328,7 @@
 <div class="section" id="spikes">
 <h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
 <p>Inside the <strong>.kwx</strong> file, data is organized by electrode.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <a class="reference internal image-reference" href="../../_images/spikes1.png"><img alt="Kwik data spikes format" src="../../_images/spikes1.png" style="width: 300px;" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Each electrode group contains the following datasets:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">waveforms_filtered</span></code>: array with dimensions <em>S</em> spikes x <em>N</em> channels x <em>M</em> samples containing the spike waveforms</p></li>
