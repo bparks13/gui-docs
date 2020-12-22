@@ -126,13 +126,13 @@
           
             
                 <li class="">
-                    <a href="Ways-to-contribute.html">Ways to contribute</a>
+                    <a href="Compiling-the-GUI.html">Compiling the GUI</a>
                 </li>
             
           
             
                 <li class="">
-                    <a href="Compiling-the-GUI.html">Compiling the GUI</a>
+                    <a href="Compiling-plugins.html">Compiling plugins</a>
                 </li>
             
           
@@ -181,9 +181,38 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recommended-workflow" class="nav-link">Recommended workflow</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#code-organization" class="nav-link">Code organization</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#program-structure" class="nav-link">Program structure</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#core-application-classes" class="nav-link">Core application classes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#user-interface-classes" class="nav-link">User interface classes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#the-processor-graph" class="nav-link">The processor graph</a>
+        </li>
+    
+            </ul>
+        </li>
     
     </ul>
 </nav>
@@ -200,9 +229,84 @@
                 
   <div class="section" id="modifying-the-host-application">
 <span id="modifyingthehostapplication"></span><h1>Modifying the host application<a class="headerlink" href="#modifying-the-host-application" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Coming soon.</p>
+<p>We welcome contributions to the main <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">plugin-GUI repository</a>, but these may require a bit more prior knowledge than building or modifying plugins. This page aims to provide a high-level overview of the GUI’s code base. However, if you’d like to make changes more substantial than a minor bug fix, we strong recommend <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/issues">submitting an issue on GitHub</a> describing your plans, so the Open Ephys core team can help guide you in the right direction.</p>
+<div class="section" id="recommended-workflow">
+<h2>Recommended workflow<a class="headerlink" href="#recommended-workflow" title="Permalink to this headline">¶</a></h2>
+<p>If you’re planning to update the host application, or any of the plugins in the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">plugin-GUI repository</a>, we encourage you to follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Fork <a class="reference internal" href="../_images/fork.svg"><img alt="fork icon" height="15" src="../_images/fork.svg" /></a> the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">GUI’s GitHub repository</a> to your own account.</p></li>
+<li><p>Clone the fork via the <a class="reference external" href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-using-the-command-line">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>.</p></li>
+<li><p>Compile the GUI for your platform of choice according to the steps on <a class="reference internal" href="Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">this page</span></a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/issues">Open an issue</a> describing the changes you’d like to make, whether it’s fixing a bug or adding a new feature. This will ensure that we avoid any redundant development efforts.</p></li>
+<li><p>Create a new branch for your changes: <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;newbranchname&gt;</span></code></p></li>
+<li><p>Make your changes (and ensure that the GUI successfully compiles).</p></li>
+<li><p>Push your changes to GitHub: <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">&lt;newbranchname&gt;</span></code></p></li>
+<li><p>Open a pull request against the <strong>development</strong> branch of the main GUI repository.</p></li>
+</ol>
+<p>If your changes look good, they will be merged and included in the next release!</p>
+</div>
+<div class="section" id="code-organization">
+<h2>Code organization<a class="headerlink" href="#code-organization" title="Permalink to this headline">¶</a></h2>
+<p>The top-level directory of the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">plugin-GUI repository</a> contains the following folders:</p>
+<ul class="simple">
+<li><p><strong>.github</strong> - GitHub Actions scripts for building the GUI on Linux, macOS, and Windows. Whenever the code is updated in the <strong>testing</strong> or <strong>master</strong> branches, these scripts will automatically regenerate the GUI’s binaries and upload them to <a class="reference external" href="https://dl.bintray.com/open-ephys-gui/">Bintray</a>.</p></li>
+<li><p><strong>Build</strong> - empty directory where platform-specific build files will be located. Any files that end up in this directory will not be included in your git commits.</p></li>
+<li><p><strong>JuceLibraryCode</strong> - a customized version of the source code for the <a class="reference external" href="https://juce.com/">Juce Library</a>. The Open Ephys GUI uses this library for a wide variety of functions, including drawing the user interface, real-time data processing, threading, and file I/O.</p></li>
+<li><p><strong>Licenses</strong> - soon to be deprecated</p></li>
+<li><p><strong>PluginGenerator</strong> - (deprecated) this is a separate application, based on Juce’s “Projucer,” which walks you through the steps required to auto-generate the source code for a new plugin. It is not compatible with the latest CMake build scheme, but the code is still included in case someone wants to make the necessary modifications.</p></li>
+<li><p><strong>Plugins</strong> - source code for plugins that are included by default with the host application. Eventually, these plugins will be migrated to their own repositories, so they can be installed an upgraded via the Plugin Installer.</p></li>
+<li><p><strong>Resources</strong> - includes a variety of useful resources, including sample data files, scripts, and libraries used by the GUI.</p></li>
+<li><p><strong>Source</strong> - the source code for the host application. The key classes are described below.</p></li>
+</ul>
+</div>
+<div class="section" id="program-structure">
+<h2>Program structure<a class="headerlink" href="#program-structure" title="Permalink to this headline">¶</a></h2>
+<p>This diagram showcases how key C++ classes interact within the host application:</p>
+<img alt="Image of the GUI's internal structure" src="../_images/data-flow-01.png" />
+<ul class="simple">
+<li><p><em>Solid black arrows</em> denote ownership: which objects are responsible for creating and destroying other objects?</p></li>
+<li><p><em>Dashed black arrows</em> indicate the precisely timed callbacks that drive data acquisition.</p></li>
+<li><p><em>Red arrows</em> show how data flows through the application. All of the data processing takes place within the <strong>ProcessorGraph</strong>, but may leave the graph to be stored to disk by the <strong>RecordNode</strong>, sent to audio monitors by the <strong>AudioNode</strong>, or visualized within the <strong>DataViewport</strong>.</p></li>
+<li><p><em>Orange arrows</em> denote the essential message-passing interactions. The messages sent between the <strong>EditorViewport</strong> and the <strong>ProcessorGraph</strong> are especially important, as they are responsible for constructing and verifying the signal chain.</p></li>
+</ul>
+<div class="section" id="core-application-classes">
+<h3>Core application classes<a class="headerlink" href="#core-application-classes" title="Permalink to this headline">¶</a></h3>
+<p>When the application starts, the first object created is an <strong>OpenEphysApplication</strong>, which is derived from the <code class="code docutils literal notranslate"><span class="pre">JUCEApplication</span></code> class. This object initializes the application and owns the <strong>MainWindow</strong>, but doesn’t do much else. When the <strong>MainWindow</strong> is created, it creates the three central objects of the application: the <strong>UIComponent</strong>, the <strong>AudioComponent</strong>, and the <strong>ProcessorGraph</strong>.</p>
+<ul class="simple">
+<li><p>The <strong>UIComponent</strong> owns all of the objects the user can interact with directly. Editing the <strong>ProcessorGraph</strong>, starting and stopping acquisition, and receiving updates about the application’s state is all handled by objects created by the <strong>UIComponent</strong>. It is derived from Juce’s <code class="code docutils literal notranslate"><span class="pre">Component</span></code> class</p></li>
+<li><p>The <strong>AudioComponent</strong> communicates with the computer’s audio card, which drives the callbacks to the <strong>ProcessorGraph</strong> and enables audio monitoring of incoming data. It is derived from Juce’s <code class="code docutils literal notranslate"><span class="pre">AudioDeviceManager</span></code> class.</p></li>
+<li><p>The <strong>ProcessorGraph</strong> stores information about the signal chain and ensure that data is processed efficiently. It is derived from Juce’s <code class="code docutils literal notranslate"><span class="pre">AudioProcessorGraph</span></code> class.</p></li>
+</ul>
+</div>
+<div class="section" id="user-interface-classes">
+<h3>User interface classes<a class="headerlink" href="#user-interface-classes" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>UIComponent</strong> has five main regions, each of which is an object that it is responsible for creating and destroying:</p>
+<ul class="simple">
+<li><p>The <strong>ControlPanel</strong> occupies the top of the application window. It contains a CPU usage meter, a disk space meter, a play button, and a record button. It also own the <strong>Clock</strong>, which displays the total time spent acquiring or recording data.</p></li>
+<li><p>The <strong>ProcessorList</strong> sits on the left-hand side of the application window and contains a list of all the available modules for creating and processing data. Modules are selected from the list and dragged onto the <strong>EditorViewport</strong> to construct the signal chain. The <strong>ProcessorList</strong> can be collapsed to provide additional room for data visualization once the signal chain is in place.</p></li>
+<li><p>The <strong>EditorViewport</strong>, near the bottom of the application window, displays the editors for all of the monitors currently in the signal chain. The editors provide a graphical interface for modifying the parameters of each module. Once they’re inside the <strong>EditorViewport</strong>, editors can be dragged and dropped to change their ordering within a signal chain, but only if acquisition is paused.</p></li>
+<li><p>The <strong>MessageCenter</strong> lives at the bottom of the application window and displays messages that are relevant to the user. Most of these messages currently originate in the <strong>ProcessorGraph</strong>, but they could come from almost any object within the program.</p></li>
+<li><p>The <strong>DataViewport</strong> contains tabs for different types of visualizers. Whenever a plugin with a visualizer is added to the signal chain, it can either claim a tab within the <strong>DataViewport</strong> or place its display in a separate window. This affords the GUI incredible flexibility. In a setup with multiple monitors, each visualizer can occupy a separate window on its own screen. If the GUI is being used on a laptop, all of the visualizers are organized into easy-to-find tabs.</p></li>
+</ul>
+</div>
+<div class="section" id="the-processor-graph">
+<h3>The processor graph<a class="headerlink" href="#the-processor-graph" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The <strong>ProcessorGraph</strong> manages user-defined data processing pipelines composed of different combinations of plugins. All of the modules that create the <strong>ProcessorGraph</strong> are derived from a custom <strong>GenericProcessor</strong> class.</p></li>
+</ul>
+<p>There are five main types of plugins that can be placed in the ProcessorGraph:</p>
+<ul class="simple">
+<li><p><strong>Sources</strong> feed data into the graph. They can only have outputs, never inputs. Every valid signal chain must have at least one source.</p></li>
+<li><p><strong>Filters</strong> modify the data they receive. They can be as simple as bandpass filters or resamplers, or more complex spike detectors or ripple/spindle detectors. Filters can process continuous signals or discrete events.</p></li>
+<li><p><strong>Sinks</strong> send data outside of the signal chain, but do not modify the underlying data stream. Examples of sinks include graphical displays, network streams, or plugins that communicate with digital output hardware (such as Arduinos).</p></li>
+<li><p><strong>Utilities</strong> perform specialized functions such as merging or splitting signal chains, or starting/stopping recording based on digital inputs.</p></li>
+<li><p><strong>Record Nodes</strong> write incoming data to disk in a format specified by the currently loaded <strong>RecordEngine</strong>. It’s possible to use multiple Record Nodes in a single signal chain, in order to record data at different processing stages.</p></li>
+</ul>
+<p>In addition to the user-defined signal chain, one module is created by default:</p>
+<ul class="simple">
+<li><p>The <strong>AudioNode</strong> allows signals to be sent to the computer’s audio card, for purposes of audio monitoring. Every plugin (except for Sinks) is automatically connected to the AudioNode.</p></li>
+</ul>
+</div>
 </div>
 </div>
 

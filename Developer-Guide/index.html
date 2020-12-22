@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ways to contribute" href="Ways-to-contribute.html" />
+    <link rel="next" title="Compiling the GUI" href="Compiling-the-GUI.html" />
     <link rel="prev" title="ZMQ Interface" href="../User-Manual/Plugins/ZMQ-Interface.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -126,13 +126,13 @@
           
             
                 <li class="">
-                    <a href="Ways-to-contribute.html">Ways to contribute</a>
+                    <a href="Compiling-the-GUI.html">Compiling the GUI</a>
                 </li>
             
           
             
                 <li class="">
-                    <a href="Compiling-the-GUI.html">Compiling the GUI</a>
+                    <a href="Compiling-plugins.html">Compiling plugins</a>
                 </li>
             
           
@@ -181,9 +181,28 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#reporting-bugs" class="nav-link">Reporting bugs</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#building-a-new-plugin" class="nav-link">Building a new plugin</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#updating-the-host-application" class="nav-link">Updating the host application</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#other-projects" class="nav-link">Other projects</a>
+        </li>
     
     </ul>
 </nav>
@@ -200,11 +219,27 @@
                 
   <div class="section" id="developer-guide">
 <span id="developerguide"></span><h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Coming soon.</p>
+<p>This section is meant to help anyone interested in modifying the source code for the Open Ephys GUI, or extending its functionality via plugins. It can also be helpful to read if you simply want to gain a better understanding of the inner workings of the software.</p>
+<p>No matter your level of experience, there are a number of ways that you can help improve the GUI:</p>
+<div class="section" id="reporting-bugs">
+<h2>Reporting bugs<a class="headerlink" href="#reporting-bugs" title="Permalink to this headline">¶</a></h2>
+<p>If you observe any unexpected behavior with the GUI, please <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/issues">submit an issue on GitHub</a>. This is the easiest way for us to keep track of things that need to be fixed.</p>
+<p>When you submit an issue, make sure to include what version of the GUI you’re using (visible in the lower right of the “Graph” tab), and what operating system you’re running it on.</p>
 </div>
+<div class="section" id="building-a-new-plugin">
+<h2>Building a new plugin<a class="headerlink" href="#building-a-new-plugin" title="Permalink to this headline">¶</a></h2>
+<p>The recommended way to add features to the GUI is by building a new plugin. Plugins allow the GUI to interface with new data sources, trigger events on specific neural states, display data within rich visualizations, or write data to a new format, among many other possibilities. Officially supported plugins are listed in the <a class="reference internal" href="../User-Manual/Plugins/index.html#plugins"><span class="std std-ref">User Manual</span></a>, and a list of additional community-generated plugins is maintained <a class="reference external" href="https://open-ephys.atlassian.net/wiki/display/OEW/Third-party+plugin+repositories">here</a>.</p>
+<p>Before you <a class="reference internal" href="Creating-a-new-plugin.html#creatinganewplugin"><span class="std std-ref">create a new plugin</span></a>, you’ll need to have some familiarity with C++, as well as makefiles (Linux), Xcode (macOS), or Visual Studio (Windows).</p>
+</div>
+<div class="section" id="updating-the-host-application">
+<h2>Updating the host application<a class="headerlink" href="#updating-the-host-application" title="Permalink to this headline">¶</a></h2>
+<p>If you’d like to make changes to the Open Ephys GUI main repository, first read through <a class="reference internal" href="Modifying-the-host-application.html#modifyingthehostapplication"><span class="std std-ref">this section</span></a> of the developer documentation. Then, take a look at our list of <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/projects">active projects</a> to find out about the features we’re planning to update in the near future. If you’re interested in tackling one of these projects, or have other ideas for useful additions to the main application, don’t hesistate to <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/issues">open an issue on GitHub</a>.</p>
+</div>
+<div class="section" id="other-projects">
+<h2>Other projects<a class="headerlink" href="#other-projects" title="Permalink to this headline">¶</a></h2>
+<p>If you are interested in helping out with longer-term projects, or if you’re able to donate developer time, please get in touch via <a class="reference external" href="mailto:info&#37;&#52;&#48;open-ephys&#46;org">info<span>&#64;</span>open-ephys<span>&#46;</span>org</a>.</p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -215,7 +250,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="../User-Manual/Plugins/ZMQ-Interface.html" title="previous page">ZMQ Interface</a>
-    <a class='right-next' id="next-link" href="Ways-to-contribute.html" title="next page">Ways to contribute</a>
+    <a class='right-next' id="next-link" href="Compiling-the-GUI.html" title="next page">Compiling the GUI</a>
 
               </div>
               
