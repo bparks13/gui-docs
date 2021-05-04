@@ -325,7 +325,39 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#layout-selection" class="nav-link">Layout selection</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#main-options" class="nav-link">Main options</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#additional-options" class="nav-link">Additional options</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#thresholds" class="nav-link">Thresholds</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#channels" class="nav-link">Channels</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#signals" class="nav-link">Signals</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#triggered-display" class="nav-link">Triggered display</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -348,7 +380,7 @@
 <div class="line"><br /></div>
 </div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">“LFP” stands for “local field potential,” but this visualizer can display any type of continuous signal. It’s an essential plugin for monitoring overall data quality before and during an experiment.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">“LFP” stands for “local field potential,” but this visualizer can display any type of continuous signal. It’s an essential plugin for monitoring overall data quality before and during an experiment. Each LFP Viewer can display up to 3 segments of data at a time, either side-by-side or stacked on top of one another.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -374,21 +406,59 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<img alt="LFP Viewer screenshot" src="../../_images/lfpviewer-03.png" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The LFP Viewer Beta is no longer being developed, but it’s still part of the GUI because it’s ability to display multiple subprocessors simultaneously may be desirable in some cases. Multi-subprocessor display will be added to the standard LFP Viewer in the near future, at which point the “beta” version will be deprecated.</p>
+<p>As of GUI version 0.5.4, the “Beta” version of the LFP Viewer Beta has been deprecated, and is no longer included as a default plugin.</p>
 </div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layout-selection">
+<h3>Layout selection<a class="headerlink" href="#layout-selection" title="Permalink to this headline">¶</a></h3>
+<p>The LFP Viewer can display up to three segments of data, depending on the layout that is selected. Each section can display different segments of the same block of channels, or can point to a different sub-processor. The settings for section 1, 2, and 3 are preserved when the layout is changed.</p>
+<p>This example shows three displays in “stacked” mode, one showing the continuous traces, one viewing the data in spike raster mode, and one set to display a single channel (toggled by double-clicking on a channel in the LFP Viewer).</p>
+<img alt="LFP Viewer screenshot" src="../../_images/lfpviewer-03.png" />
+</div>
+<div class="section" id="main-options">
+<h3>Main options<a class="headerlink" href="#main-options" title="Permalink to this headline">¶</a></h3>
+<p>The most commonly used options are always visible along the bottom of the LFP Viewer. If there are multiple simultaneous displays, the display that is linked to the options interface will be highlighted in yellow.</p>
 <img alt="LFP Viewer settings" src="../../_images/lfpviewer-02.png" />
-<p><strong>Event display buttons:</strong> determine whether particular event channels are overlaid on the LFP display. Disabling channels that are on for long periods of time can make the display look nicer.</p>
-<p><strong>Color grouping:</strong> used to keep the same display colors for blocks of channels (helpful if you’re recording in stereotrode or tetrode configuration)</p>
-<p><strong>Invert button:</strong> yellow if the LFP signals are inverted so that spikes point up</p>
-<p><strong>Drawmethod button:</strong> yellow if a simplified drawing method is used (causes aliasing of spikes, but may render faster)</p>
-<p><strong>Pause button / Space:</strong> pauses the LFP display without stopping acquisition. When it’s pressed again, the display goes back to real time.</p>
-<p><strong>Shift + Scroll wheel:</strong> Increase / Decrease the voltage range.</p>
-<p><strong>Ctrl + Scroll wheel:</strong> Increase / Decrease the spread.</p>
+</div>
+<div class="section" id="additional-options">
+<h3>Additional options<a class="headerlink" href="#additional-options" title="Permalink to this headline">¶</a></h3>
+<p>The interfaces for additional settings can be exposed by clicking on the triangle in the lower right of the LFP Viewer.</p>
+<div class="section" id="thresholds">
+<h4>Thresholds<a class="headerlink" href="#thresholds" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Spike raster:</strong> Sets the threshold for the spike raster view. If a value other than <code class="code docutils literal notranslate"><span class="pre">OFF</span></code> is selected (or a custom threshold is entered), the LFP Viewer will show vertical lines at the location of threshold crossings, rather than displaying the continuous trace.</p></li>
+<li><p><strong>Clip warning:</strong> If set to <code class="code docutils literal notranslate"><span class="pre">ON</span></code>, a white line will be shown whenever the value of a given channel goes out of range of the display. The precise clipping value will depend on the voltage range that is currently selected.</p></li>
+<li><p><strong>Sat. warning:</strong> If set to a value other than <code class="code docutils literal notranslate"><span class="pre">OFF</span></code>, red and white diagonal lines will be shown whenever the value of given channel crosses the selected threshold. This is used to detect when signals go out of range of the analog-to-digital converters, which results in information loss.</p></li>
+</ul>
+</div>
+<div class="section" id="channels">
+<h4>Channels<a class="headerlink" href="#channels" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Reverse order:</strong> Displays the channels in opposite numerical order (highest-numbered channels at the top of the screen).</p></li>
+<li><p><strong>Sort by depth:</strong> Displays the channels by depth, if this information is available. Currently, there are no source nodes that include this information, although this will change soon.</p></li>
+<li><p><strong>Skip:</strong> Sets the display to show every Nth channel. This is useful if you’re using a probe with many densely space contacts, and don’t need to visualize every one simultaneously.</p></li>
+<li><p><strong>Show number</strong>: Displays the channel indices, rather than the channel names, on the left-hand side of the LFP Viewer.</p></li>
+</ul>
+</div>
+<div class="section" id="signals">
+<h4>Signals<a class="headerlink" href="#signals" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Invert signal:</strong> By default, negative voltages point downward, and positive voltages point upward. This button switches that convention for all channels (e.g., so spikes point upward). The signal for individual channels can be inverted by right-clicking on that channel in the LFP Viewer.</p></li>
+<li><p><strong>Subtract offset:</strong> Removes the DC offset for each channel (useful for visualizing Neuropixels data).</p></li>
+</ul>
+</div>
+<div class="section" id="triggered-display">
+<h4>Triggered display<a class="headerlink" href="#triggered-display" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Trigger channel:</strong> Selects the event channel used for triggering. If a channel other than <code class="code docutils literal notranslate"><span class="pre">None</span></code> is selected, the display will only update on rising edge events on that channel. If mutiple events occur within the selected timebase, triggering will be disabled until the display has reached the right edge of the screen.</p></li>
+<li><p><strong>Trial averaging:</strong> When <code class="code docutils literal notranslate"><span class="pre">ON</span></code>, the display will show the average signal across trials, rather than individual traces. Each incoming event on the trigger channel will update the average.</p></li>
+<li><p><strong>Reset trials:</strong> If trial averaging mode is <code class="code docutils literal notranslate"><span class="pre">ON</span></code>, this button will set the trial count to zero and reset the averaging process.</p></li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 
