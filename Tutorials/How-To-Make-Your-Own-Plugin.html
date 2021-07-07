@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How To Make Your Own Plugin &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FAQs" href="../FAQ/index.html" />
+    <link rel="prev" title="Synchronizing Data Streams" href="Data-Synchronization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/oe_logo_circle.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../User-Manual/index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="Closed-Loop-Latency.html">Measuring Closed-Loop Latency</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="Data-Synchronization.html">Synchronizing Data Streams</a>
+                </li>
+            
+          
+            
+                <li class="active">
+                    <a href="">How To Make Your Own Plugin</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#creating-a-new-plugin-repository" class="nav-link">Creating a new plugin repository</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#removing-unnecessary-files" class="nav-link">Removing unnecessary files</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#editing-openephyslib-cpp-and-other-files" class="nav-link">Editing OpenEphysLib.cpp and other files</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#compiling-your-plugin" class="nav-link">Compiling your plugin</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#implementing-the-process-method" class="nav-link">Implementing the process() method</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#creating-editor-class-files" class="nav-link">Creating editor class files</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#adding-ui-components-to-the-editor" class="nav-link">Adding UI components to the editor</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#create-a-button" class="nav-link">Create a button</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#create-a-slider" class="nav-link">Create a slider</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#create-a-combobox" class="nav-link">Create a ComboBox</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#connecting-these-to-parameters-in-the-process-method" class="nav-link">Connecting these to parameters in the process() method</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#next-steps" class="nav-link">Next steps</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="how-to-make-your-own-plugin">
+<span id="howtomakeyourownplugin"></span><h1>How To Make Your Own Plugin<a class="headerlink" href="#how-to-make-your-own-plugin" title="Permalink to this headline">¶</a></h1>
+<p>The Open Ephys GUI’s plugin architecture allows it to be expanded with external modules (plugins) that can be developed independently of the main application. This is the primary way which we encourage users to add new functionality to the GUI.</p>
+<p>This tutorial will guide you through the steps of making a plugin from scratch by creating a “TTL Event Generator” plugin. <code class="code docutils literal notranslate"><span class="pre">TTL</span></code> events are one of three types of events that are supported by the GUI (along with <code class="code docutils literal notranslate"><span class="pre">TEXT</span></code> and <code class="code docutils literal notranslate"><span class="pre">BINARY</span></code> events). TTL events represent ON/OFF transitions that are traditionally associated with “Transistor-Transitor Logic” circuits. Within the GUI, TTL events are more general, and can also be generated in software. This plugin will add TTL events to a data stream, either at a specified frequency, or whenever a trigger button is pressed. Each TTL channel can change the state of up to 65536 (2^16) “bits,” but for simplicity our plugin will only use the first 8 bits.</p>
+<p>Along with explaining how to configure the plugin and set up the main <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method, this tutorial will demonstrate how to create UI components for the plugin using the underlying <a class="reference external" href="https://juce.com/">JUCE API</a>. These instructions assume you have already compiled the main application from source. If not, you should start by following the instructions on <a class="reference internal" href="../Developer-Guide/Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">this page</span></a>.</p>
+<div class="section" id="creating-a-new-plugin-repository">
+<h2>Creating a new plugin repository<a class="headerlink" href="#creating-a-new-plugin-repository" title="Permalink to this headline">¶</a></h2>
+<p>The first step in creating a new plugin is to create a repository from the <a class="reference external" href="https://github.com/open-ephys-plugins/OEPlugin">OEPlugin</a> template.</p>
+<ol class="arabic simple">
+<li><p>Log in to your <a class="reference external" href="https://github.com/">GitHub</a> account.</p></li>
+<li><p>Browse to the <a class="reference external" href="https://github.com/open-ephys-plugins/OEPlugin">OEPlugin</a> template repository.</p></li>
+<li><p>Click the green “Use this template” button.</p></li>
+</ol>
+<img alt="OEPlugin Template Repository" src="../_images/makeyourownplugin-01.png" />
+<ol class="arabic simple" start="4">
+<li><p>Since the plugin will generate TTL events, lets name the repository as “TTLEventGenerator”</p></li>
+<li><p>Click the green “Create repository from template” button.</p></li>
+</ol>
+<img alt="Create TTLEventGenerator Repository" src="../_images/makeyourownplugin-02.png" />
+<p>On your local machine, create an “OEPlugins” directory within the same directory that contains your <code class="code docutils literal notranslate"><span class="pre">plugin-GUI</span></code> repository: Then, using the command line or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a> app, clone the newly created plugin repository into this new folder. Your directory structure should look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code_directory</span><span class="o">/</span>
+   <span class="n">plugin</span><span class="o">-</span><span class="n">GUI</span><span class="o">/</span>
+   <span class="n">OEPlugins</span><span class="o">/</span>
+      <span class="n">TTLEventGenerator</span><span class="o">/</span>
+         <span class="n">Source</span><span class="o">/</span>
+         <span class="n">Build</span><span class="o">/</span>
+         <span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span>
+         <span class="n">CMAKE_README</span><span class="o">.</span><span class="n">txt</span>
+         <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removing-unnecessary-files">
+<h2>Removing unnecessary files<a class="headerlink" href="#removing-unnecessary-files" title="Permalink to this headline">¶</a></h2>
+<p>Since <code class="code docutils literal notranslate"><span class="pre">TTL</span> <span class="pre">Events</span></code> is going to be a “Filter” processor, remove all the files from the <code class="file docutils literal notranslate"><span class="pre">Source</span></code> directory except <code class="file docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code>, <code class="file docutils literal notranslate"><span class="pre">ProcessorPlugin.cpp</span></code>, and <code class="file docutils literal notranslate"><span class="pre">ProcessorPlugin.h</span></code> files.</p>
+</div>
+<div class="section" id="editing-openephyslib-cpp-and-other-files">
+<h2>Editing <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> and other files<a class="headerlink" href="#editing-openephyslib-cpp-and-other-files" title="Permalink to this headline">¶</a></h2>
+<p>Inside the “Source” directory, you’ll find the <code class="file docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> file that contains critical information about your plugin. Open it in your preferred text editor and make the following changes:</p>
+<p>TTLEventGenerator plugin will be a “processor”, meaning it implements the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method of the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/master/Source/Processors/GenericProcessor/GenericProcessor.h">GenericProcessor</a> class. This method is called repeatedly during the GUI’s acquisition loop, so each plugin has a chance to respond to incoming data (or, in this case, generate its own data).</p>
+<p>To specify that this is a processor plugin, uncomment and edit the following lines in <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// specifies that we are creating a Processor plugin</span>
+<span class="n">info</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">=</span> <span class="n">PluginType</span><span class="o">::</span><span class="n">PLUGIN_TYPE_PROCESSOR</span><span class="p">;</span>
+
+<span class="c1">// edit to change how the plugin&#39;s name is displayed in the GUI</span>
+<span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;TTL Events&quot;</span><span class="p">;</span>
+
+<span class="c1">// Select the type of processor</span>
+<span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ProcessorType</span><span class="o">::</span><span class="n">FilterProcessor</span><span class="p">;</span>
+
+<span class="c1">// Replace &quot;ProcessorPluginSpace::ProcessorPlugin&quot; with the class name of TTL Events plugin</span>
+<span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">creator</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">Plugin</span><span class="o">::</span><span class="n">createProcessor</span><span class="o">&lt;</span><span class="n">TTLEventGenerator</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Then, rename the <code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.cpp</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.h</span></code> files to <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.cpp</span></code> and <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code>, and find and replace the <strong>ProcessorPlugin</strong> class name with <strong>TTLEventGenerator</strong> in the .cpp and .h files.</div>
+</div>
+</div>
+<div class="section" id="compiling-your-plugin">
+<h2>Compiling your plugin<a class="headerlink" href="#compiling-your-plugin" title="Permalink to this headline">¶</a></h2>
+<p>At this point, you should be able to compile your plugin and load it into the GUI. We advise you to compile and test the plugin every time you make changes, so that it is easier for you to identify what changes broke the code, if it happens.</p>
+<p>To compile the plugin, please follow the OS-specific instructions as mentioned on the <a class="reference internal" href="../Developer-Guide/Compiling-plugins.html#compilingplugins"><span class="std std-ref">compiling plugins</span></a> page.</p>
+</div>
+<div class="section" id="implementing-the-process-method">
+<h2>Implementing the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method<a class="headerlink" href="#implementing-the-process-method" title="Permalink to this headline">¶</a></h2>
+<p>Right now, our plugin doesn’t have any effect within the signal chain. Data passed into the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method will not be altered in any way, nor will any events be added to the data stream.</p>
+<p>Let’s change that by inserting code to add a TTL ON and OFF events at an interval of 1 second. For now, we will hard-code the relevant parameters. In the subsequent steps, we will make it possible to change these parameters via UI elements in the plugin’s editor.</p>
+<p>Before we can add events during acquisition, we need to announce to downstream processors that this plugin is capable of generating its own events. In the plugin’s header file, add the following function declarations, plus some class members:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+   <span class="kt">void</span> <span class="n">createEventChannels</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+   <span class="kt">bool</span> <span class="nf">enable</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+   <span class="n">EventChannel</span><span class="o">*</span> <span class="n">eventChannel</span><span class="p">;</span> <span class="c1">// pointer to our event channel</span>
+
+<span class="k">private</span><span class="o">:</span>
+   <span class="kt">float</span> <span class="n">sampleRate</span><span class="p">;</span> <span class="c1">// holds the sample rate for incoming data</span>
+
+   <span class="kt">int</span> <span class="n">counter</span><span class="p">;</span> <span class="c1">// counts the total number of incoming samples</span>
+   <span class="kt">bool</span> <span class="n">state</span><span class="p">;</span> <span class="c1">// holds the channel state (on or off)</span>
+</pre></div>
+</div>
+<p>This will allow us to override the default implementation of the <code class="code docutils literal notranslate"><span class="pre">createEventChannels()</span></code> method, which is automatically called whenever a plugin needs to update its settings.</p>
+<p>Next, in the .cpp file, add the implementation:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">createEventChannels</span><span class="p">()</span>
+<span class="p">{</span>
+
+   <span class="n">sampleRate</span> <span class="o">=</span> <span class="n">getSampleRate</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+   <span class="k">const</span> <span class="n">DataChannel</span><span class="o">*</span> <span class="n">inputChannel</span> <span class="o">=</span> <span class="n">getDataChannel</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">inputChannel</span><span class="p">)</span> <span class="c1">// no input channels to this plugin</span>
+   <span class="p">{</span>
+         <span class="n">eventChannel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventChannel</span><span class="p">(</span><span class="n">EventChannel</span><span class="o">::</span><span class="n">TTL</span><span class="p">,</span> <span class="c1">// channel type</span>
+                                          <span class="mi">8</span><span class="p">,</span> <span class="c1">// number of bits (up to 65536)</span>
+                                          <span class="mi">1</span><span class="p">,</span> <span class="c1">// data packet size</span>
+                                          <span class="n">sampleRate</span><span class="p">,</span> <span class="c1">// sampleRate</span>
+                                          <span class="k">this</span><span class="p">)</span> <span class="c1">// source processor</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">eventChannel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventChannel</span><span class="p">(</span><span class="n">EventChannel</span><span class="o">::</span><span class="n">TTL</span><span class="p">,</span> <span class="c1">// channel type</span>
+                                          <span class="mi">8</span><span class="p">,</span> <span class="c1">// number of bits (up to 65536)</span>
+                                          <span class="mi">1</span><span class="p">,</span> <span class="c1">// data packet size</span>
+                                          <span class="n">inputChannel</span><span class="p">,</span> <span class="c1">// pointer to input channel</span>
+                                          <span class="k">this</span><span class="p">)</span> <span class="c1">// source processor</span>
+   <span class="p">}</span>
+
+   <span class="n">eventChannelArray</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">);</span> <span class="c1">// eventChannelArray is an OwnedArray, which will</span>
+                                        <span class="c1">// delete the eventChannel object each time</span>
+                                        <span class="c1">// update() is called</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then we will make sure the appropriate variables get re-set at the start of acquisition:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">TTLGenerator</span><span class="o">::</span><span class="n">enable</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">state</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+   <span class="k">return</span> <span class="n">isEnabled</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, we are ready to add events in our process function:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="n">AudioSampleBuffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="p">{</span>
+
+   <span class="kt">int</span> <span class="n">totalSamples</span> <span class="o">=</span> <span class="n">getNumSamples</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+   <span class="kt">int</span> <span class="n">eventIntervalInSamples</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">sampleRate</span><span class="p">);</span>
+
+   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
+      <span class="p">{</span>
+
+         <span class="n">state</span> <span class="o">=</span> <span class="o">!</span><span class="n">state</span><span class="p">;</span>
+
+         <span class="n">uint8</span> <span class="n">ttlData</span> <span class="o">=</span> <span class="n">state</span><span class="p">;</span>
+
+         <span class="n">TTLEventPtr</span> <span class="n">event</span> <span class="o">=</span> <span class="n">TTLEvent</span><span class="o">::</span><span class="n">createTTLEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span>
+                                                      <span class="n">getTimestamp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span>
+                                                      <span class="o">&amp;</span><span class="n">ttlData</span><span class="p">,</span>
+                                                      <span class="k">sizeof</span><span class="p">(</span><span class="n">uint8</span><span class="p">),</span>
+                                                      <span class="mi">0</span><span class="p">);</span>
+
+         <span class="n">addEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+         <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After recompiling the plugin, try dropping it into the signal chain after a <a class="reference internal" href="../User-Manual/Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a>. Add an <a class="reference internal" href="../User-Manual/Plugins/LFP-Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a> to the right of the plugin, and start acquisition. You should see the state of event channel 1 flipping once per second.</p>
+</div>
+<div class="section" id="creating-editor-class-files">
+<h2>Creating editor class files<a class="headerlink" href="#creating-editor-class-files" title="Permalink to this headline">¶</a></h2>
+<p>This plugin is going to generate events during acquisition according to settings such as event channel, event interval, manual trigger, etc. An editor interface is required to house these settings. To create such an editor, create two editor class files called <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.cpp</span></code> and <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.h</span></code>.</p>
+<p>After that, open <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.h</span></code> and add the following lines of code to the file. The <code class="code docutils literal notranslate"><span class="pre">EditorHeaders.h</span></code> file includes all the necessary headers required to create an editor for the plugin. The <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> class inherits members of the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/master/Source/Processors/Editors/GenericEditor.h">GenericEditor</a> class.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;EditorHeaders.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;TTLEventGenerator.h&quot;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">TTLEventGenerator</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TTLEventGeneratorEditor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">GenericEditor</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+
+   <span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">TTLEventGenerator</span><span class="o">*</span> <span class="n">parentNode</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">useDefaultParameterEditors</span><span class="p">);</span>
+   <span class="o">~</span><span class="n">TTLEventGeneratorEditor</span><span class="p">();</span>
+
+   <span class="kt">void</span> <span class="nf">updateSettings</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+   <span class="n">TTLEventGenerator</span><span class="o">*</span> <span class="n">processor</span><span class="p">;</span>
+
+   <span class="n">JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR</span><span class="p">(</span><span class="n">TTLEventGeneratorEditor</span><span class="p">);</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Next, open <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.cpp</span></code> and add the following lines of code to the file.</div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;TTLEventGenerator.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;TTLEventGeneratorEditor.h&quot;</span><span class="cp"></span>
+
+<span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">TTLEventGenerator</span><span class="o">*</span> <span class="n">parentNode</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">useDefaultParameterEditors</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span>
+   <span class="o">:</span> <span class="n">GenericEditor</span><span class="p">(</span><span class="n">parentNode</span><span class="p">,</span> <span class="n">useDefaultParameterEditors</span><span class="p">)</span>
+
+<span class="p">{</span>
+   <span class="n">processor</span> <span class="o">=</span> <span class="n">parentNode</span><span class="p">;</span>
+
+   <span class="n">setDesiredWidth</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TTLEventGeneratorEditor</span><span class="o">::~</span><span class="n">TTLEventGeneratorEditor</span><span class="p">(){}</span>
+
+<span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">updateSettings</span><span class="p">(){}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line">Then, we need to let the GUI know that the plugin has a custom editor that needs to be created during runtime. To do that, uncomment the following lines of code in the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code> file…</div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">hasEditor</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span><span class="k">return</span> <span class="nb">true</span><span class="p">;}</span>
+
+<span class="n">AudioProcessorEditor</span><span class="o">*</span> <span class="nf">createEditor</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>…and add the following lines of code to the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code> file</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">AudioProcessorEditor</span><span class="o">*</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">createEditor</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">editor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+   <span class="k">return</span> <span class="n">editor</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, when you re-compile your plugin and load it into the GUI, it will use this custom editor class. The editor should appear slightly wider than the default, because of the <code class="code docutils literal notranslate"><span class="pre">setDesiredWidth()</span></code> command we added.</p>
+</div>
+<div class="section" id="adding-ui-components-to-the-editor">
+<h2>Adding UI components to the editor<a class="headerlink" href="#adding-ui-components-to-the-editor" title="Permalink to this headline">¶</a></h2>
+<p>Now that our plugin is able to generate events in the process() method and has its own editor, lets add some UI components to the editor that allows the user to change various parameters of the plugin.</p>
+<div class="section" id="create-a-button">
+<h3>Create a button<a class="headerlink" href="#create-a-button" title="Permalink to this headline">¶</a></h3>
+<p>To allow triggering events manually, let’s add the button to the editor that the user can click on to generate an event. First of all, add the following class members to the editor’s header file:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span>
+   <span class="n">ScopedPointer</span><span class="o">&lt;</span><span class="n">UtilityButton</span><span class="o">&gt;</span> <span class="n">manualTrigger</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">manualTrigger</span></code> is a ScopedPointer to a UtilityButton, a type of button that’s part of the Open Ephys Plugin API. Because this is a ScopedPointer, it will automatically get deleted when the plugin is removed from the signal chain.</p>
+<p>Then, in the plugin editor’s we’ll initialize the button, add a button listener, set the bounds, and make it visible in the editor by adding the following lines of code to the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor()</span></code> constructor:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">manualTrigger</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UtilityButton</span><span class="p">(</span><span class="s">&quot;Trigger&quot;</span><span class="p">,</span> <span class="n">Font</span><span class="p">(</span><span class="s">&quot;Default&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Font</span><span class="o">::</span><span class="n">plain</span><span class="p">));</span> <span class="c1">// button text, font to use</span>
+<span class="n">manualTrigger</span><span class="o">-&gt;</span><span class="n">addListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// add listener to the button</span>
+<span class="n">manualTrigger</span><span class="o">-&gt;</span><span class="n">setBounds</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span> <span class="c1">// (x, y, width, height)</span>
+<span class="n">addAndMakeVisible</span><span class="p">(</span><span class="n">manualTrigger</span><span class="p">);</span>  <span class="c1">// add the button to the editor and make it visible</span>
+</pre></div>
+</div>
+<p>We also need to handle button clicks by implementing the <code class="code docutils literal notranslate"><span class="pre">buttonEvent</span></code> method as below. For now, keep it empty, we’ll come back to it later. Compile and load the plugin into the GUI to see the newly added button.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">buttonEvent</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span> <span class="n">button</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">button</span> <span class="o">==</span> <span class="n">manualTrigger</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="c1">// Do something</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="Create a button" src="../_images/makeyourownplugin-03.png" />
+</div>
+<div class="section" id="create-a-slider">
+<h3>Create a slider<a class="headerlink" href="#create-a-slider" title="Permalink to this headline">¶</a></h3>
+<p>To automatically generate events at certain intervals/frequency, lets add a slider with a range of event frequency between 5 ms to 5000 ms. Add the following function declaration and class member to the editor’s header file:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+   <span class="kt">void</span> <span class="n">sliderEvent</span><span class="p">(</span><span class="n">Slider</span><span class="o">*</span> <span class="n">slider</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span> <span class="c1">// handle slider change events</span>
+
+<span class="k">private</span><span class="o">:</span>
+   <span class="n">ScopedPointer</span><span class="o">&lt;</span><span class="n">Slider</span><span class="o">&gt;</span> <span class="n">eventFrequency</span><span class="p">;</span>
+   <span class="n">ScopedPointer</span><span class="o">&lt;</span><span class="n">Label</span><span class="o">&gt;</span> <span class="n">frequencyLabel</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Then, we’ll initialize the slider, set range, set bounds, add a listener, add a label and make the slider and label visible by adding the following lines of code to the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor()</span></code> constructor:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">eventFrequency</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Slider</span><span class="p">();</span>
+<span class="n">eventFrequency</span><span class="o">-&gt;</span><span class="n">setRange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>  <span class="c1">// range between 50 ms to 5000 ms with 50 ms intervals</span>
+<span class="n">eventFrequency</span><span class="o">-&gt;</span><span class="n">setValue</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+<span class="n">eventFrequency</span><span class="o">-&gt;</span><span class="n">setTextValueSuffix</span> <span class="p">(</span><span class="s">&quot; ms&quot;</span><span class="p">);</span>
+<span class="n">eventFrequency</span><span class="o">-&gt;</span><span class="n">addListener</span> <span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="n">eventFrequency</span><span class="o">-&gt;</span><span class="n">setChangeNotificationOnlyOnRelease</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">eventFrequency</span><span class="o">-&gt;</span><span class="n">setBounds</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+<span class="n">addAndMakeVisible</span> <span class="p">(</span><span class="n">eventFrequency</span><span class="p">);</span>
+
+<span class="n">frequencyLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="p">(</span><span class="s">&quot;FrequencyLabel&quot;</span><span class="p">,</span> <span class="s">&quot;Frequency&quot;</span><span class="p">);</span>
+<span class="n">frequencyLabel</span><span class="o">-&gt;</span><span class="n">attachToComponent</span><span class="p">(</span><span class="n">eventFrequency</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="n">addAndMakeVisible</span><span class="p">(</span><span class="n">frequencyLabel</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We also need to handle slider value changes by implementing the <code class="code docutils literal notranslate"><span class="pre">sliderEvent</span></code> method. For now, keep it empty, we’ll come back to it later. Compile and load the plugin into the GUI to see the newly added slider.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">sliderEvent</span><span class="p">(</span><span class="n">Slider</span><span class="o">*</span> <span class="n">slider</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">slider</span> <span class="o">==</span> <span class="n">eventFrequency</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="c1">// Do something</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="Create a slider" src="../_images/makeyourownplugin-04.png" />
+</div>
+<div class="section" id="create-a-combobox">
+<h3>Create a ComboBox<a class="headerlink" href="#create-a-combobox" title="Permalink to this headline">¶</a></h3>
+<p>To select which channel to generate and show events in, a ComboBox needs to be created. This will allow the user to select a TTL output bit from a drop-down menu. First, add <code class="code docutils literal notranslate"><span class="pre">ComboBox::Listener</span></code> as a base class to <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> as that is not added by GenericEditor unlike button and slider listener classes. Then, add the following function declaration and class members to the editor’s header file:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+   <span class="kt">void</span> <span class="n">comboBoxChanged</span><span class="p">(</span><span class="n">ComboBox</span><span class="o">*</span> <span class="n">comboBox</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+   <span class="n">ScopedPointer</span><span class="o">&lt;</span><span class="n">ComboBox</span><span class="o">&gt;</span> <span class="n">outputBitSelector</span><span class="p">;</span>
+        <span class="n">ScopedPointer</span><span class="o">&lt;</span><span class="n">Label</span><span class="o">&gt;</span> <span class="n">outputLabel</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Then, initialize the ComboBox, add output channels to the list, set bounds, add listener, add label and make it visible by adding the following lines of code to the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor()</span></code> constructor:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">outputBitSelector</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComboBox</span><span class="p">();</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">bit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">bit</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">;</span> <span class="n">bit</span><span class="o">++</span><span class="p">)</span>
+   <span class="n">outputBitSelector</span><span class="o">-&gt;</span><span class="n">addItem</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="n">bit</span><span class="p">),</span> <span class="n">bit</span><span class="p">);</span>
+
+<span class="n">outputBitSelector</span><span class="o">-&gt;</span><span class="n">setSelectedId</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">outputBitSelector</span><span class="o">-&gt;</span><span class="n">setBounds</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">);</span>
+<span class="n">outputBitSelector</span><span class="o">-&gt;</span><span class="n">setTooltip</span><span class="p">(</span><span class="s">&quot;Output event channel&quot;</span><span class="p">);</span>
+<span class="n">outputBitSelector</span><span class="o">-&gt;</span><span class="n">addListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="n">addAndMakeVisible</span><span class="p">(</span><span class="n">outputBitSelector</span><span class="p">);</span>
+
+<span class="n">outputLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="p">(</span><span class="s">&quot;Bit Label&quot;</span><span class="p">,</span> <span class="s">&quot;OUT&quot;</span><span class="p">);</span>
+<span class="n">outputLabel</span><span class="o">-&gt;</span><span class="n">attachToComponent</span><span class="p">(</span><span class="n">outputBitSelector</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="n">addAndMakeVisible</span><span class="p">(</span><span class="n">outputLabel</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Just like the button and slider, We also need to handle combobox value changes by implementing the <code class="code docutils literal notranslate"><span class="pre">comboBoxChanged</span></code> method. For now, keep it empty, we’ll come back to it later. Compile and load the plugin into the GUI to see the newly added ComboBox.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">comboBoxChanged</span><span class="p">(</span><span class="n">ComboBox</span><span class="o">*</span> <span class="n">comboBox</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">comboBox</span> <span class="o">==</span> <span class="n">outputBitSelector</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="c1">// Do something</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="Create a combobox" src="../_images/makeyourownplugin-05.png" />
+</div>
+</div>
+<div class="section" id="connecting-these-to-parameters-in-the-process-method">
+<h2>Connecting these to parameters in the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method<a class="headerlink" href="#connecting-these-to-parameters-in-the-process-method" title="Permalink to this headline">¶</a></h2>
+<p>Now, let’s allow our UI elements to change the state of the plugin. To do this, we need to create variables inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> class that can be updated by our button, slider, and ComboBox. The values of these variables <em>must</em> be updated through a special method, called <code class="code docutils literal notranslate"><span class="pre">setParameter()</span></code>, which takes two inputs, a parameter ID and a value. This is because the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method is called by a separate thread from the user interface, and the variables it needs to access can only be updated at specific times. Modifying variables via <code class="code docutils literal notranslate"><span class="pre">setParameter()</span></code> ensures that they are handled properly, and prevents unexpected behavior or segmentation faults.</p>
+<p>First, let’s uncomment the <code class="code docutils literal notranslate"><span class="pre">setParameter()</span></code> method and then add some variables to the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> header file to store the state of our parameters:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
+   <span class="kt">void</span> <span class="n">setParameter</span><span class="p">(</span><span class="kt">int</span> <span class="n">parameterIndex</span><span class="p">,</span> <span class="kt">float</span> <span class="n">newValue</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+   <span class="kt">bool</span> <span class="n">shouldTriggerEvent</span><span class="p">;</span>
+   <span class="kt">bool</span> <span class="n">eventWasTriggered</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">triggeredEventCounter</span><span class="p">;</span>
+
+   <span class="kt">float</span> <span class="n">eventIntervalMs</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">outputBit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Next, let’s initialize their values in the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator()</span></code> constructor method.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">shouldTriggerEvent</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="n">eventWasTriggered</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="n">triggeredEventCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">eventIntervalMs</span> <span class="o">=</span> <span class="mf">50.0f</span><span class="p">;</span>
+<span class="n">outputBit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// the GUI uses 0-based indexing internally, even though the</span>
+               <span class="c1">// user-facing labels use 1-based indexing</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Always be sure to initialize all member variables, in order to avoid unexpected behavior.</p>
+</div>
+<p>Now, we can define how these variables are updated inside the <code class="code docutils literal notranslate"><span class="pre">setParameter()</span></code> method:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">setParameter</span><span class="p">(</span><span class="kt">int</span> <span class="n">ID</span><span class="p">,</span> <span class="kt">float</span> <span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">ID</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">shouldTriggerEvent</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ID</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">eventIntervalMs</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ID</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">outputBit</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, we’ll edit the <code class="code docutils literal notranslate"><span class="pre">buttonEvent</span></code>, <code class="code docutils literal notranslate"><span class="pre">sliderEvent</span></code>, and <code class="code docutils literal notranslate"><span class="pre">comboBoxChanged</span></code> classes to call to <code class="code docutils literal notranslate"><span class="pre">setParameter()</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">buttonEvent</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span> <span class="n">button</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">button</span> <span class="o">==</span> <span class="n">manualTrigger</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">setParameter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">);</span> <span class="c1">// the second input is arbitrary in this case</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">sliderEvent</span><span class="p">(</span><span class="n">Slider</span><span class="o">*</span> <span class="n">slider</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">slider</span> <span class="o">==</span> <span class="n">eventFrequency</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">setParameter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">slider</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">());</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">comboBoxChanged</span><span class="p">(</span><span class="n">ComboBox</span><span class="o">*</span> <span class="n">comboBox</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">comboBox</span> <span class="o">==</span> <span class="n">outputBitSelector</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">setParameter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">comboBox</span><span class="o">-&gt;</span><span class="n">getSelectedId</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// subtract 1 to convert to zero-based indexing</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally, we need to update our process method to make use of these parameters:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="n">AudioSampleBuffer</span><span class="o">*</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="p">{</span>
+
+   <span class="kt">int</span> <span class="n">totalSamples</span> <span class="o">=</span> <span class="n">getNumSamples</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+   <span class="kt">int</span> <span class="n">eventIntervalInSamples</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">sampleRate</span> <span class="o">*</span> <span class="n">eventIntervalMs</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">shouldTriggerEvent</span><span class="p">)</span>
+   <span class="p">{</span>
+
+      <span class="c1">// add an event at the first sample.</span>
+      <span class="n">uint8</span> <span class="n">ttlData</span> <span class="o">=</span> <span class="nb">true</span> <span class="o">&lt;&lt;</span> <span class="n">outputBit</span><span class="p">;</span>
+
+      <span class="n">TTLEventPtr</span> <span class="n">event</span> <span class="o">=</span> <span class="n">TTLEvent</span><span class="o">::</span><span class="n">createTTLEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span>
+                                                      <span class="n">getTimestamp</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                                      <span class="o">&amp;</span><span class="n">ttlData</span><span class="p">,</span>
+                                                      <span class="k">sizeof</span><span class="p">(</span><span class="n">uint8</span><span class="p">),</span>
+                                                      <span class="n">outputBit</span><span class="p">);</span>
+
+      <span class="n">addEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+      <span class="n">shouldTriggerEvent</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="n">eventWasTriggered</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="n">triggeredEventCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">eventWasTriggered</span><span class="p">)</span>
+         <span class="n">triggeredEventCounter</span><span class="o">++</span><span class="p">;</span>
+
+      <span class="c1">// Turn off manually triggered event after selected interval</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">triggeredEventCounter</span> <span class="o">==</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">uint8</span> <span class="n">ttlData</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+         <span class="n">TTLEventPtr</span> <span class="n">event</span> <span class="o">=</span> <span class="n">TTLEvent</span><span class="o">::</span><span class="n">createTTLEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span>
+                                                      <span class="n">getTimestamp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span>
+                                                      <span class="o">&amp;</span><span class="n">ttlData</span><span class="p">,</span>
+                                                      <span class="k">sizeof</span><span class="p">(</span><span class="n">uint8</span><span class="p">),</span>
+                                                      <span class="n">outputBit</span><span class="p">);</span>
+
+         <span class="n">addEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+         <span class="n">eventWasTriggered</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+         <span class="n">triggeredEventCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
+      <span class="p">{</span>
+
+         <span class="n">state</span> <span class="o">=</span> <span class="o">!</span><span class="n">state</span><span class="p">;</span>
+
+         <span class="n">uint8</span> <span class="n">ttlData</span> <span class="o">=</span> <span class="n">state</span> <span class="o">&lt;&lt;</span> <span class="n">outputBit</span><span class="p">;</span>
+
+         <span class="n">TTLEventPtr</span> <span class="n">event</span> <span class="o">=</span> <span class="n">TTLEvent</span><span class="o">::</span><span class="n">createTTLEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span>
+                                                      <span class="n">getTimestamp</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span>
+                                                      <span class="o">&amp;</span><span class="n">ttlData</span><span class="p">,</span>
+                                                      <span class="k">sizeof</span><span class="p">(</span><span class="n">uint8</span><span class="p">),</span>
+                                                      <span class="n">outputBit</span><span class="p">);</span>
+
+         <span class="n">addEvent</span><span class="p">(</span><span class="n">eventChannel</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+
+         <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+      <span class="p">}</span>
+
+      <span class="c1">// reset counter to 0 if it goes out of bounds</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
+         <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And that’s it! If you compile and test your plugin, the UI elements in the editor should now change the events that appear in the LFP Viewer.</p>
+<img alt="Plugin in signal chain" src="../_images/makeyourownplugin-06.png" />
+</div>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>This plugin are a number of ways this plugin could be enhanced. To practice creating different kinds of UI elements, you could try implementing some of the features below, or come up with your own!</p>
+<ul class="simple">
+<li><p>Ensure an “OFF” event is sent when the output bit is changed.</p></li>
+<li><p>Add a button that turns the plugin’s output on and off.</p></li>
+<li><p>Add an editable label that can be used to define the time between ON/OFF events (currently the output bit flips at a 50% duty cycle).</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Data-Synchronization.html" title="previous page">Synchronizing Data Streams</a>
+    <a class='right-next' id="next-link" href="../FAQ/index.html" title="next page">FAQs</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2021, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

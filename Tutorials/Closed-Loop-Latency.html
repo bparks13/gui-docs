@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Measuring Closed-Loop Latency &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Synchronizing Data Streams" href="Data-Synchronization.html" />
+    <link rel="prev" title="Tutorials" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/oe_logo_circle.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../User-Manual/index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="">Measuring Closed-Loop Latency</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="Data-Synchronization.html">Synchronizing Data Streams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="How-To-Make-Your-Own-Plugin.html">How To Make Your Own Plugin</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#required-hardware" class="nav-link">Required hardware</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#configuring-the-arduinos" class="nav-link">Configuring the Arduinos</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#connecting-the-devices" class="nav-link">Connecting the devices</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#building-the-signal-chain" class="nav-link">Building the signal chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#measuring-system-latency" class="nav-link">Measuring system latency</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#settings-that-affect-latency" class="nav-link">Settings that affect latency</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#next-steps" class="nav-link">Next steps</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="measuring-closed-loop-latency">
+<span id="closedlooplatency"></span><h1>Measuring Closed-Loop Latency<a class="headerlink" href="#measuring-closed-loop-latency" title="Permalink to this headline">¶</a></h1>
+<p>One of the key features of the Open Ephys GUI is that it provides the ability to reconfigure your signal chains on the fly. “Source” plugins that acquire neural data can be combined with “filter” plugins that detect salient events, which can be linked to “Sink” plugins that can trigger electrical or optical stimulation to the brain. Because of the modular nature of the GUI, the same closed-loop signal chain can be used with a variety of different data sources.</p>
+<p>When using the GUI for closed-loop feedback experiments, all of the data processing happens in <em>software</em>, which limits the speed at which the system can respond to incoming events. In general, you can expect about 20-30 milliseconds of delay between the time at which the external event occurs, and the time at which the GUI generates an output in respond to that event. There are ways to reduce this delay, as this tutorial will explain, but given the limitations of both hardware and software, it will never reach sub-millisecond precision. Nevertheless, this timescale is still useful for a wide range of closed-loop paradigms, including:</p>
+<ul class="simple">
+<li><p>Delivering stimulation at the onset of seizure-like activity (using the <a class="reference internal" href="../User-Manual/Plugins/Multiband-Integrator.html#multibandintegrator"><span class="std std-ref">Multi-Band Integrator</span></a> plugin)</p></li>
+<li><p>Triggering feedback at a specific phase of an ongoing oscillation (using the <a class="reference internal" href="../User-Manual/Plugins/Phase-Calculator.html#phasecalculator"><span class="std std-ref">Phase Calculator</span></a> plugin)</p></li>
+<li><p>Activating an output when an analog signal crosses a threshold (using the <a class="reference internal" href="../User-Manual/Plugins/Crossing-Detector.html#crossingdetector"><span class="std std-ref">Crossing Detector</span></a> plugin)</p></li>
+</ul>
+<p>This tutorial will guide you through the steps involved in setting up a signal chain capable of delivering closed-loop feedback. It will show you how to measure the latency of your setup, and will discuss the tradeoffs involved in attempting to minimize latency.</p>
+<div class="section" id="required-hardware">
+<h2>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>1 <a class="reference external" href="https://open-ephys.org/acquisition-system/eux9baf6a5s8tid06hk1mw5aafjdz1">Open Ephys Acquisition Board</a> with 5V power supply and USB cable (headstages are optional)</p></li>
+<li><p>2 <a class="reference external" href="https://open-ephys.org/acquisition-system/io-board-pcb">Open Ephys I/O Boards</a> with HDMI cables</p></li>
+<li><p>2 Arduinos with 5V operating voltage (e.g. <a class="reference external" href="https://store.arduino.cc/usa/arduino-uno-rev3">Arduino Uno</a>). along with the appropriate USB cables</p></li>
+<li><p>2 BNC cables</p></li>
+<li><p>2 BNC Female-to-Binding Post Adapters (e.g., <a class="reference external" href="https://www.thorlabs.com/thorproduct.cfm?partnumber=T1452">Thorlabs T1452</a>)</p></li>
+<li><p>4 hookup wires (minimum 5” long) with bare ends</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s possible to carry out the steps below with an alternative set of hardware components. Cases where substitutes can be used will be explained throughout the tutorial. If you’d like to test closed-loop latency with a different set of components, we recommend reading through the tutorial first.</p>
+</div>
+</div>
+<div class="section" id="configuring-the-arduinos">
+<h2>Configuring the Arduinos<a class="headerlink" href="#configuring-the-arduinos" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to make sure the Arduinos are running the correct firmware.</p>
+<p><strong>Arduino #1</strong> will be generating the signal that our system will respond to. In this example, we will use the “Blink” sketch that’s included as a built-in example in the IDE. This sketch makes one of the Arduino’s digital pins alternate between 0V and 5V levels at 1 second intervals. It can be substituted with a device that can be programmed to generate similar behavior, such as a signal generator or a National Instruments DAQ.</p>
+<p>To configure Arduino #1, follow the steps below:</p>
+<ol class="arabic simple">
+<li><p>Launch the Arduino IDE (available from <a class="reference external" href="https://www.arduino.cc/en/software">arduino.cc</a>)</p></li>
+<li><p>In the “File” menu, open “Examples &gt; 01.Basic &gt; Blink”</p></li>
+</ol>
+<img alt="Arduino Blink sketch" src="../_images/closedlooplatency-01.png" />
+<ol class="arabic simple">
+<li><p>Connect the Arduino to the computer via USB</p></li>
+<li><p>In the “Tools &gt; Port” menu, make sure the correct device is selected</p></li>
+<li><p>Use the “Upload” (right arrow) button to upload the Blink sketch to your device</p></li>
+</ol>
+<p>When the sketch is successfully uploaded, a yellow LED on the Arduino should blink at 1 s intervals.</p>
+<p><strong>Arduino #2</strong> will be delivering our feedback signal by communicating with the <a class="reference internal" href="../User-Manual/Plugins/Arduino-Output.html#arduinooutput"><span class="std std-ref">Arduino Output</span></a> plugin inside the GUI. It can be substituted with another device that works with the GUI, such as a <a class="reference external" href="https://sanworks.io/shop/viewproduct?productID=1102">Pulse Pal</a> from Sanworks.</p>
+<p>To configure Arduino #2, follow the steps listed above, but upload the “File &gt; Examples &gt; Firmata &gt; StandardFirmata” sketch:</p>
+<img alt="Arduino Firmata sketch" src="../_images/closedlooplatency-02.png" />
+</div>
+<div class="section" id="connecting-the-devices">
+<h2>Connecting the devices<a class="headerlink" href="#connecting-the-devices" title="Permalink to this headline">¶</a></h2>
+<p>Once the Arduinos have been configured, connect the various devices according to the schematic below:</p>
+<img alt="Device connections for closed-loop latency tutorial" src="../_images/closedlooplatency-03.png" />
+<ul class="simple">
+<li><p>The <strong>acquisition board</strong> should be connected to the computer via USB.</p></li>
+<li><p><strong>I/O board #1</strong> should be connected to the <code class="code docutils literal notranslate"><span class="pre">ANALOG</span> <span class="pre">INPUT</span></code> port (2nd from left) of the acquisition board via HDMI.</p></li>
+<li><p><strong>I/O board #2</strong> should be connected to the <code class="code docutils literal notranslate"><span class="pre">DIGITAL</span> <span class="pre">INPUT</span></code> port (4th from the left) of the acquisition board via HDMI.</p></li>
+<li><p><strong>Arduino #1</strong> should be powered via USB. Use the hookup wire to connect pin 13 to the positive (red) terminal of the BNC adapter and the ground pin to the negative (black) terminal of the BNC adapter.</p></li>
+<li><p><strong>Arduino #2</strong> should be connected via USB to the same computer as the acquisition board. Use the hookup wire to connect pin 13 to the positive (red) terminal of the BNC adapter and the ground pin to the negative (black) terminal of the BNC adapter.</p></li>
+<li><p>Use one BNC cable to connect the <strong>BNC adapter</strong> for Arduino #1 to input channel 1 of I/O board #1</p></li>
+<li><p>Use the other BNC cable to connect the <strong>BNC adapter</strong> for Arduino #2 to input channel 2 of I/O board #2</p></li>
+</ul>
+</div>
+<div class="section" id="building-the-signal-chain">
+<h2>Building the signal chain<a class="headerlink" href="#building-the-signal-chain" title="Permalink to this headline">¶</a></h2>
+<p>Once all of the devices are connected, launch the Open Ephys GUI. Starting with an empty signal chain, add the following plugins, from left to right:</p>
+<ol class="arabic simple">
+<li><p><strong>Rhythm FPGA</strong> - It should automatically detect and connect to the acquisition board. Press the “ADC” button to add the analog input channels to the data stream.</p></li>
+<li><p><strong>Crossing Detector</strong> - If this plugin does not appear in the signal chain, it can be added via the Plugin Installer (File &gt; Plugin Installer). Change the “threshold” value to 3. If there are headstages connected, set the input channel (“IN”) to the first ADC channel (number of headstage channels + 1).</p></li>
+<li><p><strong>Arduino Output</strong> - Select the “Device” that corresponds to Arduino #2, the “Trig” channel to 1.</p></li>
+<li><p><strong>Record Node</strong> - Use the default settings.</p></li>
+<li><p><strong>LFP Viewer</strong> - Open the LFP Viewer in a tab using the button in the upper right corner of the plugin editor.</p></li>
+</ol>
+<p>The final signal chain should look like this:</p>
+<img alt="Signal chain for closed-loop latency tutorial." src="../_images/closedlooplatency-04.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Setting the LFP Viewer to trigger when an event appears on channel 1 will ensure that the display is always aligned with the incoming events.</p>
+</div>
+</div>
+<div class="section" id="measuring-system-latency">
+<h2>Measuring system latency<a class="headerlink" href="#measuring-system-latency" title="Permalink to this headline">¶</a></h2>
+<p>Press the play button to start data acquisition. You should be able to visualize the signal on ADC channel 1 alternating between 0 and 5 volts (in the example screenshot above, the Arduino signal is emitting a 3.3 V signal). There should be a very short (5 ms) event that coincides with the rising edge of this signal, and another short event that occurs shortly thereafter. The first event represents the time of the low-to-high transition picked up by the Crossing Detector, while the second event represents the digital output delivered by Arduino #2.</p>
+<p>If these events do not appear as expected, double-check that the hardware connections and signal chain are configured correctly.</p>
+<p>Once you can see the events in the LFP Viewer, hit the record button to save data. After about 2 minutes, hit the play button  to stop acquisition and recording.</p>
+<p>The following code snippet shows how to load the event data using the <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools">open-ephys-python-tools</a> library, and plot the intervals between events on channel 1 (from the Crossing Detector) and channel 2 (from the Arduino Output):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">open_ephys.analysis</span> <span class="kn">import</span> <span class="n">Session</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="s1">&#39;/path/to/recording&#39;</span><span class="p">)</span>  <span class="c1"># create a Session object</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">recordnodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">recordings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">events</span>  <span class="c1"># load the events DataFrame</span>
+
+<span class="n">trigger</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span>
+               <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span> <span class="c1"># select the &quot;on&quot; events on channel 1</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span>
+                <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span> <span class="c1"># select the &quot;on&quot; events on channel 2</span>
+
+<span class="n">t_response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="mi">30000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c1"># convert to ms</span>
+<span class="n">t_trigger</span> <span class="o">=</span> <span class="n">trigger</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="mi">30000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c1"># convert to ms</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t_response</span> <span class="o">-</span> <span class="n">t_trigger</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This should generate a plot that looks like this:</p>
+<img alt="Latency histogram for 23 ms buffer." src="../_images/closedlooplatency-05.png" />
+<p>This indicates the distribution of latencies for your system.</p>
+</div>
+<div class="section" id="settings-that-affect-latency">
+<h2>Settings that affect latency<a class="headerlink" href="#settings-that-affect-latency" title="Permalink to this headline">¶</a></h2>
+<p>The Open Ephys GUI (and most other software for real-time processing) moves data around using <em>buffers</em>. Each buffer contains a block of samples for a set of channels. The larger the buffer (in terms of samples or channels), the more time it takes to process, and hence higher latency. However, larger buffers can typically have higher <em>throughput</em>, because the overhead involved in initiating each buffer exchange consumes a smaller fraction of overall processing time.</p>
+<p>There are two types of buffers that affect the latency in this setup. The first is the hardware-to-software buffer that is used to transmit data between the acquisition board and the Rhythm FPGA plugin. Because the USB protocol has a high amount of overhead for each data packet, this buffer is set to 10 ms at 30 kHz. If using a different type of transmission interface (such as Ethernet or PCIe), much smaller buffer sizes are possible. Changing the size of this buffer for the Rhythm FPGA plugin requires editing the source code and re-compiling the GUI.</p>
+<p>The second, and more easily configurable, type of buffer is the one used to pass data between plugins in the GUI’s signal chain. The size of this buffer can be changed by opening the “Audio Settings” interface, accessible via the “latency” button in the GUI’s control panel. The samples displayed in the latency interface are based on the sample rate of your computer’s audio card (44.1 kHz in most cases).</p>
+<img alt="Audio settings interface." src="../_images/closedlooplatency-07.png" />
+<p>The default latency is 23 ms, which works well for most open-loop signal chains. If you’re delivering closed-loop feedback, it may be desirable to use a lower latency setting. However, keep in mind that smaller buffers have lower throughput, which may cause the CPU meter to spike.</p>
+<p>Here is what the same latency measurements look like for a 10 ms and 5 ms buffer size:</p>
+<img alt="Latency histogram for 10 ms and 5 ms buffers." src="../_images/closedlooplatency-06.png" />
+<p>Note the diminishing returns for a 5 ms buffer, due to the fact that overall latency is limited by the size of the USB buffer.</p>
+<p>The minimum latency is also affected by the number of continuous channels that are being processed simultaneously. If your CPU meter is spiking for smaller buffer sizes, try reducing the number of continuous channels by disabling unused channels with a <a class="reference internal" href="../User-Manual/Plugins/Channel-Map.html#channelmap"><span class="std std-ref">Channel Map</span></a> plugin.</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Once you’ve gotten the above setup working, it can be helpful to try using the <a class="reference internal" href="../User-Manual/Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a> plugin to trigger feedback. For example, you could use the <code class="code docutils literal notranslate"><span class="pre">data_stream_16ch_hippocampus</span></code> dataset that’s included in the example data in combination with a <a class="reference internal" href="../User-Manual/Plugins/Bandpass-Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a> and <a class="reference internal" href="../User-Manual/Plugins/Phase-Detector.html#phasedetector"><span class="std std-ref">Phase Detector</span></a> plugin to replicate the theta-phase-specific stimulation used in <a class="reference external" href="https://elifesciences.org/articles/03061">Siegle et al., 2014</a>. In this case, you won’t be able to measure the true latency, but it will allow you to test out a signal chain that can be used in an actual experiment.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Tutorials</a>
+    <a class='right-next' id="next-link" href="Data-Synchronization.html" title="next page">Synchronizing Data Streams</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2021, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

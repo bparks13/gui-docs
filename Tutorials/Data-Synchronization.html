@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synchronizing Data Streams &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How To Make Your Own Plugin" href="How-To-Make-Your-Own-Plugin.html" />
+    <link rel="prev" title="Measuring Closed-Loop Latency" href="Closed-Loop-Latency.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/oe_logo_circle.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../User-Manual/index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="Closed-Loop-Latency.html">Measuring Closed-Loop Latency</a>
+                </li>
+            
+          
+            
+                <li class="active">
+                    <a href="">Synchronizing Data Streams</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="How-To-Make-Your-Own-Plugin.html">How To Make Your Own Plugin</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#general-principles-of-synchronization" class="nav-link">General principles of synchronization</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#hardware-configuration" class="nav-link">Hardware Configuration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#software-configuration" class="nav-link">Software Configuration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#monitoring-and-recording" class="nav-link">Monitoring and Recording</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#loading-and-processing" class="nav-link">Loading and Processing</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#questions" class="nav-link">Questions?</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="synchronizing-data-streams">
+<span id="synchronization"></span><h1>Synchronizing Data Streams<a class="headerlink" href="#synchronizing-data-streams" title="Permalink to this headline">¶</a></h1>
+<p>The Open Ephys GUI is able to acquire, process, and save data from multiple asynchronous data streams simultaneously. However, even if two data streams have identical sample rates, they are neither guaranteed to start acquisition simultaneously nor acquire data at exactly the advertised sample rate. Therefore, some synchronization procedure is required.</p>
+<p>Synchronization is typically performed offline, using the timing events on a “sync line” that is shared between each data acquisition device. But the GUI can also be configured to synchronize data from separate streams in real time, as it is being written to disk. This tutorial uses the example of Neuropixels probes and a National Instruments Data Acquisition (NIDAQ) device to demonstrate how to synchronize data streams online.</p>
+<div class="section" id="general-principles-of-synchronization">
+<h2>General principles of synchronization<a class="headerlink" href="#general-principles-of-synchronization" title="Permalink to this headline">¶</a></h2>
+<p>Whether synchronization is being performed online or offline, all data streams must share a common hardware sync line. Synchronization in software is accurate to within a few milliseconds, but is not precise enough for synchronizing electophysiogical signals acquired at tens of kilohertz.</p>
+<p>The following diagram demonstrates the basic logic behind hardware-level synchronization:</p>
+<img alt="Hardware synchronization diagram" class="align-center" src="../_images/sync-overview-01.png" />
+<p>There are two data streams, <em>A</em> and <em>B</em>, which have approximately the same sample rate. However, they start at slightly different times, and the clocks drift apart over the course of the recording. Therefore, it’s impossible to know which samples occurred simultaneously without comparing them to a reference signal that’s shared across the two data streams</p>
+<p>In this example, there are a few sample numbers that are important to note:</p>
+<ul class="simple">
+<li><p>The samples at which the recordings were stopped and started (<strong>10</strong> and <strong>114</strong> for <em>Stream A</em>, and <strong>25</strong> and <strong>127</strong> for <em>Stream B</em>).</p></li>
+<li><p>The samples at which the first recorded low-to-high transition on the sync line occurred (<strong>112</strong> for <em>Stream A</em> and <strong>27</strong> for <em>Stream B</em>).</p></li>
+<li><p>The samples at which the last recorded low-to-high transition on the sync line occurred (<strong>27</strong> for <em>Stream A</em> and <strong>125</strong> for <em>Stream B</em>).</p></li>
+</ul>
+<p>With this information in hand, we can translate all of the timestamps from <em>Stream A</em> into timestamps from <em>Stream B</em>, and vice versa.</p>
+<p>First, we’ll compute a scaling factor, which is the ratio of the total number of samples between the first and last sync transitions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t_first_A</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">t_last_A</span> <span class="o">=</span> <span class="mi">112</span>
+
+<span class="n">t_first_B</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">t_last_B</span> <span class="o">=</span> <span class="mi">125</span>
+
+<span class="n">scaling</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_last_A</span> <span class="o">-</span> <span class="n">t_first_A</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_last_B</span> <span class="o">-</span> <span class="n">t_first_B</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, the scaling factor is equal to <code class="code docutils literal notranslate"><span class="pre">100</span> <span class="pre">/</span> <span class="pre">98</span></code>, or 1.0204.</p>
+<p>Now, we can translate all the timestamps from <em>Stream B</em> into timestamps from <em>Stream A</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timestamps_B</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span>
+<span class="n">timestamps_A</span> <span class="o">=</span> <span class="p">(</span><span class="n">timestamps_B</span> <span class="o">-</span> <span class="n">t_first_B</span><span class="p">)</span> <span class="o">*</span> <span class="n">scaling</span> <span class="o">+</span> <span class="n">t_first_A</span>
+</pre></div>
+</div>
+<p>We can check this by plugging in the value of the last sync transition time on <em>Stream B</em>: <code class="code docutils literal notranslate"><span class="pre">(125</span> <span class="pre">-</span> <span class="pre">127)</span> <span class="pre">*</span> <span class="pre">1.02</span> <span class="pre">+</span> <span class="pre">12</span> <span class="pre">=</span> <span class="pre">111.96</span></code>. Rounded to the nearest integer, this is <strong>112</strong>, which is the actual time of the last sync transition on <em>Stream A</em>.</p>
+<p>Understanding how to perform this basic procedure is extremely useful, since it will allow you to synchronize any data streams, even ones that are recorded by different data acquisition systems. As long as they share one digital input line, they can be synchronized offline.</p>
+<p>The Open Ephys GUI can perform these calculations in real time, provided the hardware and software are set up correctly. However, it’s still important to know what’s going on under the hood, in case you need to troubleshoot your setup.</p>
+</div>
+<div class="section" id="hardware-configuration">
+<h2>Hardware Configuration<a class="headerlink" href="#hardware-configuration" title="Permalink to this headline">¶</a></h2>
+<p>When using the <a class="reference internal" href="../User-Manual/Plugins/Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> and <a class="reference internal" href="../User-Manual/Plugins/NIDAQmx.html#nidaqmx"><span class="std std-ref">NIDAQmx</span></a> plugins, there are two options for setting up the sync line:</p>
+<ol class="arabic simple">
+<li><p>Use the built-in sync output of the Neuropixels PXI basestation.</p></li>
+<li><p>Use a separate device, such as an Arduino, to generate a sync signal that is routed to the Neuropixels PXI basestation and the NIDAQ device.</p></li>
+</ol>
+<p>In the first case, the Neuropixels’ basestation can be configured to output its own physical clock signal that can be output as an input into the NIDAQ device:</p>
+<ol class="arabic simple">
+<li><p>Connect one end of an SMA cable to the SMA connector at the bottom of the Neuropixels basestation.</p></li>
+<li><p>Connect the other end of the SMA cable to a digital input channel of the NIDAQ device*.</p></li>
+</ol>
+<img alt="NPX + NIDAQ" class="align-center" src="../_images/config_1.png" />
+<p>The advantage of this option is that it doesn’t require any additional devices. However, the Neuropixels basestation can only generate pulses at regular intervals (1 Hz or 10 Hz), which can make it ambiguous which pulses were the first and last, especially if you’re synchronizing data streams outside of the Open Ephys GUI.</p>
+<p>In the second case, the Neuropixels’ basestation can be configured as an input accepting the digital output of an Arduino, for example:</p>
+<ol class="arabic simple">
+<li><p>Connect one end of an SMA cable to the SMA connector at the bottom of the Neuropixels basestation.</p></li>
+<li><p>Connect the other end of the SMA cable to a digital output channel of the Arduino.</p></li>
+<li><p>Connect the same digital output of the Arduino into a digital input channel of the NIDAQ device.</p></li>
+</ol>
+<img alt="NPX + NIDAQ + Arduino" class="align-center" src="../_images/config_2.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>You will likely need an adapter to match the digital terminals.</p></li>
+</ul>
+</div>
+<p>The Arduino can be configured to generate sync pulses at pseudo-random intervals, which makes it possible to align data streams in an unambiguous way, even if they are stopped at started at different times.</p>
+<p>For the purposes of this tutorial, either configuration will work.</p>
+</div>
+<div class="section" id="software-configuration">
+<h2>Software Configuration<a class="headerlink" href="#software-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Online synchronization only occurs within a the Open Ephys GUI’s RecordNode as data is written to disk. This means that data coming into and out of a RecordNode in a signal chain is not necessarily synchronized. In order to synchronize online, the RecordNode must be configured to match the active hardware configuration:</p>
+<ol class="arabic simple">
+<li><p>Download the Neuropixels-PXI and NIDAQmx source processors via “File &gt; Plugin Installer”.</p></li>
+<li><p>Insert a Neuropixels-PXI source processor into the signal chain.</p></li>
+<li><p>If using the Neuropixels-PXI to generate the sync pulses (option 1 above), change the default selection on the sync control pull-down menu from <code class="code docutils literal notranslate"><span class="pre">INPUT</span></code> to <code class="code docutils literal notranslate"><span class="pre">OUTPUT</span></code>. Use the default clock rate of 1 Hz.</p></li>
+<li><p>Insert a NIDAQmx source processor into the signal chain (it will automatically create a new branch).</p></li>
+<li><p>Select the Neuropixels-PXI processor in the signal chain and insert a Merger processor directly after it.</p></li>
+<li><p>Right click on the title bar of the Merger and select “NIDAQmx” as the source processor to merge with.</p></li>
+<li><p>Insert a RecordNode after the merger.</p></li>
+<li><p>Select the ||| on the left side of the RecordNode to access the stream buffer monitors. The right most buffer monitor represents the NIDAQ stream, and any remaining buffers to the left represent the Neuropixels streams (two buffers at 30 kHz and 2.5 kHz for each 1.0 probe, one buffer at 30 kHz for each 2.0 probe).</p></li>
+<li><p>Under each buffer monitor, click on the sync line monitor to select the digital input channel which matches the physical sync channel used in your hardware configuration. For Neuropixels there is only one channel available so it is automatically selected. For NIDAQ devices, there will likely be multiple digital channels available; select the channel used in the hardware that is connected to your sync signal.</p></li>
+<li><p>Designate one of the streams to be the master processor. By default this will be the 30 kHz band of the first probe detected.</p></li>
+<li><p>Ensure the Binary Format is selected in the RecordNode, as this is currently the only format that supports online synchronization.</p></li>
+<li><p>Ensure “Record Events” is enabled in the RecordNode.</p></li>
+</ol>
+<img alt="Record Node Syncing" class="align-center" src="../_images/sync-tutorial-01.png" />
+</div>
+<div class="section" id="monitoring-and-recording">
+<h2>Monitoring and Recording<a class="headerlink" href="#monitoring-and-recording" title="Permalink to this headline">¶</a></h2>
+<p>At this point, the GUI is configured to write synchronized data to disk. In order to acquire and record synchronized data:</p>
+<ol class="arabic simple">
+<li><p>Start data acquisition by pressing the Play button in the Control Panel. The sync monitors turn orange once acquisition starts and then green as each stream becomes synchronized.</p></li>
+<li><p>Wait until all the orange sync monitors turn green. This generally happens instantaneously, however, in some cases it may take a few seconds to stabilize.</p></li>
+<li><p>Start recording by pressing the Record button in the Control Panel. Data streams with green sync control monitors will be written to disk with synchronized timestamps.</p></li>
+</ol>
+<img alt="Record Node Synchronized" class="align-center" src="../_images/sync-tutorial-02.png" />
+</div>
+<div class="section" id="loading-and-processing">
+<h2>Loading and Processing<a class="headerlink" href="#loading-and-processing" title="Permalink to this headline">¶</a></h2>
+<p>First, read the <a class="reference external" href="https://open-ephys.github.io/gui-docs/User-Manual/Recording-data/Binary-format.html">Binary Format Docs</a>.
+Synchronized data streams written to disk will contain an additional <code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code> file alongside the <code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> file.
+The <code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code> file contains one float timestamp (in seconds) for every integer timestamp (in sample number) found in the corresponding <code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> file. The <code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code> file provides a common time base to which timestamps belonging to the corresponding stream are mapped to.</p>
+<p>Events detected in a synchronized stream will only save their timestamps as sample numbers since acquisition started. For example, an event that occurred at sample number <code class="code docutils literal notranslate"><span class="pre">405012</span></code> will correspond to the continuous sample that occurred at timestamp <code class="code docutils literal notranslate"><span class="pre">405012</span></code>, which can then be mapped back to the common time base timestamp in the <code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code> file.</p>
+<p>For spike data, the values in <code class="code docutils literal notranslate"><span class="pre">spike_times.npy</span></code> represent the sample index at which the spike occurred, relative to the beginning of the <code class="code docutils literal notranslate"><span class="pre">continuous.dat</span></code> file. To get the actual timestamp at which the spike occurred, you must add the first timestamp from <code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> in the corresponding continuous data stream the spike was detected in. Again, that timestamp can be mapped back to the common time base timestamp in the <code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code> file.</p>
+<p>More information regarding offline analysis can be found <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools/tree/main/open_ephys/analysis">here</a> for Python tools and <a class="reference external" href="https://github.com/open-ephys/open-ephys-matlab-tools/tree/master/open_ephys/analysis">here</a> for Matlab tools.</p>
+</div>
+<div class="section" id="questions">
+<h2>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<p>If anything is still unclear after reading this tutorial, please reach out to <code class="code docutils literal notranslate"><span class="pre">support&#64;open-ephys.org</span></code>, we will respond directly and update the tutorial as needed.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Closed-Loop-Latency.html" title="previous page">Measuring Closed-Loop Latency</a>
+    <a class='right-next' id="next-link" href="How-To-Make-Your-Own-Plugin.html" title="next page">How To Make Your Own Plugin</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2021, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
