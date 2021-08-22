@@ -605,7 +605,7 @@
 </div>
 <div class="section" id="built-in-self-tests">
 <h2>Built-in self tests<a class="headerlink" href="#built-in-self-tests" title="Permalink to this headline">¶</a></h2>
-<p>If you have a probe that’s not working properly, these tests can be used to help pinpoint where the problem lies.</p>
+<p>If you have a probe that’s not working properly, these tests can be used to help pinpoint where the problem lies. It’s not recommended to run the tests prior to every recording; the tests are only necessary to diagnose an issue with a probe that is not transmitting data.</p>
 <p>To run each test, select one from the drop-down menu, and click the “RUN” button. After the test completes, the name of the test will be updated to indicated whether it passed or failed.</p>
 <table class="colwidths-given table" id="id2">
 <caption><span class="caption-text">Built-in self tests</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
@@ -659,11 +659,19 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the “probe signal” and “probe noise” tests fail, it does not necessarily indicate that the probe is broken. If your probe is successfully transmitting data, the outcome of these tests can be ignored.</p>
+</div>
 </div>
 <div class="section" id="headstage-tests">
 <h2>Headstage tests<a class="headerlink" href="#headstage-tests" title="Permalink to this headline">¶</a></h2>
 <p>If you have a headstage test module, you can run a suite of tests to ensure the headstage is functioning properly. When the Neuropix plugin is dropped into the signal chain and at least one headstage test module is connected to the PXI system, the GUI will automatically run all headstage tests and output the results in a popup window:</p>
 <a class="reference internal image-reference" href="../../_images/HST.png"><img alt="Headstage test board popup window" src="../../_images/HST.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The headstage test module will only work if you have <em>not</em> updated your basestation firmware. However, we have also found that the headstage tests are rarely needed to accurately diagnose a problem with data transmission. If you are unsure whether your headstage is functional, swapping it out with a different headstage is usually more informative than running the headstage tests.</p>
+</div>
 </div>
 <div class="section" id="updating-basestation-firmware">
 <h2>Updating basestation firmware<a class="headerlink" href="#updating-basestation-firmware" title="Permalink to this headline">¶</a></h2>
