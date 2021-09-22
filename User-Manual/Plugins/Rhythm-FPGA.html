@@ -52,7 +52,7 @@
 
     <a class="navbar-brand" href="../../index.html">
     
-      <img src="../../_static/oe_logo_circle.svg" class="logo" alt="logo" />
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
     
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -417,6 +417,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more in-depth documentation on the Open Ephys Acquisition Board, please refer to the <a class="reference external" href="https://open-ephys.github.io/acq-board-docs/">Acquisition Board docs site</a>.</p>
+</div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="data-streams">
@@ -437,7 +441,7 @@
 </div>
 <div class="section" id="dsp-button">
 <h3>DSP button<a class="headerlink" href="#dsp-button" title="Permalink to this headline">¶</a></h3>
-<p>in addition to the analog filters, the Intan chips also have an on-chip DSP high cut filter for removing the DC offset on each channel. This can be toggled on and off by clicking the “DSP” button (yellow = on), and the cutoff frequency can be changed by typing a value into the associated text box. Again, there are only certain values for the cutoff frequency; the chip will choose the one closest to what you selected and return this value to the GUI.</p>
+<p>in addition to the analog filters, the Intan chips also have an on-chip DSP high-pass filter for removing the DC offset on each channel. This can be toggled on and off by clicking the “DSP” button (yellow = on), and the cutoff frequency can be changed by typing a value into the associated text box. Again, there are only certain values for the cutoff frequency; the chip will choose the one closest to what you selected and return this value to the GUI.</p>
 </div>
 <div class="section" id="audio-output">
 <h3>Audio output<a class="headerlink" href="#audio-output" title="Permalink to this headline">¶</a></h3>
