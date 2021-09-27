@@ -328,6 +328,24 @@
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#packet-format" class="nav-link">Packet format</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#spikes" class="nav-link">Spikes</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#ttl-events" class="nav-link">TTL Events</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#receiving-data-in-python" class="nav-link">Receiving data in Python</a>
+        </li>
+    
     </ul>
 </nav>
 
@@ -373,7 +391,75 @@
 </table>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Description goes here.</p>
+<p><strong>Restart connection</strong>: Resets the ZeroMQ data streaming backend</p>
+<p><strong>Port number</strong>: modify the port number from which this plugin will send data</p>
+<p><strong>Format</strong>: event packet format (<code class="code docutils literal notranslate"><span class="pre">Header/JSON</span></code> recommended)</p>
+</div>
+<div class="section" id="packet-format">
+<h2>Packet format<a class="headerlink" href="#packet-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="spikes">
+<h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;spike&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;sortedID&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="s2">&quot;numChannels&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+   <span class="s2">&quot;threshold&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+   <span class="s2">&quot;timing&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;sampleRate&quot;</span> <span class="p">:</span> <span class="mi">40000</span><span class="p">,</span>
+      <span class="s2">&quot;timestamp&quot;</span> <span class="p">:</span> <span class="mi">372649</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;identifier&quot;</span> <span class="p">:</span> <span class="s2">&quot;spikesource&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;ST  p102.0 n3&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;metadata&quot;</span> <span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ttl-events">
+<h3>TTL Events<a class="headerlink" href="#ttl-events" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;ttl&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;channel&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="s2">&quot;data&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+   <span class="s2">&quot;timing&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;sampleRate&quot;</span> <span class="p">:</span> <span class="mi">40000</span><span class="p">,</span>
+      <span class="s2">&quot;timestamp&quot;</span> <span class="p">:</span> <span class="mi">594829</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;identifier&quot;</span> <span class="p">:</span> <span class="s2">&quot;dataderived.phase.peak.positive&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Phase detector output 1&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;metadata&quot;</span> <span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="receiving-data-in-python">
+<h2>Receiving data in Python<a class="headerlink" href="#receiving-data-in-python" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools/blob/main/open_ephys/streaming/">open-ephys-python-tools</a> repository for a more complete implementation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zmq</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;tcp://localhost:5557&quot;</span>
+
+<span class="n">context</span> <span class="o">=</span> <span class="n">zmq</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span>
+<span class="n">socket</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUB</span><span class="p">)</span>
+<span class="n">socket</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">eventType</span> <span class="ow">in</span> <span class="p">(</span><span class="sa">b</span><span class="s1">&#39;ttl&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;spike&#39;</span><span class="p">):</span>
+   <span class="n">socket</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">zmq</span><span class="o">.</span><span class="n">SUBSCRIBE</span><span class="p">,</span> <span class="n">eventType</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">info</span><span class="p">):</span>
+   <span class="c1">#do something with the incoming data</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+   <span class="n">parts</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">recv_multipart</span><span class="p">()</span>
+
+   <span class="n">event_info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+
+   <span class="n">callback</span><span class="p">(</span><span class="n">event_info</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
