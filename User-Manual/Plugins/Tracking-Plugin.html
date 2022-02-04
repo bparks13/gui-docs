@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tracking Plugin &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Virtual Reference" href="Virtual-Reference.html" />
+    <link rel="prev" title="Stream Muxer" href="Stream-Muxer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+          
+            
+                <li class="">
+                    <a href="../Before-you-begin.html">Before you begin</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Installing-the-GUI.html">Installing the GUI</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Exploring-the-user-interface.html">Exploring the user interface</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Building-a-signal-chain.html">Building a signal chain</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Recording-data/index.html">Recording data</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="index.html">Plugins</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Bandpass-Filter.html">Bandpass Filter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Channel-Map.html">Channel Map</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Common-Average-Reference.html">Common Average Reference</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Crossing-Detector.html">Crossing Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Ephys-Socket.html">Ephys Socket</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Event-Broadcaster.html">Event Broadcaster</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Falcon-Output.html">Falcon Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="File-Reader.html">File Reader</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="LFP-Viewer.html">LFP Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="MATLAB-Interface.html">MATLAB Interface</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Merger.html">Merger</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Multiband-Integrator.html">Multi-Band Integrator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Network-Events.html">Network Events</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Neuropixels-PXI.html">Neuropixels PXI</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="NIDAQmx.html">NIDAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Phase-Calculator.html">Phase Calculator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Phase-Detector.html">Phase Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Probe-Viewer.html">Probe Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Pulse-Pal.html">Pulse Pal</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Record-Control.html">Record Control</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Rectifier.html">Rectifier</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Serial-Port.html">Serial Port</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spectrum-Viewer.html">Spectrum Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Detector.html">Spike Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Sorter.html">Spike Sorter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Viewer.html">Spike Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Splitter.html">Splitter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Stream-Muxer.html">Stream Muxer</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">Tracking Plugin</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Virtual-Reference.html">Virtual Reference</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="ZMQ-Interface.html">ZMQ Interface</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin Configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#setting-up-the-camera" class="nav-link">Setting up the camera</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#setting-up-bonsai" class="nav-link">Setting up Bonsai</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#tracking-port" class="nav-link">Tracking Port</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#tracking-stimulator" class="nav-link">Tracking Stimulator</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#tracking-visualizer" class="nav-link">Tracking Visualizer</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="tracking-plugin">
+<span id="trackingplugin"></span><h1>Tracking Plugin<a class="headerlink" href="#tracking-plugin" title="Permalink to this headline">¶</a></h1>
+<img alt="Annotated Tracking Plugin Editors" src="../../_images/trackingplugin-01.png" />
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Enables closed-loop stimulation based on position information streamed from Bonsai.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
+<td><p>Source, Filter, and Sink</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux, macOS</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Built in?</em></p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Key Developers</em></p></td>
+<td><p>Alessio Buccino</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin">https://github.com/open-ephys-plugins/tracking-plugin</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Tracking Plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to  “Tracking Plugin”, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="plugin-configuration">
+<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This documentation is adapted from the <a class="reference external" href="https://github.com/CINPLA/tracking-plugin/wiki">CINPLA wiki</a>). More information about the Tracking Plugin can be found in <a class="reference external" href="https://iopscience.iop.org/article/10.1088/1741-2552/aacf45/meta">this publication</a>.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="Overview of the components needed to use the Tracking Plugin effectively." src="../../_images/system_overview.png" />
+<p>This figure shows a block diagram of the system needed to use the Tracking Plugin effectively. It assumes there is a subject (a freely moving animal) outfitted with <strong>recording electrodes and two LEDs</strong>. The electrophysiology data are acquired with the Open Ephys GUI. In this case, the Open Ephys acquisition board is used as the data interface, but any compatible recording system would also work.</p>
+<p>A <strong>camera</strong> is positioned above the environment to capture the location of the LEDs on the subject’s head. The images are streamed to Bonsai, which extracts the position of the LEDs in real-time and streams this information to the Open Ephys GUI, using the OSC (Open Sound Control) protocol. A PointGrey camera is used in this example, but any camera that is compatible with Bonsai (including webcams) would also work. Synchronization between the camera and electrophysiology data is performed by recording the camera shutter events using the Open Ephys I/O board.</p>
+<p>To deliver closed-loop feedback as a function of position, the Open Ephys GUI must be connected to a <strong>stimulation device</strong>, such as an Arduino (or in this example) as Pulse Pal. The outputs of the stimulation device are used to optical or electrical stimulation to the brain, and the timing of any output pulses are also recorded using the Open Ephys I/O board.</p>
+<div class="section" id="setting-up-the-camera">
+<h3>Setting up the camera<a class="headerlink" href="#setting-up-the-camera" title="Permalink to this headline">¶</a></h3>
+<p>These instructions assume you have a FLIR <a class="reference external" href="https://www.flir.com/products/flea3-usb3/">Flea3</a> (formerly Point Grey) camera. Configuration for other cameras may differ.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Bonsai FlyCapture package has combatibility issues with the FlyCapture SDK version &gt;2.11. Therefore, we recommend installing SDK v2.11 from this <a class="reference external" href="https://groups.google.com/forum/#!msg/bonsai-users/Wq2Bo1DnCD8/jb0BfvIVAgAJ">link on the Bonsai forum</a></p>
+</div>
+<p>From the FlyCapture software, you can activate GPIO triggers that can be recorded with the Open Ephys board for precise synchronization, and also change the frame rate.</p>
+</div>
+<div class="section" id="setting-up-bonsai">
+<h3>Setting up Bonsai<a class="headerlink" href="#setting-up-bonsai" title="Permalink to this headline">¶</a></h3>
+<p>If you haven’t already, <a class="reference external" href="https://bonsai-rx.org/docs/installation/">install Bonsai</a>. After opening Bonsai, find the package manager and install the <strong>Vision</strong>, <strong>Vision Design</strong>, <strong>PointGrey</strong>, <strong>OSC</strong>, <strong>OSC Design</strong>, and <strong>Scripting</strong> packages.</p>
+<p>Once everything is installed, download and unzip the files in <a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin/raw/master/Resources/tracking-plugin-bonsai.zip">this directory</a>. Then, open the <code class="code docutils literal notranslate"><span class="pre">tracking.bonsai</span></code> workflow file in Bonsai.</p>
+<p>If you don’t have a PointGrey camera available, replace the <code class="code docutils literal notranslate"><span class="pre">FlyCapture</span></code> operator with one that’s compatible with your camera.</p>
+<p>The directory contains a configuration file <code class="code docutils literal notranslate"><span class="pre">osc.config</span></code> that sets up two OSC ports:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">RedPort</span></code>: port = 27020, address = <code class="code docutils literal notranslate"><span class="pre">/red</span></code>, ip_address = <code class="code docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">GreenPort</span></code>: port = 27021, address = <code class="code docutils literal notranslate"><span class="pre">/green</span></code>, ip_address = <code class="code docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
+</ul>
+<p>To start the workflow, press the “Play” button within Bonsai. This will start acquiring camera frames, extracting LED positions (if available), and streaming position information via OSC.</p>
+</div>
+<div class="section" id="tracking-port">
+<h3>Tracking Port<a class="headerlink" href="#tracking-port" title="Permalink to this headline">¶</a></h3>
+<p>On the Open Ephys GUI side, the “Tracking Port” plugin receives tracking data from Bonsai. The data are streamed from an OSC (Open Sound Control) server and each packet contains 4 floats: x and y positions, width, and height of the field. You can add and delete new sources using the <code class="code docutils literal notranslate"><span class="pre">+</span></code> and <code class="code docutils literal notranslate"><span class="pre">-</span></code> buttons. The port, address, and color used to represent the incoming data can also be configured within the plugin’s editor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Tracking Port only support <code class="code docutils literal notranslate"><span class="pre">localhost</span></code> at the moment, so Bonsai must be running on the same computer as the Open Ephys GUI.</p>
+</div>
+</div>
+<div class="section" id="tracking-stimulator">
+<h3>Tracking Stimulator<a class="headerlink" href="#tracking-stimulator" title="Permalink to this headline">¶</a></h3>
+<p>The “Tracking Stimulator”, when placed downstream from the “Tracking Port”, allows the user to create regions of interest within the camera’s field of view. Whenever the subject enters one of these regions, the plugin emits TTL events that can be used to trigger closed-loop feedback.</p>
+<p>Regions of interest can manually drawn, dragged, resized (double click), copied (ctrl+c), pasted (ctrl+v), and deleted (del). Alternatively, the parameters for each circle (x_position, y_position, and radius from 0 to 1) can be entered using the editable labels on the right side of the visualizer. Each circle can be inactivated using the <code class="code docutils literal notranslate"><span class="pre">ON</span></code> toggle button.</p>
+<p>On the top right of the visualizer, the user can select an input source as well as a TTL output channel for each circle.</p>
+<p>Stimulation is triggered ONLY when the toggle button in the editor (bottom left) is set to <code class="code docutils literal notranslate"><span class="pre">ON</span></code>.</p>
+<p>When within the selected circles, the tracking cue becomes red and TTL events are generated on the selected Output channel. There are two operation modes controlled by the buttons:</p>
+<ul class="simple">
+<li><p><strong>UNIFORM</strong>: a TTL train with a constant frequency fmax (user-defined) is generated when the position is within selected regions. In this mode, the colors of the circles are uniformly orange/yellow.</p></li>
+<li><p><strong>GAUSSIAN</strong>: the frequency of the TTL train is Gaussian modulated. When the position is in the center of each circle, the frequency is fmax, when it is on the border of a circle the frequency is sd * fmax. In the case displayed in the following figure, the frequency in the center is 2 Hz and the frequency on the borders is 0.5 * 2 = 1 Hz. In this mode, the colors of the circles are graded, darker in the center and lighter on the borders.</p></li>
+</ul>
+</div>
+<div class="section" id="tracking-visualizer">
+<h3>Tracking Visualizer<a class="headerlink" href="#tracking-visualizer" title="Permalink to this headline">¶</a></h3>
+<p>The “Tracking Visualizer” displays the tracking data received from the “Tracking Port” (or any other plugin sending Tracking Data binary events) in real-time. The available Tracking Data sources are shown in the Sources list box on the left and multiple selection is allowed. The “clear” button clears the path trajectories.</p>
+<p>The figure below shows a simulated spiral-like trajectory:</p>
+<img alt="Screenshot of the Tracking Visualizer plugin." src="../../_images/trackingvisualizer.png" />
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Stream-Muxer.html" title="previous page">Stream Muxer</a>
+    <a class='right-next' id="next-link" href="Virtual-Reference.html" title="next page">Virtual Reference</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

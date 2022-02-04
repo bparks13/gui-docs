@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Falcon Output &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File Reader" href="File-Reader.html" />
+    <link rel="prev" title="Event Triggered Average" href="Event-Triggered-Average.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+          
+            
+                <li class="">
+                    <a href="../Before-you-begin.html">Before you begin</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Installing-the-GUI.html">Installing the GUI</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Exploring-the-user-interface.html">Exploring the user interface</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Building-a-signal-chain.html">Building a signal chain</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Recording-data/index.html">Recording data</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="index.html">Plugins</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Bandpass-Filter.html">Bandpass Filter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Channel-Map.html">Channel Map</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Common-Average-Reference.html">Common Average Reference</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Crossing-Detector.html">Crossing Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Ephys-Socket.html">Ephys Socket</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Event-Broadcaster.html">Event Broadcaster</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">Falcon Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="File-Reader.html">File Reader</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="LFP-Viewer.html">LFP Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="MATLAB-Interface.html">MATLAB Interface</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Merger.html">Merger</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Multiband-Integrator.html">Multi-Band Integrator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Network-Events.html">Network Events</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Neuropixels-PXI.html">Neuropixels PXI</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="NIDAQmx.html">NIDAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Phase-Calculator.html">Phase Calculator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Phase-Detector.html">Phase Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Probe-Viewer.html">Probe Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Pulse-Pal.html">Pulse Pal</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Record-Control.html">Record Control</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Rectifier.html">Rectifier</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Serial-Port.html">Serial Port</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spectrum-Viewer.html">Spectrum Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Detector.html">Spike Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Sorter.html">Spike Sorter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Viewer.html">Spike Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Splitter.html">Splitter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Stream-Muxer.html">Stream Muxer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Tracking-Plugin.html">Tracking Plugin</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Virtual-Reference.html">Virtual Reference</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="ZMQ-Interface.html">ZMQ Interface</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin Configuration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#latency-measurements" class="nav-link">Latency Measurements</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="falcon-output">
+<span id="falconoutput"></span><h1>Falcon Output<a class="headerlink" href="#falcon-output" title="Permalink to this headline">¶</a></h1>
+<img alt="Annotated Falcon Output Editor" src="../../_images/falconoutput-01.png" />
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Streams all continuous channels with low latency.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
+<td><p>Sink</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Built in?</em></p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Key Developers</em></p></td>
+<td><p>Marine Chaput</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/falcon-output">https://github.com/open-ephys-plugins/falcon-output</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Falcon Output plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to the “Falcon Output” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="plugin-configuration">
+<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<p>This plugin will stream all incoming continuous channels via a ZMQ socket. The only setting available to the user is the output port. To use a port other than the default (3335), change the text field in the plugin’s editor to the desired port number, and click “Set Port.”</p>
+</div>
+<div class="section" id="latency-measurements">
+<h2>Latency Measurements<a class="headerlink" href="#latency-measurements" title="Permalink to this headline">¶</a></h2>
+<p>This plugin has been originally developed to stream Neuropixels data from the Open Ephys GUI to <a class="reference external" href="https://falcon-core.readthedocs.io/en/latest/">Falcon</a>, a Linux-based library used for real-time processing of neural data.</p>
+<p>To run the latency tests, the following configuration was used:</p>
+<img alt="Hardware + software configuration for latency measurmements" src="../../_images/falcon_use_case.png" />
+<p>A Neuropixels probe was placed in a saline bath, with the bath connected to the positive terminal of signal generator outputting a sine wave signal. Neuropixels data was acquired on a Windows computer using a PXIe system and the Open Ephys <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin. A Falcon Output plugin was placed downstream in the signal chain, to stream the data over a network connection.</p>
+<p>On a separate computer running Linux, the Falcon signal chain was configured with an OpenEphysZMQ processor, a Threshold Detector processor, and a SerialOutput processor. Whenever the incoming sine wave crossed a threshold, Falcon triggered an output from an Arduino, which was acquired by the digital input of the PXIe system.</p>
+<p>The total roundtrip time of this system had the following characteristics:</p>
+<ul class="simple">
+<li><p><strong>Median:</strong>: 9.2 ms</p></li>
+<li><p><strong>Standard deviation:</strong> 1.3 ms</p></li>
+<li><p><strong>Maximum:</strong> 13 ms</p></li>
+</ul>
+<p>Therefore, when using one Neuropixels probe, this configuration is suitable for closed-loop feedback experiments that require a minimum response time of around 10 ms.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Event-Triggered-Average.html" title="previous page">Event Triggered Average</a>
+    <a class='right-next' id="next-link" href="File-Reader.html" title="next page">File Reader</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

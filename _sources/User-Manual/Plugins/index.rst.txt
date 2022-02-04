@@ -119,6 +119,7 @@ Find the :code:`.dll` / :code:`.so` / :code:`.bundle` file of the plugin you wan
     Ephys-Socket
     Event-Broadcaster
     Event-Triggered-Average
+    Falcon-Output
     File-Reader
     Intan-Recording-Controller
     LFP-Viewer
@@ -143,6 +144,8 @@ Find the :code:`.dll` / :code:`.so` / :code:`.bundle` file of the plugin you wan
     Spike-Viewer
     Splitter
     Stream-Muxer
+    Tracking-Plugin
+    Virtual-Reference
     ZMQ-Interface
     
     
