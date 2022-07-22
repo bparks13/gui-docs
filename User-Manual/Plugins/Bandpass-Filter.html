@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Channel Map" href="Channel-Map.html" />
-    <link rel="prev" title="Arduino Output" href="Arduino-Output.html" />
+    <link rel="prev" title="Audio Monitor" href="Audio-Monitor.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="active">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,11 +335,25 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#filter-parameters" class="nav-link">Filter parameters</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#selecting-channels" class="nav-link">Selecting channels</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#filter-specs" class="nav-link">Filter specs</a>
+            <a href="#filter-details" class="nav-link">Filter details</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-multiple-data-streams" class="nav-link">Working with multiple data streams</a>
         </li>
     
     </ul>
@@ -360,11 +372,8 @@
   <div class="section" id="bandpass-filter">
 <span id="bandpassfilter"></span><h1>Bandpass Filter<a class="headerlink" href="#bandpass-filter" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Bandpass Filter settings interface" src="../../_images/bandpassfilter-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Filters incoming continuous data between the specified low cutoff and high cutoff frequencies (Hz) using a 2nd-order Butterworth filter.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Filters incoming continuous data between the specified low cutoff and high cutoff frequencies (Hz) using a 2nd-order Butterworth filter (maximally flat frequency response in the passband).</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -383,28 +392,51 @@
 <td><p>Josh Siegle</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/FilterNode">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/FilterNode</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/FilterNode">https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/FilterNode</a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Individual channels can be set to have different parameters by highlighting them in the “PARAMS” tab in the hidden drawer on the right side of the plugin editor. The editor displays the parameters of the most recently selected channel(s).</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Occasionally, the filter settings will only update for every other channel. If this happens, remove the Bandpass Filter from the signal chain and drag another one back in.</p>
+<div class="section" id="filter-parameters">
+<h3>Filter parameters<a class="headerlink" href="#filter-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The bandpass filter has two parameters, <code class="code docutils literal notranslate"><span class="pre">LOW_CUT</span></code> and <code class="code docutils literal notranslate"><span class="pre">HIGH_CUT</span></code>. These parameters define the upper and lower cutoff frequencies of the filter, respectively. To change these values, simply type a different number into either text box.</p>
+<p><strong>Acceptable parameter range:</strong> The minimum value for both parameters is 0.1 Hz, and the maximum value is 15,000 Hz. The low cut cannot be set to a value that’s higher than the high cut, and the high cut cannot be set to a value that’s lower than the low cut.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Filter parameters can be changed during recording, but these changes will not be logged. The parameters that are active at the start of recording will be stored in the <code class="code docutils literal notranslate"><span class="pre">settings.xml</span></code> file.</p>
 </div>
 </div>
-<div class="section" id="filter-specs">
-<h2>Filter specs<a class="headerlink" href="#filter-specs" title="Permalink to this headline">¶</a></h2>
-<p>To obtain the same filter in MATLAB, you can use:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span> <span class="p">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">lowcut</span> <span class="n">highcut</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">samplerate</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span>
+<div class="section" id="selecting-channels">
+<h3>Selecting channels<a class="headerlink" href="#selecting-channels" title="Permalink to this headline">¶</a></h3>
+<p>The filtering operation can be restricted to a subset of channels, if desired. For example, if a data stream includes ADC channels, these can be deactivated in the “Channels” interface. In the following example, the filter will be applied to channels 1-11, and channels 12-16 will be ignored.</p>
+<img alt="Annotated Bandpass Filter channel selector" src="../../_images/bandpassfilter-03.png" />
+</div>
+</div>
+<div class="section" id="filter-details">
+<h2>Filter details<a class="headerlink" href="#filter-details" title="Permalink to this headline">¶</a></h2>
+<p>To obtain the same filter in MATLAB, you can use the following commands from the Signal Processing Toolbox:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span> <span class="p">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">lowcut</span> <span class="n">highcut</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">samplerate</span><span class="o">/</span><span class="mi">2</span><span class="p">));</span> <span class="c">% filter order is 2x the first argument</span>
 
 <span class="n">y</span> <span class="p">=</span> <span class="n">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span> <span class="c">% only filters in the forward direction</span>
 </pre></div>
 </div>
-<p>where <code class="code docutils literal notranslate"><span class="pre">lowcut</span></code> and <code class="code docutils literal notranslate"><span class="pre">highcut</span></code> are low and high cutoff frequencies (Hz), <code class="code docutils literal notranslate"><span class="pre">samplerate</span></code> is the sampling frequency (Hz), <code class="code docutils literal notranslate"><span class="pre">x</span></code> is the unfiltered data, and <code class="code docutils literal notranslate"><span class="pre">y</span></code> is the filtered data.</p>
-<p>This is correct despite the fact that MATLAB’s documentation claims it should produce a 4th-order filter (it uses a different convention).</p>
+<p>To obtain the same filter in Python, you can use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">butter</span><span class="p">,</span> <span class="nb">filter</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">samplerate</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;bandpass&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># only filters in the forward direction</span>
+</pre></div>
+</div>
+<p>In both examples, <code class="code docutils literal notranslate"><span class="pre">lowcut</span></code> and <code class="code docutils literal notranslate"><span class="pre">highcut</span></code> are low and high cutoff frequencies (Hz), <code class="code docutils literal notranslate"><span class="pre">samplerate</span></code> is the data sample rate (Hz), <code class="code docutils literal notranslate"><span class="pre">x</span></code> is the unfiltered data, and <code class="code docutils literal notranslate"><span class="pre">y</span></code> is the filtered data.</p>
+</div>
+<div class="section" id="working-with-multiple-data-streams">
+<h2>Working with multiple data streams<a class="headerlink" href="#working-with-multiple-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>If the Bandpass Filter plugin receives data from multiple incoming streams, a subset of these streams can be bypassed to conserve CPU cycles. For example, this can be helpful for Neuropixels probes if you only want to filter the LFP band channels, and not the AP band channels. Bypassing a stream is more efficient than deselecting all of its channels, as the plugin only needs to perform one check for the whole stream, rather than checking every channel.</p>
+<p>To bypass a stream in the Bandpass Filter, click the vertical lines on the right-hand side of the plugin to bring up the Stream Selector, browse to the appropriate stream, and make sure the “Bypass” button is checked.</p>
+<img alt="Annotated Bandpass Filter bypass operation" src="../../_images/bandpassfilter-02.png" />
 </div>
 </div>
 
@@ -414,7 +446,7 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="Arduino-Output.html" title="previous page">Arduino Output</a>
+    <a class='left-prev' id="prev-link" href="Audio-Monitor.html" title="previous page">Audio Monitor</a>
     <a class='right-next' id="next-link" href="Channel-Map.html" title="next page">Channel Map</a>
 
               </div>

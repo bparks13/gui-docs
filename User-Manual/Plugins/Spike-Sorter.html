@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,6 +335,10 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
         </li>
     
@@ -356,11 +358,8 @@
   <div class="section" id="spike-sorter">
 <span id="spikesorter"></span><h1>Spike Sorter<a class="headerlink" href="#spike-sorter" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Spike Sorter settings interface" src="../../_images/spikesorter-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Detects spikes in continuous data and packages them as events that can be read by downstream processors. Makes it possible to assign IDs to individual units using box sorting and PCA methods.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Sorts spikes based on manually drawn boxes in waveform space, or boundaries in PCA space. Must be used in combination with a plugin that generates spikes, such as the <a class="reference internal" href="Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a>.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -376,33 +375,47 @@
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Shay Ohayon</p></td>
+<td><p>Shay Ohayon, Josh Siegle</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/SpikeSorter">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/SpikeSorter</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/spike-sorter">https://github.com/open-ephys-plugins/spike-sorter</a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Spike Sorter’s functionality is a superset of the <a class="reference internal" href="Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a>. In addition to detecting spikes from continuous signals. The Spike Detector will stick around for a while, but there’s nothing that it can do that the Spike Sorter can’t.</p>
+<p>As of GUI version 0.6.0, the Spike Sorter no longer detects spikes on its own. Instead, it must be placed downstream of the <a class="reference internal" href="Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a>, allowing it to apply sorted IDs to the incoming spikes. This change was made in order to prevent the need for redundant functionality between these two plugins.</p>
+</div>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Spike Sorter plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Spike Sorter” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
 </div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>To initialize the spike sorter, you must configure the electrode layout. Here are the steps to follow:</p>
+<p>In order to use the Spike Sorter, you must have at least upstream plugin that generates spikes. Currently, the only plugin capable of generating spikes is the <a class="reference internal" href="Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a>. Please refer to that plugin’s documentation page to understand how to create and configure electrodes.</p>
+<p>Downstream plugins will be able to access the <code class="code docutils literal notranslate"><span class="pre">sortedId</span></code> for all spikes that pass through the Spike Sorter. Note that these IDs will only be written to disk by Record Nodes that are placed to the <em>right</em> of the Spike Sorter.</p>
+<p>All of the Spike Sorter configuration happens inside its visualizer. This can be accessed by clicking the “window” or “tab” buttons in the upper right of the Spike Sorter editor:</p>
+<img alt="Spike sorter configuration window" src="../../_images/spikesorter-02.png" />
+<p>To select an electrode to configure, either use the drop-down menu in the Spike Sorter editor, or press the <strong>&lt;&lt;</strong> and <strong>&gt;&gt;</strong> buttons to browse through consecutive electrodes.</p>
+<p>The Spike Sorter visualizer contains two main sections:</p>
 <ol class="arabic simple">
-<li><p>Use the arrow buttons to select the number of electrodes you want to add.</p></li>
-<li><p>Click on the plus button and select the type of electrodes you want (single electrodes, stereotrodes, or tetrodes).</p></li>
-<li><p>Use the buttons in the upper-right to open the Spike Sorter display in a tab (left icon) or new window (right icon):</p></li>
+<li><p>On the left is the waveform view, which shows the waveforms of incoming spikes on the active electrode.</p></li>
+<li><p>On the right is the PCA view, which represents each waveform as a dot in 2D principal component space.</p></li>
 </ol>
-<img alt="Spike Sorter PCA view" src="../../_images/spike_sorter_pca.png" />
+<p>The Spike Sorter includes the following tools:</p>
+<ul class="simple">
+<li><p><strong>New Box Unit</strong> - Creates a new Box Unit in the waveform view. Any spikes with waveforms that cross through this box will be assigned to this unit. The boundaries of the box can be dragged freely, or the entire box can be dragged. For multi-channel electrodes (e.g. stereotrodes or tetrodes), Box Units can only be configured for the first channel.</p></li>
+<li><p><strong>Add Box</strong> - Add an additional box to the currently selected Box Unit. Spikes will only be assigned to this unit if their waveforms pass through <em>all</em> boxes.</p></li>
+<li><p><strong>New Polygon Unit</strong> - Creates a new Polygon Unit in the PCA view. After pressing this button, click and drag in the PCA view to define the boundaries of this unit. Once a Polygon Unit is created, it can be dragged in PCA space, but its boundaries cannot be modified. Note that polygons can only be drawn <em>after</em> the initial PCs have been calculated (this usually takes a few seconds after acquisition begins).</p></li>
+<li><p><strong>Delete</strong> - Deletes the currently selected (Polygon or Box) unit.</p></li>
+<li><p><strong>Re-PCA</strong> - Re-calculates the principal components from scratch.</p></li>
+<li><p><strong>New IDs</strong> - Generates new unique IDs for units across all electrodes.</p></li>
+<li><p><strong>Delete All</strong> - Deletes all units on the active electrode.</p></li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Within the Spike Sorter display, you can change thresholds (by dragging the red threshold lines) You can also add “Box Units” (e.g., unit #1 in the image above) in the waveform display and “Polygon Units” (e.g. unit #2 and unit #3) in PCA space. The image above is a bad example, since these do not define actual well-isolated clusters.</p>
-<p>To send a given electrode to the Audio Output, click the “Monitor” button.</p>
-<p>As with the Spike Detector, spikes will only be saved if a Record Node is downstream of this plugin.</p>
-<p>The advancer and DAC output functions are not currently supported.</p>
 </div>
 </div>
 

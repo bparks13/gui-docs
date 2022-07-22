@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuropixels CAR &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Neuropixels PXI" href="Neuropixels-PXI.html" />
+    <link rel="prev" title="Network Events" href="Network-Events.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Developer-Guide/index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+          
+            
+                <li class="">
+                    <a href="../Before-you-begin.html">Before you begin</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Hardware-requirements.html">Hardware requirements</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Installing-the-GUI.html">Installing the GUI</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Exploring-the-user-interface.html">Exploring the user interface</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Building-a-signal-chain.html">Building a signal chain</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Recording-data/index.html">Recording data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="index.html">Plugins</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Bandpass-Filter.html">Bandpass Filter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Channel-Map.html">Channel Map</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Common-Average-Reference.html">Common Average Reference</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Crossing-Detector.html">Crossing Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Ephys-Socket.html">Ephys Socket</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Event-Broadcaster.html">Event Broadcaster</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Event-Translator.html">Event Translator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Falcon-Output.html">Falcon Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="File-Reader.html">File Reader</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="LFP-Viewer.html">LFP Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="MATLAB-Interface.html">MATLAB Interface</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Merger.html">Merger</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Multiband-Integrator.html">Multi-Band Integrator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Network-Events.html">Network Events</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">Neuropixels CAR</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Neuropixels-PXI.html">Neuropixels PXI</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Phase-Calculator.html">Phase Calculator</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Phase-Detector.html">Phase Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Probe-Viewer.html">Probe Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Pulse-Pal.html">Pulse Pal</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Record-Control.html">Record Control</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spectrum-Viewer.html">Spectrum Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Detector.html">Spike Detector</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Sorter.html">Spike Sorter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Spike-Viewer.html">Spike Viewer</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Splitter.html">Splitter</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Tracking-Plugin.html">Tracking Plugin</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Virtual-Reference.html">Virtual Reference</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="ZMQ-Interface.html">ZMQ Interface</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-usage" class="nav-link">Plugin usage</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#neuropixels-sampling-pattern" class="nav-link">Neuropixels sampling pattern</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="neuropixels-car">
+<span id="neuropixelscar"></span><h1>Neuropixels CAR<a class="headerlink" href="#neuropixels-car" title="Permalink to this headline">¶</a></h1>
+<img alt="Annotated Neuropixels CAR editor" src="../../_images/neuropixels-car-01.png" />
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">A common average reference optimized for use with Neuropixels probes.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
+<td><p>Filter</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux, macOS</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Built in?</em></p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Key Developers</em></p></td>
+<td><p>Josh Siegle</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-car">https://github.com/open-ephys-plugins/neuropixels-car</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Neuropixels CAR plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Neuropixels CAR” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="plugin-usage">
+<h2>Plugin usage<a class="headerlink" href="#plugin-usage" title="Permalink to this headline">¶</a></h2>
+<p>The Neuropixels CAR plugin automatically detects which data streams are generated by Neuropixels probes. Therefore, it will only work with data generated by the <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin. Data streams from other plugins will pass through unchanged.</p>
+<p>If a Neuropixels data stream is detected, the Neuropixels probe type will be displayed in the plugin editor. The Neuropixels CAR plugin will use information about the Neuropixels ADC layout to perform common average referencing only on channels that are sampled simultaneously. This removes noise more effectively than the <a class="reference internal" href="Common-Average-Reference.html#commonaveragereference"><span class="std std-ref">Common Average Reference</span></a>, which is typically applied across all channels at once.</p>
+<p>The <strong>Channels</strong> button can be used to mask out particular channels from the averaging operation, for example if there are any channels that are in the air (i.e., not in a solution that is conductive with the brain).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This plugin uses an <em>averaging</em> operation, rather than a <em>median</em> operation, because the average across channels is much faster to calculate in real time. However, because averaging is more sensitive to outliers, it is recommended to save data prior to applying the Neuropixels CAR, and to use median subtraction to remove noise <em>offline</em>, prior to spike sorting (for example using <a class="reference external" href="https://spikeinterface.readthedocs.io/en/latest/modules/preprocessing/plot_1_preprocessing.html#sphx-glr-modules-preprocessing-plot-1-preprocessing-py">SpikeInterface</a>).</p>
+</div>
+</div>
+<div class="section" id="neuropixels-sampling-pattern">
+<h2>Neuropixels sampling pattern<a class="headerlink" href="#neuropixels-sampling-pattern" title="Permalink to this headline">¶</a></h2>
+<p>All Neuropixels probes have fewer ADCs (analog-to-digital converters) than channels, so data from multiple channels is temporally <em>multiplexed</em> across each ADC. Because common noise is more likely to be shared across channels that are sampled simultaneously, using information about the Neuropixels ADC sampling pattern can remove noise more effectively.</p>
+<p>Neuropixels 1.0 probes have 16 ADCs, each of which digitizes 12 channels (for a total of 384). Neuropixels 2.0 probes have 12 ADCs, each of which digitizes 16 channels (for a total of 384). The following diagrams show the sampling pattern for each probe type (simultaneously sampled channels have the same color):</p>
+<img alt="Annotated Neuropixels 1.0 and 2.0 shanks" src="../../_images/neuropixels-car-02.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Network-Events.html" title="previous page">Network Events</a>
+    <a class='right-next' id="next-link" href="Neuropixels-PXI.html" title="next page">Neuropixels PXI</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

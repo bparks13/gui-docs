@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,11 +335,47 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#usage" class="nav-link">Usage</a>
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#data-packets" class="nav-link">Data Packets</a>
+            <a href="#plugin-configuration" class="nav-link">Plugin Configuration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#data-packets" class="nav-link">Data Packets</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#message-envelope" class="nav-link">Message Envelope</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#message-header" class="nav-link">Message Header</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#continuous-data" class="nav-link">Continuous data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#event-data" class="nav-link">Event data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#spike-data" class="nav-link">Spike data</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#message-data" class="nav-link">Message Data</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#example-code" class="nav-link">Example Code</a>
         </li>
     
     </ul>
@@ -360,18 +394,15 @@
   <div class="section" id="zmq-interface">
 <span id="zmqinterface"></span><h1>ZMQ Interface<a class="headerlink" href="#zmq-interface" title="Permalink to this headline">¶</a></h1>
 <img alt="ZMQ interface" src="../../_images/zmqinterface-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Sends continuous data and events to external applications, making it possible to create advanced visualization and monitoring add-ons, such as <a class="reference external" href="https://github.com/hangyabalazs/opeth">OPETH</a></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Sends continuous data, events, and spikes to external applications using the ZeroMQ library, making it possible to create advanced visualization and monitoring add-ons, such as <a class="reference external" href="https://github.com/hangyabalazs/opeth">OPETH</a></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
-<td><p>Filter</p></td>
+<td><p>Sink</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Platforms</em></p></td>
 <td><p>Windows, Linux, macOS</p></td>
@@ -380,10 +411,10 @@
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Francesco Battaglia, András Széll</p></td>
+<td><p>Francesco Battaglia, András Széll, Anjal Doshi</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/ZMQInterface">https://github.com/open-ephys-plugins/ZMQInterface</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/zmq-interface">https://github.com/open-ephys-plugins/zmq-interface</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -391,22 +422,96 @@
 <p class="admonition-title">Tip</p>
 <p>The client application may be written in any language/platform supporting ZeroMQ.</p>
 </div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>The example code for receiving continuous data is written in Python, although in principle it should be possible from any language supporting ZeroMQ.
-Currently, ZMQInterface doesn’t support handling event data. If you want to send or receive event data in Open Ephys using ZMQ, use the NetworkEvents and EventBroadcaster plugins from the ZMQPlugins repo.</p>
-<p>In the python_clients/ZMQPlugins directory of the original repo, you’ll find an example python client called simple_plotter_zmq.py which plots the continuous data received from the Open Ephys GUI over a network port (see image below).</p>
-<img alt="ZMQ Client in Python" src="../../_images/zmqinterface-02.png" />
-<p>There are two important things that needs to be taken care of by the client app. One is, setup a heartbeat protocol to maintain connection between Open Ephys GUI and the client app. The other is receiving the continuous data from the GUI and handling it on the client app.</p>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The ZMQ Interface plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “ZMQ Interface” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="plugin-configuration">
+<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The plugin editor contains three editable parameters:</p>
+<ol class="arabic simple">
+<li><p><strong>Stream:</strong> Select an incoming data stream to use. Each ZMQ Interface plugin can only send one stream at a time. To send data from multiple streams, place several plugins in series.</p></li>
+<li><p><strong>Channels:</strong> The continuous data channels to send (all are selected by default).</p></li>
+<li><p><strong>Data Port:</strong> Port number for the ZMQ socket.</p></li>
+</ol>
+<p>The editor also shows a list of clients connected to the plugin via the listening port (5557). If a client is successfully connected, then its name will show up in green in the list once acquisition has started. If the client disconnects while acquisition is active, its name will turn red.</p>
 </div>
 <div class="section" id="data-packets">
 <h2>Data Packets<a class="headerlink" href="#data-packets" title="Permalink to this headline">¶</a></h2>
-<p>The data packets sent by ZMQInterface are multipart messages divided into three parts</p>
-<ol class="arabic simple">
-<li><p><strong>Message Envelope:</strong> The type of message being received, either DATA or EVENT.</p></li>
-<li><p><strong>Message Header:</strong> An array of message header attributes and its values: message number, type (data, spike, or event), number of channels, number of samples, number of real samples, timestamp, and the sample rate.</p></li>
-<li><p><strong>Message Data:</strong> The actual continuous data.</p></li>
-</ol>
+<p>The ZMQ Interface send multi-part ZMQ messages. Each message consists of three parts:</p>
+<div class="section" id="message-envelope">
+<h3>Message Envelope<a class="headerlink" href="#message-envelope" title="Permalink to this headline">¶</a></h3>
+<p>Contains the type of message being received (<code class="code docutils literal notranslate"><span class="pre">data</span></code>, <code class="code docutils literal notranslate"><span class="pre">spike</span></code>, or <code class="code docutils literal notranslate"><span class="pre">event</span></code>), as well as the index of the message (<code class="code docutils literal notranslate"><span class="pre">message_num</span></code>).</p>
+</div>
+<div class="section" id="message-header">
+<h3>Message Header<a class="headerlink" href="#message-header" title="Permalink to this headline">¶</a></h3>
+<p>A JSON string containing information about the incoming data packet.</p>
+<div class="section" id="continuous-data">
+<h4>Continuous data<a class="headerlink" href="#continuous-data" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;stream&quot;</span> <span class="p">:</span> <span class="n">stream</span> <span class="n">name</span>
+<span class="s2">&quot;channel_num&quot;</span> <span class="p">:</span> <span class="n">local</span> <span class="n">channel</span> <span class="n">index</span>
+<span class="s2">&quot;num_samples&quot;</span><span class="p">:</span> <span class="n">num</span> <span class="n">of</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">buffer</span>
+<span class="s2">&quot;sample_num&quot;</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">first</span> <span class="n">sample</span>
+<span class="s2">&quot;sample_rate&quot;</span><span class="p">:</span> <span class="n">sampling</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">this</span> <span class="n">channel</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="event-data">
+<h4>Event data<a class="headerlink" href="#event-data" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;stream&quot;</span> <span class="p">:</span> <span class="n">stream</span> <span class="n">name</span>
+<span class="s2">&quot;source_node&quot;</span> <span class="p">:</span> <span class="n">processor</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">generated</span> <span class="n">the</span> <span class="n">event</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">specifies</span> <span class="n">TTL</span> <span class="n">vs</span><span class="o">.</span> <span class="n">message</span><span class="p">,</span>
+<span class="s2">&quot;sample_num&quot;</span><span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">event</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="spike-data">
+<h4>Spike data<a class="headerlink" href="#spike-data" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;stream&quot;</span> <span class="p">:</span> <span class="n">stream</span> <span class="n">name</span>
+<span class="s2">&quot;source_node&quot;</span> <span class="p">:</span> <span class="n">processor</span> <span class="n">ID</span> <span class="n">that</span> <span class="n">generated</span> <span class="n">the</span> <span class="n">spike</span>
+<span class="s2">&quot;electrode&quot;</span> <span class="p">:</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">spike</span> <span class="n">channel</span>
+<span class="s2">&quot;sample_num&quot;</span> <span class="p">:</span> <span class="n">index</span> <span class="n">of</span> <span class="n">the</span> <span class="n">peak</span> <span class="n">sample</span>
+<span class="s2">&quot;num_channels&quot;</span> <span class="p">:</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">channels</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">spike</span>
+<span class="s2">&quot;num_samples&quot;</span> <span class="p">:</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">spike</span>
+<span class="s2">&quot;sorted_id&quot;</span> <span class="p">:</span> <span class="nb">sorted</span> <span class="n">ID</span> <span class="p">(</span><span class="n">default</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="s2">&quot;threshold&quot;</span> <span class="p">:</span> <span class="n">threshold</span> <span class="n">values</span> <span class="n">across</span> <span class="nb">all</span> <span class="n">channels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="message-data">
+<h3>Message Data<a class="headerlink" href="#message-data" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table class="colwidths-given table">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Continuous</strong></p></td>
+<td><p>Continuous data from one channel</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TTL Event</strong></p></td>
+<td><p>Event data (in order) = {1Byte: ‘Event Line’, 1 Byte: ‘Event state(0 or 1)’, 8 Bytes:’TTL Word’}</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spike</strong></p></td>
+<td><p>Spike waveform</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="example-code">
+<h2>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h2>
+<p>The example code for receiving continuous data is written in Python, although in principle it should be possible from any language supporting ZeroMQ.</p>
+<p>In the <strong>Resources/python_client</strong> directory of the plugin repository, there is an example Python client called <code class="code docutils literal notranslate"><span class="pre">simple_plotter_zmq.py`</span></code> which plots the continuous data received from the Open Ephys GUI over a network port (see image below).</p>
+<img alt="ZMQ Client in Python" src="../../_images/zmqinterface-02.png" />
+<p>In addition to receiving and processing data, each client app must use a heartbeat protocol to maintain the connection with the ZMQ Interface plugin.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 

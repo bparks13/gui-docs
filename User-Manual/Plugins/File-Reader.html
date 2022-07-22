@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Intan Recording Controller" href="Intan-Recording-Controller.html" />
+    <link rel="next" title="LFP Viewer" href="LFP-Viewer.html" />
     <link rel="prev" title="Falcon Output" href="Falcon-Output.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="active">
                             <a href="">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -329,9 +327,28 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#loading-data" class="nav-link">Loading Data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#file-scrubbing" class="nav-link">File Scrubbing</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sample-data" class="nav-link">Sample Data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#other-input-data" class="nav-link">Other input data</a>
+        </li>
     
     </ul>
 </nav>
@@ -349,9 +366,6 @@
   <div class="section" id="file-reader">
 <span id="filereader"></span><h1>File Reader<a class="headerlink" href="#file-reader" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated File Reader settings interface" src="../../_images/filereader-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
 <caption><span class="caption-text">Reads data from a local file.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -369,26 +383,47 @@
 <td><p>Yes</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Aarón Cuevas López</p></td>
+<td><p>Aarón Cuevas López, Pavel Kulik</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Source/Processors/FileReader">https://github.com/open-ephys/plugin-GUI/tree/master/Source/Processors/FileReader</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Source/Processors/FileReader">https://github.com/open-ephys/plugin-GUI/tree/main/Source/Processors/FileReader</a></p></td>
 </tr>
 </tbody>
 </table>
-<p>The File Reader is currently compatible with files saved in the <a class="reference internal" href="../Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary format</span></a> (indexed with a <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> file), which can either be saved directly from the Open Ephys GUI or from another program. Each <code class="code docutils literal notranslate"><span class="pre">.oebin</span></code> file can point to multiple continuous files, known as subprocessors.</p>
+<div class="section" id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
+<p>By default, the File Reader is compatible with files saved in the <a class="reference internal" href="../Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a> (indexed with a <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> file). If the appropriate plugins are installed, the File Reader can also read data stored in the <a class="reference internal" href="../Recording-data/Open-Ephys-format.html#openephysformat"><span class="std std-ref">Open Ephys Format</span></a> (indexed with a <code class="code docutils literal notranslate"><span class="pre">structure.openephys</span></code> file) and <a class="reference internal" href="../Recording-data/NWB-format.html#nwbdataformat"><span class="std std-ref">NWB Format</span></a> (saved inside a <code class="code docutils literal notranslate"><span class="pre">*.nwb</span></code> file).</p>
+<p>Each input file can contain multiple streams/recordings, but only one stream/recording can be played back per File Reader during acquisition. The drop-down menu below the active file name makes it possible to switch between the available streams when acquisition is paused. In order to play multiple streams simultaneously, you can merge multiple File Readers, each with the same input file and a different selected stream.</p>
 <p>You can play back a subset of a recorded file by changing the “start” and “end” times at the bottom of the File Reader editor.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Acquisition won’t start until the File Reader knows where it’s data is coming from. Make sure you select a file before hitting the “play” button.</p>
 </div>
-<p>There are four example files included in the GUI repository that can be used with the File Reader, found in the <cite>Resource/DataFiles</cite> directory (source code download) or the <cite>DataFiles</cite> directory (executable download):</p>
+<div class="section" id="file-scrubbing">
+<h2>File Scrubbing<a class="headerlink" href="#file-scrubbing" title="Permalink to this headline">¶</a></h2>
+<p>For recordings longer than 30 seconds, a drawer button will appear on the left side of the File Reader to access the Scrubbing Interface. This interface makes it possible to quickly browse to different parts of the data file.</p>
+<p><strong>Full Timeline</strong></p>
+<p>The bottom timeline spans the length of the recording. The colored vertical bars along the timeline correspond to recorded events associated with the active stream. A slider along this timeline is fixed at a 30 second interval and allows adjusting the start and stop time for playback.</p>
+<p><strong>Zoom (30 Second) Timeline</strong></p>
+<p>The top timeline spans the currently selected interval of 30 seconds by the Full Timeline. The Zoom Timeline also contains a slider, however this slider can span anywhere from 1 to 30 seconds. The default value is 10 seconds. Moving the right slider handle adjusts the length of the selected interval. Moving the left slider handle moves the entire interval back and forth along the timeline. Clicking and dragging anywhere inside the interval also moves the entire interval along the timeline. Playback will automatically stop when it reaches the end of the current interval.</p>
+<p><strong>Playback Button</strong></p>
+<p>The playback button’s state indicates whether or not to playback the currently selected interval while acquisition is active. If the ‘pause state’ is showing, this means playback will be active during acquisition. If the ‘play state’ is showing, then playback will NOT be active during acquisition. Toggle the button to change to the desired state as needed.</p>
+</div>
+<div class="section" id="sample-data">
+<h2>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h2>
+<p>By default, the File Reader reads a recording of 16 channels from 8 stereotrodes implanted in the barrel cortex of an awake mouse.</p>
+<p>There are also four example files included in the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">GUI’s GitHub repository</a> that can be used with the File Reader, found in the <code class="code docutils literal notranslate"><span class="pre">Resources/DataFiles</span></code> directory.</p>
 <ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">data_stream_16ch_cortex</span></code> - data from 8 stereotrodes (16 channels total) recorded from barrel cortex of an awake mouse. The signals contain many action potentials, and are useful for test spike detection pipelines.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">data_stream_16ch_hippocampus</span></code> - one channel of data recorded from mouse CA1, copied across 16 channels. The signals have large-amplitude theta oscillations, and can be used to test phase-triggered stimulation.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">data_stream_sine_wave</span></code> - 16 channels of a simple, 1000-microvolt sine wave. There’s a small glitch near the end.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">chirps_16_channels_At40kHz</span></code> - 16 channels of frequency sweeps at 40 kHz</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">data_stream_16ch_cortex</span></code> - Same as the default data file. The signals contain many action potentials, and are useful for testing spike detection pipelines.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">data_stream_16ch_hippocampus</span></code> - One channel of data recorded from mouse CA1, replicated across 16 channels. The signals have large-amplitude theta oscillations, and can be used to test phase-triggered stimulation.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">data_stream_sine_wave</span></code> - 16 channels of a 1000-microvolt sine wave.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">chirps_16_channels_At40kHz</span></code> - 16 channels of frequency sweeps at 40 kHz.</p></li>
 </ul>
+</div>
+<div class="section" id="other-input-data">
+<h2>Other input data<a class="headerlink" href="#other-input-data" title="Permalink to this headline">¶</a></h2>
+<p>The File Reader should be able to read any datasets that have been previously saved by the GUI (v0.6.0+). If you make a recording that is not compatible with the File Reader for some reason, please send a message to <code class="code docutils literal notranslate"><span class="pre">support&#64;open-ephys.org</span></code>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 
 
@@ -398,7 +433,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="Falcon-Output.html" title="previous page">Falcon Output</a>
-    <a class='right-next' id="next-link" href="Intan-Recording-Controller.html" title="next page">Intan Recording Controller</a>
+    <a class='right-next' id="next-link" href="LFP-Viewer.html" title="next page">LFP Viewer</a>
 
               </div>
               

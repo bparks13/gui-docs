@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -329,9 +327,30 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recommended-signal-chain" class="nav-link">Recommended signal chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#audio-monitor" class="nav-link">Audio Monitor</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#changing-electrode-display-size" class="nav-link">Changing electrode display size</a>
+        </li>
+    
+            </ul>
+        </li>
     
     </ul>
 </nav>
@@ -348,9 +367,58 @@
                 
   <div class="section" id="spike-viewer">
 <span id="spikeviewer"></span><h1>Spike Viewer<a class="headerlink" href="#spike-viewer" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Documentation coming soon.</p>
+<img alt="Annotated Spike Viewer settings interface" src="../../_images/spikeviewer-01.png" />
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Displays spikes that have been detected by an upstream plugin.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
+<td><p>Sink</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Platforms</em></p></td>
+<td><p>Windows, Linux, macOS</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Built in?</em></p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Key Developers</em></p></td>
+<td><p>Josh Siegle</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Source Code</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/BasicSpikeDisplay/SpikeDisplayNode">https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/BasicSpikeDisplay/SpikeDisplayNode</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="recommended-signal-chain">
+<h2>Recommended signal chain<a class="headerlink" href="#recommended-signal-chain" title="Permalink to this headline">¶</a></h2>
+<p>The Spike Viewer cannot detect any spikes on its own; instead, it displays spikes that have been detected by upstream plugins. Currently, the only plugin capable of doing this is the <a class="reference internal" href="Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a>. As of version 0.6.0, the <a class="reference internal" href="Spike-Sorter.html#spikesorter"><span class="std std-ref">Spike Sorter</span></a> is used to assign spikes to particular clusters, but it cannot detect spikes on its own. Therefore, the Spike Viewer will not be operational unless a Spike Detector with at least one electrode can be found to the left of it in the signal chain.</p>
+</div>
+<div class="section" id="plugin-configuration">
+<h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To bring up visualizer, click the tab or window buttons in the upper-right corner of the editor. Any valid electrodes that have been created in the <a class="reference internal" href="Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a> will automatically appear in the Spike Viewer. This is true regardless of which stream they originated from; electrodes for all streams will be visible within the same Spike Viewer interface. The visualizer for four stereotrodes looks like this:</p>
+<img alt="Annotated Spike Viewer settings interface" src="../../_images/spikeviewer-02.png" />
+<p>Each electrode has a <strong>Waveform View</strong> and (for stereotrodes and tetrodes) a <strong>Peak View</strong>. The Waveform View displays the incoming spike waveforms for all channels within each electrode. The Peak View displays the comparison between spike waveform peak amplitudes across all pairs of channels. If a <code class="code docutils literal notranslate"><span class="pre">sortedID</span></code> is available for a given spike, the waveform and peak will appear in color; otherwise they will be white.</p>
+<p>In the <strong>Waveform View</strong>, you can change the range of the display in microvolts by clicking the numeric button in the lower left (default = 250). You can also drag the horizontal red line to change the <em>display threshold</em> for a given channel. The <em>detection threshold</em> appears in orange and is based on the threshold that was used to detect the original spike. The display threshold only affects what appears in the Spike Viewer; by lowering the display threshold to more negative values, you can limit the number of spikes that are shown without affecting what is detected or recorded.</p>
+<p>There are three buttons along the bottom that control the global settings:</p>
+<ul class="simple">
+<li><p><strong>Clear Plots</strong>: Clears the spike waveforms and peaks currently being displayed.</p></li>
+<li><p><strong>Lock Thresholds</strong>: Locks the display thresholds for all waveform views to a single shared value.</p></li>
+<li><p><strong>Invert Spikes</strong>: By default, the spikes are displayed with a non-inverted axis, so the “peak” points downward. Clicking this button will invert the y-axis of the waveform view, causing the peaks to point upwarde.</p></li>
+</ul>
+<div class="section" id="audio-monitor">
+<h3>Audio Monitor<a class="headerlink" href="#audio-monitor" title="Permalink to this headline">¶</a></h3>
+<p>Each electrode display has a button in the upper right labeled “MON.” If there is an <a class="reference internal" href="Audio-Monitor.html#audiomonitor"><span class="std std-ref">Audio Monitor</span></a> in the signal chain, clicking this button will select the first channel of this electrode to be monitored.</p>
+</div>
+<div class="section" id="changing-electrode-display-size">
+<h3>Changing electrode display size<a class="headerlink" href="#changing-electrode-display-size" title="Permalink to this headline">¶</a></h3>
+<p>The Spike Viewer editor only has one parameter interface, which controls the size of the individual spike displays. Clicking the <strong>+</strong> and <strong>-</strong> buttons will increase or decrease the size of the displays, respectively. Because the displays are auto-scaled to fit the width of the Spike Viewer, sometimes clicking these buttons will have no effect.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 </div>
 

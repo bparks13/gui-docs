@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -340,6 +338,10 @@
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-multiple-data-streams" class="nav-link">Working with multiple data streams</a>
+        </li>
+    
     </ul>
 </nav>
 
@@ -356,11 +358,8 @@
   <div class="section" id="common-average-reference">
 <span id="commonaveragereference"></span><h1>Common Average Reference<a class="headerlink" href="#common-average-reference" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Common Average Reference settings interface" src="../../_images/commonaveragereference-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Used to create a reference from the average of multiple channels. Helpful for removing noise that’s shared across many electrodes.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Used to create a reference from the average of multiple channels. Helpful for removing noise that’s shared across electrodes.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -379,14 +378,25 @@
 <td><p>Ryan Maloney, Josh Siegle, Kirill Abramov</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/CAR">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/CAR</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/CommonAverageRef">https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/CommonAverageRef</a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Use the <strong>REFERENCE | AFFECTED</strong> switch to choose which set of channels are being selected. Then, select the appropriate channels using the interface in the “PARAM” tab of the channel drawer on the right side of the plugin. It’s possible to use Matlab-like range selection syntax to speed up the selection process.</p>
-<p>The affected channels will have the average of all reference channels subtracted from their incoming signals. The gain slider adjusts the percentage of the average subtracted from the affected channels data.</p>
+<p>There are three settings that affect the behavior of the Common Average Reference:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">Affected</span> <span class="pre">channels</span></code>: These are the channels to which the referencing is applied.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Reference</span> <span class="pre">channels</span></code>: These are the channels which are averaged to compute the reference signal. To implement simple digital reference to one electrode, select a single channel at a time.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Gain</span> <span class="pre">level</span></code>: The percentage of the reference signal to use. For a gain level of 100%, the reference signal will be multiplied by 1.0. To adjust the gain level, click on the gain slider and drag upwards or downward.</p></li>
+</ul>
+<p>Some example channel configurations are illustrated in the figure below:</p>
+<img alt="Example channel configurations" src="../../_images/commonaveragereference-02.png" />
+</div>
+<div class="section" id="working-with-multiple-data-streams">
+<h2>Working with multiple data streams<a class="headerlink" href="#working-with-multiple-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>The “Reference” and “Affected” channels are only applied within a single stream. Because different streams may be sampled asynchronously, it’s not possible to reference channels from one stream to channels in another.</p>
+<p>To change the settings for a particular stream, make sure it is active in the stream selector (accsesed by clicking the vertical lines on the right-hand side of the plugin editor).</p>
 </div>
 </div>
 

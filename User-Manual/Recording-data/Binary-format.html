@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Binary format &#8212; Open Ephys GUI Docs</title>
+    <title>Binary Format &#8212; Open Ephys GUI Docs</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Open Ephys format" href="Open-Ephys-format.html" />
+    <link rel="next" title="Open Ephys Format" href="Open-Ephys-format.html" />
     <link rel="prev" title="Recording data" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -159,22 +159,24 @@
                     <ul>
                     
                         <li class="active">
-                            <a href="">Binary format</a>
+                            <a href="">Binary Format</a>
                         </li>
                     
                         <li class="">
-                            <a href="Open-Ephys-format.html">Open Ephys format</a>
+                            <a href="Open-Ephys-format.html">Open Ephys Format</a>
                         </li>
                     
                         <li class="">
-                            <a href="NWB-format.html">NWB format</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="KWIK-format.html">KWIK format</a>
+                            <a href="NWB-format.html">NWB Format</a>
                         </li>
                     
                     </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
                 </li>
             
           
@@ -226,14 +228,6 @@
             <a href="#text-events" class="nav-link">Text events</a>
         </li>
     
-        <li class="nav-item toc-entry toc-h4">
-            <a href="#binary-events" class="nav-link">Binary events</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h4">
-            <a href="#ttl-events" class="nav-link">TTL events</a>
-        </li>
-    
             </ul>
         </li>
     
@@ -266,7 +260,7 @@
               <div>
                 
   <div class="section" id="binary-format">
-<span id="binaryformat"></span><h1>Binary format<a class="headerlink" href="#binary-format" title="Permalink to this headline">¶</a></h1>
+<span id="binaryformat"></span><h1>Binary Format<a class="headerlink" href="#binary-format" title="Permalink to this headline">¶</a></h1>
 <img alt="Binary data file icons" src="../../_images/header.png" />
 <table class="colwidths-given table" id="id1">
 <caption><span class="caption-text">This is the default format for the Open Ephys GUI. Continuous data is stored in flat binary files, and everything else is in JSON / numpy format. Takes advantage of widely used open standards to maximize compatibility with existing and future analysis tools.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -292,12 +286,13 @@
 <p><strong>Advantages</strong></p>
 <ul class="simple">
 <li><p>Continuous data is stored in a compact format of tiled 16-bit integers, which can be memory mapped for efficient loading.</p></li>
-<li><p>Additional files are stored as JSON or NumPy data format, which can be read using <code class="code docutils literal notranslate"><span class="pre">numpy.load</span></code> in Python, or the <a class="reference external" href="https://github.com/kwikteam/npy-matlab">npy-matlab</a> package.</p></li>
-<li><p>The format is compatible with any combination of processors or subprocessors supported by the GUI</p></li>
+<li><p>Additional files are stored as JSON or NumPy data format, which can be read using <code class="code docutils literal notranslate"><span class="pre">numpy.load</span></code> in Python, or the <a class="reference external" href="https://github.com/cortex-lab/npy_matlab">npy-matlab</a> package.</p></li>
+<li><p>The format has no limit on the number of channels that can be recorded simultaneously.</p></li>
+<li><p>Continuous data files are immediately compatible with most spike sorting packages.</p></li>
 </ul>
 <p><strong>Limitations</strong></p>
 <ul class="simple">
-<li><p>Requires slightly more disk space because it stores a 64-bit timestamp for every sample.</p></li>
+<li><p>Requires slightly more disk space because it stores two 64-bit timestamps for every sample.</p></li>
 <li><p>Continuous files are not self-contained, i.e., you need to know the number of channels and the “bit-volts” multiplier in order to read them properly.</p></li>
 <li><p>It is not robust to crashes, as the NumPy file headers need to be updated when recording is stopped.</p></li>
 </ul>
@@ -311,58 +306,48 @@
 <h2>Format details<a class="headerlink" href="#format-details" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="continuous">
 <h3>Continuous<a class="headerlink" href="#continuous" title="Permalink to this headline">¶</a></h3>
-<p>Continuous data is grouped by sub-processor (a block of synchronously sampled channels):</p>
+<p>Continuous data is written separately for each stream within a processor (a block of synchronously sampled channels):</p>
 <a class="reference internal image-reference" href="../../_images/continuous.png"><img alt="Binary data continuous format" src="../../_images/continuous.png" style="width: 300px;" /></a>
 <p>Each <strong>continuous</strong> directory contains the following files:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">continuous.dat</span></code>: A simple binary file containing <em>N</em> channels x <em>M</em> samples 16-bit integers in little-endian format. Data is saved as <code class="code docutils literal notranslate"><span class="pre">ch1_samp1,</span> <span class="pre">ch2_samp1,</span> <span class="pre">...</span> <span class="pre">chN_samp1,</span> <span class="pre">ch1_samp2,</span> <span class="pre">ch2_samp2,</span> <span class="pre">...,</span> <span class="pre">chN_sampM</span></code>. The value of the least significant bit needed to convert the 16-bit integers to physical units is specified in the <code class="code docutils literal notranslate"><span class="pre">bitVolts</span></code> field of the relevant channel in the <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> JSON file. For “headstage” channels, multiplying by <code class="code docutils literal notranslate"><span class="pre">bitVolts</span></code> converts the values to microvolts, whereas for “ADC” channels, <code class="code docutils literal notranslate"><span class="pre">bitVolts</span></code> converts the values to volts.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code>: A numpy array containing <em>M</em> 64-bit integers that represent the timestamps for each sample.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">synchronized_timestamps.npy</span></code>: A numpy array containing <em>M</em> 64-bit floats representing the timestamps in seconds relative to the start of the master sub-processor.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sample_numbers.npy</span></code>: A numpy array containing <em>M</em> 64-bit integers that represent the index of each sample in the <code class="code docutils literal notranslate"><span class="pre">.dat</span></code> file since the start of acquisition.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code>: A numpy array containing <em>M</em> 64-bit floats representing the global timestamps in seconds relative to the start of the Record Node’s main data stream (assuming this stream was synchronized before starting recording).</p></li>
 </ul>
 </div>
 <div class="section" id="events">
 <h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
-<p>Event data is organized by processor and by “event group” (e.g., <code class="code docutils literal notranslate"><span class="pre">TTL_&lt;N&gt;</span></code>). Each event group can contain data for multiple event channels.</p>
+<p>Event data is organized by stream and by “event channel” (typically <code class="code docutils literal notranslate"><span class="pre">TTL</span></code>). Each event channel records the states of multiple TTL lines.</p>
 <a class="reference internal image-reference" href="../../_images/events.png"><img alt="Binary data events format" src="../../_images/events.png" style="width: 300px;" /></a>
-<p>All types of events include the following files:</p>
+<p>Directories for TTL event channels include the following files:</p>
 <ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> Contains <em>N</em> 64-bit timestamps for each event</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">channels.npy</span></code> Contains <em>N</em> unsigned 16-bit integers indicating the virtual channel associated to each event.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">metadata.npy</span></code> (optional) If the events contain metadata fields, they will be stored as an array of <em>N</em> lists of fields or, if there is just one field, a <em>N</em> x <code class="code docutils literal notranslate"><span class="pre">length_of_field</span></code> array of the relevant type.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">states.npy</span></code>:  numpy array of <em>N</em> 16-bit integers, indicating ON (+CH_number) and OFF (-CH_number) states</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sample_numbers.npy</span></code> Contains <em>N</em> 64-bit integers indicating the sample number of each event since the start of acquisition</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> Contains <em>N</em> 64-bit floats indicating representing the global timestamp of each event in seconds relative to the start of the Record Node’s main data stream (assuming this stream was synchronized before starting recording)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">full_words.npy</span></code>: Contains <em>N</em> 64-bit integers containing the “TTL word” consisting of the current state of <em>all</em> lines when the event occurred</p></li>
 </ul>
 <div class="section" id="text-events">
 <h4>Text events<a class="headerlink" href="#text-events" title="Permalink to this headline">¶</a></h4>
+<p>Text events are routed through the GUI’s Message Center, and are stored in a directory called <code class="code docutils literal notranslate"><span class="pre">MessageCenter</span></code>. They contain the following files:</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">text.npy</span></code>: numpy array of <em>N</em> strings</p></li>
-</ul>
-</div>
-<div class="section" id="binary-events">
-<h4>Binary events<a class="headerlink" href="#binary-events" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">data_array.npy</span></code>: numpy array of <em>N</em> x <code class="code docutils literal notranslate"><span class="pre">data_length</span></code> elements of the relevant type</p></li>
-</ul>
-</div>
-<div class="section" id="ttl-events">
-<h4>TTL events<a class="headerlink" href="#ttl-events" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">channel_states.npy</span></code>:  numpy array of <em>N</em> 16-bit integers, indicating ON (+CH_number) and OFF (-CH_number) states.</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">full_words.npy</span></code>: numpy array of <em>N</em> x log2(numBits) unsigned 8-bit integers containing the binary representations of the full words received by the TTL source, in case they need to be treated as full qualified binary data.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sample_numbers.npy</span></code> Contains <em>N</em> 64-bit integers indicating the sample number of each text event on the Record Node’s main data stream</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code> Contains <em>N</em> 64-bit floats indicating representing the global timestamp of each text event in seconds relative to the start of the Record Node’s main data stream</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="spikes">
 <h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
-<p>Spike data is organized by processor and by “spike group” (a group of spike sources with the same number of channels). If, for example, you have stereotrodes and tetrodes within the same Spike Sorter plugin, the stereotrodes and tetrodes will appear in separate spike groups.</p>
+<p>Spike data is organized first by stream and then by electrode.</p>
 <a class="reference internal image-reference" href="../../_images/spikes.png"><img alt="Binary data spikes format" src="../../_images/spikes.png" style="width: 300px;" /></a>
-<p>Each <strong>spike group</strong> directory contains the following files:</p>
+<p>Each <strong>electrode</strong> directory contains the following files:</p>
 <ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">spike_waveforms.npy</span></code>: numpy array with dimensions <em>S</em> spikes x <em>N</em> channels x <em>M</em> samples containing the spike waveforms</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">spike_times.npy</span></code>: numpy array of <em>S</em> 64-bit integers containing the timestamps corresponding to the peak of each spike</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">spike_electrode_indices.npy</span></code>: numpy array of <em>S</em> unsigned 16-bit integers specifying which of the electrodes within the group the spike originated from</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">spike_clusters.npy</span></code>: numpy array of <em>S</em> unsigned 16-bit integers containing the sorted cluster ID for each spike (defaults to 0 if this is not available).</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">metadata.npy</span></code>: (optional) If the spikes contain metadata fields, they will be stored as an array of <em>S</em> lists of fields or, if there is just one field, a <em>S</em> x <code class="code docutils literal notranslate"><span class="pre">length_of_field</span></code> array of the relevant type.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">waveforms.npy</span></code>: numpy array with dimensions <em>S</em> spikes x <em>N</em> channels x <em>M</em> samples containing the spike waveforms</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sample_numbers.npy</span></code>: numpy array of <em>S</em> 64-bit integers containing the sample number corresponding to the peak of each spike</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">timestamps.npy</span></code>: numpy array of <em>S</em> 64-bit floats containing the global timestamp in seconds corresponding to the peak of each spike (assuming this stream was synchronized before starting recording)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">clusters.npy</span></code>: numpy array of <em>S</em> unsigned 16-bit integers containing the sorted cluster ID for each spike (defaults to 0 if this is not available).</p></li>
 </ul>
-<p>Detailed information about the electrodes contained in each spike group as well as the metadata fields, if any, is stored in the <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> JSON file.</p>
+<p>More detailed information about each electrode is stored in the <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> JSON file.</p>
 </div>
 </div>
 <div class="section" id="reading-data-in-python">
@@ -388,7 +373,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="index.html" title="previous page">Recording data</a>
-    <a class='right-next' id="next-link" href="Open-Ephys-format.html" title="next page">Open Ephys format</a>
+    <a class='right-next' id="next-link" href="Open-Ephys-format.html" title="next page">Open Ephys Format</a>
 
               </div>
               

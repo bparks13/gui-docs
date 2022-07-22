@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Modifying the host application" href="Modifying-the-host-application.html" />
-    <link rel="prev" title="Open Ephys Plugin API" href="Open-Ephys-Plugin-API.html" />
+    <link rel="prev" title="File Sources" href="Open-Ephys-Plugin-API/File-Sources.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -144,13 +144,7 @@
           
             
                 <li class="">
-                    <a href="Adding-a-new-data-format.html">Adding a new data format</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Open-Ephys-Plugin-API.html">Open Ephys Plugin API</a>
+                    <a href="Open-Ephys-Plugin-API/index.html">Open Ephys Plugin API</a>
                 </li>
             
           
@@ -193,7 +187,7 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#setting-up-the-bintray-repository" class="nav-link">Setting up the Bintray repository</a>
+            <a href="#setting-up-the-artifactory-repository" class="nav-link">Setting up the Artifactory repository</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -226,40 +220,85 @@
 </div>
 <div class="section" id="setting-up-the-plugin-repository">
 <h2>Setting up the plugin repository<a class="headerlink" href="#setting-up-the-plugin-repository" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Fork the plugin of interest to the <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins</span></code> GitHub account (requires login).</p></li>
-<li><p>Add <code class="code docutils literal notranslate"><span class="pre">bintrayUsername</span></code> and <code class="code docutils literal notranslate"><span class="pre">bintrayApiKey</span></code> to GitHub secrets under repository settings.</p></li>
-<li><p>Add GitHub workflows for macOS, Linux, and Windows (exampes available in the <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins-ci</span></code> repository)</p></li>
+<li><p>Go to <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins</span></code> organization settings and navigate to Secrets-&gt;Actions.</p>
+<a class="reference external image-reference" href="../_static/images/developerguide/artifactory-secret.png"><img alt="Organization secret settings" src="../_images/artifactory-secret.png" /></a>
+</li>
+<li><p>Update the <code class="code docutils literal notranslate"><span class="pre">ARTIFACTORYAPIKEY</span></code> settings by clicking on Update and then going to Repository access settings.</p></li>
+<li><p>Select and enable your plugin repository from the list of organization repositories, and click on update selection.</p></li>
 </ol>
+</div>
+<div class="section" id="setting-up-the-artifactory-repository">
+<h2>Setting up the Artifactory repository<a class="headerlink" href="#setting-up-the-artifactory-repository" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Login to the <a class="reference external" href="https://openephys.jfrog.io/">openephys.jfrog.io</a> account.</p></li>
+<li><p>Go to Administration settings and open Repositories from the left sidebar.</p>
+<a class="reference external image-reference" href="../_static/images/developerguide/jfrog-repository-settings.png"><img alt="JFrog repository settings" src="../_images/jfrog-repository-settings.png" /></a>
+</li>
+<li><p>Click on “Add Repositories” on the top-right corner and create a “Local Repository”. Select the package type as “Generic”.</p></li>
+<li><p>Now, specify the name of the plugin in the <code class="code docutils literal notranslate"><span class="pre">Repository</span> <span class="pre">Key</span></code> field.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the plugin has dependencies that are a part of the plugin repository, refer to the <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi">neuropixels-pxi</a> plugin workflows to understand the proper way to package dependencies inside the plugin’s zip file.</p>
+<p>The name of the repository should have the <code class="code docutils literal notranslate"><span class="pre">-plugin</span></code> string appended. So, if your plugin name is Online PSTH, then the repository name should be <code class="code docutils literal notranslate"><span class="pre">OnlinePSTH-plugin</span></code>.</p>
 </div>
-</div>
-<div class="section" id="setting-up-the-bintray-repository">
-<h2>Setting up the Bintray repository<a class="headerlink" href="#setting-up-the-bintray-repository" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Open the <code class="code docutils literal notranslate"><span class="pre">open_ephys_plugins_ci.py</span></code> script.</p></li>
-<li><p>Modify the script with the plugin-specific information.</p></li>
-<li><p>Run the script.</p></li>
-<li><p>Login to the Bintray account.</p></li>
-<li><p>Verify the repository and its packages have been created.</p></li>
+<a class="reference external image-reference" href="../_static/images/developerguide/create-artifactory-repo.png"><img alt="Create Artifactory Repository" src="../_images/create-artifactory-repo.png" /></a>
+</li>
+<li><p>Enter the plugin description in the <code class="code docutils literal notranslate"><span class="pre">Public</span> <span class="pre">Description</span></code> field.</p></li>
+<li><p>Click on <code class="code docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Local</span> <span class="pre">Repository</span></code>. That should create the plugin Artifactory repository for you.</p></li>
+<li><p>Now, go to the Artifactory homepage and click on <strong>Artifactory &gt; Artifacts</strong>.</p></li>
+<li><p>Navigate to the repository you just created.</p></li>
+<li><p>Click on properties, and add the following properties to the repository:</p>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Properties for Artifactory repository</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property Name</p></th>
+<th class="head"><p>Property Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Name</strong></p></td>
+<td><p>The actual name of the plugin as specified in the <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Type</strong></p></td>
+<td><p>Source, Filter, Sink, RecordEngine, or CommonLib</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Developers</strong></p></td>
+<td><p>Name(s) of the plugin developer(s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Docs</strong></p></td>
+<td><p>Link to the plugin documentation page on</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Dependencies</strong></p></td>
+<td><p><em>(Optional)</em> Names of external plugin dependencies (if any) that have their own repository</p></td>
+</tr>
+</tbody>
+</table>
+<a class="reference external image-reference" href="../_static/images/developerguide/artifactory-repo-properties.png"><img alt="Create Artifactory Repository" src="../_images/artifactory-repo-properties.png" /></a>
+</li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Be sure the labels for the repository have been set correctly. The first label should always be the plugin display name that should appear in Plugin Installer. Remaining labels specify the type of plugin, e.g. Source, Filter, or Sink.</p>
-</div>
 </div>
 <div class="section" id="configuring-external-dependencies-if-any">
 <h2>Configuring external dependencies (if any)<a class="headerlink" href="#configuring-external-dependencies-if-any" title="Permalink to this headline">¶</a></h2>
-<p>If the plugin needs any external dependency that requires its own repository to build, you’ll have to follow all the steps mentioned above to set up the GitHub and Bintray repositories. <strong>Importantly,</strong> while setting up the Bintray repository using the script, make sure you add “Dependency” as the second label (type of plugin) in the script.</p>
-<p>Once the external dependency is setup, go to the plugin’s repository that needs this dependency. For each platform package, go to the “Custom Attributes” menu and add the dependency <em>repository</em> name to the “Name” field and the dependency <em>package</em> name for the platform as the “Value”.</p>
+<p>If the plugin has any external dependency that requires its own repository to be built and deployed, you’ll have to follow all the steps mentioned above to set up the GitHub and Artifactory repositories. <strong>Importantly,</strong> while setting up the Artifactory repository properties, make sure you add “Type” property with “CommonLib” as it’s value. There’s no need to specify any other properties.</p>
+<p>Once the external dependency is setup, go to the plugin’s Artifactory repository that needs this dependency. Add the “Dependencies” property and the dependency repository name without the appended “-plugin” string as the value.</p>
 </div>
 <div class="section" id="releasing-the-plugin">
 <h2>Releasing the plugin<a class="headerlink" href="#releasing-the-plugin" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>For each new release, tag the latest commit on GitHub with the version number. Versions should follow the <a class="reference external" href="https://semver.org/">semantic versioning</a> scheme. (Do not add a ‘v’ in front of the version number).</p></li>
-<li><p>After pushing the tag to the repository, it should run the GitHub Actions workflows across all the platforms which should build the plugin, package it, and publish it to Bintray.</p></li>
+<li><p>Add GitHub Actions workflows for macOS, Linux, and Windows (examples available in the private <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins-ci</span></code> repository)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the plugin has dependencies that are a part of the plugin repository, refer to the <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi">neuropixels-pxi</a> plugin workflows to understand the proper way to package dependencies inside the plugin’s zip file.</p>
+</div>
+<ul class="simple">
+<li><p>After pushing the workflows and the tag to the Github repository, it should run the GitHub Actions workflows across all the platforms which should build the plugin, package it, and publish it to Artifactory.</p></li>
 <li><p>Once the workflows run successfully, the plugins (or its latest version) should be available to download from the GUI’s Plugin Installer.</p></li>
 </ul>
 <div class="admonition note">
@@ -275,7 +314,7 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="Open-Ephys-Plugin-API.html" title="previous page">Open Ephys Plugin API</a>
+    <a class='left-prev' id="prev-link" href="Open-Ephys-Plugin-API/File-Sources.html" title="previous page">File Sources</a>
     <a class='right-next' id="next-link" href="Modifying-the-host-application.html" title="next page">Modifying the host application</a>
 
               </div>

@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Stream Muxer" href="Stream-Muxer.html" />
+    <link rel="next" title="Tracking Plugin" href="Tracking-Plugin.html" />
     <link rel="prev" title="Spike Viewer" href="Spike-Viewer.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="active">
                             <a href="">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -329,9 +327,20 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recommended-usage" class="nav-link">Recommended usage</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+        </li>
     
     </ul>
 </nav>
@@ -349,11 +358,8 @@
   <div class="section" id="splitter">
 <span id="id1"></span><h1>Splitter<a class="headerlink" href="#splitter" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Splitter editor" src="../../_images/splitter-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id2">
-<caption><span class="caption-text">Allows the signal chain to be split into two. This is essential for things like visualizing spikes and LFP from the same data source..</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Creates a copy of all incoming continuous channels, spikes, and events, allowing data to be processed independently along two branches of the signal chain.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -372,10 +378,25 @@
 <td><p>Josh Siegle, Aarón Cuevas López</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Source/Processors/Splitter">https://github.com/open-ephys/plugin-GUI/tree/master/Source/Processors/Splitter</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Source/Processors/Splitter">https://github.com/open-ephys/plugin-GUI/tree/main/Source/Processors/Splitter</a></p></td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="recommended-usage">
+<h2>Recommended usage<a class="headerlink" href="#recommended-usage" title="Permalink to this headline">¶</a></h2>
+<p>Splitters make it possible to process data in parallel along two independent branches; any changes to the data on one branch will have no effect on the other. The classic use case is to apply two separate filtering operations to the same data, one high-pass filter for spike detection, and one low-pass filter for viewing the local field potential. However, there is significant overhead involved in splitting the signal chain, since all of the incoming data needs to be copied into a new buffer. Therefore, it’s recommended to avoid using Splitter unless they are required for your use case.</p>
+<p>In an earlier version of the GUI, “sink” plugins had to terminate a signal chain, which meant that Splitters were required in any cases in which multiple sinks were used. That is no longer the case; now that sinks can be placed anywhere in a signal chain (except the very beginning), data can be processed in more flexible ways without the need for Splitters.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>It is not currently possible to use a <a class="reference internal" href="Merger.html#merger"><span class="std std-ref">Merger</span></a> to reconnect split branches of a signal chain. Once the signal chain has been split, it cannot be merged back together.</p>
+</div>
+</div>
+<div class="section" id="plugin-configuration">
+<h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Splitter is first dropped into the signal chain to the left of the point at which the data should be split. Then, the two output paths are selected by clicking the arrow buttons on the Splitter editor. Additional plugins can be dropped to the right of either output path. If a Splitter is only connected to one output, it will have no effect on the signal chain.</p>
+<p>The names of the data streams in each branch of the signal chain will be appended with “<strong>-A</strong>” or “<strong>-B</strong>” to indicate that they have passed through a Splitter:</p>
+<img alt="Splitter graph view" src="../../_images/splitter-02.png" />
+</div>
 </div>
 
 
@@ -385,7 +406,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="Spike-Viewer.html" title="previous page">Spike Viewer</a>
-    <a class='right-next' id="next-link" href="Stream-Muxer.html" title="next page">Stream Muxer</a>
+    <a class='right-next' id="next-link" href="Tracking-Plugin.html" title="next page">Tracking Plugin</a>
 
               </div>
               

@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Neuropixels 3a" href="Neuropixels-3a.html" />
+    <link rel="next" title="Neuropixels CAR" href="Neuropixels-CAR.html" />
     <link rel="prev" title="Multi-Band Integrator" href="Multiband-Integrator.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,11 +335,25 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#remote-control-commands" class="nav-link">Remote control commands</a>
+            <a href="#remote-control-commands" class="nav-link">Remote control commands</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#ttl-events" class="nav-link">TTL Events</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#other-commands" class="nav-link">Other commands</a>
+        </li>
+    
+            </ul>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -373,19 +385,19 @@
                 
   <div class="section" id="network-events">
 <span id="networkevents"></span><h1>Network Events<a class="headerlink" href="#network-events" title="Permalink to this headline">¶</a></h1>
-<img alt="Annotated Merger editor" src="../../_images/networkevents-01.png" />
+<img alt="Annotated Network Events editor" src="../../_images/networkevents-01.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Checks for incoming messages and adds them to the signal processing stream as timestamped strings. These messages can be sent from another program on the same machine, or a different machine on the same network.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Adds TTL events via a network connection.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
-<td><p>Source</p></td>
+<td><p>Filter</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Platforms</em></p></td>
 <td><p>Windows, Linux, macOS</p></td>
@@ -397,40 +409,56 @@
 <td><p>Shay Ohayon, Josh Siegle, Aarón Cuevas López, Christopher Stawarz, Arne Meyer</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/NetworkEvents">https://github.com/open-ephys-plugins/NetworkEvents</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/network-events">https://github.com/open-ephys-plugins/network-events</a></p></td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Network Events plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Network Events” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Since the Network Events module sends events, and not continuous data, it needs to be used in conjunction with another source. The best way to do this is with a Merger, with both the Network Events module and the other source feeding into the same signal chain.</p>
-<p>It uses the <a class="reference external" href="https://zeromq.org/">ZeroMQ</a> library under the hood.</p>
+<p>Since the Network Events module sends events, and not continuous data, it cannot be placed at the beginning of a signal chain. The plugin will add events to all data streams that pass through it.</p>
 </div>
 <div class="section" id="remote-control-commands">
 <h2>Remote control commands<a class="headerlink" href="#remote-control-commands" title="Permalink to this headline">¶</a></h2>
-<p>The network events module provides features for controlling data acquisition and recording functions.</p>
-<p>The following commands are available:</p>
+<div class="section" id="ttl-events">
+<h3>TTL Events<a class="headerlink" href="#ttl-events" title="Permalink to this headline">¶</a></h3>
+<p>The primary purpose of the Network Events module is to add TTL events to one or more of the GUI’s data streams via a remote connection. This makes it straightforward to store event times and trigger outputs from external software, such as Python or Matlab scripts.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">TTL</span> <span class="pre">[Line=0-255]</span> <span class="pre">[State=0/1]</span></code> – Sends an <strong>ON</strong> (1) or <strong>OFF</strong> (0) TTL event on the specified TTL line.</p>
+</div>
+<div class="section" id="other-commands">
+<h3>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h3>
+<p>The Network Events module can also respond to commands related to starting/stopping acquisition and recording. However, these commands are also available via the Open Ephys HTTP Server (added in GUI version 0.6.0). It’s recommended to use the HTTP Server commands whenever possible, as these do not rely on a specific plugin.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">StartAcquisition</span></code> – Starts data aquisition</p>
 <p><code class="code docutils literal notranslate"><span class="pre">StopAcquisition</span></code> – Stops data aquisition</p>
-<p><code class="code docutils literal notranslate"><span class="pre">StartRecord</span> <span class="pre">[CreateNewDir=1]</span> <span class="pre">[RecDir=recording_directory_path]</span> <span class="pre">[PrependText=some_text]</span> <span class="pre">[AppendText=some_text]</span></code> – Starts recording of data</p>
-<p>The last command includes ptional keyword arguments of the form <code class="code docutils literal notranslate"><span class="pre">kwarg=value</span></code>:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">StartRecord</span> <span class="pre">[RecordNode=record_node_id]</span> <span class="pre">[CreateNewDir=1]</span> <span class="pre">[RecDir=recording_directory_path]</span> <span class="pre">[PrependText=some_text]</span> <span class="pre">[AppendText=some_text]</span></code> – Starts recording of data</p>
 <ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">RecordNode</span></code> – Only apply the <cite>CreateNewDir</cite> &amp; <cite>RecDir</cite> options to the specified record node</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">CreateNewDir</span></code> – creates a new (sub)directory with the current date string</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">RecDir</span></code> – sets the recording directory</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">PrependText</span></code> – sets the text to be prepended to the date string</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">AppendText</span></code> – sets the text to be appended to the date string</p></li>
 </ul>
 <p><code class="code docutils literal notranslate"><span class="pre">StopRecord</span></code> – Stops recording</p>
+<p><code class="code docutils literal notranslate"><span class="pre">IsAcquiring</span></code> – Returns 1 if acquiring, 0 if not</p>
+<p><code class="code docutils literal notranslate"><span class="pre">IsRecording</span></code> – Returns 1 if recording is active, 0 if not</p>
+<p><code class="code docutils literal notranslate"><span class="pre">GetRecordingPath</span> <span class="pre">[RecordNode=record_node_id]</span></code> – Get’s the main recording path or, if record node is specified, then record node specific recording path</p>
+<p><code class="code docutils literal notranslate"><span class="pre">GetRecordingNumber</span> <span class="pre">[RecordNode=record_node_id]</span></code> – Get’s the main recording number or, if record node is specified, then record node specific recording number</p>
+<p><code class="code docutils literal notranslate"><span class="pre">GetExperimentNumber</span> <span class="pre">[RecordNode=record_node_id]</span></code> – Get’s the main experiment number or, if record node is specified, then record node specific experiment number</p>
+</div>
 </div>
 <div class="section" id="example-code">
 <h2>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="matlab">
 <h3>Matlab<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h3>
-<p>In the GUI’s <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Resources/Matlab">Matlab Resources</a> folder, you’ll find a <code class="code docutils literal notranslate"><span class="pre">matlab_zeroMQ_wrapper_example.m</span></code>, which shows how to send messages. Assuming the zeroMQ mex file is in the same directory (which it should be by default), all you have to do is initialize the connection using ‘StartConnectThread’ and the appropriate url, then send a message using ‘Send’, the handle of your connection, and the string you want.</p>
+<p>In the GUI’s <a class="reference external" href="https://github.com/open-ephys-plugins/network-events/tree/main/Resources/Matlab">Matlab Resources</a> folder, you’ll find a <code class="code docutils literal notranslate"><span class="pre">matlab_zeroMQ_wrapper_example.m</span></code>, which shows how to send messages. Assuming the zeroMQ mex file is in the same directory (which it should be by default), all you have to do is initialize the connection using ‘StartConnectThread’ and the appropriate url, then send a message using ‘Send’, the handle of your connection, and the string you want.</p>
 </div>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>An Python example can be found at in the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Resources/Python">Python Resources</a> folder: <code class="code docutils literal notranslate"><span class="pre">record_control_example_client.py</span></code></p>
+<p>An Python example can be found at in the <a class="reference external" href="https://github.com/open-ephys-plugins/network-events/tree/main/Resources/Python">Python Resources</a> folder: <code class="code docutils literal notranslate"><span class="pre">record_control_example_client.py</span></code></p>
 </div>
 </div>
 </div>
@@ -442,7 +470,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="Multiband-Integrator.html" title="previous page">Multi-Band Integrator</a>
-    <a class='right-next' id="next-link" href="Neuropixels-3a.html" title="next page">Neuropixels 3a</a>
+    <a class='right-next' id="next-link" href="Neuropixels-CAR.html" title="next page">Neuropixels CAR</a>
 
               </div>
               

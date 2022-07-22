@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Record Engines &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File Sources" href="File-Sources.html" />
+    <link rel="prev" title="Data Threads" href="Data-Threads.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../User-Manual/index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="../Compiling-the-GUI.html">Compiling the GUI</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Compiling-plugins.html">Compiling plugins</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Creating-a-new-plugin.html">Creating a new plugin</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="index.html">Open Ephys Plugin API</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="Processor-Plugins.html">Processor Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Visualizer-Plugins.html">Visualizer Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Data-Threads.html">Data Threads</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">Record Engines</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="File-Sources.html">File Sources</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Distributing-plugins.html">Distributing plugins</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Modifying-the-host-application.html">Modifying the host application</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#npy-files" class="nav-link">NPY Files</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#sequential-block-files" class="nav-link">Sequential Block Files</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="record-engines">
+<span id="recordengines"></span><h1>Record Engines<a class="headerlink" href="#record-engines" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Record Engines define how continuous data, events, and spikes are written to disk.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Type</em></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">Plugin::Type::RECORD_ENGINE</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Base Class</em></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">RecordEngine</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Template</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/record-engine-template">https://github.com/open-ephys-plugins/record-engine-template</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>In the Open Ephys GUI, data formats are defined within plugins, making it straightforward to add compatibility with alternate formats. By default, the GUI contains Record Engines for the <a class="reference internal" href="../../User-Manual/Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a>, while the <a class="reference internal" href="../../User-Manual/Recording-data/Open-Ephys-format.html#openephysformat"><span class="std std-ref">Open Ephys Format</span></a> and <a class="reference internal" href="../../User-Manual/Recording-data/NWB-format.html#nwbdataformat"><span class="std std-ref">NWB Format</span></a> can be added via the Plugin Installer.</p>
+<p>To create a new Record Engine, start with the <a class="reference external" href="https://github.com/open-ephys-plugins/record-engine-template">Record Engine Template</a> and add code that implements the following methods:</p>
+<dl class="cpp function">
+<dt id="_CPPv4NK11getEngineIdEv">
+<span id="_CPPv3NK11getEngineIdEv"></span><span id="_CPPv2NK11getEngineIdEv"></span><span id="getEngineIdC"></span>String <code class="sig-name descname">getEngineId</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK11getEngineIdEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A string that can be used to uniquely identify this record engine.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv49openFiles4Fileii">
+<span id="_CPPv39openFiles4Fileii"></span><span id="_CPPv29openFiles4Fileii"></span><span id="openFiles__File.i.i"></span>void <code class="sig-name descname">openFiles</code><span class="sig-paren">(</span>File <em>rootFolder</em>, int <em>experimentNumber</em>, int <em>recordingNumber</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49openFiles4Fileii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when a new recording begins. The Record Engine should open all of the files it will need, as data writing will begin immediately after this method returns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rootFolder</strong> – A Juce <code class="code docutils literal notranslate"><span class="pre">File</span></code> object that specifies where this Record Engine’s files will be stored.</p></li>
+<li><p><strong>experimentNumber</strong> – The zero-based index of the current experiment. The experiment number is incremented every time acquisition is stopped (assuming at least one recording has taken place already).</p></li>
+<li><p><strong>recordingNumber</strong> – The one-based index of the current recording. The recording number is incremented every time recording is stopped.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv410closeFilesv">
+<span id="_CPPv310closeFilesv"></span><span id="_CPPv210closeFilesv"></span><span id="closeFiles"></span>void <code class="sig-name descname">closeFiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410closeFilesv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called when a recording stops. The Record Engine should close all open files and perform all necessary cleanup operations inside this method.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419writeContinuousDataiiPKfPKdi">
+<span id="_CPPv319writeContinuousDataiiPKfPKdi"></span><span id="_CPPv219writeContinuousDataiiPKfPKdi"></span><span id="writeContinuousData__i.i.floatCP.doubleCP.i"></span>void <code class="sig-name descname">writeContinuousData</code><span class="sig-paren">(</span>int <em>writeChannel</em>, int <em>realChannel</em>, <em class="property">const</em> float *<em>dataBuffer</em>, <em class="property">const</em> double *<em>timestampBuffer</em>, int <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419writeContinuousDataiiPKfPKdi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called whenever a new block of continuous data for one channel is available for writing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>writeChannel</strong> – The index of the continuous channel relative to all actively recorded channels.</p></li>
+<li><p><strong>realChannel</strong> – The index of the continuous channel relative to all channels processed by the Record Node.</p></li>
+<li><p><strong>dataBuffer</strong> – A read-only buffer of continuous data samples.</p></li>
+<li><p><strong>timestampABuffer</strong> – A real-only buffer of timestamps for each sample, in seconds relative to the start of recording.</p></li>
+<li><p><strong>size</strong> – The total number of valid samples.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv410writeEventiRK11EventPacket">
+<span id="_CPPv310writeEventiRK11EventPacket"></span><span id="_CPPv210writeEventiRK11EventPacket"></span><span id="writeEvent__i.EventPacketCR"></span>void <code class="sig-name descname">writeEvent</code><span class="sig-paren">(</span>int <em>eventChannel</em>, <em class="property">const</em> EventPacket &amp;<em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410writeEventiRK11EventPacket" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called whenever a new event is available for writing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventChannel</strong> – The index of the event channel relative to all channels processed by the Record Node.</p></li>
+<li><p><strong>event</strong> – An <code class="code docutils literal notranslate"><span class="pre">EventPacket</span></code> object containing the event sample number, timestamp, TTL line, and other relevant information.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv410writeSpikeiPK5Spike">
+<span id="_CPPv310writeSpikeiPK5Spike"></span><span id="_CPPv210writeSpikeiPK5Spike"></span><span id="writeSpike__i.SpikeCP"></span>void <code class="sig-name descname">writeSpike</code><span class="sig-paren">(</span>int <em>electrodeIndex</em>, <em class="property">const</em> Spike *<em>spike</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410writeSpikeiPK5Spike" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called whenever a new spike is available for writing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventChannel</strong> – The index of the electrode that generated this spike.</p></li>
+<li><p><strong>event</strong> – A pointer to a <code class="code docutils literal notranslate"><span class="pre">Spike</span></code> object containing the spike sample number, timestamp, waveform, and sorted ID.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv422writeTimestampSyncText6uint165int64f6String">
+<span id="_CPPv322writeTimestampSyncText6uint165int64f6String"></span><span id="_CPPv222writeTimestampSyncText6uint165int64f6String"></span><span id="writeTimestampSyncText__uint16.int64.float.String"></span>void <code class="sig-name descname">writeTimestampSyncText</code><span class="sig-paren">(</span>uint16 <em>streamId</em>, int64 <em>sampleNumber</em>, float <em>sourceSampleRate</em>, String <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422writeTimestampSyncText6uint165int64f6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called once per incoming data stream at the start of each recording, in order to inform the Record Engine about the first sample number recorded by each data stream. Writing these values to disk is optional, but recommended.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>streamId</strong> – The unique ID of the current data stream.</p></li>
+<li><p><strong>sampleNumber</strong> – The first sample number that will be recorded by this stream.</p></li>
+<li><p><strong>sourceSampleRate</strong> – The sample rate (in Hz) for this stream.</p></li>
+<li><p><strong>text</strong> – A message with additional information about this stream.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="npy-files">
+<h2>NPY Files<a class="headerlink" href="#npy-files" title="Permalink to this headline">¶</a></h2>
+<p>All Record Engines have access to a <code class="code docutils literal notranslate"><span class="pre">NpyFile</span></code> class that can be used to write data in <a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.lib.format.html">NPY format</a>. NPY is a simple format intended for storing array data, and which is straightforward to read with both Python and Matlab.</p>
+<p>To create a new NPY file, a Record Engine should use the following methods:</p>
+<dl class="cpp function">
+<dt id="_CPPv47NpyFile6String7NpyType">
+<span id="_CPPv37NpyFile6String7NpyType"></span><span id="_CPPv27NpyFile6String7NpyType"></span><span id="NpyFile__String.NpyType"></span><code class="sig-name descname">NpyFile</code><span class="sig-paren">(</span>String <em>path</em>, NpyType <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47NpyFile6String7NpyType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor for a 1-dimensional NPY file with a specified type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – Absolute path to the file.</p></li>
+<li><p><strong>type</strong> – The data type for this file. The available types are defined in <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/main/Source/Processors/Settings/Metadata.h">Metadata.h</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Here are some usage examples for common data types:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">NpyFile</span><span class="o">*</span> <span class="n">integerFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NpyFile</span><span class="p">(</span><span class="s">&quot;/path/to/file1.npy&quot;</span><span class="p">,</span> <span class="n">NpyType</span><span class="p">(</span><span class="n">BaseType</span><span class="o">::</span><span class="n">INT16</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">NpyFile</span><span class="o">*</span> <span class="n">floatFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NpyFile</span><span class="p">(</span><span class="s">&quot;/path/to/file2.npy&quot;</span><span class="p">,</span> <span class="n">NpyType</span><span class="p">(</span><span class="n">BaseType</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Once the file has been opened, data can be written using the following methods:</p>
+<dl class="cpp function">
+<dt id="_CPPv49writeDataPKv6size_t">
+<span id="_CPPv39writeDataPKv6size_t"></span><span id="_CPPv29writeDataPKv6size_t"></span><span id="writeData__voidCP.s"></span>void <code class="sig-name descname">writeData</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>data</em>, size_t <em>nSamples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49writeDataPKv6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Writes a block of data to an NPY file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – An array of values to write; the data type must match the data type that was specified when opening the file.</p></li>
+<li><p><strong>nSamples</strong> – The total number of samples to write.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv419increaseRecordCounti">
+<span id="_CPPv319increaseRecordCounti"></span><span id="_CPPv219increaseRecordCounti"></span><span id="increaseRecordCount__i"></span>void <code class="sig-name descname">increaseRecordCount</code><span class="sig-paren">(</span>int <em>count</em> = 1<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419increaseRecordCounti" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Increases the count of the number of records in the file. The record count can be increased at any time, but the final count must match the total number of samples that have been written in order for the file to be loaded properly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>count</strong> – The amount by which this file’s record count should be increased.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="sequential-block-files">
+<h2>Sequential Block Files<a class="headerlink" href="#sequential-block-files" title="Permalink to this headline">¶</a></h2>
+<p>All Record Engines also have access to a <code class="code docutils literal notranslate"><span class="pre">SequentialBlockFile</span></code> class that can be used to write data to compact binary files that are often have a “.bin” or “.dat” extension. This is how continuous data is stored in the Open Ephys <a class="reference internal" href="../../User-Manual/Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a>, and it is common to see these files in other neuroscience-specific formats as well.</p>
+<p>To write data to a Sequential Block File, only three methods are needed:</p>
+<dl class="cpp function">
+<dt id="_CPPv419SequentialBlockFilei">
+<span id="_CPPv319SequentialBlockFilei"></span><span id="_CPPv219SequentialBlockFilei"></span><span id="SequentialBlockFile__i"></span><code class="sig-name descname">SequentialBlockFile</code><span class="sig-paren">(</span>int <em>nChannels</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419SequentialBlockFilei" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Sequential Block File constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nChannels</strong> – The total number of continuous channels to store in this file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv48openFile6String">
+<span id="_CPPv38openFile6String"></span><span id="_CPPv28openFile6String"></span><span id="openFile__String"></span>bool <code class="sig-name descname">openFile</code><span class="sig-paren">(</span>String <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48openFile6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Opens the file at the requested location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – Absolute path to the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv412writeChannel6uint64iP5int16i">
+<span id="_CPPv312writeChannel6uint64iP5int16i"></span><span id="_CPPv212writeChannel6uint64iP5int16i"></span><span id="writeChannel__uint64.i.int16P.i"></span>bool <code class="sig-name descname">writeChannel</code><span class="sig-paren">(</span>uint64 <em>startPos</em>, int <em>channel</em>, int16 *<em>data</em>, int <em>nSamples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412writeChannel6uint64iP5int16i" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Writes data for a particular channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>startPos</strong> – The index of the first sample to write.</p></li>
+<li><p><strong>channel</strong> – The index of the channel to write.</p></li>
+<li><p><strong>data</strong> – Pointer to the first sample to be written.</p></li>
+<li><p><strong>nSamples</strong> – The total number of samples to write.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Data-Threads.html" title="previous page">Data Threads</a>
+    <a class='right-next' id="next-link" href="File-Sources.html" title="next page">File Sources</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

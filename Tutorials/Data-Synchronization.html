@@ -202,7 +202,7 @@
               <div>
                 
   <div class="section" id="synchronizing-data-streams">
-<span id="synchronization"></span><h1>Synchronizing Data Streams<a class="headerlink" href="#synchronizing-data-streams" title="Permalink to this headline">¶</a></h1>
+<span id="datasynchronization"></span><h1>Synchronizing Data Streams<a class="headerlink" href="#synchronizing-data-streams" title="Permalink to this headline">¶</a></h1>
 <p>The Open Ephys GUI is able to acquire, process, and save data from multiple asynchronous data streams simultaneously. However, even if two data streams have identical sample rates, they are neither guaranteed to start acquisition simultaneously nor acquire data at exactly the advertised sample rate. Therefore, some synchronization procedure is required.</p>
 <p>Synchronization is typically performed offline, using the timing events on a “sync line” that is shared between each data acquisition device. But the GUI can also be configured to synchronize data from separate streams in real time, as it is being written to disk. This tutorial uses the example of Neuropixels probes and a National Instruments Data Acquisition (NIDAQ) device to demonstrate how to synchronize data streams online.</p>
 <div class="section" id="general-principles-of-synchronization">
@@ -240,7 +240,7 @@
 </div>
 <div class="section" id="hardware-configuration">
 <h2>Hardware Configuration<a class="headerlink" href="#hardware-configuration" title="Permalink to this headline">¶</a></h2>
-<p>When using the <a class="reference internal" href="../User-Manual/Plugins/Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> and <a class="reference internal" href="../User-Manual/Plugins/NIDAQmx.html#nidaqmx"><span class="std std-ref">NIDAQmx</span></a> plugins, there are two options for setting up the sync line:</p>
+<p>When using the <a class="reference internal" href="../User-Manual/Plugins/Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> and <a class="reference internal" href="../User-Manual/Plugins/NIDAQmx.html#ni-daqmx"><span class="std std-ref">NI-DAQmx</span></a> plugins, there are two options for setting up the sync line:</p>
 <ol class="arabic simple">
 <li><p>Use the built-in sync output of the Neuropixels PXI basestation.</p></li>
 <li><p>Use a separate device, such as an Arduino, to generate a sync signal that is routed to the Neuropixels PXI basestation and the NIDAQ device.</p></li>

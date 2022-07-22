@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,7 +335,15 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#recommended-signal-chain" class="nav-link">Recommended signal chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-multiple-data-streams" class="nav-link">Working with multiple data streams</a>
         </li>
     
     </ul>
@@ -356,11 +362,8 @@
   <div class="section" id="phase-detector">
 <span id="phasedetector"></span><h1>Phase Detector<a class="headerlink" href="#phase-detector" title="Permalink to this headline">¶</a></h1>
 <img alt="Phase Detector plugin settings interface" src="../../_images/phasedetector-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Emits events when a continuous signal arrives at a specific “phase,” which really means a peak, falling zero-crossing, trough, or rising zero-crossing.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Emits events when a continuous signal arrives at a specific “phase,” which really means a peak, falling zero-crossing, trough, or rising zero-crossing. It was originally designed to trigger output at specific phases of an 8 Hz theta oscillation in mouse hippocampus.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -379,23 +382,34 @@
 <td><p>Josh Siegle</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/PhaseDetector">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/PhaseDetector</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/PhaseDetector">https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/PhaseDetector</a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Compare to Phase Calculator</p>
+<p>The Phase Detector uses the simplest possible algorithm to trigger outputs when an incoming signal reaches a peak, trough, or zero-crossing. If you would like to perform more precise phase-specific stimulation, you should use the <a class="reference internal" href="Phase-Calculator.html#phasecalculator"><span class="std std-ref">Phase Calculator</span></a> plugin, which uses a Hilbert transform to predict the timing of each cycle with a higher degree of accuracy.</p>
+</div>
+<div class="section" id="recommended-signal-chain">
+<h2>Recommended signal chain<a class="headerlink" href="#recommended-signal-chain" title="Permalink to this headline">¶</a></h2>
+<p>The Phase Detector works best when triggering on relatively low-frequency signals (below 15 Hz), with very narrow <a class="reference internal" href="Bandpass-Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a> placed immediately before it. Therefore, the plugin immediately preceding the Phase Detector should be a Bandpass Filter with the high and low cut configured to be a few Hz above and below the frequency of interest (e.g. 6-10 Hz for triggering on an 8 Hz theta oscillation).</p>
+<p>All continuous channels pass through the Phase Detector unchanged.</p>
 </div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>To use it, you have to select a phase (one of four buttons on the sine wave), an input channel (the continuous channel used for triggering), and an output channel (an event channel). Optionally, you can also select a “gate” channel, which causes the Phase Detector to emit its output only when that event channel is active (i.e., “high”).</p>
-<p>You can add additional detectors that target different phases or different channels by clicking the + button.</p>
-<p>All continuous channels pass through the Phase Detector unchanged.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Unless it follows a relatively narrow <a class="reference internal" href="Bandpass-Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a>, the Phase Detector will emit events at very unpredictable intervals, and probably won’t be that useful. It’s meant for detecting the phase of an oscillation in a particular frequency range, such as the theta band.</p>
+<p>There are four parameters for each Phase Detector:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">TTL_OUT</span></code>: The TTL output line to use. When the Phase Detector detects a peak, trough, or zero-crossing, it will emit events on this line. If you’re using the output of this plugin to trigger closed-loop feedback, be sure that this line does not overlap with those used by incoming events from your data source or other plugins.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">GATE_LINE</span></code>: The TTL input line used to gate the output of this plugin. If this is set to 0, then the gate is disable and all relevant events will be emitted. If this is set to line 1-16, then the Phase Detector will only generate outputs when the selected line is “high.”</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Channel</span></code>: The continuous channel that will be analyzed. It’s possible to select any incoming channel within the currently active stream (see below for details about how this plugin handles multiple incoming streams).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">Selected</span> <span class="pre">phase</span></code>: In the upper right of the editor, there’s an interface for choosing the phase on which events will be triggered. By default, the peak is selected, but it’s also possible to choose falling zero-crossings, the trough, or rising zero-crossings.</p></li>
+</ul>
 </div>
+<div class="section" id="working-with-multiple-data-streams">
+<h2>Working with multiple data streams<a class="headerlink" href="#working-with-multiple-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>The Phase Detector can only process one continuous channel from one data stream at a time. If the Phase Detector has multiple data streams as input, you can specify which stream to use by clicking the vertical lines on the right of the editor to open the stream selection drawer. Click the arrow buttons or use the popup menu to select the active stream for this plugin.</p>
+<img alt="Phase detector stream selection interface" src="../../_images/phasedetector-02.png" />
+<p>To trigger outputs on several continuous channels, or at different phases, you can place multiple Phase Detectors in succession.’’</p>
 </div>
 </div>
 

@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Phase Detector" href="Phase-Detector.html" />
-    <link rel="prev" title="NIDAQmx" href="NIDAQmx.html" />
+    <link rel="prev" title="Online PSTH" href="Online-PSTH.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="active">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,7 +335,29 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recommended-signal-chain" class="nav-link">Recommended signal chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#channel-selection" class="nav-link">Channel selection</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#defining-the-frequency-band-of-interest" class="nav-link">Defining the frequency band of interest</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#visualization" class="nav-link">Visualization</a>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -356,11 +376,8 @@
   <div class="section" id="phase-calculator">
 <span id="phasecalculator"></span><h1>Phase Calculator<a class="headerlink" href="#phase-calculator" title="Permalink to this headline">¶</a></h1>
 <img alt="Phase Calculator plugin settings interface" src="../../_images/phasecalculator-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">This plugin estimates the phase of inputs an input signal within a specified passband in real time. Its primary purpose is to enable closed-loop stimulation, typically in combination with the Crossing Detector and either the Pulse Pal or an external stimulation system that receives ZeroMQ events (for example, the <a class="reference external" href="https://github.com/tne-lab/closed-loop-stim">LabVIEW implementation here</a>). It can also output the magnitude or imaginary component of the band-limited analytic signal instead of the phase. (The “PH+MAG” mode outputs both phase and magnitude, in separate channels.) Finally, the visualization tab or window can receive TTL events and display the delayed but precise phase of a specified input at the event onset samples in a rose plot. This allows real-time monitoring of stimulation accuracy.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Estimates the phase of a continuous input signal within a specified passband. It can be used to perform phase-specific closed-loop stimulation, typically in combination with the <a class="reference internal" href="Crossing-Detector.html#crossingdetector"><span class="std std-ref">Crossing Detector</span></a>.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -383,23 +400,48 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Phase Calculator is able to estimate phase more precisely than the <a class="reference internal" href="Phase-Detector.html#phasedetector"><span class="std std-ref">Phase Detector</span></a> plugin, which uses a simple peak/trough/zero crossing detection.</p>
+</div>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Phase Calculator plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “Phase Calculator” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="recommended-signal-chain">
+<h2>Recommended signal chain<a class="headerlink" href="#recommended-signal-chain" title="Permalink to this headline">¶</a></h2>
+<p>The input to the Phase Calculator should be a wideband, <em>unfiltered</em> signal. The Phase Calculator includes its own internal filters optimized for phase estimation.</p>
+<p>Because the Phase Calculator overwrites incoming channels with the estimated phase, there should be a <a class="reference internal" href="Splitter.html#splitter"><span class="std std-ref">Splitter</span></a> in the signal chain if the original signals are needed for further downstream processing.</p>
+<p>This image shows the output of the Phase Calculator with two channels (1 and 5) being analyzed.</p>
+<img alt="Phase Calculator demo" src="../../_images/phase_calculator_demo.png" />
+</div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Phase Calculator takes a few seconds to initialize, so please be patient!</p>
+</div>
+<div class="section" id="channel-selection">
+<h3>Channel selection<a class="headerlink" href="#channel-selection" title="Permalink to this headline">¶</a></h3>
+<p>Since the phase estimation algorithm is somewhat processor-intensive, by default only the first input channel of each stream is enabled. Use the <strong>Channels</strong> button to select additional channels as needed. Each selected channel will be transformed from a continuously sampled sequence of voltages into an estimate of the frequency-specific phase between -180 to +180.</p>
+</div>
+<div class="section" id="defining-the-frequency-band-of-interest">
+<h3>Defining the frequency band of interest<a class="headerlink" href="#defining-the-frequency-band-of-interest" title="Permalink to this headline">¶</a></h3>
+<p>First, use the <code class="code docutils literal notranslate"><span class="pre">FREQ</span> <span class="pre">RANGE`</span></code> drop-down menu to select the general frequency range to analyze. This determines which of the pre-designed Hilbert transformer filters will be used internally. Note that frequencies below 4 Hz (delta band) are too low to calculate an accurate phase estimate.</p>
+<p>Next, use the <code class="code docutils literal notranslate"><span class="pre">LOW_CUT</span></code> and <code class="code docutils literal notranslate"><span class="pre">HIGH_CUT`</span></code> parameters to define a more specific passband. Changing the general frequency range will automatically set a default high and low cut, but they can be edited to filter to any band within the specified range.</p>
 <ul class="simple">
-<li><p><strong>Important!</strong> Since the phase estimation algorithm is somewhat processor-intensive, by default all input channels are disabled. To enable the channels you would like to estimate the phase (or other component) of, select them in the “PARAM” section of the drawer. If “PH+MAG” is selected as the output, this will also create the additional magnitude outputs for each selected input.</p></li>
-<li><p>In the FREQ RANGE drop-down menu, choose a range of frequencies that includes the band you want to filter to. This determines which of the pre-designed Hilbert transformer filters is used internally (since if we tried to use one filter for all frequencies, it would end up with terrible performance everywhere). Note that the delta band is just too low to get a reasonably accurate phase estimate, even when downsampling to 500 Hz as this plugin does (before interpolating the output).</p></li>
-<li><p>Use the LOW and HIGH parameters to select the desired frequency passband. (Inputs should be unfiltered; the Phase Calculator uses its own bandpass filter internally.) Changing the frequency range will automatically set a default high and low cut, but they can be changed to filter to any band within the range.</p></li>
-<li><p>AR REFRESH and ORDER control the auto-regressive model used to predict the “future” portion of the Hilbert buffer. AR parameters are estimated using Burg’s method. The default settings seem to work well, but other settings (particularly lower orders) may also work well.</p></li>
-<li><p>OUTPUT allows selection of which component(s) of the analytic signal to output (for all enabled channels). If PH+MAG is selected, a magnitude (amplitude envelope) output channel is added to the outputs for each selected input channel; they appear in the ascending numerical order of their corresponding input/phase output channels. See image below for an example of outputting both phase and magnitude.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">AR_REFRESH</span></code> and <code class="code docutils literal notranslate"><span class="pre">AR_ORDER</span></code> control the autoregressive model used to predict the “future” portion of the Hilbert buffer. AR parameters are estimated using Burg’s method. TThe default settings generally work well, but alternate values (particularly a lower order) may improve the estimate in certain cases.</p></li>
 </ul>
-<img alt="Phase Calculator demo" src="../../_images/phase_calculator_demo.png" />
-<ul class="simple">
-<li><p>Clicking the tab or window button opens the “event phase plot” view. This allows non-real-time plotting of the precise phase of received TTL events on a channel of interest. The data channel must be one that is selected for processing in the Phase Calculator “params” drawer, as the filtering step is shared between real-time phase estimation and event phase visualization. All plot controls can be used while acquisition is running. “Phase reference” subtracts the input (in degrees) from all phases (in both the rose plot and the statistics).</p></li>
-</ul>
+</div>
+<div class="section" id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h3>
+<p>Clicking the tab or window button opens the “event phase plot” view. This will plot the phase of incoming TTL events relative to a continuous channel of interest. The continuous channel must be one that is selected for processing in the <strong>Channels</strong> parameter editor.</p>
+<p>This visualization can be used to measure the actual phase of hardware TTL outputs (e.g. from the <a class="reference internal" href="Arduino-Output.html#arduinooutput"><span class="std std-ref">Arduino Output</span></a> or <a class="reference internal" href="Pulse-Pal.html#pulsepal"><span class="std std-ref">Pulse Pal</span></a>). One simply needs to connect the output events to a TTL input line on the data acquisition hardware, and then make sure the correct input is selected in the Phase Calculator visualizer.</p>
 <img alt="Phase Calculator visualizer" src="../../_images/phase_calculator_visualizer.png" />
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line"><br /></div>
+</div>
 </div>
 </div>
 </div>
@@ -410,7 +452,7 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="NIDAQmx.html" title="previous page">NIDAQmx</a>
+    <a class='left-prev' id="prev-link" href="Online-PSTH.html" title="previous page">Online PSTH</a>
     <a class='right-next' id="next-link" href="Phase-Detector.html" title="next page">Phase Detector</a>
 
               </div>

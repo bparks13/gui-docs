@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Virtual Reference" href="Virtual-Reference.html" />
-    <link rel="prev" title="Stream Muxer" href="Stream-Muxer.html" />
+    <link rel="prev" title="Splitter" href="Splitter.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="active">
@@ -406,6 +404,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Tracking Plugin is not yet available for GUI version 0.6.X.</p>
+</div>
 <div class="section" id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
 <p>The Tracking Plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to  “Tracking Plugin”, and click the “Install” button.</p>
@@ -435,7 +437,7 @@
 </div>
 <div class="section" id="setting-up-bonsai">
 <h3>Setting up Bonsai<a class="headerlink" href="#setting-up-bonsai" title="Permalink to this headline">¶</a></h3>
-<p>If you haven’t already, <a class="reference external" href="https://bonsai-rx.org/docs/installation/">install Bonsai</a>. After opening Bonsai, find the package manager and install the <strong>Vision</strong>, <strong>Vision Design</strong>, <strong>PointGrey</strong>, <strong>OSC</strong>, <strong>OSC Design</strong>, and <strong>Scripting</strong> packages.</p>
+<p>If you haven’t already, <a class="reference external" href="https://bonsai-rx.org/docs/articles/installation.html">install Bonsai</a>. After opening Bonsai, find the package manager and install the <strong>Vision</strong>, <strong>Vision Design</strong>, <strong>PointGrey</strong>, <strong>OSC</strong>, <strong>OSC Design</strong>, and <strong>Scripting</strong> packages.</p>
 <p>Once everything is installed, download and unzip the files in <a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin/raw/master/Resources/tracking-plugin-bonsai.zip">this directory</a>. Then, open the <code class="code docutils literal notranslate"><span class="pre">tracking.bonsai</span></code> workflow file in Bonsai.</p>
 <p>If you don’t have a PointGrey camera available, replace the <code class="code docutils literal notranslate"><span class="pre">FlyCapture</span></code> operator with one that’s compatible with your camera.</p>
 <p>The directory contains a configuration file <code class="code docutils literal notranslate"><span class="pre">osc.config</span></code> that sets up two OSC ports:</p>
@@ -480,7 +482,7 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="Stream-Muxer.html" title="previous page">Stream Muxer</a>
+    <a class='left-prev' id="prev-link" href="Splitter.html" title="previous page">Splitter</a>
     <a class='right-next' id="next-link" href="Virtual-Reference.html" title="next page">Virtual Reference</a>
 
               </div>

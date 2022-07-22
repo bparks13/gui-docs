@@ -160,6 +160,12 @@
           
             
                 <li class="">
+                    <a href="Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
+                <li class="">
                     <a href="Plugins/index.html">Plugins</a>
                 </li>
             
@@ -231,7 +237,7 @@
                 
   <div class="section" id="hardware-requirements">
 <span id="hardwarerequirements"></span><h1>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h1>
-<p>You can demo the Open Ephys GUI on almost any modern computer using the <a class="reference internal" href="Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a> to read in data that’s already been saved. But if you are planning to run experiments, you’ll need to make sure your hardware is capable enough to keep up with data acquisition. In general, the minimum requirements will depend on how many channels you’d like to acquire simultaneously, and whether you need low-latency closed-loop feedback. Below, we provide some guidelines for configuring your data acquisition machine.</p>
+<p>You can demo the Open Ephys GUI on any computer using the <a class="reference internal" href="Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a> to read in data that’s already been saved. But if you are planning to run experiments, you’ll need to make sure your system is capable enough to keep up with data acquisition. In general, the minimum requirements will depend on how many channels you’d like to acquire simultaneously, and whether you need low-latency closed-loop feedback. Below, we provide some guidelines for configuring your data acquisition machine.</p>
 <div class="section" id="for-the-open-ephys-acquisition-board">
 <h2>For the Open Ephys acquisition board<a class="headerlink" href="#for-the-open-ephys-acquisition-board" title="Permalink to this headline">¶</a></h2>
 <img alt="Acquisition board hardware" src="../_images/acq-board.jpg" />
@@ -254,7 +260,7 @@
 <ul class="simple">
 <li><p><strong>Acquisition board</strong> (available from the <a class="reference external" href="https://open-ephys.org/acquisition-system/eux9baf6a5s8tid06hk1mw5aafjdz1">Open Ephys Store</a>)</p></li>
 <li><p><strong>I/O boards</strong> for interfacing with auxiliary analog and digital signals (available from the <a class="reference external" href="https://open-ephys.org/acquisition-system/io-board-pcb">Open Ephys Store</a>)</p></li>
-<li><p><strong>Headstages and cables</strong> (available as part of the <a class="reference external" href="https://open-ephys.org/acquisition-system/starter-kit">Open Ephys Starter Kit</a> or from <a class="reference external" href="http://intantech.com/pricing.html">Intan Technologies</a>; there is also a low-profile headstage available from the <a class="reference external" href="https://open-ephys.org/acquisition-system/low-profile-spi-headstage-64ch">Open Ephys Store</a>)</p></li>
+<li><p><strong>Headstages and cables</strong> (available as part of the <a class="reference external" href="https://open-ephys.org/acquisition-system/starter-kit">Open Ephys Starter Kit</a> or from <a class="reference external" href="https://intantech.com/pricing.html">Intan Technologies</a>; there is also a low-profile headstage available from the <a class="reference external" href="https://open-ephys.org/acquisition-system/low-profile-spi-headstage-64ch">Open Ephys Store</a>)</p></li>
 <li><p><strong>Electrodes</strong> - there is lots of flexibility here, as long as you have some way to interface between your electrodes and a compatible headstage. For tetrodes, we recommend the <a class="reference external" href="https://open-ephys.org/drive-implant">shuttleDrive</a>.</p></li>
 </ul>
 </div>
@@ -270,7 +276,7 @@
 <li><p><strong>Memory</strong> - at least 2 GB per simultaneously recorded probe; 16 GB is recommended.</p></li>
 <li><p><strong>Data storage</strong> - a solid state drive is essential (at least 500 MB/s write speed); an NVMe drive is strongly recommended.</p></li>
 <li><p><strong>Graphics card</strong> - the GUI doesn’t rely on the GPU for processing, but GPUs are essential for offline analysis. An NVIDIA GPU is likely required (for CUDA compatibility); we recommend buying a GTX 1660 or better.</p></li>
-<li><p><strong>Connections</strong> - the motherboard should have at least one x8- or x16-compatible PCIe slot.</p></li>
+<li><p><strong>Connections</strong> - the motherboard should have at least one x8- or x16-compatible PCIe slot, in addition to the one used by the GPU.</p></li>
 </ul>
 </div>
 <div class="section" id="id2">
@@ -280,7 +286,7 @@
 <li><p>One <strong>PXI chassis</strong> (so far we’ve tested National Instruments PXIe-1071 and PXIe-1082)</p></li>
 <li><p>One <strong>PXI remote control module</strong> (we’ve tested National Instruments PXIe-8381 and PXIe-8398) – requires NIDAQmx driver</p></li>
 <li><p>One <strong>PCIe interface card</strong> (we’ve tested National Instruments PCIe-8381 and PCIe-8398)</p></li>
-<li><p><em>(optional)</em> One <strong>PXI-based analog and digital I/O module</strong> (see the <a class="reference internal" href="Plugins/NIDAQmx.html#nidaqmx"><span class="std std-ref">NIDAQmx</span></a> page for a list of hardware we’ve tested)</p></li>
+<li><p><em>(optional)</em> One <strong>PXI-based analog and digital I/O module</strong> (see the <a class="reference internal" href="Plugins/NIDAQmx.html#ni-daqmx"><span class="std std-ref">NI-DAQmx</span></a> page for a list of hardware we’ve tested)</p></li>
 <li><p><strong>Cables</strong> to connect the remote control module to the PCIe card (e.g., National Instruments MXI-Express Cables, Gen 2 x8)</p></li>
 <li><p>From IMEC: Neuropixels PXIe module, cables, headstages, and probes</p></li>
 </ul>

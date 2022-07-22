@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,7 +335,25 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#hardware-requirements" class="nav-link">Hardware Requirements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#trigger-and-gate-channels" class="nav-link">Trigger and gate channels</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#pulse-train-settings" class="nav-link">Pulse train settings</a>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -356,11 +372,8 @@
   <div class="section" id="pulse-pal">
 <span id="pulsepal"></span><h1>Pulse Pal<a class="headerlink" href="#pulse-pal" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Pulse Pal editor" src="../../_images/pulsepal-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Allows the GUI to trigger the channels of a <a class="reference external" href="http://www.open-ephys.org/pulsepal/">Pulse Pal</a>, an open-source pulse train generator.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Triggers the outputs of a Pulse Pal, an open-source pulse train generator developed and sold by Sanworks.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -373,25 +386,52 @@
 <td><p>Windows, Linux, macOS</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Built in?</em></p></td>
-<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Josh Siegle, Michelle Fogerson</p></td>
+<td><p>Josh Siegle, Michelle Fogerson, Alessio Buccino, Mikkel Lepperod, Svenn-Arne Dragly</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/PulsePalOutput">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/PulsePalOutput</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/pulse-pal-output">https://github.com/open-ephys-plugins/pulse-pal-output</a></p></td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Pulse Pal plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Pulse Pal Output” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="hardware-requirements">
+<h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline">¶</a></h2>
+<p>This plugin requires that a Pulse Pal (v1.0 or v2.0) is connected to the computer running the Open Ephys GUI via USB. Make sure the Pulse Pal is plugged in before adding the Pulse Pal plugin to the signal chain. If a Pulse Pal is not detected, the plugin will be disabled. To re-try connecting to the device, delete the plugin and add it back to the signal chain.</p>
+<p>You can test that the plugin is working by pressing the <strong>trigger</strong> button for any of the four channels of the Pulse Pal. When the button is pressed, the pulse train for the corresponding channel should begin immediately.</p>
+</div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>If a Pulse Pal is connected to the computer running the GUI, it should be automatically detected. Make sure the Pulse Pal is plugged in before you add the module to the signal chain.</p>
-<p>You can test that the module is working by pressing the “TRIGGER” button for any of the four channels of the Pulse Pal. The button should trigger the corresponding pulse train.</p>
-<p>The processor can respond to incoming events in two ways:</p>
+<div class="section" id="trigger-and-gate-channels">
+<h3>Trigger and gate channels<a class="headerlink" href="#trigger-and-gate-channels" title="Permalink to this headline">¶</a></h3>
+<p>The Pulse Pal plugin can respond to incoming events in two ways:</p>
 <ol class="arabic simple">
 <li><p>Events on a particular channel can directly trigger the corresponding Pulse Pal channel (if no “Gate” is set)</p></li>
-<li><p>Event ON and OFF events can gate the triggers from another channel. That is, if channel A is ON (high, 1, etc.), incoming events from channel B will be able to trigger the Pulse Pal. If channel A is OFF (low, 0, etc.), incoming events from channel B will have no effect. This can be used to activate or deactivate closed-loop feedback for different experimental conditions.</p></li>
+<li><p>ON and OFF events can gate the outputs that are triggered by a different channel. That is, if channel A is ON (high, 1, etc.), incoming events from channel B will be able to trigger the Pulse Pal. If channel A is OFF (low, 0, etc.), incoming events from channel B will have no effect. This can be used to activate or deactivate closed-loop feedback for different experimental conditions.</p></li>
 </ol>
+<p>Each of the four Pulse Pal output channels can have a unique trigger and/or gate channel. Each input line that can be used for triggering and gating is defined by:</p>
+<ol class="arabic simple">
+<li><p>The ID of the source node (3-digit number)</p></li>
+<li><p>The name of the associated data stream</p></li>
+<li><p>The index of the TTL line</p></li>
+</ol>
+<p>For example, an event generated by a plugin with ID of 101 on TTL line 1 of a stream called “example_data” would be listed as <strong>101 (example_data) TTL1</strong>. If this line is selected as the trigger for Pulse Pal output channel 1, this output will only be triggered by “ON” TTL events that match these three criteria.</p>
+</div>
+<div class="section" id="pulse-train-settings">
+<h3>Pulse train settings<a class="headerlink" href="#pulse-train-settings" title="Permalink to this headline">¶</a></h3>
+<p>The pulse train settings for each output channel are configured in the Pulse Pal Output’s visualizer (accessed by clicking the tab or window buttons in the upper right of the plugin editor):</p>
+<img alt="Pulse Pal visualizer" src="../../_images/pulsepal-02.png" />
+<p>Refer to the <a class="reference external" href="https://sites.google.com/site/pulsepalwiki/parameter-guide?authuser=0">Pulse Pal wiki</a> for the definition of each of these parameters.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 </div>
 

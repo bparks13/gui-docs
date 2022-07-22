@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NIDAQmx &#8212; Open Ephys GUI Docs</title>
+    <title>NI-DAQmx &#8212; Open Ephys GUI Docs</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Phase Calculator" href="Phase-Calculator.html" />
+    <link rel="next" title="Online PSTH" href="Online-PSTH.html" />
     <link rel="prev" title="Neuropixels PXI" href="Neuropixels-PXI.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="active">
-                            <a href="">NIDAQmx</a>
+                            <a href="">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -338,6 +336,10 @@
     
         <li class="nav-item toc-entry toc-h2">
             <a href="#requirements" class="nav-link">Requirements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -395,9 +397,9 @@
               
               <div>
                 
-  <div class="section" id="nidaqmx">
-<span id="id1"></span><h1>NIDAQmx<a class="headerlink" href="#nidaqmx" title="Permalink to this headline">¶</a></h1>
-<img alt="NIDAQmx plugin settings interface" src="../../_images/NIDAQmx.png" />
+  <div class="section" id="ni-daqmx">
+<span id="id1"></span><h1>NI-DAQmx<a class="headerlink" href="#ni-daqmx" title="Permalink to this headline">¶</a></h1>
+<img alt="NI-DAQmx plugin settings interface" src="../../_images/nidaqmx-01.png" />
 <table class="colwidths-given table" id="id2">
 <caption><span class="caption-text">Streams analog and digital data from National Instruments (NI) hardware. Use multiple instances of this plugin to acquire data from several PXI-, PCI-, and/or USB-based NI devices simultaneously. Can be used in tandem with the Neuropix-PXI plugin, to read in analog and digital inputs in parallel with Neuropixels data.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -430,6 +432,11 @@
 <li><p>Installed NI-DAQmx drivers (available for download <a class="reference external" href="https://www.ni.com/en-us/support/downloads/drivers/download.ni-daqmx.html#348669">here</a>; version 19.0+ recommended).</p></li>
 <li><p><strong>For synchronization</strong>: One digital input line shared between all data sources streaming data to the GUI (e.g., Open Ephys acquisition board, Neuropixels PXI basestation, other NI devices).</p></li>
 </ul>
+</div>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The NI-DAQmx plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “NI-DAQmx” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
 </div>
 <div class="section" id="compatible-hardware">
 <h2>Compatible hardware<a class="headerlink" href="#compatible-hardware" title="Permalink to this headline">¶</a></h2>
@@ -467,7 +474,7 @@
 </tr>
 </tbody>
 </table>
-<p>If you’re using the NIDAQmx plugin alongside the <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> module, we recommend using a PXI-compatible DAQ in the same chassis as the Neuropixels PXI basestation.</p>
+<p>If you’re using the NI-DAQmx plugin alongside the <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> module, we recommend using a PXI-compatible DAQ in the same chassis as the Neuropixels PXI basestation.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>All of these devices (with the exception of <strong>PXI-6133</strong>) are known to experience “signal ghosting” if unused analog input channels are not grounded. Grounding at least one positive terminal of an unused analog input channel can reduce ghosting by ~99% of the highest amplitude active channel.</p>
@@ -475,7 +482,7 @@
 </div>
 <div class="section" id="connecting-to-your-nidaq-hardware">
 <h2>Connecting to your NIDAQ hardware<a class="headerlink" href="#connecting-to-your-nidaq-hardware" title="Permalink to this headline">¶</a></h2>
-<p>When you drag and drop the NIDAQmx plugin from the Processor List onto the Editor Viewport, it automatically checks for all connected NI devices. If multiple devices are found, a ‘Device Swap’ button will appear in the top right corner of the plugin editor that acts as a toggle switch to cycle through all available devices. The module only looks for devices when the plugin initially is dropped into the EditorViewport. If a new device is connected after the plugin is dropped, you will need to drop a new NIDAQmx module to be able to connect to the new device.</p>
+<p>When you drag and drop the NI-DAQmx plugin from the Processor List onto the Editor Viewport, it automatically checks for all connected NI devices. If multiple devices are found, a ‘Device Swap’ button will appear in the top right corner of the plugin editor that acts as a toggle switch to cycle through all available devices. The module only looks for devices when the plugin initially is dropped into the EditorViewport. If a new device is connected after the plugin is dropped, you will need to drop a new NI-DAQmx module to be able to connect to the new device.</p>
 <p>The editor will automatically generate control buttons for each analog and digital input available on the selected NI device. Each analog channel contains a channel status toggle button as well as a terminal configuration toggle button. The channel status toggle button is set to on (green) by default for all channels and is intended to enable/disable channels on the fly. Toggling an enabled channel to off (gray) will ‘zero-out’ the data coming in on that channel.</p>
 <p>Each analog channel also contains a terminal configuration toggle specific to the device connected. Possible terminal device configurations are RSE (Referenced Single-Ended), NRSE (Non-Referenced Single-Ended), DIFF (Differential), and PDIF (Pseudo-Differential). The terminal configuration toggle setting in the module should match the configuration in your experimental setup. Since most NI devices cannot infer the terminal configuration electronically, it is up to the user to ensure the module configuration matches the experimental setup prior to acquiring and recording data. An inconsistent terminal configuration can affect the amplitude and voltage offset of the incoming data.</p>
 <p>Each digital channel contains a channel status toggle button as well. Disabling digital channels is particularly useful when a digital input line is constantly high or a digital line is not used at all.</p>
@@ -483,7 +490,7 @@
 </div>
 <div class="section" id="offline-synchronization">
 <h2>Offline Synchronization<a class="headerlink" href="#offline-synchronization" title="Permalink to this headline">¶</a></h2>
-<p>The NIDAQmx module has its own sample clock, even if it’s in the same PXI chassis as other hardware (e.g. a Neuropixels basestation). Therefore, it needs to be treated as a separate device when performing offline synchronization.</p>
+<p>The NI-DAQmx module has its own sample clock, even if it’s in the same PXI chassis as other hardware (e.g. a Neuropixels basestation). Therefore, it needs to be treated as a separate device when performing offline synchronization.</p>
 <p>To align timestamps across devices, one device has to be treated as the “master” clock, and all other sets of timestamps must be scaled and shifted to match this clock. This requires that a digital sync line is physically connected across all devices.</p>
 <p>While it’s possible to use one of the NI devices (or a Neuropixels PXI basestation) to generate the sync pulses, we recommend using an Arduino running the <a class="reference external" href="https://github.com/open-ephys/sync-barcodes">sync-barcodes</a> program, which generates unique temporal barcode patterns every 30 s. This will allow you to align sample clocks unambiguously, even if your devices are stopped and started at different times.</p>
 <p>To perform the offline alignment, you’ll need to identify the first and last shared sync pulse in the recording. The temporal offset between the start of the first sync pulses defines the shift between any device and the master clock. Once you know this, you can calculate the expected interval between the first and last sync pulse (given the expected sample rate of a device). The ratio of the actual interval to the expected interval defines the scaling factor for that device.</p>
@@ -496,11 +503,11 @@
 <div class="section" id="online-synchronization">
 <h2>Online Synchronization<a class="headerlink" href="#online-synchronization" title="Permalink to this headline">¶</a></h2>
 <p>An Open Ephys Record Node can automatically synchronize data sources that share the same physical sync signal. Since each device acquires data asynchronously, a shared clock signal between two different devices will have different timestamps for corresponding TTL events. A Record Node can designate one of these channels as the main ‘synchronization channel’ and scale the timestamps coming auxiliary devices to be in alignment with the main device.</p>
-<p>For Neuropixels probes, you can use the Neuropixels-PXI as the main synchronization device by physically connecting the SMA output of the Neuropixels basestation to any digital input channel on the NIDAQ device.</p>
-<p>In Open Ephys, place a <a class="reference internal" href="Merger.html#merger"><span class="std std-ref">Merger</span></a> before the Record Node and connect both the <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin and the NIDAQmx plugin. The Record Node will show either one or two subprocessors per Neuropixels probe (depending if the 2.5kHz LFP band is included by the probe model) and one subprocessor for the NIDAQ device. Each subprocessor’s sync channel monitor will turn green if the digital line on that subprocessor is synchronized with any of the other subprocessors coming into that Record Node.</p>
-<img alt="NIDAQmx plugin syncing" src="../../_images/NIDAQ_NPXMerged.png" />
+<p>For Neuropixels probes, you can use the Neuropixels PXI as the main synchronization device by physically connecting the SMA output of the Neuropixels basestation to any digital input channel on the NIDAQ device.</p>
+<p>In Open Ephys, place a <a class="reference internal" href="Merger.html#merger"><span class="std std-ref">Merger</span></a> before the Record Node and connect both the <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin and the NI-DAQmx plugin. The Record Node will show either one or two subprocessors per Neuropixels probe (depending if the 2.5kHz LFP band is included by the probe model) and one subprocessor for the NIDAQ device. Each subprocessor’s sync channel monitor will turn green if the digital line on that subprocessor is synchronized with any of the other subprocessors coming into that Record Node.</p>
+<img alt="NI-DAQmx plugin syncing" src="../../_images/NIDAQ_NPXMerged.png" />
 <p>Upon starting acquisition, the first and third sync channel monitors in the Record Node turn green first, as these contain the 30 kHz AP band of the probes and the source of the synchronization signal. Shortly after, the fifth sync channel monitor turns green, which contains the sync signal coming into the NIDAQ device from the Neuropixels probe’s basestation.</p>
-<img alt="NIDAQmx plugin synced" src="../../_images/NPX_NIDAQSynchronized.png" />
+<img alt="NI-DAQmx plugin synced" src="../../_images/NPX_NIDAQSynchronized.png" />
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For more information about recording and synchronization in Open Ephys, please see the <a class="reference internal" href="../Recording-data/index.html#recordingdata"><span class="std std-ref">Recording data</span></a> page.</p>
@@ -513,13 +520,13 @@
 <div class="section" id="pxi-6133">
 <h3>PXI-6133<a class="headerlink" href="#pxi-6133" title="Permalink to this headline">¶</a></h3>
 <p>The PXI‑6133 supports simultaneous-sampling, which means the analog and digital channels are guaranteed to be sampled simultaneously in time and synchronized with each other before they reach the GUI. Passing the square wave test signal to both the first analog and first digital input on the card shows that both signals are synchronized:</p>
-<img alt="NIDAQmx plugin PXO-6133 synced input signal magnified" src="../../_images/6133_SyncedPulse_zoomed.png" />
+<img alt="NI-DAQmx plugin PXO-6133 synced input signal magnified" src="../../_images/6133_SyncedPulse_zoomed.png" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The 6133 takes a few (3-5) seconds to initialize after the acquisition button has been pressed; therefore, there will be a delay before data starts to appear in the LFP Viewer.</p>
 </div>
 <p>Furthermore, the analog input channels on the 6133 are well-isolated and there is no signal cross-talk on any of the unused analog input channels:</p>
-<img alt="NIDAQmx plugin PXI 6133 synced signal with no interference on unused channels" src="../../_images/6133_SyncedPulse.png" />
+<img alt="NI-DAQmx plugin PXI 6133 synced signal with no interference on unused channels" src="../../_images/6133_SyncedPulse.png" />
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The voltage on the unused channels may float at a constant non-zero value if left open. It is good practice to either ground or short the non-used analog inputs to avoid this.</p>
@@ -528,9 +535,9 @@
 <div class="section" id="pxie-6341">
 <h3>PXIe-6341<a class="headerlink" href="#pxie-6341" title="Permalink to this headline">¶</a></h3>
 <p>The PXIe-6341 performs almost as well as the 6133, however, there is cross-talk across unused channels when applying the same test signal as above. That is, if a signal is physically connected to only the first analog input channel, a ‘ghost’ of the signal will appear across all of the open analog input channels as shown below:</p>
-<img alt="NIDAQmx plugin PXIE-6341 syned input signal" src="../../_images/6341_SyncedPulse.png" />
+<img alt="NI-DAQmx plugin PXIE-6341 syned input signal" src="../../_images/6341_SyncedPulse.png" />
 <p>However, if a 10Hz square wave is added to the second analog input and to the second digital input, there is no interference between the new signal and the original test signal on either the analog or digital channels:</p>
-<img alt="NIDAQmx plugin PXIE-6341 multiple analog and digital inputs without interference" src="../../_images/6341_Combo.png" />
+<img alt="NI-DAQmx plugin PXIE-6341 multiple analog and digital inputs without interference" src="../../_images/6341_Combo.png" />
 </div>
 <div class="section" id="pxi-6521">
 <h3>PXI-6521<a class="headerlink" href="#pxi-6521" title="Permalink to this headline">¶</a></h3>
@@ -539,14 +546,14 @@
 <div class="section" id="pcie-6321">
 <h3>PCIe-6321<a class="headerlink" href="#pcie-6321" title="Permalink to this headline">¶</a></h3>
 <p>The PCIe-6321 card does not require a PXI chassis and can be connected directly to the PCIe slot of a PC motherboard. This card exhibits the same behavior with the test signal as the PXI-6341, however, there is some overshooting observed at steep signal transition points. Smooth analog signals will not exhibit this behavior.</p>
-<img alt="NIDAQmx plugin PCIE-6321 seep signal ringing" src="../../_images/6321_synced_ringing.png" />
+<img alt="NI-DAQmx plugin PCIE-6321 seep signal ringing" src="../../_images/6321_synced_ringing.png" />
 </div>
 <div class="section" id="usb-6001">
 <h3>USB-6001<a class="headerlink" href="#usb-6001" title="Permalink to this headline">¶</a></h3>
 <p>Applying the test signal to the first analog and second digital input of the USB 6001 results in the digital channels going high significantly before the analog channels. The USB devices also inherit the ghosting and overshooting issues mentioned in previous devices.</p>
-<img alt="NIDAQmx plugin USB-6001 ghosting with single analog channel" src="../../_images/USB-6001-Unsynced.png" />
+<img alt="NI-DAQmx plugin USB-6001 ghosting with single analog channel" src="../../_images/USB-6001-Unsynced.png" />
 <p>The delay between the observed analog and digital inputs is not guaranteed to be constant. By grounding any unused analog channels, the USB-6001 can still achieve a clean and isolated signal on its analog channels:</p>
-<img alt="NIDAQmx plugin USB-6001 grounded unused analog inputs" src="../../_images/USB-6001-Grounded.png" />
+<img alt="NI-DAQmx plugin USB-6001 grounded unused analog inputs" src="../../_images/USB-6001-Grounded.png" />
 </div>
 </div>
 </div>
@@ -558,7 +565,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="Neuropixels-PXI.html" title="previous page">Neuropixels PXI</a>
-    <a class='right-next' id="next-link" href="Phase-Calculator.html" title="next page">Phase Calculator</a>
+    <a class='right-next' id="next-link" href="Online-PSTH.html" title="next page">Online PSTH</a>
 
               </div>
               

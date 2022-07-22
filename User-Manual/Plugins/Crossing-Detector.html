@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -341,7 +339,29 @@
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin Configuration</a>
+            <a href="#recommended-signal-chain" class="nav-link">Recommended signal chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin Configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#general-settings" class="nav-link">General settings</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#threshold-level" class="nav-link">Threshold level</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#event-criteria" class="nav-link">Event criteria</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#event-duration" class="nav-link">Event duration</a>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -361,7 +381,7 @@
 <span id="crossingdetector"></span><h1>Crossing Detector<a class="headerlink" href="#crossing-detector" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Crossing Detector editor" src="../../_images/crossingdetector-01.png" />
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Emits events when continuous signals cross a threshold</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Emits a TTL event when a continuous channel crosses a specified threshold level. Each Crossing Detector can only process one input channel at a time, but multiple detectors can be placed in series to trigger on as many channels as desired.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -386,28 +406,48 @@
 </table>
 <div class="section" id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
-<p>The Crossing Detector plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to the “Crossing Detector” plugin, and click the “Install” button.</p>
+<p>The Crossing Detector plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “Crossing Detector” plugin, and click the “Install” button.</p>
 <p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="recommended-signal-chain">
+<h2>Recommended signal chain<a class="headerlink" href="#recommended-signal-chain" title="Permalink to this headline">¶</a></h2>
+<p>The Crossing Detector analyzes the values on an incoming continuous channel and outputs events whenever a threshold is crossed. It is meant to be used in conjunction with plugins that output smoothly varying continuous signals, such as the <a class="reference internal" href="Phase-Calculator.html#phasecalculator"><span class="std std-ref">Phase Calculator</span></a> and the <a class="reference internal" href="Multiband-Integrator.html#multibandintegrator"><span class="std std-ref">Multi-Band Integrator</span></a>.</p>
 </div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The Crossing Detector analyzes the values on an incoming continuous channel, and outputs events whenever a threshold is crossed. It is meant to be used in conjunction with plugins that output smoothly varying continuous signals, such as the <a class="reference internal" href="Phase-Calculator.html#phasecalculator"><span class="std std-ref">Phase Calculator</span></a> and the <a class="reference internal" href="Multiband-Integrator.html#multibandintegrator"><span class="std std-ref">Multi-Band Integrator</span></a>.</p>
-<p>The most important parameters are available in the plugin editor:</p>
+<div class="section" id="general-settings">
+<h3>General settings<a class="headerlink" href="#general-settings" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>Input channel</strong>: Continuous (input) channel to be analyzed.</p></li>
-<li><p><strong>Rising/falling selector</strong>: Determines whether events are emitted whenever the signal rises above the threshold, or falls below the threshold.</p></li>
-<li><p><strong>Output channel</strong>: Event (TTL) channel on which this plugin will output events.</p></li>
-<li><p><strong>Threshold</strong>: Threshold value (in units of the selected input channel). For neural data channels, the units are in microvolts.</p></li>
-<li><p><strong>Timeout</strong>: Minimum time elapsed between one event and the next. If the signal crosses the threshold within &lt;timeout&gt; ms after the last event, no event will be emitted.</p></li>
+<li><p>When the <strong>Channel</strong> that is selected <strong>Rises</strong> and/or <strong>Falls</strong> across the threshold level (specified in the visualizer window), an event is triggered on the <cite>TTL_OUT</cite> line.</p></li>
+<li><p><cite>TIMEOUT_MS</cite> controls the minimum time between two consecutive events (i.e. for this number of milliseconds after an event fires, no more crossings can be detected).</p></li>
 </ul>
 <p>Additional parameters can be configured by clicking the “tab” or “window” buttons in the upper right of the plugin’s editor. The settings interface can be seen here:</p>
-<img alt="Annotated Crossing Detector editor" src="../../_images/crossingdetector-02.png" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>By default, the event duration is set to 5 ms, which is too short to be visualized in the LFP Viewer. To ensure that the events are displayed, change the duration to 100 ms or higher.</p>
+<img alt="Crossing Detector visualizer with additional settings" src="../../_images/crossingdetector-02.png" />
 </div>
+<div class="section" id="threshold-level">
+<h3>Threshold level<a class="headerlink" href="#threshold-level" title="Permalink to this headline">¶</a></h3>
+<p>There are three different types of thresholds that can be used:</p>
+<ol class="arabic simple">
+<li><p><strong>Constant</strong> (default) - the threshold is set to a constant value.</p></li>
+<li><p><strong>Random</strong> - the plugin randomly chooses a new threshold for each event, based on a uniform distribution</p></li>
+<li><p><strong>Continuous channel</strong> - the input channel is compared with a second continuous channel on a sample-by-sample basis, to allow the threshold to change dynamically.</p></li>
+</ol>
+</div>
+<div class="section" id="event-criteria">
+<h3>Event criteria<a class="headerlink" href="#event-criteria" title="Permalink to this headline">¶</a></h3>
+<p>There are three options that can reduce the frequency of spuriously triggered events:</p>
+<ol class="arabic simple">
+<li><p><strong>Jump size limit</strong> - prevents triggers when the difference across the threshold is too large in magnitude. This is useful for filtering out wrapped phase jumps, for example.</p></li>
+<li><p><strong>Sample voting</strong> - makes detection more robust to noise by requiring a larger span of samples before or after <code class="code docutils literal notranslate"><span class="pre">t0</span></code> to be on the correct side of the threshold.</p></li>
+<li><p><strong>Ignore crossings near the end of buffers</strong></p></li>
+</ol>
+</div>
+<div class="section" id="event-duration">
+<h3>Event duration<a class="headerlink" href="#event-duration" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>event duration</strong> specifies the delay (in ms) between the “OFF” event and the time at which an “ON” event is triggered. The default duration is 100 ms.</p>
 <div class="line-block">
 <div class="line"><br /></div>
+</div>
 </div>
 </div>
 </div>

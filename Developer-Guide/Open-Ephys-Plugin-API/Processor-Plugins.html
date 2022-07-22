@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processor Plugins &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visualizer Plugins" href="Visualizer-Plugins.html" />
+    <link rel="prev" title="Open Ephys Plugin API" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../User-Manual/index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="../Compiling-the-GUI.html">Compiling the GUI</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Compiling-plugins.html">Compiling plugins</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Creating-a-new-plugin.html">Creating a new plugin</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="index.html">Open Ephys Plugin API</a>
+                    <ul>
+                    
+                        <li class="active">
+                            <a href="">Processor Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Visualizer-Plugins.html">Visualizer Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Data-Threads.html">Data Threads</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Record-Engines.html">Record Engines</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="File-Sources.html">File Sources</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Distributing-plugins.html">Distributing plugins</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Modifying-the-host-application.html">Modifying the host application</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#overview" class="nav-link">Overview</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#key-methods" class="nav-link">Key methods</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#constructors" class="nav-link">Constructors</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#genericprocessor-constructor" class="nav-link">GenericProcessor constructor</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#genericeditor-constructor" class="nav-link">GenericEditor constructor</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#updating-plugin-settings" class="nav-link">Updating plugin settings</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#starting-stopping-acquisition" class="nav-link">Starting/stopping acquisition</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#processing-data" class="nav-link">Processing data</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#continuous-data" class="nav-link">Continuous data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#spike-and-event-data" class="nav-link">Spike and event data</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#sending-and-receiving-messages" class="nav-link">Sending and receiving messages</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-parameters" class="nav-link">Plugin parameters</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#defining-parameters" class="nav-link">Defining parameters</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#accessing-parameters" class="nav-link">Accessing parameters</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#creating-parameter-editors" class="nav-link">Creating parameter editors</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#responding-to-parameter-value-changes" class="nav-link">Responding to parameter value changes</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#saving-and-loading-custom-parameters" class="nav-link">Saving and loading custom parameters</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="processor-plugins">
+<span id="processorplugins"></span><h1>Processor Plugins<a class="headerlink" href="#processor-plugins" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">Processor plugins are the key elements of the GUI’s signal chain; they respond to and update continuous data, spikes, and events inside their <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Type</em></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">Plugin::Type::PROCESSOR</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Base Classes</em></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">GenericProcessor</span></code>, <code class="code docutils literal notranslate"><span class="pre">GenericEditor</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Template</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/processor-plugin-template">https://github.com/open-ephys-plugins/processor-plugin-template</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>If you’re developing a new plugin for the GUI, it will most likely be a <strong>Processor Plugin</strong>. The core functionality of these plugins is defined in their <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method, which determines how they generate, modify, or respond to data passing through the GUI’s signal chain.</p>
+<p>There are three type of Processor Plugins:</p>
+<ol class="arabic simple">
+<li><p><strong>Sources</strong> generate data, and must be placed at the beginning of a signal chain. Note that if a source is communicating with external hardware that is not synchronized with the GUI’s signal chain callbacks, a <a class="reference internal" href="Data-Threads.html#datathreads"><span class="std std-ref">Data Threads</span></a> plugin should be used instead.</p></li>
+<li><p><strong>Filters</strong> modify data, either by changing the samples contained in the continuous channel data buffer or adding TTL events or spikes to the event bufer. Filters must receive data from at least one Source.</p></li>
+<li><p><strong>Sinks</strong> send data outside the signal chain, without modifying it in any way. Sinks are typically used for visualizing data or sending triggers to external hardware.</p></li>
+</ol>
+<p>Processor Plugins must also implement an “Editor” derived from the <code class="code docutils literal notranslate"><span class="pre">GenericEditor</span></code> class which contains various UI elements for changing the plugin’s parameters.</p>
+<p>In addition, Processor Plugins can be “Visualizers” if they include a canvas for displaying data and/or parameter interfaces. See the <a class="reference internal" href="Visualizer-Plugins.html#visualizerplugins"><span class="std std-ref">Visualizer Plugins</span></a> page for more information about the API methods related to visualization.</p>
+</div>
+<div class="section" id="key-methods">
+<h2>Key methods<a class="headerlink" href="#key-methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="constructors">
+<h3>Constructors<a class="headerlink" href="#constructors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="genericprocessor-constructor">
+<h4>GenericProcessor constructor<a class="headerlink" href="#genericprocessor-constructor" title="Permalink to this headline">¶</a></h4>
+<p>The plugin class constructor should look like this:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ProcessorPlugin</span><span class="o">::</span><span class="n">ProcessorPlugin</span><span class="p">()</span>
+    <span class="o">:</span> <span class="n">GenericProcessor</span> <span class="p">(</span><span class="s">&quot;Plugin Name&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="c1">// add plugin parameters here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">GenericProcessor</span></code> constructor includes one parameter that specifies how the plugin’s name will appear in the GUI’s Processor List. The constructor should also initialize any <code class="code docutils literal notranslate"><span class="pre">Parameter</span></code> objects that the plugin will use (see below for more info).</p>
+</div>
+<div class="section" id="genericeditor-constructor">
+<h4>GenericEditor constructor<a class="headerlink" href="#genericeditor-constructor" title="Permalink to this headline">¶</a></h4>
+<p>The constructor for the plugin’s editor class must also be defined as follows:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ProcessorPluginEditor</span><span class="o">::</span><span class="n">ProcessorPluginEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span> <span class="n">parentNode</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">GenericEditor</span><span class="p">(</span><span class="n">parentNode</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">desiredWidth</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span>
+
+    <span class="c1">// add parameter editors here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can change the value of <code class="code docutils literal notranslate"><span class="pre">desiredWidth</span></code> to specify how wide (in pixels) the plugin’s editor should be. This value can be changed later on if the editor needs to expand or contract. The editor constructor must define any <code class="code docutils literal notranslate"><span class="pre">ParameterEditor</span></code> widgets that will be used. The underlying parameters must have already been defined in the plugin’s constructor.</p>
+<p>Next, you’ll need to make sure the plugin’s <code class="code docutils literal notranslate"><span class="pre">createEditor()</span></code> method is correct:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">AudioProcessorEditor</span><span class="o">*</span> <span class="n">ProcessorPlugin</span><span class="o">::</span><span class="n">createEditor</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">editor</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">ProcessorPluginEditor</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">editor</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“<code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor</span></code>” should be changed to match the name of your plugin’s editor class.</p>
+</div>
+</div>
+</div>
+<div class="section" id="updating-plugin-settings">
+<h3>Updating plugin settings<a class="headerlink" href="#updating-plugin-settings" title="Permalink to this headline">¶</a></h3>
+<p>Whenever the signal chain is modified, the GUI will call <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code> on all plugins downstream of the modification, to allow them to respond to changes and inform downstream plugins about their current state:</p>
+<dl class="cpp function">
+<dt id="_CPPv414updateSettingsv">
+<span id="_CPPv314updateSettingsv"></span><span id="_CPPv214updateSettingsv"></span><span id="updateSettings"></span>void <code class="sig-name descname">updateSettings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414updateSettingsv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processor plugins should override this method in order to respond to configuration information about upstream plugins, and ensure their own configuration information is sent to downstream plugins.</p>
+</dd></dl>
+
+<p>The following internal variables are used to pass information between plugins prior to the start of acquisition:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">dataStreams</span></code> - A Juce <code class="code docutils literal notranslate"><span class="pre">OwnedArray</span></code> that stores pointers to the available <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> objects that will be processed by this plugin. Each <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> is assigned a <code class="code docutils literal notranslate"><span class="pre">uint16</span></code> identifier that is guaranteed to be unique within a given run of the GUI, but does not persist between runs.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">continuousChannels</span></code> - A Juce <code class="code docutils literal notranslate"><span class="pre">OwnedArray</span></code> that stores pointers to the available <code class="code docutils literal notranslate"><span class="pre">ContinuousChannel</span></code> objects that will be processed by this plugin. Each <code class="code docutils literal notranslate"><span class="pre">ContinuousChannel</span></code> must be associated with a <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> containing all of the other channels that are sampled synchronously.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">eventChannels</span></code> - A Juce <code class="code docutils literal notranslate"><span class="pre">OwnedArray</span></code> that stores pointers to the available <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> objects that will be processed by this plugin. Similar to <code class="code docutils literal notranslate"><span class="pre">ContinuousChannel</span></code> objects, each <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> must be associated with one and only one <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code>. Note that each <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> object can track state changes across many TTL “lines.”</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">spikeChannels</span></code> - A Juce <code class="code docutils literal notranslate"><span class="pre">OwnedArray</span></code> that stores pointers to the available <code class="code docutils literal notranslate"><span class="pre">SpikeChannel</span></code> objects that will be processed by this plugin. Each <code class="code docutils literal notranslate"><span class="pre">SpikeChannel</span></code> must be associated with one and only one <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code>, and will also contain pointers to the <code class="code docutils literal notranslate"><span class="pre">ContinuousChannel</span></code> objects that represent the continuous channels from which spikes are samples. A <code class="code docutils literal notranslate"><span class="pre">SpikeChannel</span></code> will generate spikes that are associated with one “Electrode” (e.g. single electrode, stereotrode, or tetrode).</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="code docutils literal notranslate"><span class="pre">DataStream</span></code>, <code class="code docutils literal notranslate"><span class="pre">ContinuousChannel</span></code>, <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code>, and <code class="code docutils literal notranslate"><span class="pre">SpikeChannel</span></code> objects do <em>not</em> persist between calls to <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code>. Do not store pointers to these objects outside the standard locations, as the underlying objects will be deleted the next time the signal chain is modified.</p>
+</div>
+<p>If a plugin will generate continuous, event, or spike data, it must create new channel info objects and add them to the appropriate <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> inside the <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code> method.</p>
+<p>Plugins that only generate events can call the following method inside <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code> to automatically add an event channel to the first incoming <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code>:</p>
+<dl class="cpp function">
+<dt id="_CPPv413addTTLChannel6String">
+<span id="_CPPv313addTTLChannel6String"></span><span id="_CPPv213addTTLChannel6String"></span><span id="addTTLChannel__String"></span>void <code class="sig-name descname">addTTLChannel</code><span class="sig-paren">(</span>String <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413addTTLChannel6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds a TTL event channel to the first incoming data stream, so downstream plugins can respond to events generated by this plugin. This method should only be called once, inside the <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code> method. Note that each “channel” can contain state information for up to 256 TTL lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – The name of this channel. Channel names must be unique for each data stream within a particular plugin.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="starting-stopping-acquisition">
+<h3>Starting/stopping acquisition<a class="headerlink" href="#starting-stopping-acquisition" title="Permalink to this headline">¶</a></h3>
+<p>If a plugin needs to update its internal state just before the start of acquisition, it should override the following method:</p>
+<dl class="cpp function">
+<dt id="_CPPv416startAcquisitionv">
+<span id="_CPPv316startAcquisitionv"></span><span id="_CPPv216startAcquisitionv"></span><span id="startAcquisition"></span>bool <code class="sig-name descname">startAcquisition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Informs a plugin that acquisition is about to begin. If a plugin is not ready to handle incoming data, it can return <code class="code docutils literal notranslate"><span class="pre">false</span></code> to prevent acquisition from starting.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415stopAcquisitionv">
+<span id="_CPPv315stopAcquisitionv"></span><span id="_CPPv215stopAcquisitionv"></span><span id="stopAcquisition"></span>bool <code class="sig-name descname">stopAcquisition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Informs a plugin that acquisition has stopped. The return value is not currently handled.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="processing-data">
+<h3>Processing data<a class="headerlink" href="#processing-data" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method is where a Processor Plugin’s core functionality is defined:</p>
+<dl class="cpp function">
+<dt id="_CPPv47process11AudioBufferIfE">
+<span id="_CPPv37process11AudioBufferIfE"></span><span id="_CPPv27process11AudioBufferIfE"></span><span id="process__AudioBuffer:float:"></span>void <code class="sig-name descname">process</code><span class="sig-paren">(</span>AudioBuffer&lt;float&gt; <em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv47process11AudioBufferIfE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allows a plugin to modify a buffer of continuous channels, and add events or spikes that will be received by downstream plugins. This method is  called repeatedly whenever acquisition is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>buffer</strong> – A Juce <code class="code docutils literal notranslate"><span class="pre">AudioBuffer</span></code> containing data samples for all continuous channels processed by this plugin. The ordering of channels in this buffer matches the ordering of channels in the <code class="code docutils literal notranslate"><span class="pre">continuousChannels</span></code> array. Since this buffer contains samples for all incoming data streams, be sure to call <code class="code docutils literal notranslate"><span class="pre">getGlobalIndex()</span></code> for each continuous channel to find its position in this buffer, which may be different from its position within its data stream. In general, this buffer stores data in units of microvolts, but there are some cases (such as ADC channels) where the data is stored in volts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="continuous-data">
+<h4>Continuous data<a class="headerlink" href="#continuous-data" title="Permalink to this headline">¶</a></h4>
+<p>Before performing any read/write operations on a continuous channel, it is necessary to query the number of valid samples that are available in a given callback:</p>
+<dl class="cpp function">
+<dt id="_CPPv420getNumSamplesInBlock6uint16">
+<span id="_CPPv320getNumSamplesInBlock6uint16"></span><span id="_CPPv220getNumSamplesInBlock6uint16"></span><span id="getNumSamplesInBlock__uint16"></span>int <code class="sig-name descname">getNumSamplesInBlock</code><span class="sig-paren">(</span>uint16 <em>streamId</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420getNumSamplesInBlock6uint16" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the number of samples available for a stream. Must be called
+on a per-stream basis, because different streams are
+not guaranteed to have the same number of samples in each buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>streamId</strong> – The ID of the data stream to check.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of samples available in the current buffer for the specified stream.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>See the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/ebf64f5fc89dee3cb452eb92f9fb63e04d8a68d0/Plugins/FilterNode/FilterNode.cpp#L260-L270">FilterNode::process()</a> method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>A plugin should never request samples that are above the index returned by this method. This method can sometimes return 0, if there are no samples available for a given data stream.</p>
+<p>In order to read or write data from the continuous buffer, the following methods should be used:</p>
+<dl class="cpp function">
+<dt id="_CPPv414getReadPointeri">
+<span id="_CPPv314getReadPointeri"></span><span id="_CPPv214getReadPointeri"></span><span id="getReadPointer__i"></span>float *<code class="sig-name descname">getReadPointer</code><span class="sig-paren">(</span>int <em>globalChannelIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414getReadPointeri" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a pointer to the data for one channel; only use this if the plugin will not overwrite the continuous data buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>globalChannelIndex</strong> – The global index of the continuous data channel</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A pointer to the continuous data.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>See the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/ebf64f5fc89dee3cb452eb92f9fb63e04d8a68d0/Plugins/PhaseDetector/PhaseDetector.cpp#L241">PhaseDetector::process()</a> method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv415getWritePointeri">
+<span id="_CPPv315getWritePointeri"></span><span id="_CPPv215getWritePointeri"></span><span id="getWritePointer__i"></span>float *<code class="sig-name descname">getWritePointer</code><span class="sig-paren">(</span>int <em>globalChannelIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415getWritePointeri" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a pointer to the data for one channel; only use this if the plugin will overwrite the continuous data buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>globalChannelIndex</strong> – The global index of the continuous data channel to modify.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A pointer to the continuous data.</p>
+</dd>
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>See the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/ebf64f5fc89dee3cb452eb92f9fb63e04d8a68d0/Plugins/FilterNode/FilterNode.cpp#L260-L270">FilterNode::process()</a> method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="spike-and-event-data">
+<h4>Spike and event data<a class="headerlink" href="#spike-and-event-data" title="Permalink to this headline">¶</a></h4>
+<p>To notify the GUI that the plugin needs to respond to incoming events and spikes within the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method, the following method must be called:</p>
+<dl class="cpp function">
+<dt id="_CPPv414checkForEventsb">
+<span id="_CPPv314checkForEventsb"></span><span id="_CPPv214checkForEventsb"></span><span id="checkForEvents__b"></span>int <code class="sig-name descname">checkForEvents</code><span class="sig-paren">(</span>bool <em>respondToSpikes</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414checkForEventsb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Indicates that the plugin wants to respond to incoming events and/or spikes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>respondToSpikes</strong> – Set to <code class="code docutils literal notranslate"><span class="pre">true</span></code> if the plugin needs to receive spikes as well.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if there are events available in this buffer, -1 otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The plugin should override the following methods to actually deal with incoming events and spikes:</p>
+<dl class="cpp function">
+<dt id="_CPPv414handleTTLEvent11TTLEventPtr">
+<span id="_CPPv314handleTTLEvent11TTLEventPtr"></span><span id="_CPPv214handleTTLEvent11TTLEventPtr"></span><span id="handleTTLEvent__TTLEventPtr"></span>void <code class="sig-name descname">handleTTLEvent</code><span class="sig-paren">(</span>TTLEventPtr <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414handleTTLEvent11TTLEventPtr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Passes the next available incoming event to the plugin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – Pointer to a <code class="code docutils literal notranslate"><span class="pre">TTLEvent</span></code> object containing information about this event. This includes the event channel that generated it, the ID of the data stream it is associated with, the line on which the event occurred, and the sample number of the event (relative to the start of acquisition).</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>See the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/ebf64f5fc89dee3cb452eb92f9fb63e04d8a68d0/Plugins/ArduinoOutput/ArduinoOutput.cpp#L101-L138">ArduinoOutput::handleEvent()</a> method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv411handleSpike8SpikePtr">
+<span id="_CPPv311handleSpike8SpikePtr"></span><span id="_CPPv211handleSpike8SpikePtr"></span><span id="handleSpike__SpikePtr"></span>void <code class="sig-name descname">handleSpike</code><span class="sig-paren">(</span>SpikePtr <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411handleSpike8SpikePtr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Passes the next available incoming spike to the plugin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – Pointer to a <code class="code docutils literal notranslate"><span class="pre">Spike</span></code> object containing information about this spike. This include the spike channel that generated it, the ID of the data stream it is associated with, the sample number of the event (relative to the start of acquisition), and the full spike waveform (in units of microvolts).</p>
+</dd>
+<dt class="field-even">Example</dt>
+<dd class="field-even"><p>See the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/ebf64f5fc89dee3cb452eb92f9fb63e04d8a68d0/Plugins/ArduinoOutput/ArduinoOutput.cpp#L101-L138">SpikeDisplayNode::handleSpike()</a> method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Assuming that <code class="code docutils literal notranslate"><span class="pre">addTTLChannel()</span></code> was called inside the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method (see above), a plugin can add events using the following method:</p>
+<dl class="cpp function">
+<dt id="_CPPv412flipTTLStateii">
+<span id="_CPPv312flipTTLStateii"></span><span id="_CPPv212flipTTLStateii"></span><span id="flipTTLState__i.i"></span>void <code class="sig-name descname">flipTTLState</code><span class="sig-paren">(</span>int <em>sampleIndex</em>, int <em>lineIndex</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412flipTTLStateii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds an event indicating a state change on a particular TTL line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sampleIndex</strong> – The sample index (relative to the start of the current block of the first incoming stream) at which this state change occurred.</p></li>
+<li><p><strong>lineIndex</strong> – The TTL line on which the state change occurred (0-255).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv411setTTLStateiib">
+<span id="_CPPv311setTTLStateiib"></span><span id="_CPPv211setTTLStateiib"></span><span id="setTTLState__i.i.b"></span>void <code class="sig-name descname">setTTLState</code><span class="sig-paren">(</span>int <em>sampleIndex</em>, int <em>lineIndex</em>, bool <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411setTTLStateiib" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds an event with a specified state value (ON or OFF). Note that consecutive “ON” or “OFF” events are valid within software, even if they would be impossible to generate using actual hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sampleIndex</strong> – The sample index (relative to the start of the current block of the first incoming stream) at which this state change occurred.</p></li>
+<li><p><strong>lineIndex</strong> – The TTL line on which the state change occurred (0-255).</p></li>
+<li><p><strong>state</strong> – The state of the TTL line (ON = <code class="code docutils literal notranslate"><span class="pre">true</span></code>, OFF = <code class="code docutils literal notranslate"><span class="pre">false</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="sending-and-receiving-messages">
+<h3>Sending and receiving messages<a class="headerlink" href="#sending-and-receiving-messages" title="Permalink to this headline">¶</a></h3>
+<p>While acquisition is not active, plugins can respond to <strong>configuration messages</strong> and send <strong>status messages</strong>:</p>
+<dl class="cpp function">
+<dt id="_CPPv419handleConfigMessage6String">
+<span id="_CPPv319handleConfigMessage6String"></span><span id="_CPPv219handleConfigMessage6String"></span><span id="handleConfigMessage__String"></span>void <code class="sig-name descname">handleConfigMessage</code><span class="sig-paren">(</span>String <em>message</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Allows a plugin to respond to a configuration message (usually received via the <code class="code docutils literal notranslate"><span class="pre">OpenEphysHTTPServer</span></code>). This makes it possible to configure a plugin’s settings remotely. Config messages are ignored if acquisition is active.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param message</dt>
+<dd class="field-odd"><p>The content of the configuration message. There are no restrictions on how this string is formatted; each plugin is responsible for parsing this message in the appropriate way.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N12CoreServices17sendStatusMessageE6String">
+<span id="_CPPv3N12CoreServices17sendStatusMessageE6String"></span><span id="_CPPv2N12CoreServices17sendStatusMessageE6String"></span><span id="CoreServices::sendStatusMessage__String"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">sendStatusMessage</code><span class="sig-paren">(</span>String <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices17sendStatusMessageE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Displays a message to the user in the GUI’s Message Center.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param message</dt>
+<dd class="field-odd"><p>The message to display.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<p>While acquisition is active, plugins can respond to and send <strong>broadcast messages</strong>:</p>
+<dl class="cpp function">
+<dt id="_CPPv422handleBroadcastMessage6String">
+<span id="_CPPv322handleBroadcastMessage6String"></span><span id="_CPPv222handleBroadcastMessage6String"></span><span id="handleBroadcastMessage__String"></span>void <code class="sig-name descname">handleBroadcastMessage</code><span class="sig-paren">(</span>String <em>message</em><span class="sig-paren">)</span><br /></dt>
+<dd><p>Allows a plugin to respond to an event that carries a text value, which is broadcast throughout the signal chain during acquisition. These messages can be used to pass information backwards through the signal chain, e.g. to trigger an output based on events that are generated downstream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The content of the broadcast message. There are no restrictions on how this string is formatted; each plugin is responsible for parsing this message in the appropriate way.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416broadcastMessage6String">
+<span id="_CPPv316broadcastMessage6String"></span><span id="_CPPv216broadcastMessage6String"></span><span id="broadcastMessage__String"></span>void <code class="sig-name descname">broadcastMessage</code><span class="sig-paren">(</span>String <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416broadcastMessage6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Can be called during the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method to send a message to all other plugins in the signal chain. These messages will be automatically saved by any Record Nodes in the signal chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – The content of the broadcast message. There are no restrictions on how this string is formatted; each plugin is responsible for generating messages that can be parsed by other plugins.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="plugin-parameters">
+<h2>Plugin parameters<a class="headerlink" href="#plugin-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The GUI’s built-in <code class="code docutils literal notranslate"><span class="pre">Parameter</span></code> class provides an easy way to manage the parameters for your plugin. Using this class provides the following advantages:</p>
+<ul class="simple">
+<li><p>Parameter names, default values, and ranges are defined with one line of code</p></li>
+<li><p>Parameter editors can be auto-generated with a second line of code</p></li>
+<li><p>Parameters values can be safely updated while acquisition is active</p></li>
+<li><p>The GUI will automatically track parameters across different data streams</p></li>
+<li><p>Parameter values will be automatically saved and loaded</p></li>
+</ul>
+<div class="section" id="defining-parameters">
+<h3>Defining parameters<a class="headerlink" href="#defining-parameters" title="Permalink to this headline">¶</a></h3>
+<p>All parameters <em>must</em> be defined inside your plugin’s class constructor, using the constructor methods for different types of parameters, e.g.:</p>
+<dl class="cpp function">
+<dt id="_CPPv415addIntParameterN9Parameter14ParameterScopeERK6StringRK6Stringiii">
+<span id="_CPPv315addIntParameterN9Parameter14ParameterScopeERK6StringRK6Stringiii"></span><span id="_CPPv215addIntParameterN9Parameter14ParameterScopeERK6StringRK6Stringiii"></span><span id="addIntParameter__Parameter::ParameterScope.StringCR.StringCR.i.i.i"></span>void <code class="sig-name descname">addIntParameter</code><span class="sig-paren">(</span>Parameter::ParameterScope <em>scope</em>, <em class="property">const</em> String &amp;<em>name</em>, <em class="property">const</em> String &amp;<em>description</em>, int <em>defaultValue</em>, int <em>minValue</em>, int <em>maxValue</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415addIntParameterN9Parameter14ParameterScopeERK6StringRK6Stringiii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds a parameter that can take integer values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scope</strong> – Use <code class="code docutils literal notranslate"><span class="pre">Parameter::GLOBAL_SCOPE</span></code> if the parameter will hold a single value each plugin or <code class="code docutils literal notranslate"><span class="pre">Parameter::STREAM_SCOPE</span></code> if the parameter can be changed independently for each incoming data stream.</p></li>
+<li><p><strong>name</strong> – Name of the parameter (cannot have spaces)</p></li>
+<li><p><strong>description</strong> – A one-line description of this parameter</p></li>
+<li><p><strong>defaultValue</strong> – The default value for this parameter</p></li>
+<li><p><strong>minValue</strong> – The minimum value this parameter can take</p></li>
+<li><p><strong>maxValue</strong> – The maximum value for this parameter</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>See <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">GenericProcessor.h</a> for a complete list of Parameter constructors.</p>
+</div>
+<div class="section" id="accessing-parameters">
+<h3>Accessing parameters<a class="headerlink" href="#accessing-parameters" title="Permalink to this headline">¶</a></h3>
+<p>For global parameters, use the following method:</p>
+<dl class="cpp function">
+<dt id="_CPPv412getParameter6String">
+<span id="_CPPv312getParameter6String"></span><span id="_CPPv212getParameter6String"></span><span id="getParameter__String"></span>Parameter *<code class="sig-name descname">getParameter</code><span class="sig-paren">(</span>String <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412getParameter6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a pointer to a global parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – The name of the parameter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The easiest way to access stream-specific parameters is through the overloaded bracket operator:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">*</span><span class="n">stream</span><span class="p">)[</span><span class="s">&quot;parameter_name&quot;</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>In both cases, requesting a parameter name that doesn’t exist will result in a segfault.</p>
+</div>
+<div class="section" id="creating-parameter-editors">
+<h3>Creating parameter editors<a class="headerlink" href="#creating-parameter-editors" title="Permalink to this headline">¶</a></h3>
+<p>Parameters can be modified using editors that are auto-generated by the GUI. These must be initialized in the class constructor for the plugin’s editor, e.g.:</p>
+<dl class="cpp function">
+<dt id="_CPPv425addTextBoxParameterEditorRK6Stringii">
+<span id="_CPPv325addTextBoxParameterEditorRK6Stringii"></span><span id="_CPPv225addTextBoxParameterEditorRK6Stringii"></span><span id="addTextBoxParameterEditor__StringCR.i.i"></span>void <code class="sig-name descname">addTextBoxParameterEditor</code><span class="sig-paren">(</span><em class="property">const</em> String &amp;<em>name</em>, int <em>xPos</em>, int <em>yPos</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425addTextBoxParameterEditorRK6Stringii" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds a text box that can be used to modify the values of a <code class="code docutils literal notranslate"><span class="pre">Parameter</span></code> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – The name of the parameter. This <em>must</em> match the name of a parameter that has been created inside the plugin’s constructor.</p></li>
+<li><p><strong>xpos</strong> – The horizontal position (in pixels) of this parameter editor within the plugin’s editor (left edge = 0)</p></li>
+<li><p><strong>ypos</strong> – The vertical position (in pixels) of this parameter editor within the plugin’s editor (top edge = 0)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>See <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">GenericEditor.h</a> for a complete list of Parameter constructors.</p>
+</div>
+<div class="section" id="responding-to-parameter-value-changes">
+<h3>Responding to parameter value changes<a class="headerlink" href="#responding-to-parameter-value-changes" title="Permalink to this headline">¶</a></h3>
+<p>Your plugin can implement a custom response to parameter changes. For example, if the filter high cut changes and a filter needs to be updated. To do this, override this virtual method in your plugin.</p>
+<dl class="cpp function">
+<dt id="_CPPv421parameterValueChangedP9Parameter">
+<span id="_CPPv321parameterValueChangedP9Parameter"></span><span id="_CPPv221parameterValueChangedP9Parameter"></span><span id="parameterValueChanged__ParameterP"></span>void <code class="sig-name descname">parameterValueChanged</code><span class="sig-paren">(</span>Parameter *<em>param</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv421parameterValueChangedP9Parameter" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Called whenever a parameter value changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>param</strong> – A pointer to the parameter object that was updated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="saving-and-loading-custom-parameters">
+<h2>Saving and loading custom parameters<a class="headerlink" href="#saving-and-loading-custom-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The GUI saves the signal chain in the following situations:</p>
+<ol class="arabic simple">
+<li><p>Whenever a processor is added, moved, or deleted, the signal chain is written to <code class="code docutils literal notranslate"><span class="pre">recoveryConfig.xml</span></code></p></li>
+<li><p>Whenever a recording is started, the signal channel is written to <code class="code docutils literal notranslate"><span class="pre">settings.xml</span></code> inside each Record Node directory</p></li>
+<li><p>Whenever the GUI is closed, the signal chain is written to <code class="code docutils literal notranslate"><span class="pre">lastConfig.xml</span></code></p></li>
+<li><p>Whenever the signal chain is cleared, the previous state is stored in memory so this action can be undone.</p></li>
+</ol>
+<p>In addition, the settings for individual plugins are stored in memory whenever a plugin is copied.</p>
+<p>If the plugin uses any parameters that are not use the built-in <code class="code docutils literal notranslate"><span class="pre">Parameter</span></code> class, it needs to implement the following functions to ensure they are saved and loaded properly:</p>
+<dl class="cpp function">
+<dt id="_CPPv425saveCustomParametersToXmlP10XmlElement">
+<span id="_CPPv325saveCustomParametersToXmlP10XmlElement"></span><span id="_CPPv225saveCustomParametersToXmlP10XmlElement"></span><span id="saveCustomParametersToXml__XmlElementP"></span>void <code class="sig-name descname">saveCustomParametersToXml</code><span class="sig-paren">(</span>XmlElement *<em>xml</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425saveCustomParametersToXmlP10XmlElement" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used to save custom parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>xml</strong> – Pointer to an XmlElement that will store these parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>To add a parameter to the <code class="code docutils literal notranslate"><span class="pre">XmlElement</span></code>, use the following code:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">xml</span><span class="o">-&gt;</span><span class="n">setAttribute</span><span class="p">(</span><span class="s">&quot;parameterName&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The name string cannot have any spaces, and the value can be a boolean, integer, or string.</p>
+<dl class="cpp function">
+<dt id="_CPPv427loadCustomParametersFromXmlP10XmlElement">
+<span id="_CPPv327loadCustomParametersFromXmlP10XmlElement"></span><span id="_CPPv227loadCustomParametersFromXmlP10XmlElement"></span><span id="loadCustomParametersFromXml__XmlElementP"></span>void <code class="sig-name descname">loadCustomParametersFromXml</code><span class="sig-paren">(</span>XmlElement *<em>xml</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427loadCustomParametersFromXmlP10XmlElement" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used to load custom parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>xml</strong> – Pointer to an XmlElement that was saved previously.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>To read out the parameters, you can use the following methods:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">parameter1Value</span> <span class="o">=</span> <span class="n">xml</span><span class="o">-&gt;</span><span class="n">getIntAttribute</span><span class="p">(</span><span class="s">&quot;parameter1Name&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="n">parameter2Value</span> <span class="o">=</span> <span class="n">xml</span><span class="o">-&gt;</span><span class="n">getBoolAttribute</span><span class="p">(</span><span class="s">&quot;parameter2Name&quot;</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">parameter2Value</span> <span class="o">=</span> <span class="n">xml</span><span class="o">-&gt;</span><span class="n">getStringAttribute</span><span class="p">(</span><span class="s">&quot;parameter3Name&quot;</span><span class="p">,</span> <span class="s">&quot;default&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Be sure to supply a default value (the second argument), in case the parameter doesn’t exist in the config file being loaded.</p>
+<p>Plugins can also save and load settings via their editors, by overriding the <code class="code docutils literal notranslate"><span class="pre">GenericEditor::saveCustomParametersToXml()</span></code> and <code class="code docutils literal notranslate"><span class="pre">GenericEditor::loadCustomParametersFromXml()</span></code> methods.</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Open Ephys Plugin API</a>
+    <a class='right-next' id="next-link" href="Visualizer-Plugins.html" title="next page">Visualizer Plugins</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

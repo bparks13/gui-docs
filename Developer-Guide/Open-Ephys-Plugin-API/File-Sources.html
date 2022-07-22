@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Sources &#8212; Open Ephys GUI Docs</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Distributing plugins" href="../Distributing-plugins.html" />
+    <link rel="prev" title="Record Engines" href="Record-Engines.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../index.html">
+    
+      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../User-Manual/index.html">User Manual</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Developer Guide</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+          
+            
+                <li class="">
+                    <a href="../Compiling-the-GUI.html">Compiling the GUI</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Compiling-plugins.html">Compiling plugins</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Creating-a-new-plugin.html">Creating a new plugin</a>
+                </li>
+            
+          
+            
+  
+                <li class="active">
+                    <a href="index.html">Open Ephys Plugin API</a>
+                    <ul>
+                    
+                        <li class="">
+                            <a href="Processor-Plugins.html">Processor Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Visualizer-Plugins.html">Visualizer Plugins</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Data-Threads.html">Data Threads</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Record-Engines.html">Record Engines</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="">File Sources</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Distributing-plugins.html">Distributing plugins</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="../Modifying-the-host-application.html">Modifying the host application</a>
+                </li>
+            
+          
+        
+        
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="file-sources">
+<span id="filesources"></span><h1>File Sources<a class="headerlink" href="#file-sources" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given table" id="id1">
+<caption><span class="caption-text">File Sources stream pre-recorded continuous data and events into the File Reader.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Type</em></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">Plugin::Type::FILE_SOURCE</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Base Class</em></p></td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">FileSource</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Template</em></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/file-source-template">https://github.com/open-ephys-plugins/file-source-template</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>A File Source plugin allows the GUI’s File Reader to stream data from a new type of data format. By default, the File Reader can load data stored in the GUI’s <a class="reference internal" href="../../User-Manual/Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a>. File Source plugins for the <a class="reference internal" href="../../User-Manual/Recording-data/Open-Ephys-format.html#openephysformat"><span class="std std-ref">Open Ephys Format</span></a> and <a class="reference internal" href="../../User-Manual/Recording-data/NWB-format.html#nwbdataformat"><span class="std std-ref">NWB Format</span></a> can be installed via the Plugin Installer.</p>
+<p>A data format may contain data for multiple recordings and/or data streams, but the File Reader can only read one of these at a time. Each “Record” within a File Source represents one recording (a block of contiguous samples) from one data stream (a block of channels that are sampled synchronously). When a new file is loaded, the File Source must provide information about all of the Records that are available, and then the user can select which one to read at any given time. To read in data from multiple recordings or data streams simultaneously, multiple File Readers can be connected via a <a class="reference internal" href="../../User-Manual/Plugins/Merger.html#merger"><span class="std std-ref">Merger</span></a>.</p>
+<p>To create a new File Source, start with the <a class="reference external" href="https://github.com/open-ephys-plugins/file-source-template">File Source Template</a> and add code that implements the following methods:</p>
+<dl class="cpp function">
+<dt id="_CPPv44open4File">
+<span id="_CPPv34open4File"></span><span id="_CPPv24open4File"></span><span id="open__File"></span>bool <code class="sig-name descname">open</code><span class="sig-paren">(</span>File <em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv44open4File" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>When this method is called, the File Source should attempt to open the file selected by the user, and return <code class="code docutils literal notranslate"><span class="pre">true</span></code> if successful. If the file is not valid or cannot be read for any reason, this method should return <code class="code docutils literal notranslate"><span class="pre">false</span></code>. For formats that distribute data across multiple files, this file should contain configuration information that can be used to access all of the additional files. For example, in the <a class="reference internal" href="../../User-Manual/Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a>, this is a JSON file with an <code class="code docutils literal notranslate"><span class="pre">.oebin</span></code> extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> – A Juce <code class="code docutils literal notranslate"><span class="pre">File</span></code> object representing the input file. The plugin can call <code class="code docutils literal notranslate"><span class="pre">File::getFullPathName()</span></code> to return a string containing the complete path to this file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv414fillRecordInfov">
+<span id="_CPPv314fillRecordInfov"></span><span id="_CPPv214fillRecordInfov"></span><span id="fillRecordInfo"></span>void <code class="sig-name descname">fillRecordInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414fillRecordInfov" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Instructs the File Source to fill the <code class="code docutils literal notranslate"><span class="pre">infoArray</span></code> and <code class="code docutils literal notranslate"><span class="pre">eventInfoArray</span></code> objects with the relevant information for all recordings (“Records”).</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418updateActiveRecordi">
+<span id="_CPPv318updateActiveRecordi"></span><span id="_CPPv218updateActiveRecordi"></span><span id="updateActiveRecord__i"></span>void <code class="sig-name descname">updateActiveRecord</code><span class="sig-paren">(</span>int <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418updateActiveRecordi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Informs the File Source that a new Record has been selected by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – The index of the selected Record within the <code class="code docutils literal notranslate"><span class="pre">infoArray</span></code> object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv46seekTo5int64">
+<span id="_CPPv36seekTo5int64"></span><span id="_CPPv26seekTo5int64"></span><span id="seekTo__int64"></span>void <code class="sig-name descname">seekTo</code><span class="sig-paren">(</span>int64 <em>sample</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv46seekTo5int64" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Informs the File Source about the next sample index that should be read from the active Record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sample</strong> – The 0-based sample index to seek to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv48readDataP5int16i">
+<span id="_CPPv38readDataP5int16i"></span><span id="_CPPv28readDataP5int16i"></span><span id="readData__int16P.i"></span>void <code class="sig-name descname">readData</code><span class="sig-paren">(</span>int16 *<em>buffer</em>, int <em>nSamples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv48readDataP5int16i" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reads data from the active Record into a temporary integer buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – A buffer of 16-bit integers that will hold the incoming data.</p></li>
+<li><p><strong>nSamples</strong> – The total number of samples to read.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv418processChannelDataP5int16Pfi5int64">
+<span id="_CPPv318processChannelDataP5int16Pfi5int64"></span><span id="_CPPv218processChannelDataP5int16Pfi5int64"></span><span id="processChannelData__int16P.floatP.i.int64"></span>void <code class="sig-name descname">processChannelData</code><span class="sig-paren">(</span>int16 *<em>inputBuffer</em>, float *<em>outputBuffer</em>, int <em>channel</em>, int64 <em>nSamples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418processChannelDataP5int16Pfi5int64" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Converts data from integers to floats so it can be processed by downstream plugins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputBuffer</strong> – A temporary buffer of unscaled 16-bit integers.</p></li>
+<li><p><strong>outputBuffer</strong> – A buffer of floats containing data in real-world values (usually microvolts).</p></li>
+<li><p><strong>channel</strong> – The index of the channel to convert.</p></li>
+<li><p><strong>nSamples</strong> – The total number of samples to convert.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv416processEventDataR9EventInfo5int645int64">
+<span id="_CPPv316processEventDataR9EventInfo5int645int64"></span><span id="_CPPv216processEventDataR9EventInfo5int645int64"></span><span id="processEventData__EventInfoR.int64.int64"></span>void <code class="sig-name descname">processEventData</code><span class="sig-paren">(</span>EventInfo &amp;<em>info</em>, int64 <em>startSampleNumber</em>, int64 <em>stopSampleNumber</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416processEventDataR9EventInfo5int645int64" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Adds info about the events that occurred within a given range of samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> – The <code class="code docutils literal notranslate"><span class="pre">EventInfo</span></code> object to be updated.</p></li>
+<li><p><strong>startSampleNumber</strong> – The minimum sample at which the incoming events can occur.</p></li>
+<li><p><strong>stopSampleNumber</strong> – The maximum sample at which the incoming events can occur.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="Record-Engines.html" title="previous page">Record Engines</a>
+    <a class='right-next' id="next-link" href="../Distributing-plugins.html" title="next page">Distributing plugins</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

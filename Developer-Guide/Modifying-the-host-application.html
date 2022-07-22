@@ -144,13 +144,7 @@
           
             
                 <li class="">
-                    <a href="Adding-a-new-data-format.html">Adding a new data format</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Open-Ephys-Plugin-API.html">Open Ephys Plugin API</a>
+                    <a href="Open-Ephys-Plugin-API/index.html">Open Ephys Plugin API</a>
                 </li>
             
           
@@ -234,11 +228,11 @@
 <h2>Recommended workflow<a class="headerlink" href="#recommended-workflow" title="Permalink to this headline">¶</a></h2>
 <p>If you’re planning to update the host application, or any of the plugins in the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">plugin-GUI repository</a>, we encourage you to follow these steps:</p>
 <ol class="arabic simple">
-<li><p>Fork <a class="reference internal" href="../_images/fork.svg"><img alt="fork icon" height="15" src="../_images/fork.svg" /></a> the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">GUI’s GitHub repository</a> to your own account.</p></li>
-<li><p>Clone the fork via the <a class="reference external" href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-using-the-command-line">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>.</p></li>
+<li><p>Fork the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI">GUI’s GitHub repository</a> to your own account.</p></li>
+<li><p>Clone the fork via the <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-using-the-command-line">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>.</p></li>
 <li><p>Compile the GUI for your platform of choice according to the steps on <a class="reference internal" href="Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">this page</span></a>.</p></li>
 <li><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/issues">Open an issue</a> describing the changes you’d like to make, whether it’s fixing a bug or adding a new feature. This will ensure that we avoid any redundant development efforts.</p></li>
-<li><p>Create a new branch for your changes: <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;newbranchname&gt;</span></code></p></li>
+<li><p>Create a new branch for your changes based on the <strong>main</strong> branch: <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;newbranchname&gt;</span></code></p></li>
 <li><p>Make your changes (and ensure that the GUI successfully compiles).</p></li>
 <li><p>Push your changes to GitHub: <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">&lt;newbranchname&gt;</span></code></p></li>
 <li><p>Open a pull request against the <strong>development</strong> branch of the main GUI repository.</p></li>
@@ -252,7 +246,7 @@
 <li><p><strong>.github</strong> - GitHub Actions scripts for building the GUI on Linux, macOS, and Windows. Whenever the code is updated in the <strong>testing</strong> or <strong>master</strong> branches, these scripts will automatically regenerate the GUI’s binaries and upload them to <a class="reference external" href="https://openephysgui.jfrog.io/ui/packages">Artifactory</a>.</p></li>
 <li><p><strong>Build</strong> - empty directory where platform-specific build files will be located. Any files that end up in this directory will not be included in your git commits.</p></li>
 <li><p><strong>JuceLibraryCode</strong> - a customized version of the source code for the <a class="reference external" href="https://juce.com/">Juce Library</a>. The Open Ephys GUI uses this library for a wide variety of functions, including drawing the user interface, real-time data processing, threading, and file I/O.</p></li>
-<li><p><strong>Plugins</strong> - source code for plugins that are included by default with the host application. Eventually, these plugins will be migrated to their own repositories, so they can be installed an upgraded via the Plugin Installer.</p></li>
+<li><p><strong>Plugins</strong> - source code for plugins that are included by default with the host application.</p></li>
 <li><p><strong>Resources</strong> - includes a variety of useful resources, including sample data files, scripts, and libraries used by the GUI.</p></li>
 <li><p><strong>Source</strong> - the source code for the host application. The key classes are described below.</p></li>
 </ul>
@@ -302,7 +296,7 @@
 </ul>
 <p>In addition to the user-defined signal chain, one module is created by default:</p>
 <ul class="simple">
-<li><p>The <strong>AudioNode</strong> allows signals to be sent to the computer’s audio card, for purposes of audio monitoring. Every plugin (except for Sinks) is automatically connected to the AudioNode.</p></li>
+<li><p>The <strong>AudioNode</strong> allows signals to be sent to the computer’s audio card, for purposes of audio monitoring. The last two channels of every <a class="reference internal" href="../User-Manual/Plugins/Audio-Monitor.html#audiomonitor"><span class="std std-ref">Audio Monitor</span></a> are automatically connected to the Audio Node.</p></li>
 </ul>
 </div>
 </div>

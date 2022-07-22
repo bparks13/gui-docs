@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -340,11 +338,11 @@
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h3">
-            <a href="#rearranging-channels" class="nav-link">Rearranging channels</a>
+            <a href="#reordering-channels" class="nav-link">Reordering channels</a>
         </li>
     
         <li class="nav-item toc-entry toc-h3">
-            <a href="#selecting-digital-references" class="nav-link">Selecting digital references</a>
+            <a href="#removing-channels" class="nav-link">Removing channels</a>
         </li>
     
         <li class="nav-item toc-entry toc-h3">
@@ -352,6 +350,10 @@
         </li>
     
             </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-multiple-data-streams" class="nav-link">Working with multiple data streams</a>
         </li>
     
     </ul>
@@ -370,11 +372,8 @@
   <div class="section" id="channel-map">
 <span id="channelmap"></span><h1>Channel Map<a class="headerlink" href="#channel-map" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Channel Map settings interface" src="../../_images/channelmap-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Used to reorder and delete channels, as well as configure up to four independent digital references.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Used to reorder and remove channels within the signal chain.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -393,71 +392,56 @@
 <td><p>Josh Siegle</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/ChannelMappingNode">https://github.com/open-ephys/plugin-GUI/tree/master/Plugins/ChannelMappingNode</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/ChannelMappingNode">https://github.com/open-ephys/plugin-GUI/tree/main/Plugins/ChannelMappingNode</a></p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the way that the GUI connects channels between plugins, channel 1 <em>must</em> be enabled. If you disable channel 1 in the Channel Map, then no data will be transmitted downstream.</p>
+</div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rearranging-channels">
-<h3>Rearranging channels<a class="headerlink" href="#rearranging-channels" title="Permalink to this headline">¶</a></h3>
-<p>To rearrange channels, click <strong>REMAP</strong> (it will become darker when selected). You can then re-order channels by dragging them around. Double-clicking on a channel will disable it.</p>
-<img alt="Rearrange and disabling channels" src="../../_images/channelmap-02.png" />
-<p>Downstream plugins will receive continuous channels in the new order, and will not receive signals from disabled channels. In the example above, the original channel 2 would appear as channel 1 in any plugins to the right of the Channel Map. And channel 13 would be removed (leaving a total of 15 continuous channels).</p>
+<div class="section" id="reordering-channels">
+<h3>Reordering channels<a class="headerlink" href="#reordering-channels" title="Permalink to this headline">¶</a></h3>
+<p>To reorder channels, simply drag the channel buttons around inside the editor.</p>
+<p>Downstream plugins will receive continuous channels in the new order. You can confirm the reordering has occurred by looking at the names of the channels in the <a class="reference internal" href="LFP-Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a>.</p>
 <p>This functionality is useful for reordering channels prior to spike detection, so channels belonging to the same tetrode can be easily grouped together.</p>
 </div>
-<div class="section" id="selecting-digital-references">
-<h3>Selecting digital references<a class="headerlink" href="#selecting-digital-references" title="Permalink to this headline">¶</a></h3>
-<p>There are four available reference banks (A, B, C, and D), which can be used to create digital references.</p>
-<p>To configure a reference bank:</p>
-<ol class="arabic simple">
-<li><p>Make sure the correct bank is selected.</p></li>
-<li><p>Use the “PARAM” drawer on the right side of the plugin to select one channel to serve as the reference.</p></li>
-<li><p>Select the channels in the main area of the editor that will use this reference.</p></li>
-</ol>
-<img alt="Selecting digital references" src="../../_images/channelmap-03.png" />
-<p>In the example above, channels 9-16 are referenced to channel 1.</p>
+<div class="section" id="removing-channels">
+<h3>Removing channels<a class="headerlink" href="#removing-channels" title="Permalink to this headline">¶</a></h3>
+<p>To remove a channel, right click on its button and select “Disable input channel <em>N</em>”. To add it back, right click on a disabled channel and select “Enable input channel <em>N</em>”.</p>
+<p>Downstream plugins will not receive continuous channels that have been removed.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Do not confuse them with A, B, C, and D that appear on the right of <a class="reference internal" href="Rhythm-FPGA.html#rhythmfpga"><span class="std std-ref">Rhythm FPGA</span></a> module, which represent different headstages and have nothing to with A, B, C, and D on the Channel Map module.</p>
+<p>The disabled/enabled state of each channel is tied to its relative order within the Channel Map plugin, not its absolute channel number. Therefore, it’s important to reorder channels first, <em>then</em> remove channels that are not needed. Changing the channel order after some channels have been disabled could result in improper configurations.</p>
 </div>
 </div>
 <div class="section" id="saving-and-loading-channel-mappings">
 <h3>Saving and loading channel mappings<a class="headerlink" href="#saving-and-loading-channel-mappings" title="Permalink to this headline">¶</a></h3>
-<p>By clicking the icons at the top right of the module, you can save or load the settings of the Channel Map module in JSON format. This is helpful in cases where you want to load a channel mapping independently of the rest of the signal chain.</p>
-<p>An example file for two channels is shown below:</p>
+<p>By clicking the icons at the top right of the module, you can save or load the settings for a particular stream in JSON format. This is helpful in cases where you want to load a channel mapping independently of the rest of the signal chain, or you want to define a channel map programatically.</p>
+<p>An example JSON string for two channels is shown below:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;mapping&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="mi">1</span><span class="p">,</span>
-      <span class="mi">2</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;reference&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="mi">-1</span><span class="p">,</span>
-      <span class="mi">-1</span>
+      <span class="mi">0</span><span class="p">,</span>
+      <span class="mi">1</span>
     <span class="p">],</span>
     <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="kc">true</span><span class="p">,</span>
       <span class="kc">true</span>
     <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;refs&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;channels&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="mi">0</span><span class="p">,</span>
-      <span class="mi">-1</span><span class="p">,</span>
-      <span class="mi">-1</span><span class="p">,</span>
-      <span class="mi">-1</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;recording&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;channels&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="kc">false</span><span class="p">,</span>
-      <span class="kc">false</span>
-    <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="working-with-multiple-data-streams">
+<h2>Working with multiple data streams<a class="headerlink" href="#working-with-multiple-data-streams" title="Permalink to this headline">¶</a></h2>
+<p>The Channel Map plugin maintains an independent map for each incoming data stream. To configure the map for a particular data stream, make sure it is currently active in the stream selector interface (accessed by clicking the vertical bars on the right-hand side of the editor).</p>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </div>
 </div>

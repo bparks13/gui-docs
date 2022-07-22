@@ -144,13 +144,7 @@
           
             
                 <li class="">
-                    <a href="Adding-a-new-data-format.html">Adding a new data format</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Open-Ephys-Plugin-API.html">Open Ephys Plugin API</a>
+                    <a href="Open-Ephys-Plugin-API/index.html">Open Ephys Plugin API</a>
                 </li>
             
           
@@ -216,18 +210,18 @@
   <div class="section" id="compiling-plugins">
 <span id="compilingplugins"></span><h1>Compiling plugins<a class="headerlink" href="#compiling-plugins" title="Permalink to this headline">¶</a></h1>
 <p>Whether you’re creating a new plugin or you cloned an existing plugin repository, the following steps will allow you to compile your plugin across all three platforms. Note that <a class="reference external" href="https://cmake.org/">CMake</a> is required in all cases. See the <a class="reference internal" href="Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">compiling the GUI</span></a> page for recommended instructions for installing CMake if you don’t have it already.</p>
-<p>The first step for compiling a pre-existing plugin is downloading the source code. If you’re planning to make your own changes to the plugin, we recommend first forking <a class="reference internal" href="../_images/fork.svg"><img alt="fork icon" height="15" src="../_images/fork.svg" /></a> the plugin’s GitHub repository to your own account, then cloning the fork via the <a class="reference external" href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-using-the-command-line">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>. If you’re not planning to make any changes to the plugin, you can clone the original repository or download the code as a <strong>.zip</strong> file.</p>
+<p>The first step for compiling a pre-existing plugin is downloading the source code. If you’re planning to make your own changes to the plugin, we recommend first forking the plugin’s GitHub repository to your own account, then cloning the fork via the <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-using-the-command-linee">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>. If you’re not planning to make any changes to the plugin, you can clone the original repository or download the code as a <strong>.zip</strong> file.</p>
 <p>Most Open Ephys GUI plugins work equally well on Windows, Linux, and Mac. However, there are some plugins that rely on platform-specific libraries, and can only be compiled for certain platforms. Be sure to check the relevant <a class="reference internal" href="../User-Manual/Plugins/index.html#plugins"><span class="std std-ref">plugin documentation</span></a> page for platform compatibility.</p>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<p>Generate the Visual Studio 2019 project files by typing the following from the command prompt inside the plugin’s top-level directory:</p>
+<p>Generate the Visual Studio 2022 project files by typing the following from the command prompt inside the plugin’s top-level directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; <span class="nb">cd</span> Build
-&gt; cmake -G <span class="s2">&quot;Visual Studio 16 2019&quot;</span> -A x64 ..
+&gt; cmake -G <span class="s2">&quot;Visual Studio 17 2022&quot;</span> -A x64 ..
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For earlier versions of Visual Studio, substitute the last command with: <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">12</span> <span class="pre">2013</span> <span class="pre">Win64&quot;</span> <span class="pre">..</span></code> <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14</span> <span class="pre">2015</span> <span class="pre">Win64&quot;</span> <span class="pre">..</span></code> <br/> or <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">15</span> <span class="pre">2017</span> <span class="pre">Win64&quot;</span> <span class="pre">..</span></code></p>
+<p>For earlier version of Visual Studio, substitute the last command with: <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">16</span> <span class="pre">2019&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">..</span></code> <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">15</span> <span class="pre">2017</span> <span class="pre">Win64&quot;</span> <span class="pre">..</span></code> <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">14</span> <span class="pre">2015</span> <span class="pre">Win64&quot;</span> <span class="pre">..</span></code> <br/> or <br/> <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">12</span> <span class="pre">2013</span> <span class="pre">Win64&quot;</span> <span class="pre">..</span></code></p>
 </div>
 <p>Next, launch Visual Studio and open the <code class="code docutils literal notranslate"><span class="pre">OE_PLUGIN_&lt;plugin-name&gt;.sln</span></code> file that was just created in the “Build” folder. Select the appropriate configuration (Debug/Release) and either build the solution or build the <code class="code docutils literal notranslate"><span class="pre">ALL_BUILD</span></code> project. That will run the build process on all projects except <code class="code docutils literal notranslate"><span class="pre">INSTALL</span></code>, thus building the plugin.</p>
 <p>Selecting the INSTALL project and manually building it will trigger the install procedure, copying the plugin and any required files, if any, to the GUI’s appropriate directories.</p>

@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Event Triggered Average" href="Event-Triggered-Average.html" />
+    <link rel="next" title="Event Translator" href="Event-Translator.html" />
     <link rel="prev" title="Ephys Socket" href="Ephys-Socket.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -159,6 +159,12 @@
             
           
             
+                <li class="">
+                    <a href="../Whats-new-in-version-06X.html">What’s new in version 0.6.X</a>
+                </li>
+            
+          
+            
   
                 <li class="active">
                     <a href="index.html">Plugins</a>
@@ -166,6 +172,10 @@
                     
                         <li class="">
                             <a href="Arduino-Output.html">Arduino Output</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Audio-Monitor.html">Audio Monitor</a>
                         </li>
                     
                         <li class="">
@@ -193,7 +203,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Event-Triggered-Average.html">Event Triggered Average</a>
+                            <a href="Event-Translator.html">Event Translator</a>
                         </li>
                     
                         <li class="">
@@ -202,10 +212,6 @@
                     
                         <li class="">
                             <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Intan-Recording-Controller.html">Intan Recording Controller</a>
                         </li>
                     
                         <li class="">
@@ -229,7 +235,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Neuropixels-3a.html">Neuropixels 3a</a>
+                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
                         </li>
                     
                         <li class="">
@@ -237,7 +243,11 @@
                         </li>
                     
                         <li class="">
-                            <a href="NIDAQmx.html">NIDAQmx</a>
+                            <a href="NIDAQmx.html">NI-DAQmx</a>
+                        </li>
+                    
+                        <li class="">
+                            <a href="Online-PSTH.html">Online PSTH</a>
                         </li>
                     
                         <li class="">
@@ -261,15 +271,7 @@
                         </li>
                     
                         <li class="">
-                            <a href="Rectifier.html">Rectifier</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-FPGA.html">Rhythm FPGA</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Serial-Port.html">Serial Port</a>
+                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
                         </li>
                     
                         <li class="">
@@ -290,10 +292,6 @@
                     
                         <li class="">
                             <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Stream-Muxer.html">Stream Muxer</a>
                         </li>
                     
                         <li class="">
@@ -337,11 +335,15 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
             <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#packet-format" class="nav-link">Packet format</a><ul class="nav section-nav flex-column">
+            <a href="#json-packet-format" class="nav-link">JSON Packet Format</a><ul class="nav section-nav flex-column">
                 
         <li class="nav-item toc-entry toc-h3">
             <a href="#spikes" class="nav-link">Spikes</a>
@@ -352,6 +354,10 @@
         </li>
     
             </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#raw-binary-packet-format" class="nav-link">Raw Binary Packet Format</a>
         </li>
     
         <li class="nav-item toc-entry toc-h2">
@@ -374,11 +380,8 @@
   <div class="section" id="event-broadcaster">
 <span id="eventbroadcaster"></span><h1>Event Broadcaster<a class="headerlink" href="#event-broadcaster" title="Permalink to this headline">¶</a></h1>
 <img alt="Annotated Event Broadcaster editor" src="../../_images/eventbroadcaster-01.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Sends events from the GUI to external applications.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Sends events from the GUI to external applications using a ZeroMQ socket. Can be used to transmit “lightweight” information about ongoing spikes/events; if the full continuous data is needed, the <a class="reference internal" href="ZMQ-Interface.html#zmqinterface"><span class="std std-ref">ZMQ Interface</span></a> should be used instead.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -397,32 +400,40 @@
 <td><p>Christopher Stawarz</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/EventBroadcaster">https://github.com/open-ephys-plugins/EventBroadcaster</a></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/event-broadcaster">https://github.com/open-ephys-plugins/event-broadcaster</a></p></td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Event Broadcaster plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Event Broadcaster” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
 <p><strong>Restart connection</strong>: Resets the ZeroMQ data streaming backend</p>
-<p><strong>Port number</strong>: Modifies the port number from which this plugin will send data</p>
-<p><strong>Format</strong>: Select the event packet format (<code class="code docutils literal notranslate"><span class="pre">Header/JSON</span></code> recommended)</p>
+<p><strong>Port</strong>: Modifies the port number from which this plugin will send data.</p>
+<p><strong>Format</strong>: Select the event packet format (<code class="code docutils literal notranslate"><span class="pre">JSON</span></code> or <code class="code docutils literal notranslate"><span class="pre">Raw</span> <span class="pre">Binary</span></code>).</p>
+<p>The Event Broadcaster packages and sends all incoming events and spikes, regardless of their stream of origin.</p>
+<p>Each event is transmitted as a multi-part message, with the first part indicating the message type (0 = TTL event, 1 = spike), and the second part containing either a JSON string or a raw binary payload.</p>
 </div>
-<div class="section" id="packet-format">
-<h2>Packet format<a class="headerlink" href="#packet-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="json-packet-format">
+<h2>JSON Packet Format<a class="headerlink" href="#json-packet-format" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="spikes">
 <h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;spike&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;sortedID&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="s2">&quot;numChannels&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-   <span class="s2">&quot;threshold&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-   <span class="s2">&quot;timing&quot;</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;sampleRate&quot;</span> <span class="p">:</span> <span class="mi">40000</span><span class="p">,</span>
-      <span class="s2">&quot;timestamp&quot;</span> <span class="p">:</span> <span class="mi">372649</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;identifier&quot;</span> <span class="p">:</span> <span class="s2">&quot;spikesource&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;ST  p102.0 n3&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;metadata&quot;</span> <span class="p">:</span> <span class="p">{}</span>
+   <span class="s2">&quot;event_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;spike&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;stream&quot;</span> <span class="p">:</span> <span class="s2">&quot;stream_name&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;source_node&quot;</span> <span class="p">:</span> <span class="mi">105</span><span class="p">,</span>
+   <span class="s2">&quot;electrode&quot;</span> <span class="p">:</span> <span class="s2">&quot;Electrode 1&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;num_channels&quot;</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+   <span class="s2">&quot;sample_rate&quot;</span> <span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+   <span class="s2">&quot;sample_number&quot;</span> <span class="p">:</span> <span class="mi">193722</span><span class="p">,</span>
+   <span class="s2">&quot;sorted_id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="s2">&quot;amp1&quot;</span> <span class="p">:</span> <span class="mi">210</span><span class="p">,</span>
+   <span class="s2">&quot;amp2&quot;</span> <span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+   <span class="s2">&quot;amp3&quot;</span> <span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+   <span class="s2">&quot;amp4&quot;</span> <span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -430,24 +441,26 @@
 <div class="section" id="ttl-events">
 <h3>TTL Events<a class="headerlink" href="#ttl-events" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;ttl&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;channel&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="s2">&quot;data&quot;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-   <span class="s2">&quot;timing&quot;</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;sampleRate&quot;</span> <span class="p">:</span> <span class="mi">40000</span><span class="p">,</span>
-      <span class="s2">&quot;timestamp&quot;</span> <span class="p">:</span> <span class="mi">594829</span>
-   <span class="p">},</span>
-   <span class="s2">&quot;identifier&quot;</span> <span class="p">:</span> <span class="s2">&quot;dataderived.phase.peak.positive&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;Phase detector output 1&quot;</span><span class="p">,</span>
-   <span class="s2">&quot;metadata&quot;</span> <span class="p">:</span> <span class="p">{}</span>
+   <span class="s2">&quot;event_type&quot;</span> <span class="p">:</span> <span class="s2">&quot;ttl&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;stream&quot;</span> <span class="p">:</span> <span class="s2">&quot;stream_name&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;source_node&quot;</span> <span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
+   <span class="s2">&quot;sample_rate&quot;</span> <span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+   <span class="s2">&quot;channel_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;TTL Event Channel&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;sample_number&quot;</span> <span class="p">:</span> <span class="mi">103922</span><span class="p">,</span>
+   <span class="s2">&quot;line&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+   <span class="s2">&quot;state&quot;</span> <span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="section" id="raw-binary-packet-format">
+<h2>Raw Binary Packet Format<a class="headerlink" href="#raw-binary-packet-format" title="Permalink to this headline">¶</a></h2>
+<p>When sending packets in raw binary mode, the Event Broadcaster serializes the events into the same format used internally by the GUI. For the details of the serialized spikes, refer to the source code in <code class="code docutils literal notranslate"><span class="pre">Event.h</span></code> and <code class="code docutils literal notranslate"><span class="pre">Spike.h</span></code>.</p>
+</div>
 <div class="section" id="receiving-data-in-python">
 <h2>Receiving data in Python<a class="headerlink" href="#receiving-data-in-python" title="Permalink to this headline">¶</a></h2>
-<p>See the <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools/blob/main/open_ephys/streaming/">open-ephys-python-tools</a> repository for a more complete implementation.</p>
+<p>See the <a class="reference external" href="https://github.com/open-ephys/open-ephys-python-tools/tree/main/open_ephys/streaming/">open-ephys-python-tools</a> repository for a more complete implementation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zmq</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -482,7 +495,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="Ephys-Socket.html" title="previous page">Ephys Socket</a>
-    <a class='right-next' id="next-link" href="Event-Triggered-Average.html" title="next page">Event Triggered Average</a>
+    <a class='right-next' id="next-link" href="Event-Translator.html" title="next page">Event Translator</a>
 
               </div>
               

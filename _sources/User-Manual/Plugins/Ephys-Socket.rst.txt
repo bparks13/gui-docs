@@ -16,12 +16,12 @@ Ephys Socket
    "*Platforms*", "Windows, Linux, macOS"
    "*Built in?*", "No"
    "*Key Developers*", "Jon Newman"
-   "*Source Code*", "https://github.com/open-ephys-plugins/EphysSocket"
+   "*Source Code*", "https://github.com/open-ephys-plugins/ephys-socket"
 
 Installing and upgrading
 ###########################
 
-The Ephys Socket plugin is not included by default in the Open Ephys GUI. To install, use **ctrl-P** to access the Plugin Installer, browse to the "Ephys Socket" plugin, and click the "Install" button.
+The Ephys Socket plugin is not included by default in the Open Ephys GUI. To install, use **ctrl-P** or **⌘P** to access the Plugin Installer, browse to the "Ephys Socket" plugin, and click the "Install" button.
 
 The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it's already installed.
 
@@ -47,7 +47,7 @@ In Bonsai
 
 #. Start the workflow to initiate the data stream.
 
-The workflow should look something like the one pictured below (:code:`.bonsai` file available in the `Ephys Socket GitHub repo <https://github.com/open-ephys-plugins/EphysSocket/tree/master/Resources>`__):
+The workflow should look something like the one pictured below (:code:`.bonsai` file available in the `Ephys Socket GitHub repo <https://github.com/open-ephys-plugins/ephys-socket/tree/main/Resources>`__):
 
 .. image:: ../../_static/images/plugins/ephyssocket/ephyssocket-02.png
   :alt: A compatible Bonsai workflow
