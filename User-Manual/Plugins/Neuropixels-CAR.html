@@ -403,7 +403,7 @@
 </div>
 <div class="section" id="neuropixels-sampling-pattern">
 <h2>Neuropixels sampling pattern<a class="headerlink" href="#neuropixels-sampling-pattern" title="Permalink to this headline">¶</a></h2>
-<p>All Neuropixels probes have fewer ADCs (analog-to-digital converters) than channels, so data from multiple channels is temporally <em>multiplexed</em> across each ADC. Because common noise is more likely to be shared across channels that are sampled simultaneously, using information about the Neuropixels ADC sampling pattern can remove noise more effectively.</p>
+<p>All Neuropixels probes have fewer ADCs (analog-to-digital converters) than channels, so data from multiple channels is temporally <em>multiplexed</em> across each ADC. Because common noise is more likely to be shared across channels that are sampled concurrently, using information about the Neuropixels ADC sampling pattern can remove noise more effectively.</p>
 <p>Neuropixels 1.0 probes have 16 ADCs, each of which digitizes 12 channels (for a total of 384). Neuropixels 2.0 probes have 12 ADCs, each of which digitizes 16 channels (for a total of 384). The following diagrams show the sampling pattern for each probe type (simultaneously sampled channels have the same color):</p>
 <img alt="Annotated Neuropixels 1.0 and 2.0 shanks" src="../../_images/neuropixels-car-02.png" />
 <div class="line-block">
