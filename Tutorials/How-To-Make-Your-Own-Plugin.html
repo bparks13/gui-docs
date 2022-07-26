@@ -222,7 +222,7 @@
   <div class="section" id="how-to-make-your-own-plugin">
 <span id="howtomakeyourownplugin"></span><h1>How To Make Your Own Plugin<a class="headerlink" href="#how-to-make-your-own-plugin" title="Permalink to this headline">¶</a></h1>
 <p>The Open Ephys GUI was designed to be extended via plugins that can be developed and shared independently of the main application. This is the primary way in which end users are encouraged to add new functionality to the GUI.</p>
-<p>This tutorial will guide you through the steps involved in making a plugin from scratch. At then, you will have created a “TTL Event Generator” plugin, which can emit TTL events when a button is pressed, or continuously at a customizable frequency. TTL events represent ON/OFF transitions that are traditionally associated with “Transistor-Transitor Logic” circuits. Within the Open Ephys GUI, TTL events are used to represent state transitions on both physical and virtual “lines.” Each TTL channel can track the state of up to 256 lines, but for simplicity our plugin will only use the first 8.</p>
+<p>This tutorial will guide you through the steps involved in making a plugin from scratch. At then, you will have created a “TTL Event Generator” plugin, which can emit TTL events when a button is pressed, or continuously at a customizable frequency. TTL events represent ON/OFF transitions that are traditionally associated with “Transistor-Transistor Logic” circuits. Within the Open Ephys GUI, TTL events are used to represent state transitions on both physical and virtual “lines.” Each TTL channel can track the state of up to 256 lines, but for simplicity our plugin will only use the first 8.</p>
 <p>Along with explaining how to configure the plugin and set up the main <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method, this tutorial will demonstrate how to create UI components for the plugin using the GUI’s built-in parameter editors.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -273,7 +273,7 @@
 <span class="p">{</span>
    <span class="cm">/* API version, defined by the GUI source.</span>
 <span class="cm">   Should not be changed to ensure it is always equal to the one used in the latest codebase.</span>
-<span class="cm">   The GUI refueses to load plugins with mismatched API versions */</span>
+<span class="cm">   The GUI refuses to load plugins with mismatched API versions */</span>
    <span class="n">info</span><span class="o">-&gt;</span><span class="n">apiVersion</span> <span class="o">=</span> <span class="n">PLUGIN_API_VER</span><span class="p">;</span>
    <span class="n">info</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;TTL Event Generator&quot;</span><span class="p">;</span> <span class="c1">// &lt;---- UPDATE</span>
    <span class="n">info</span><span class="o">-&gt;</span><span class="n">libVersion</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span><span class="p">;</span> <span class="c1">// &lt;---- UPDATE</span>
@@ -484,7 +484,7 @@
 </pre></div>
 </div>
 </div>
-<p>Also be sure to initilaize the corresponding parameter inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> processor constructor:</p>
+<p>Also be sure to initialize the corresponding parameter inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> processor constructor:</p>
 <div class="literal-block-wrapper docutils container" id="id11">
 <div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">StringArray</span> <span class="n">outputs</span><span class="p">;</span>
@@ -545,7 +545,7 @@
 </pre></div>
 </div>
 </div>
-<p>To handle button clicks, implement the <code class="code docutils literal notranslate"><span class="pre">buttonClicked</span></code> method as indicated below. Inside this method, we need to call <code class="code docutils literal notranslate"><span class="pre">setNextValue()</span></code> on the parameter as that will notfiy the processor about parameter value change. We aslo need to set the bounds of the button in the <code class="code docutils literal notranslate"><span class="pre">resized()</span></code> method as follows:</p>
+<p>To handle button clicks, implement the <code class="code docutils literal notranslate"><span class="pre">buttonClicked</span></code> method as indicated below. Inside this method, we need to call <code class="code docutils literal notranslate"><span class="pre">setNextValue()</span></code> on the parameter as that will notify the processor about parameter value change. We also need to set the bounds of the button in the <code class="code docutils literal notranslate"><span class="pre">resized()</span></code> method as follows:</p>
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ManualTriggerButton</span><span class="o">::</span><span class="n">buttonClicked</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span>
@@ -561,7 +561,7 @@
 </pre></div>
 </div>
 </div>
-<p>Now, we need to initialize the custom parameter editor inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> constructor by getting the pointer to the parameter that we will create inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> processor constrcutor, like this:</p>
+<p>Now, we need to initialize the custom parameter editor inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> constructor by getting the pointer to the parameter that we will create inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> processor constructor, like this:</p>
 <div class="literal-block-wrapper docutils container" id="id15">
 <div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// custom button parameter editor</span>
@@ -587,7 +587,7 @@
 </div>
 <div class="section" id="responding-to-parameter-value-changes">
 <h2>Responding to parameter value changes<a class="headerlink" href="#responding-to-parameter-value-changes" title="Permalink to this headline">¶</a></h2>
-<p>Now, let’s allow our UI elements to change the state of the plugin. To do this, we need to create variables inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> class that can be updated by our button, slider, and ComboBox parameter edtiors. The values of these variables <em>must</em> be updated through a special method, called <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code>, which responds to any parameter editor value changes. This is because the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method is called by a separate thread from the user interface, and the variables it needs to access can only be updated at specific times. Modifying variables via <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code> ensures that they are handled properly, and prevents unexpected behavior or segmentation faults.</p>
+<p>Now, let’s allow our UI elements to change the state of the plugin. To do this, we need to create variables inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> class that can be updated by our button, slider, and ComboBox parameter editors. The values of these variables <em>must</em> be updated through a special method, called <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code>, which responds to any parameter editor value changes. This is because the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method is called by a separate thread from the user interface, and the variables it needs to access can only be updated at specific times. Modifying variables via <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code> ensures that they are handled properly, and prevents unexpected behavior or segmentation faults.</p>
 <p>First, let’s update the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> header file as follows:</p>
 <div class="literal-block-wrapper docutils container" id="id17">
 <div class="code-block-caption"><span class="caption-text">TTLEventGenerator.h</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
