@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Plugins" href="Plugins/index.html" />
-    <link rel="prev" title="NWB Format" href="Recording-data/NWB-format.html" />
+    <link rel="prev" title="Remote control" href="Remote-control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -155,6 +155,12 @@
             
                 <li class="">
                     <a href="Recording-data/index.html">Recording data</a>
+                </li>
+            
+          
+            
+                <li class="">
+                    <a href="Remote-control.html">Remote control</a>
                 </li>
             
           
@@ -281,12 +287,14 @@
 </div>
 <div class="section" id="built-in-http-server">
 <h2>Built-in HTTP server<a class="headerlink" href="#built-in-http-server" title="Permalink to this headline">¶</a></h2>
-<p>Remote control of the GUI’s state was previously handled by the Network Events plugin, which had to be installed separately from the host application. Now, the GUI automatically runs an HTTP server that listens for commands on port 37497 (“EPHYS” on a phone keypad). This can be used to get information about the current signal chain, change the recording directory, and start/stop acquisition and recording, among other things.</p>
+<p>Remote control of the GUI’s state was previously handled by the Network Events plugin, which had to be installed separately from the host application. Now, the GUI automatically runs a <a class="reference internal" href="Remote-control.html#remotecontrol"><span class="std std-ref">Remote control</span></a> server that listens for commands on port <strong>37497</strong> (<code class="code docutils literal notranslate"><span class="pre">EPHYS</span></code> on a phone keypad). This can be used to get information about the current signal chain, change the recording directory, and start/stop acquisition and recording, among other things.</p>
 <p>The API is “RESTful”, such that the resource URLs are:</p>
 <ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/status</span></code> : returns a JSON string with the GUI’s current mode (<strong>IDLE</strong>, <strong>ACQUIRE</strong>, <strong>RECORD</strong>)</p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/status</span></code> : sets the GUI’s mode, e.g.: <code class="code docutils literal notranslate"><span class="pre">{&quot;mode&quot;</span> <span class="pre">:</span> <span class="pre">&quot;ACQUIRE&quot;}</span></code></p></li>
-<li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/message</span></code> : sends a broadcast message to all processors, e.g.: <code class="code docutils literal notranslate"><span class="pre">{&quot;text&quot;</span> <span class="pre">:</span> <span class="pre">&quot;Message</span> <span class="pre">content&quot;}</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/status</span></code> : returns a JSON string with the GUI’s current mode (<strong>IDLE</strong>, <strong>ACQUIRE</strong>, <strong>RECORD</strong>).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/status</span></code> : sets the GUI’s mode, e.g.: <code class="code docutils literal notranslate"><span class="pre">{&quot;mode&quot;</span> <span class="pre">:</span> <span class="pre">&quot;ACQUIRE&quot;}</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/message</span></code> : sends a broadcast message to all processors while acquisition is active, e.g.: <code class="code docutils literal notranslate"><span class="pre">{&quot;text&quot;</span> <span class="pre">:</span> <span class="pre">&quot;Message</span> <span class="pre">content&quot;}</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/processors</span></code> : returns a JSON string with information about the GUI’s signal chain.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/processors/&lt;processor_id&gt;/config</span></code> : sends a configuration message to one processor, e.g.: <code class="code docutils literal notranslate"><span class="pre">{&quot;text&quot;</span> <span class="pre">:</span> <span class="pre">&quot;Message</span> <span class="pre">content&quot;}</span></code>.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/recording`</span></code> : returns a JSON string with information about recording parameters, including the IDs of the available Record Nodes.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/recording</span></code> : used to set the default recording options.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/api/recording/&lt;processor_id&gt;`</span></code> : used to set the options for a given Record Node.</p></li>
@@ -303,7 +311,7 @@
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="Recording-data/NWB-format.html" title="previous page">NWB Format</a>
+    <a class='left-prev' id="prev-link" href="Remote-control.html" title="previous page">Remote control</a>
     <a class='right-next' id="next-link" href="Plugins/index.html" title="next page">Plugins</a>
 
               </div>
