@@ -222,6 +222,10 @@
         </li>
     
         <li class="nav-item toc-entry toc-h3">
+            <a href="#via-portage-gentoo-only" class="nav-link">Via Portage (Gentoo only)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
             <a href="#via-zip-file-all-distros" class="nav-link">Via .zip file (all distros)</a>
         </li>
     
@@ -295,6 +299,26 @@
 <li><p>To uninstall, type <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg</span> <span class="pre">--remove</span> <span class="pre">open-ephys</span></code> in a terminal window.</p></li>
 </ol>
 </div>
+<div class="section" id="via-portage-gentoo-only">
+<h3>Via Portage (Gentoo only)<a class="headerlink" href="#via-portage-gentoo-only" title="Permalink to this headline">¶</a></h3>
+<p>The GUI is available at the gentoo science overlay.</p>
+<ol class="arabic simple">
+<li><p>Install the eselect-repository package: <code class="code docutils literal notranslate"><span class="pre">emerge</span> <span class="pre">--ask</span> <span class="pre">--noreplace</span> <span class="pre">--verbose</span> <span class="pre">eselect-repository</span></code></p></li>
+<li><p>Activate the science overlay: <code class="code docutils literal notranslate"><span class="pre">eselect</span> <span class="pre">repository</span> <span class="pre">enable</span> <span class="pre">science</span></code></p></li>
+<li><p>Install the GUI: <code class="code docutils literal notranslate"><span class="pre">emerge</span> <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">open-ephys-gui</span></code></p></li>
+<li><p>Run <code class="code docutils literal notranslate"><span class="pre">open-ephys-VERSION</span></code> to launch the GUI, where <code class="code docutils literal notranslate"><span class="pre">VERSION</span></code> is the installed version. To see all installed versions, run <code class="code docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/usr/bin/open-ephys*</span></code>.</p></li>
+<li><p>To uninstall a specific version, run <code class="code docutils literal notranslate"><span class="pre">emerge</span> <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">--depclean</span> <span class="pre">=sci-biology/open-ephys-gui-VERSION</span></code>.</p></li>
+<li><p>To uninstall all installed versions, run <code class="code docutils literal notranslate"><span class="pre">emerge</span> <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">--depclean</span> <span class="pre">open-ephys-gui</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Having the GUI version in the executable name may be a minor inconvenience, but it allows installation of multiple versions of the GUI, which can be very useful for testing a new version while keepping the current version in case something goes wrong.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Brave users can also install the main branch version (<code class="code docutils literal notranslate"><span class="pre">emerge</span> <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">=sci-biology/open-ephys-gui-9999</span></code>) or the development branch version (<code class="code docutils literal notranslate"><span class="pre">emerge</span> <span class="pre">--ask</span> <span class="pre">--verbose</span> <span class="pre">=sci-biology/open-ephys-gui-99999999</span></code>). Since installation is slotted, you can keep all versions installed simultaneously, in case you want to try them without removing the stable version.</p>
+</div>
+</div>
 <div class="section" id="via-zip-file-all-distros">
 <h3>Via .zip file (all distros)<a class="headerlink" href="#via-zip-file-all-distros" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
@@ -302,7 +326,7 @@
 <li><p>Drag and drop the downloaded and unzipped folder to the location of your choice, and rename it “Open Ephys”</p></li>
 <li><p>Open a terminal and set your working directory to the folder you just renamed.</p></li>
 <li><p>Enter <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">cp</span> <span class="pre">40-open-ephys.rules</span> <span class="pre">/etc/udev/rules.d</span></code> followed by your password.</p></li>
-<li><p>Enter <code class="code docutils literal notranslate"><span class="pre">service</span> <span class="pre">udev</span> <span class="pre">restart</span></code> on Ubuntu/Debian or <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">udevadm</span> <span class="pre">control</span> <span class="pre">--reload-rules</span></code> on Fedora/CentOS to allow the GUI to communicate with the Open Ephys acquisition board.</p></li>
+<li><p>Enter <code class="code docutils literal notranslate"><span class="pre">service</span> <span class="pre">udev</span> <span class="pre">restart</span></code> on Ubuntu/Debian or <code class="code docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">udevadm</span> <span class="pre">control</span> <span class="pre">--reload-rules</span></code> on Fedora/CentOS/Gentoo to allow the GUI to communicate with the Open Ephys acquisition board.</p></li>
 <li><p>Double-click the <strong>open-ephys</strong> executable (or enter <code class="code docutils literal notranslate"><span class="pre">./open-ephys</span></code> in the terminal) to run the application.</p></li>
 </ol>
 </div>
