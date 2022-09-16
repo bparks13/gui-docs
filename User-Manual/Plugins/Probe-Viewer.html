@@ -341,7 +341,21 @@
     <ul class="nav section-nav flex-column">
     
         <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a>
+            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#recommended-signal-chain" class="nav-link">Recommended signal chain</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#plugin-configuration" class="nav-link">Plugin configuration</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#render-modes" class="nav-link">Render modes</a>
+        </li>
+    
+            </ul>
         </li>
     
     </ul>
@@ -377,23 +391,38 @@
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Josh Siegle, K. Michael Fox</p></td>
+<td><p>Josh Siegle, K. Michael Fox, Anjal Doshi</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
 <td><p><a class="reference external" href="https://github.com/open-ephys-plugins/probe-viewer">https://github.com/open-ephys-plugins/probe-viewer</a></p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Probe Viewer plugin is not yet available for GUI version 0.6.X.</p>
+<div class="section" id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<p>The Probe Viewer plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “Phase Calculator” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
+</div>
+<div class="section" id="recommended-signal-chain">
+<h2>Recommended signal chain<a class="headerlink" href="#recommended-signal-chain" title="Permalink to this headline">¶</a></h2>
+<p>The Probe Viewer works best with data acquired by linear silicon probes (especially Neuropixels), but it can be used with any type of input source. It can only visualize data from one stream at a time, but the stream can be changed while acquisition is active (this feature is new in v0.6.x).</p>
 </div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Documentation coming soon.</p>
+<p>The Probe Viewer visualizer interface (accessed by clicking the “tab” or “window” buttons at the top right of the plugin editor) looks like this:</p>
+<img alt="Annotated Probe Viewer visualizer" src="../../_images/probeviewer-02.png" />
+<p>To change the subset of channels to be viewed, drag the edges of the bounding box in the channel browser interface on the left-hand side of the visualizer. The currently displayed channels are shown as circular icons in the zoomed-in view to the right.</p>
+<div class="section" id="render-modes">
+<h3>Render modes<a class="headerlink" href="#render-modes" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>RMS Signal</strong> - Color corresponds to the overall amplitude of the signal on each channel (computed as root-mean-squared signal amplitude within each pixel window). The minimum and maximum of the color scale can be adjusted.</p></li>
+<li><p><strong>Freq. Band Power</strong> - Color corresponds to the spectral power at a given center frequency. For example, this can be used to visualize theta-band (8 Hz) power across depth.</p></li>
+<li><p><strong>Spike Rate</strong> - Color corresponds to the number of threshold crossings per unit time within each pixel window. The threshold voltage can be adjusted.</p></li>
+</ol>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
+</div>
 </div>
 </div>
 </div>

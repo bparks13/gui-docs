@@ -388,37 +388,33 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Virtual Reference plugin is not yet available for GUI version 0.6.X.</p>
-</div>
 <div class="section" id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
-<p>The Virtual Reference plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to the “Virtual Reference” plugin, and click the “Install” button.</p>
+<p>The Virtual Reference plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “Virtual Reference” plugin, and click the “Install” button.</p>
 <p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
 </div>
 <div class="section" id="plugin-configuration">
 <h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Due to limitations of the settings interface, it’s not recommended to use this plugin with more than 128 input channels.</p>
+<p>Due to limitations of the settings interface, the configuration interface can only display the first 128 channels in a given stream. For streams with higher channel counts, you should use the <a class="reference internal" href="Common-Average-Reference.html#commonaveragereference"><span class="std std-ref">Common Average Reference</span></a> instead. For Neuropixels probes, the <a class="reference internal" href="Neuropixels-CAR.html#neuropixelscar"><span class="std std-ref">Neuropixels CAR</span></a> is recommended.</p>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>All of the configuration occurs inside the plugin’s visualizer. To access it, click on one of the buttons in the upper right of the plugin editor to open the settings interface in a tab or window.</p>
+<p>All of the configuration occurs inside the plugin’s visualizer. To access it, click on one of the buttons in the upper right of the plugin editor to open the settings interface in a tab or window:</p>
 <img alt="Virtual Reference settings interface" src="../../_images/virtualreference-02.png" />
 <p>The main settings interface consists of a matrix with one row for each input channel and one column for each potential reference channel. Selecting all the channels in a row is equivalent to using a common average reference for that input channel. Selecting only one channel in a row is the equivalent of using a single digital reference. When no channels are selected in a row, the data for the incoming channel will be unchanged.</p>
 <p>The bottom of the settings interface presents several additional options:</p>
 <ul class="simple">
-<li><p><strong>RESET</strong>: Removes all reference settings, restoring the plugin to its default state.</p></li>
-<li><p><strong>SINGLE MODE</strong>: Allows only one channel per row to be selected at a time.</p></li>
-<li><p><strong>SAVE</strong>: Saves the reference settings to a config file.</p></li>
-<li><p><strong>LOAD</strong>: Loads the reference settings from a config file.</p></li>
+<li><p><strong>Reset</strong>: Removes all reference settings, restoring the plugin to its default state.</p></li>
+<li><p><strong>Single mode</strong>: Allows only one channel per row to be selected at a time.</p></li>
+<li><p><strong>Save</strong>: Saves the reference settings to a config file.</p></li>
+<li><p><strong>Load</strong>: Loads the reference settings from a config file.</p></li>
 <li><p><strong>Gain slider</strong>: Changes the multiplier used on the reference channels before subtracting from the input channel (default = 1).</p></li>
 <li><p><strong>Preset</strong>: Select from several useful pre-defined configurations.</p></li>
-<li><p><strong># channels</strong>: Sets the maximum number of channels used for the preset configurations.</p></li>
+<li><p><strong>No. of channels</strong>: Sets the maximum number of channels used for the preset configurations.</p></li>
 </ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 </div>
 
