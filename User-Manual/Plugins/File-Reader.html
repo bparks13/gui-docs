@@ -399,6 +399,10 @@
 <div class="section" id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">¶</a></h2>
 <p>By default, the File Reader is compatible with files saved in the <a class="reference internal" href="../Recording-data/Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a> (indexed with a <code class="code docutils literal notranslate"><span class="pre">structure.oebin</span></code> file). If the appropriate plugins are installed, the File Reader can also read data stored in the <a class="reference internal" href="../Recording-data/Open-Ephys-format.html#openephysformat"><span class="std std-ref">Open Ephys Format</span></a> (indexed with a <code class="code docutils literal notranslate"><span class="pre">structure.openephys</span></code> file) and <a class="reference internal" href="../Recording-data/NWB-format.html#nwbdataformat"><span class="std std-ref">NWB Format</span></a> (saved inside a <code class="code docutils literal notranslate"><span class="pre">*.nwb</span></code> file).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data saved by previous versions of the GUI may not load in version 0.6.x. For help updating your files to work with the latest File Reader, send a message to <a class="reference external" href="mailto:support&#37;&#52;&#48;open-ephys&#46;org">support<span>&#64;</span>open-ephys<span>&#46;</span>org</a>.</p>
+</div>
 <p>Each input file can contain multiple streams/recordings, but only one stream/recording can be played back per File Reader during acquisition. The drop-down menu below the active file name makes it possible to switch between the available streams when acquisition is paused. In order to play multiple streams simultaneously, you can merge multiple File Readers, each with the same input file and a different selected stream.</p>
 <p>You can play back a subset of a recorded file by changing the “start” and “end” times at the bottom of the File Reader editor.</p>
 </div>
