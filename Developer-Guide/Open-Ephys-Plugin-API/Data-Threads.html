@@ -237,7 +237,7 @@
 </tbody>
 </table>
 <p><strong>Data Threads</strong> are special types of <a class="reference internal" href="Processor-Plugins.html#processorplugins"><span class="std std-ref">Processor Plugins</span></a> that communicate with a data acquisition device whose clock is not synchronized with the GUI’s internal processing callbacks. Instead of implementing a <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method as a “Source” processor would, a Data Thread must implement an <code class="code docutils literal notranslate"><span class="pre">updateBuffer()</span></code> method that is called inside a separate thread. Any available data in this buffer will be automatically copied into the GUI’s signal chain for further processing.</p>
-<p>Each Data Thread can generate an arbitrary number of data streams, each with an independent sample clock. The only limitations are that each data stream can only have one event “channel” (with up to 64 TTL lines), and the incoming data cannot contain spike events. Provided that the incoming data fits within these limitations, then it is strongly recommended to derive your plugin from a Data Thread, rather than building a Source Processor.</p>
+<p>Each Data Thread can generate an arbitrary number of data streams, each with an independent sample clock. The only limitations are that each data stream can only have one event “channel” (with up to 64 TTL lines), and the incoming data cannot contain spike events. Provided that the incoming data fits within these limitations, then it is strongly recommended to derive your plugin from a Data Thread, rather than building a custom Source Processor.</p>
 <p>To create a new Data Thread, start with the <a class="reference external" href="https://github.com/open-ephys-plugins/data-thread-template">Data Thread Template</a> and add code that implements the following method:</p>
 <dl class="cpp function">
 <dt id="_CPPv412updateBufferv">
@@ -286,7 +286,7 @@
 <dl class="cpp function">
 <dt id="_CPPv414updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE">
 <span id="_CPPv314updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE"></span><span id="_CPPv214updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE"></span><span id="updateSettings__OwnedArray:ContinuousChannel:P.OwnedArray:EventChannel:P.OwnedArray:SpikeChannel:P.OwnedArray:DataStream:P.OwnedArray:DeviceInfo:P.OwnedArray:ConfigurationObject:P"></span>void <code class="sig-name descname">updateSettings</code><span class="sig-paren">(</span>OwnedArray&lt;ContinuousChannel&gt; *<em>continuousChannels</em>, OwnedArray&lt;EventChannel&gt; *<em>eventChannels</em>, OwnedArray&lt;SpikeChannel&gt; *<em>spikeChannels</em>, OwnedArray&lt;DataStream&gt; *<em>sourceStreams</em>, OwnedArray&lt;DeviceInfo&gt; *<em>devices</em>, OwnedArray&lt;ConfigurationObject&gt; *<em>configurationObjects</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Passes pointers to the Source processor’s info objects to the DataThread, to allow them to be configured as needed. Note that only channels that have been added to a <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> object will be registered by downstream processors. And each <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> can only have one <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> associated with it.</p>
+<dd><p>Passes pointers to the Source processor’s info objects to the Data Thread, to allow them to be configured as needed. Note that only channels that have been added to a <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> object will be registered by downstream processors. And each <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> can only have one <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> associated with it.</p>
 </dd></dl>
 
 <p>The following is an example of a minimal implementation of <code class="code docutils literal notranslate"><span class="pre">DataThread::updateSettings()</span></code>:</p>
@@ -390,7 +390,7 @@
 <dl class="cpp function">
 <dt id="_CPPv422handleBroadcastMessage6String">
 <span id="_CPPv322handleBroadcastMessage6String"></span><span id="_CPPv222handleBroadcastMessage6String"></span><span id="handleBroadcastMessage__String"></span>void <code class="sig-name descname">handleBroadcastMessage</code><span class="sig-paren">(</span>String <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422handleBroadcastMessage6String" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Allows the DataThread plugin to respond to messages sent by other processors during acquisition.</p>
+<dd><p>Allows the Data Thread plugin to respond to messages sent by other processors during acquisition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>msg</strong> – The message that was sent. There are no restrictions on how this string will be formatted; each plugin is responsible for parsing this message in the appropriate way.</p>
@@ -401,13 +401,25 @@
 <dl class="cpp function">
 <dt id="_CPPv419handleConfigMessage6String">
 <span id="_CPPv319handleConfigMessage6String"></span><span id="_CPPv219handleConfigMessage6String"></span><span id="handleConfigMessage__String"></span>String <code class="sig-name descname">handleConfigMessage</code><span class="sig-paren">(</span>String <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419handleConfigMessage6String" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Allows the DataThread plugin to handle a configuration message (usually sent via the OpenEphysHTTPServer) while acquisition is not active.</p>
+<dd><p>Allows the Data Thread plugin to handle a configuration message (usually sent via the OpenEphysHTTPServer) while acquisition is not active.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>msg</strong> – The message that was sent. There are no restrictions on how this string will be formatted; each plugin is responsible for parsing this message in the appropriate way.</p>
 </dd>
 <dt class="field-even">Returns String</dt>
 <dd class="field-even"><p>The response to the sender (e.g., an acknowledgement that the configuration message was handled properly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The following method can be called by a Data Thread to send a message to all other processors in the signal chain while acquisition is active:</p>
+<dl class="cpp function">
+<dt id="_CPPv416broadcastMessage6String">
+<span id="_CPPv316broadcastMessage6String"></span><span id="_CPPv216broadcastMessage6String"></span><span id="broadcastMessage__String"></span>void <code class="sig-name descname">broadcastMessage</code><span class="sig-paren">(</span>String <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416broadcastMessage6String" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Allows the Data Thread to broadcast a custom string to all other processors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – The message that was sent. There are no restrictions on how this string will be formatted; each plugin is responsible for parsing this message in the appropriate way.</p>
 </dd>
 </dl>
 </dd></dl>
