@@ -1,226 +1,350 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>How To Make Your Own Plugin &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FAQs" href="../FAQ/index.html" />
     <link rel="prev" title="Synchronizing Data Streams" href="Data-Synchronization.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../index.html">
-    
-      <img src="../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../User-Manual/index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-        
-        
-        
-        
-          
-            
-                <li class="">
-                    <a href="Closed-Loop-Latency.html">Measuring Closed-Loop Latency</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Data-Synchronization.html">Synchronizing Data Streams</a>
-                </li>
-            
-          
-            
-                <li class="active">
-                    <a href="">How To Make Your Own Plugin</a>
-                </li>
-            
-          
-        
-        
-        
-        
-      </ul>
+
+
+<a class="navbar-brand logo" href="../index.html">
+
   
-  </nav>
-          </div>
-          
+  
+  
+  
+  
+  
+  
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+  
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#creating-a-new-plugin-repository" class="nav-link">Creating a new plugin repository</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#editing-openephyslib-cpp-and-other-files" class="nav-link">Editing OpenEphysLib.cpp and other files</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#compiling-your-plugin" class="nav-link">Compiling your plugin</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#setting-up-the-processor-methods" class="nav-link">Setting up the Processor methods</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#adding-ui-components-to-the-editor" class="nav-link">Adding UI components to the editor</a><ul class="nav section-nav flex-column">
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#creating-a-slider-parameter-editor" class="nav-link">Creating a slider parameter editor</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#creating-a-combobox-parameter-editor" class="nav-link">Creating a ComboBox parameter editor</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#creating-a-custom-parameter-editor-optional" class="nav-link">Creating a custom parameter editor (optional)</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#responding-to-parameter-value-changes" class="nav-link">Responding to parameter value changes</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#next-steps" class="nav-link">Next steps</a>
-        </li>
-    
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="how-to-make-your-own-plugin">
-<span id="howtomakeyourownplugin"></span><h1>How To Make Your Own Plugin<a class="headerlink" href="#how-to-make-your-own-plugin" title="Permalink to this headline">¶</a></h1>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Closed-Loop-Latency.html">Measuring Closed-Loop Latency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data-Synchronization.html">Synchronizing Data Streams</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">How To Make Your Own Plugin</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="how-to-make-your-own-plugin">
+<span id="howtomakeyourownplugin"></span><h1>How To Make Your Own Plugin<a class="headerlink" href="#how-to-make-your-own-plugin" title="Permalink to this heading">#</a></h1>
 <p>The Open Ephys GUI was designed to be extended via plugins that can be developed and shared independently of the main application. This is the primary way in which end users are encouraged to add new functionality to the GUI.</p>
 <p>This tutorial will guide you through the steps involved in making a plugin from scratch. At then, you will have created a “TTL Event Generator” plugin, which can emit TTL events when a button is pressed, or continuously at a customizable frequency. TTL events represent ON/OFF transitions that are traditionally associated with “Transistor-Transistor Logic” circuits. Within the Open Ephys GUI, TTL events are used to represent state transitions on both physical and virtual “lines.” Each TTL channel can track the state of up to 256 lines, but for simplicity our plugin will only use the first 8.</p>
 <p>Along with explaining how to configure the plugin and set up the main <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method, this tutorial will demonstrate how to create UI components for the plugin using the GUI’s built-in parameter editors.</p>
@@ -228,8 +352,8 @@
 <p class="admonition-title">Important</p>
 <p>These instructions assume you have already compiled the main application from source. If not, you should start by following the instructions on <a class="reference internal" href="../Developer-Guide/Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">this page</span></a>.</p>
 </div>
-<div class="section" id="creating-a-new-plugin-repository">
-<h2>Creating a new plugin repository<a class="headerlink" href="#creating-a-new-plugin-repository" title="Permalink to this headline">¶</a></h2>
+<section id="creating-a-new-plugin-repository">
+<h2>Creating a new plugin repository<a class="headerlink" href="#creating-a-new-plugin-repository" title="Permalink to this heading">#</a></h2>
 <p>The first step in creating a plugin is to create a new code repository from a template. There are five different types of plugins that include pre-defined templates: <strong>Processor Plugins</strong>, <strong>Visualizer Plugins</strong>, <strong>Data Threads</strong>, <strong>Record Engines</strong>, and <strong>File Sources</strong>. Since we are creating a plugin that processes data, but does not include a separate canvas for visualization, we will use the <strong>Processor Plugin</strong> template:</p>
 <ol class="arabic simple">
 <li><p>Log in to your <a class="reference external" href="https://github.com/">GitHub</a> account.</p></li>
@@ -255,9 +379,9 @@
          <span class="n">README</span><span class="o">.</span><span class="n">md</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="editing-openephyslib-cpp-and-other-files">
-<h2>Editing <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> and other files<a class="headerlink" href="#editing-openephyslib-cpp-and-other-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="editing-openephyslib-cpp-and-other-files">
+<h2>Editing <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> and other files<a class="headerlink" href="#editing-openephyslib-cpp-and-other-files" title="Permalink to this heading">#</a></h2>
 <p>Inside the “Source” directory, you’ll find the <code class="file docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> file that contains critical information about your plugin. Open it in your preferred text editor and make the following changes:</p>
 <p>TTLEventGenerator plugin will be a “processor”, meaning it implements the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method of the <a class="reference external" href="https://github.com/open-ephys/plugin-GUI/blob/master/Source/Processors/GenericProcessor/GenericProcessor.h">GenericProcessor</a> class. This method is called repeatedly during the GUI’s acquisition loop, so each plugin has a chance to respond to incoming data (or, in this case, generate its own data).</p>
 <p>To specify that this is a processor plugin, edit the following lines in <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code>:</p>
@@ -268,42 +392,42 @@
 </ol>
 <p>When you’re finished, the file should look like this:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">OpenEphysLib.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="n">EXPORT</span> <span class="kt">void</span> <span class="n">getLibInfo</span><span class="p">(</span><span class="n">Plugin</span><span class="o">::</span><span class="n">LibraryInfo</span><span class="o">*</span> <span class="n">info</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="cm">/* API version, defined by the GUI source.</span>
+<div class="code-block-caption"><span class="caption-text">OpenEphysLib.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="n">EXPORT</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">getLibInfo</span><span class="p">(</span><span class="n">Plugin</span><span class="o">::</span><span class="n">LibraryInfo</span><span class="o">*</span><span class="w"> </span><span class="n">info</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* API version, defined by the GUI source.</span>
 <span class="cm">   Should not be changed to ensure it is always equal to the one used in the latest codebase.</span>
-<span class="cm">   The GUI refuses to load plugins with mismatched API versions */</span>
-   <span class="n">info</span><span class="o">-&gt;</span><span class="n">apiVersion</span> <span class="o">=</span> <span class="n">PLUGIN_API_VER</span><span class="p">;</span>
-   <span class="n">info</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;TTL Event Generator&quot;</span><span class="p">;</span> <span class="c1">// &lt;---- UPDATE</span>
-   <span class="n">info</span><span class="o">-&gt;</span><span class="n">libVersion</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span><span class="p">;</span> <span class="c1">// &lt;---- UPDATE</span>
-   <span class="n">info</span><span class="o">-&gt;</span><span class="n">numPlugins</span> <span class="o">=</span> <span class="n">NUM_PLUGINS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="cm">   The GUI refuses to load plugins with mismatched API versions */</span><span class="w"></span>
+<span class="w">   </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">apiVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PLUGIN_API_VER</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TTL Event Generator&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// &lt;---- UPDATE</span>
+<span class="w">   </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">libVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0.1.0&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// &lt;---- UPDATE</span>
+<span class="w">   </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">numPlugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NUM_PLUGINS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="n">EXPORT</span> <span class="kt">int</span> <span class="n">getPluginInfo</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="n">Plugin</span><span class="o">::</span><span class="n">PluginInfo</span><span class="o">*</span> <span class="n">info</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="k">switch</span> <span class="p">(</span><span class="n">index</span><span class="p">)</span>
-   <span class="p">{</span>
-      <span class="c1">//one case per plugin. This example is for a processor which connects directly to the signal chain</span>
-   <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
-      <span class="c1">//Type of plugin. See &quot;Source/Processors/PluginManager/OpenEphysPlugin.h&quot; for complete info about the different type structures</span>
-      <span class="n">info</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">=</span> <span class="n">Plugin</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">PROCESSOR</span><span class="p">;</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="n">EXPORT</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">getPluginInfo</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Plugin</span><span class="o">::</span><span class="n">PluginInfo</span><span class="o">*</span><span class="w"> </span><span class="n">info</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">//one case per plugin. This example is for a processor which connects directly to the signal chain</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1">//Type of plugin. See &quot;Source/Processors/PluginManager/OpenEphysPlugin.h&quot; for complete info about the different type structures</span>
+<span class="w">      </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Plugin</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">PROCESSOR</span><span class="p">;</span><span class="w"></span>
 
-      <span class="c1">//Processor name</span>
-      <span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;TTL Event Generator&quot;</span><span class="p">;</span> <span class="c1">//Processor name shown in the GUI (UPDATE)</span>
+<span class="w">      </span><span class="c1">//Processor name</span>
+<span class="w">      </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TTL Event Generator&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">//Processor name shown in the GUI (UPDATE)</span>
 
-      <span class="c1">//Type of processor. Can be FILTER, SOURCE, SINK or UTILITY. Specifies where on the processor list will appear</span>
-      <span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">Processor</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">FILTER</span><span class="p">;</span>
+<span class="w">      </span><span class="c1">//Type of processor. Can be FILTER, SOURCE, SINK or UTILITY. Specifies where on the processor list will appear</span>
+<span class="w">      </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Processor</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">FILTER</span><span class="p">;</span><span class="w"></span>
 
-      <span class="c1">//Class factory pointer. Replace &quot;ProcessorPluginSpace::ProcessorPlugin&quot; with the namespace and class name.</span>
-      <span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">creator</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">Plugin</span><span class="o">::</span><span class="n">createProcessor</span><span class="o">&lt;</span><span class="n">TTLEventGenerator</span><span class="o">&gt;</span><span class="p">);</span> <span class="c1">// &lt;---- UPDATE</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="k">default</span><span class="o">:</span>
-      <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="p">}</span>
-   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">      </span><span class="c1">//Class factory pointer. Replace &quot;ProcessorPluginSpace::ProcessorPlugin&quot; with the namespace and class name.</span>
+<span class="w">      </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">processor</span><span class="p">.</span><span class="n">creator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">Plugin</span><span class="o">::</span><span class="n">createProcessor</span><span class="o">&lt;</span><span class="n">TTLEventGenerator</span><span class="o">&gt;</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;---- UPDATE</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -311,25 +435,25 @@
 <div class="line"><br /></div>
 </div>
 <p>Next, rename the <code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.cpp</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.h</span></code> files to <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.cpp</span></code> and <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code>, and find and replace the <strong>ProcessorPlugin</strong> class name with <strong>TTLEventGenerator</strong> in the .cpp and .h files. Do the same with <code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.cpp</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.h</span></code></p>
-</div>
-<div class="section" id="compiling-your-plugin">
-<h2>Compiling your plugin<a class="headerlink" href="#compiling-your-plugin" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="compiling-your-plugin">
+<h2>Compiling your plugin<a class="headerlink" href="#compiling-your-plugin" title="Permalink to this heading">#</a></h2>
 <p>At this point, you should be able to compile your plugin and load it into the GUI. We advise you to compile and test the plugin every time you make changes, so that it is easier for you to identify what changes broke the code, if it happens.</p>
 <p>To compile the plugin, please follow the OS-specific instructions described on the <a class="reference internal" href="../Developer-Guide/Compiling-plugins.html#compilingplugins"><span class="std std-ref">compiling plugins</span></a> page.</p>
-</div>
-<div class="section" id="setting-up-the-processor-methods">
-<h2>Setting up the Processor methods<a class="headerlink" href="#setting-up-the-processor-methods" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="setting-up-the-processor-methods">
+<h2>Setting up the Processor methods<a class="headerlink" href="#setting-up-the-processor-methods" title="Permalink to this heading">#</a></h2>
 <p>Right now, our plugin won’t have any effect on incoming data when it’s placed in the signal chain. Data passed into the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method will not be altered in any way, nor will any events be added to any of the data stream.</p>
 <p>Let’s change that by inserting code to add a TTL ON and OFF events at an interval of 1 second. For now, we will hard-code the relevant parameters. In the subsequent steps, we will make it possible to change these parameters via UI elements in the plugin’s editor.</p>
 <p>Before we can add events during acquisition, we need to announce to downstream processors that this plugin is capable of generating its own events. This is done by adding a TTL event channel in the <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code> method, which is called whenever the signal chain is modified.</p>
 <p>In the plugin’s <code class="code docutils literal notranslate"><span class="pre">.cpp</span></code> file, add the following line to <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code>:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">updateSettings</span><span class="p">()</span>
-<span class="p">{</span>
-   <span class="c1">// create and add a default TTL channel to the first data stream</span>
-   <span class="n">addTTLChannel</span><span class="p">(</span><span class="s">&quot;TTL Event Generator Output&quot;</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TTLEventGenerator::updateSettings</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="c1">// create and add a default TTL channel to the first data stream</span>
+<span class="w">   </span><span class="n">addTTLChannel</span><span class="p">(</span><span class="s">&quot;TTL Event Generator Output&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -337,243 +461,243 @@
 <p>Next, we will add some internal variables to track the state of our TTL lines, as well as a method to ensure their state is reset at the start of acquisition.</p>
 <p>In the plugin’s <code class="code docutils literal notranslate"><span class="pre">.h</span></code> file, add the following lines after <code class="code docutils literal notranslate"><span class="pre">loadCustomParametersFromXml</span></code>:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.h</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span>   <span class="kt">bool</span> <span class="nf">startAcquisition</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.h</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="nf">startAcquisition</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-   <span class="kt">int</span> <span class="n">counter</span><span class="p">;</span> <span class="c1">// counts the total number of incoming samples</span>
-   <span class="kt">bool</span> <span class="n">state</span><span class="p">;</span> <span class="c1">// holds the channel state (on or off)</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span><span class="w"> </span><span class="c1">// counts the total number of incoming samples</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w"> </span><span class="c1">// holds the channel state (on or off)</span>
 </pre></div>
 </div>
 </div>
 <p>In the <code class="code docutils literal notranslate"><span class="pre">.cpp</span></code> file, add a new method called <code class="code docutils literal notranslate"><span class="pre">startAcquisition()</span></code> that resets the state of these variables:</p>
 <p>Then we will make sure the appropriate variables get re-set at the start of acquisition:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">startAcquisition</span><span class="p">()</span>
-<span class="p">{</span>
-   <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-   <span class="n">state</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">TTLEventGenerator::startAcquisition</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 
-   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Now, we are ready to add events to inside our process method:</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="n">AudioBuffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;*</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="p">{</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TTLEventGenerator::process</span><span class="p">(</span><span class="n">AudioBuffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-   <span class="c1">// loop through the streams</span>
-   <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">stream</span> <span class="p">:</span> <span class="n">getDataStreams</span><span class="p">())</span>
-   <span class="p">{</span>
-      <span class="c1">// Only generate on/off event for the first data stream</span>
-      <span class="k">if</span><span class="p">(</span><span class="n">stream</span> <span class="o">==</span> <span class="n">getDataStreams</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-      <span class="p">{</span>
-         <span class="kt">int</span> <span class="n">totalSamples</span> <span class="o">=</span> <span class="n">getNumSamplesInBlock</span><span class="p">(</span><span class="n">stream</span><span class="o">-&gt;</span><span class="n">getStreamId</span><span class="p">());</span>
+<span class="w">   </span><span class="c1">// loop through the streams</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">getDataStreams</span><span class="p">())</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Only generate on/off event for the first data stream</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getDataStreams</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">totalSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNumSamplesInBlock</span><span class="p">(</span><span class="n">stream</span><span class="o">-&gt;</span><span class="n">getStreamId</span><span class="p">());</span><span class="w"></span>
 
-         <span class="kt">int</span> <span class="n">eventIntervalInSamples</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">stream</span><span class="o">-&gt;</span><span class="n">getSampleRate</span><span class="p">();</span>
+<span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">stream</span><span class="o">-&gt;</span><span class="n">getSampleRate</span><span class="p">();</span><span class="w"></span>
 
-         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-         <span class="p">{</span>
-            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">totalSamples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
-            <span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
 
-               <span class="n">state</span> <span class="o">=</span> <span class="o">!</span><span class="n">state</span><span class="p">;</span>
-               <span class="n">setTTLState</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">state</span><span class="p">);</span>
-               <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="w">               </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">state</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="n">setTTLState</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-            <span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
-               <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-         <span class="p">}</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="p">)</span><span class="w"></span>
+<span class="w">               </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>After recompiling the plugin, try dropping it into the signal chain after a <a class="reference internal" href="../User-Manual/Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a>. Add an <a class="reference internal" href="../User-Manual/Plugins/LFP-Viewer.html#lfpviewer"><span class="std std-ref">LFP Viewer</span></a> to the right of the plugin, and start acquisition. You should see the state of TTL event line 1 flipping once per second.</p>
-</div>
-<div class="section" id="adding-ui-components-to-the-editor">
-<h2>Adding UI components to the editor<a class="headerlink" href="#adding-ui-components-to-the-editor" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="adding-ui-components-to-the-editor">
+<h2>Adding UI components to the editor<a class="headerlink" href="#adding-ui-components-to-the-editor" title="Permalink to this heading">#</a></h2>
 <p>Currently, the TTL line and interval for generating events are hard-coded inside the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method. In order to make these parameters easy to change at runtime, we need to create a user interface for our plugin. This UI will be defined inside of the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> class.</p>
 <p>You should have already modified the file and class names for the plugin’s editor; make sure the editor’s <code class="code docutils literal notranslate"><span class="pre">.h</span></code> and <code class="code docutils literal notranslate"><span class="pre">.cpp</span></code> files look like this:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.h</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;EditorHeaders.h&gt;</span><span class="cp"></span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.h</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;EditorHeaders.h&gt;</span><span class="cp"></span>
 
-<span class="k">class</span> <span class="nc">TTLEventGeneratorEditor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">GenericEditor</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TTLEventGeneratorEditor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">GenericEditor</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
 
-   <span class="cm">/** Constructor */</span>
-   <span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span> <span class="n">parentNode</span><span class="p">);</span>
+<span class="w">   </span><span class="cm">/** Constructor */</span><span class="w"></span>
+<span class="w">   </span><span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span><span class="w"> </span><span class="n">parentNode</span><span class="p">);</span><span class="w"></span>
 
-   <span class="cm">/** Destructor */</span>
-   <span class="o">~</span><span class="n">TTLEventGeneratorEditor</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="w">   </span><span class="cm">/** Destructor */</span><span class="w"></span>
+<span class="w">   </span><span class="o">~</span><span class="n">TTLEventGeneratorEditor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
 
-   <span class="cm">/** Generates an assertion if this class leaks */</span>
-   <span class="n">JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR</span><span class="p">(</span><span class="n">TTLEventGeneratorEditor</span><span class="p">);</span>
-<span class="p">};</span>
+<span class="w">   </span><span class="cm">/** Generates an assertion if this class leaks */</span><span class="w"></span>
+<span class="w">   </span><span class="n">JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR</span><span class="p">(</span><span class="n">TTLEventGeneratorEditor</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;TTLEventGeneratorEditor.h&quot;</span><span class="cp"></span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TTLEventGeneratorEditor.h&quot;</span><span class="cp"></span>
 
-<span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span> <span class="n">parentNode</span><span class="p">)</span>
-   <span class="o">:</span> <span class="n">GenericEditor</span><span class="p">(</span><span class="n">parentNode</span><span class="p">)</span>
-<span class="p">{</span>
+<span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span><span class="w"> </span><span class="n">parentNode</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">GenericEditor</span><span class="p">(</span><span class="n">parentNode</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-   <span class="n">desiredWidth</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span>
+<span class="w">   </span><span class="n">desiredWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span><span class="w"></span>
 
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="creating-a-slider-parameter-editor">
-<h3>Creating a slider parameter editor<a class="headerlink" href="#creating-a-slider-parameter-editor" title="Permalink to this headline">¶</a></h3>
+<section id="creating-a-slider-parameter-editor">
+<h3>Creating a slider parameter editor<a class="headerlink" href="#creating-a-slider-parameter-editor" title="Permalink to this heading">#</a></h3>
 <p>To automatically generate events at certain intervals/frequency, let’s add a slider with a range of event frequencies between 5 ms to 5000 ms. We will create a slider inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> constructor using one of the built-in parameter editors, like so:</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span> <span class="n">parentNode</span><span class="p">)</span>
-   <span class="o">:</span> <span class="n">GenericEditor</span><span class="p">(</span><span class="n">parentNode</span><span class="p">)</span>
-<span class="p">{</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TTLEventGeneratorEditor</span><span class="o">::</span><span class="n">TTLEventGeneratorEditor</span><span class="p">(</span><span class="n">GenericProcessor</span><span class="o">*</span><span class="w"> </span><span class="n">parentNode</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">GenericEditor</span><span class="p">(</span><span class="n">parentNode</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-   <span class="n">desiredWidth</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span>
+<span class="w">   </span><span class="n">desiredWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">250</span><span class="p">;</span><span class="w"></span>
 
-   <span class="c1">// event frequency slider</span>
-   <span class="n">addSliderParameterEditor</span><span class="p">(</span><span class="s">&quot;frequency&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">95</span><span class="p">);</span> <span class="c1">// (parameter name, x pos, y pos)</span>
+<span class="w">   </span><span class="c1">// event frequency slider</span>
+<span class="w">   </span><span class="n">addSliderParameterEditor</span><span class="p">(</span><span class="s">&quot;frequency&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">);</span><span class="w"> </span><span class="c1">// (parameter name, x pos, y pos)</span>
 
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Note that we also changed the desired width of the plugin to 250, to allow more space for parameter editors.</p>
 <p>Every parameter editor <em>must</em> refer to a parameter with the same name that’s declared in the plugin constructor. Let’s initialize the corresponding parameter inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> constructor:</p>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">TTLEventGenerator</span><span class="p">()</span>
-   <span class="o">:</span> <span class="n">GenericProcessor</span><span class="p">(</span><span class="s">&quot;TTL Event Generator&quot;</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="c1">// Event frequency</span>
-   <span class="n">addFloatParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="o">::</span><span class="n">GLOBAL_SCOPE</span><span class="p">,</span> <span class="s">&quot;frequency&quot;</span><span class="p">,</span> <span class="s">&quot;Generate events at regular intervals&quot;</span><span class="p">,</span> <span class="mf">50.0f</span><span class="p">,</span> <span class="mf">5.0f</span><span class="p">,</span> <span class="mf">5000.0f</span><span class="p">,</span> <span class="mf">5.0f</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">TTLEventGenerator</span><span class="p">()</span><span class="w"></span>
+<span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">GenericProcessor</span><span class="p">(</span><span class="s">&quot;TTL Event Generator&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="c1">// Event frequency</span>
+<span class="w">   </span><span class="n">addFloatParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="o">::</span><span class="n">GLOBAL_SCOPE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;frequency&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Generate events at regular intervals&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">50.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">5000.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0f</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Now, compile and load the plugin into the GUI to see the newly added slider.</p>
 <img alt="Create a slider" src="../_images/makeyourownplugin-03.png" />
-</div>
-<div class="section" id="creating-a-combobox-parameter-editor">
-<h3>Creating a ComboBox parameter editor<a class="headerlink" href="#creating-a-combobox-parameter-editor" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-a-combobox-parameter-editor">
+<h3>Creating a ComboBox parameter editor<a class="headerlink" href="#creating-a-combobox-parameter-editor" title="Permalink to this heading">#</a></h3>
 <p>To select which TTL line to send events on, we will use a “ComboBox” or drop-down menu. Add the following line to the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> constructor to initialize the GUI’s built-in ComboBox parameter editor:</p>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id10" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// event output line</span>
-<span class="n">addComboBoxParameterEditor</span><span class="p">(</span><span class="s">&quot;out&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">35</span><span class="p">);</span>
+<span class="n">addComboBoxParameterEditor</span><span class="p">(</span><span class="s">&quot;out&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Also be sure to initialize the corresponding parameter inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> processor constructor:</p>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">StringArray</span> <span class="n">outputs</span><span class="p">;</span>
-<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-   <span class="n">outputs</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id11" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">StringArray</span><span class="w"> </span><span class="n">outputs</span><span class="p">;</span><span class="w"></span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">outputs</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"></span>
 
 <span class="c1">// Event output line</span>
-<span class="n">addCategoricalParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="o">::</span><span class="n">GLOBAL_SCOPE</span><span class="p">,</span> <span class="s">&quot;out&quot;</span><span class="p">,</span> <span class="s">&quot;Event output line&quot;</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">addCategoricalParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="o">::</span><span class="n">GLOBAL_SCOPE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;out&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Event output line&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Compile and load the plugin into the GUI to see the newly added ComboBox.</p>
 <img alt="Create a combobox" src="../_images/makeyourownplugin-04.png" />
-</div>
-<div class="section" id="creating-a-custom-parameter-editor-optional">
-<h3>Creating a custom parameter editor (optional)<a class="headerlink" href="#creating-a-custom-parameter-editor-optional" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-a-custom-parameter-editor-optional">
+<h3>Creating a custom parameter editor (optional)<a class="headerlink" href="#creating-a-custom-parameter-editor-optional" title="Permalink to this heading">#</a></h3>
 <p>To make it possible for the user to trigger TTL events manually, we will add a button to the editor that the user can click on to generate an event. Since there is no built-in parameter editor for this, we need to create a custom one. To do this, add a  <code class="code docutils literal notranslate"><span class="pre">ManualTriggerButton</span></code> class above the main editor class in the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.h</span></code> file:</p>
 <div class="literal-block-wrapper docutils container" id="id12">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.h</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ManualTriggerButton</span> <span class="o">:</span> <span class="k">public</span> <span class="n">ParameterEditor</span><span class="p">,</span>
-   <span class="k">public</span> <span class="n">Button</span><span class="o">::</span><span class="n">Listener</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.h</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ManualTriggerButton</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ParameterEditor</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="k">public</span><span class="w"> </span><span class="n">Button</span><span class="o">::</span><span class="n">Listener</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
 
-   <span class="cm">/** Constructor */</span>
-   <span class="n">ManualTriggerButton</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span> <span class="n">param</span><span class="p">);</span>
+<span class="w">   </span><span class="cm">/** Constructor */</span><span class="w"></span>
+<span class="w">   </span><span class="n">ManualTriggerButton</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w"></span>
 
-   <span class="cm">/** Destructor*/</span>
-   <span class="k">virtual</span> <span class="o">~</span><span class="n">ManualTriggerButton</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="w">   </span><span class="cm">/** Destructor*/</span><span class="w"></span>
+<span class="w">   </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">ManualTriggerButton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-   <span class="cm">/** Respond to trigger button clicks*/</span>
-   <span class="kt">void</span> <span class="n">buttonClicked</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span> <span class="n">label</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">   </span><span class="cm">/** Respond to trigger button clicks*/</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="n">buttonClicked</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-   <span class="cm">/** Update view of the parameter editor component*/</span>
-   <span class="kt">void</span> <span class="nf">updateView</span><span class="p">()</span> <span class="p">{};</span>
+<span class="w">   </span><span class="cm">/** Update view of the parameter editor component*/</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateView</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
 
-   <span class="cm">/** Sets component layout*/</span>
-   <span class="kt">void</span> <span class="nf">resized</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+<span class="w">   </span><span class="cm">/** Sets component layout*/</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">resized</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-   <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">TextButton</span><span class="o">&gt;</span> <span class="n">triggerButton</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">TextButton</span><span class="o">&gt;</span><span class="w"> </span><span class="n">triggerButton</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Then, in the custom parameter editor’s constructor, we’ll initialize the button, add a button listener, set the bounds, and make it visible in the editor by adding the following lines of code:</p>
 <div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ManualTriggerButton</span><span class="o">::</span><span class="n">ManualTriggerButton</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span>
-     <span class="o">:</span> <span class="n">ParameterEditor</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">triggerButton</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">UtilityButton</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Trigger&quot;</span><span class="p">,</span> <span class="n">Font</span><span class="p">(</span><span class="s">&quot;Fira Code&quot;</span><span class="p">,</span> <span class="s">&quot;Regular&quot;</span><span class="p">,</span> <span class="mf">12.0f</span><span class="p">));</span> <span class="c1">// button text, font to use</span>
-   <span class="n">triggerButton</span><span class="o">-&gt;</span><span class="n">addListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// add listener to the button</span>
-   <span class="n">addAndMakeVisible</span><span class="p">(</span><span class="n">triggerButton</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>  <span class="c1">// add the button to the editor and make it visible</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id13" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">ManualTriggerButton</span><span class="o">::</span><span class="n">ManualTriggerButton</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">ParameterEditor</span><span class="p">(</span><span class="n">param</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">triggerButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">UtilityButton</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Trigger&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Font</span><span class="p">(</span><span class="s">&quot;Fira Code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Regular&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">12.0f</span><span class="p">));</span><span class="w"> </span><span class="c1">// button text, font to use</span>
+<span class="w">   </span><span class="n">triggerButton</span><span class="o">-&gt;</span><span class="n">addListener</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="c1">// add listener to the button</span>
+<span class="w">   </span><span class="n">addAndMakeVisible</span><span class="p">(</span><span class="n">triggerButton</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w">  </span><span class="c1">// add the button to the editor and make it visible</span>
 
-   <span class="n">setBounds</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span> <span class="c1">// set the bounds of custom parameter editor</span>
-<span class="p">}</span>
+<span class="w">   </span><span class="n">setBounds</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"> </span><span class="c1">// set the bounds of custom parameter editor</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>To handle button clicks, implement the <code class="code docutils literal notranslate"><span class="pre">buttonClicked</span></code> method as indicated below. Inside this method, we need to call <code class="code docutils literal notranslate"><span class="pre">setNextValue()</span></code> on the parameter as that will notify the processor about parameter value change. We also need to set the bounds of the button in the <code class="code docutils literal notranslate"><span class="pre">resized()</span></code> method as follows:</p>
 <div class="literal-block-wrapper docutils container" id="id14">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ManualTriggerButton</span><span class="o">::</span><span class="n">buttonClicked</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">param</span><span class="o">-&gt;</span><span class="n">setNextValue</span><span class="p">(</span><span class="n">triggerButton</span><span class="o">-&gt;</span><span class="n">getLabel</span><span class="p">());</span>
-<span class="p">}</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id14" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">ManualTriggerButton::buttonClicked</span><span class="p">(</span><span class="n">Button</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">param</span><span class="o">-&gt;</span><span class="n">setNextValue</span><span class="p">(</span><span class="n">triggerButton</span><span class="o">-&gt;</span><span class="n">getLabel</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">ManualTriggerButton</span><span class="o">::</span><span class="n">resized</span><span class="p">()</span>
-<span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ManualTriggerButton::resized</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
 
-   <span class="n">triggerButton</span><span class="o">-&gt;</span><span class="n">setBounds</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="w">   </span><span class="n">triggerButton</span><span class="o">-&gt;</span><span class="n">setBounds</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Now, we need to initialize the custom parameter editor inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code> constructor by getting the pointer to the parameter that we will create inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> processor constructor, like this:</p>
 <div class="literal-block-wrapper docutils container" id="id15">
-<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id15" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// custom button parameter editor</span>
-<span class="n">Parameter</span><span class="o">*</span> <span class="n">manualTrigger</span> <span class="o">=</span> <span class="n">getProcessor</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;manual_trigger&quot;</span><span class="p">);</span>
-<span class="n">addCustomParameterEditor</span><span class="p">(</span><span class="k">new</span> <span class="n">ManualTriggerButton</span><span class="p">(</span><span class="n">manualTrigger</span><span class="p">),</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">95</span><span class="p">);</span>
+<span class="n">Parameter</span><span class="o">*</span><span class="w"> </span><span class="n">manualTrigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getProcessor</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;manual_trigger&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">addCustomParameterEditor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ManualTriggerButton</span><span class="p">(</span><span class="n">manualTrigger</span><span class="p">),</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id16">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span> <span class="c1">// Parameter for manually generating events</span>
-<span class="n">addStringParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="o">::</span><span class="n">GLOBAL_SCOPE</span><span class="p">,</span> <span class="s">&quot;manual_trigger&quot;</span><span class="p">,</span> <span class="s">&quot;Manually trigger TTL events&quot;</span><span class="p">,</span> <span class="n">String</span><span class="p">());</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id16" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="c1">// Parameter for manually generating events</span>
+<span class="n">addStringParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="o">::</span><span class="n">GLOBAL_SCOPE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;manual_trigger&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Manually trigger TTL events&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">());</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -583,37 +707,37 @@
 </div>
 <p>Compile and load the plugin into the GUI to see the newly added button:</p>
 <img alt="Create a custom parameter editor" src="../_images/makeyourownplugin-05.png" />
-</div>
-</div>
-<div class="section" id="responding-to-parameter-value-changes">
-<h2>Responding to parameter value changes<a class="headerlink" href="#responding-to-parameter-value-changes" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="responding-to-parameter-value-changes">
+<h2>Responding to parameter value changes<a class="headerlink" href="#responding-to-parameter-value-changes" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s allow our UI elements to change the state of the plugin. To do this, we need to create variables inside the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> class that can be updated by our button, slider, and ComboBox parameter editors. The values of these variables <em>must</em> be updated through a special method, called <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code>, which responds to any parameter editor value changes. This is because the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method is called by a separate thread from the user interface, and the variables it needs to access can only be updated at specific times. Modifying variables via <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code> ensures that they are handled properly, and prevents unexpected behavior or segmentation faults.</p>
 <p>First, let’s update the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code> header file as follows:</p>
 <div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.h</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span>
-   <span class="cm">/** Called whenever a parameter&#39;s value is changed */</span>
-   <span class="kt">void</span> <span class="n">parameterValueChanged</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.h</span><a class="headerlink" href="#id17" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/** Called whenever a parameter&#39;s value is changed */</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="n">parameterValueChanged</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">private</span><span class="o">:</span>
-   <span class="kt">bool</span> <span class="n">shouldTriggerEvent</span><span class="p">;</span>
-   <span class="kt">bool</span> <span class="n">eventWasTriggered</span><span class="p">;</span>
-   <span class="kt">int</span> <span class="n">triggeredEventCounter</span><span class="p">;</span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldTriggerEvent</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">eventWasTriggered</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">triggeredEventCounter</span><span class="p">;</span><span class="w"></span>
 
-   <span class="kt">float</span> <span class="n">eventIntervalMs</span><span class="p">;</span>
-   <span class="kt">int</span> <span class="n">outputLine</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">eventIntervalMs</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">outputLine</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Next, let’s initialize the parameters variables in the <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator()</span></code> constructor method.</p>
 <div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">shouldTriggerEvent</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-<span class="n">eventWasTriggered</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-<span class="n">triggeredEventCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id18" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">shouldTriggerEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="n">eventWasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="n">triggeredEventCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-<span class="n">eventIntervalMs</span> <span class="o">=</span> <span class="mf">50.0f</span><span class="p">;</span>
-<span class="n">outputLine</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">eventIntervalMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50.0f</span><span class="p">;</span><span class="w"></span>
+<span class="n">outputLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -623,87 +747,87 @@
 </div>
 <p>Now, we can define how these variables are updated inside the <code class="code docutils literal notranslate"><span class="pre">parameterValueChanged()</span></code> method:</p>
 <div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">parameterValueChanged</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="k">if</span> <span class="p">(</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;manual_trigger&quot;</span><span class="p">))</span>
-   <span class="p">{</span>
-      <span class="n">shouldTriggerEvent</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-   <span class="p">}</span>
-   <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;frequency&quot;</span><span class="p">))</span>
-   <span class="p">{</span>
-      <span class="n">eventIntervalMs</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">();</span>
-   <span class="p">}</span>
-   <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;out&quot;</span><span class="p">))</span>
-   <span class="p">{</span>
-      <span class="n">outputLine</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id19" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TTLEventGenerator::parameterValueChanged</span><span class="p">(</span><span class="n">Parameter</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;manual_trigger&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">shouldTriggerEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;frequency&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">eventIntervalMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;out&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">outputLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">param</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Finally, we need to update our process method to make use of these parameters:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">TTLEventGenerator</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="n">AudioSampleBuffer</span><span class="o">&amp;</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="c1">// loop through the streams</span>
-   <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">stream</span> <span class="p">:</span> <span class="n">getDataStreams</span><span class="p">())</span>
-   <span class="p">{</span>
-      <span class="c1">// Only generate on/off event for the first data stream</span>
-      <span class="k">if</span><span class="p">(</span><span class="n">stream</span> <span class="o">==</span> <span class="n">getDataStreams</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-      <span class="p">{</span>
-         <span class="kt">int</span> <span class="n">totalSamples</span> <span class="o">=</span> <span class="n">getNumSamplesInBlock</span><span class="p">(</span><span class="n">stream</span><span class="o">-&gt;</span><span class="n">getStreamId</span><span class="p">());</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TTLEventGenerator::process</span><span class="p">(</span><span class="n">AudioSampleBuffer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="c1">// loop through the streams</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">getDataStreams</span><span class="p">())</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Only generate on/off event for the first data stream</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getDataStreams</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">totalSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getNumSamplesInBlock</span><span class="p">(</span><span class="n">stream</span><span class="o">-&gt;</span><span class="n">getStreamId</span><span class="p">());</span><span class="w"></span>
 
-         <span class="kt">int</span> <span class="n">eventIntervalInSamples</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">stream</span><span class="o">-&gt;</span><span class="n">getSampleRate</span><span class="p">()</span> <span class="o">*</span> <span class="n">eventIntervalMs</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="w">         </span><span class="kt">int</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">stream</span><span class="o">-&gt;</span><span class="n">getSampleRate</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">eventIntervalMs</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"></span>
 
-         <span class="k">if</span> <span class="p">(</span><span class="n">shouldTriggerEvent</span><span class="p">)</span>
-         <span class="p">{</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shouldTriggerEvent</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
 
-            <span class="c1">// add an ON event at the first sample.</span>
-            <span class="n">setTTLState</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">outputLine</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// add an ON event at the first sample.</span>
+<span class="w">            </span><span class="n">setTTLState</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">outputLine</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
 
-            <span class="n">shouldTriggerEvent</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-            <span class="n">eventWasTriggered</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-            <span class="n">triggeredEventCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-         <span class="p">}</span>
+<span class="w">            </span><span class="n">shouldTriggerEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">eventWasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">triggeredEventCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
 
-         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalSamples</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-         <span class="p">{</span>
-            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">totalSamples</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">eventWasTriggered</span><span class="p">)</span>
-               <span class="n">triggeredEventCounter</span><span class="o">++</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">eventWasTriggered</span><span class="p">)</span><span class="w"></span>
+<span class="w">               </span><span class="n">triggeredEventCounter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">triggeredEventCounter</span> <span class="o">==</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
-            <span class="p">{</span>
-               <span class="n">setTTLState</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">outputLine</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">triggeredEventCounter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="n">setTTLState</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">outputLine</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
 
-               <span class="n">eventWasTriggered</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-               <span class="n">triggeredEventCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="p">}</span>
+<span class="w">               </span><span class="n">eventWasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="n">triggeredEventCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
-            <span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
 
-               <span class="n">state</span> <span class="o">=</span> <span class="o">!</span><span class="n">state</span><span class="p">;</span>
-               <span class="n">setTTLState</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">outputLine</span><span class="p">,</span> <span class="n">state</span><span class="p">);</span>
-               <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="w">               </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">state</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="n">setTTLState</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">outputLine</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 
-            <span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="n">eventIntervalInSamples</span><span class="p">)</span>
-               <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-         <span class="p">}</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">eventIntervalInSamples</span><span class="p">)</span><span class="w"></span>
+<span class="w">               </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-<span class="p">}</span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>And that’s it! If you compile and test your plugin, the UI elements in the editor should now change the events that appear in the LFP Viewer.</p>
 <img alt="Plugin in signal chain" src="../_images/makeyourownplugin-06.png" />
-</div>
-<div class="section" id="next-steps">
-<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
 <p>There are a number of ways this plugin could be enhanced. To practice creating different kinds of UI elements, you could try implementing some of the features below, or come up with your own!</p>
 <ul class="simple">
 <li><p>Ensure an “OFF” event is sent when the output bit is changed.</p></li>
@@ -714,37 +838,169 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="Data-Synchronization.html" title="previous page">Synchronizing Data Streams</a>
-    <a class='right-next' id="next-link" href="../FAQ/index.html" title="next page">FAQs</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Data-Synchronization.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Synchronizing Data Streams</p>
       </div>
-    </div>
-
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="../FAQ/index.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">FAQs</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-new-plugin-repository">
+   Creating a new plugin repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editing-openephyslib-cpp-and-other-files">
+   Editing
+   <code class="code docutils literal notranslate">
+    <span class="pre">
+     OpenEphysLib.cpp
+    </span>
+   </code>
+   and other files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling-your-plugin">
+   Compiling your plugin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-processor-methods">
+   Setting up the Processor methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-ui-components-to-the-editor">
+   Adding UI components to the editor
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-slider-parameter-editor">
+     Creating a slider parameter editor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-combobox-parameter-editor">
+     Creating a ComboBox parameter editor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-custom-parameter-editor-optional">
+     Creating a custom parameter editor (optional)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#responding-to-parameter-value-changes">
+   Responding to parameter value changes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next steps
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../_sources/Tutorials/How-To-Make-Your-Own-Plugin.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>

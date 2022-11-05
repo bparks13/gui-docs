@@ -1,225 +1,367 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Distributing plugins &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Modifying the host application" href="Modifying-the-host-application.html" />
     <link rel="prev" title="File Sources" href="Open-Ephys-Plugin-API/File-Sources.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../index.html">
-    
-      <img src="../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../User-Manual/index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../Tutorials/index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-        
-        
-          
-            
-                <li class="">
-                    <a href="Compiling-the-GUI.html">Compiling the GUI</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Compiling-plugins.html">Compiling plugins</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Creating-a-new-plugin.html">Creating a new plugin</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Open-Ephys-Plugin-API/index.html">Open Ephys Plugin API</a>
-                </li>
-            
-          
-            
-                <li class="active">
-                    <a href="">Distributing plugins</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Modifying-the-host-application.html">Modifying the host application</a>
-                </li>
-            
-          
-        
-        
-        
-        
-        
-        
-      </ul>
+
+
+<a class="navbar-brand logo" href="../index.html">
+
   
-  </nav>
-          </div>
-          
+  
+  
+  
+  
+  
+  
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+  
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#setting-up-the-plugin-repository" class="nav-link">Setting up the plugin repository</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#setting-up-the-artifactory-repository" class="nav-link">Setting up the Artifactory repository</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#configuring-external-dependencies-if-any" class="nav-link">Configuring external dependencies (if any)</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#releasing-the-plugin" class="nav-link">Releasing the plugin</a>
-        </li>
-    
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="distributing-plugins">
-<span id="distributingplugins"></span><h1>Distributing plugins<a class="headerlink" href="#distributing-plugins" title="Permalink to this headline">¶</a></h1>
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Compiling-the-GUI.html">Compiling the GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiling-plugins.html">Compiling plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-a-new-plugin.html">Creating a new plugin</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Open-Ephys-Plugin-API/index.html">Open Ephys Plugin API</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Open-Ephys-Plugin-API/Processor-Plugins.html">Processor Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Open-Ephys-Plugin-API/Visualizer-Plugins.html">Visualizer Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Open-Ephys-Plugin-API/Data-Threads.html">Data Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Open-Ephys-Plugin-API/Record-Engines.html">Record Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Open-Ephys-Plugin-API/File-Sources.html">File Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributing plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modifying-the-host-application.html">Modifying the host application</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="distributing-plugins">
+<span id="distributingplugins"></span><h1>Distributing plugins<a class="headerlink" href="#distributing-plugins" title="Permalink to this heading">#</a></h1>
 <p>Once a plugin has been <a class="reference internal" href="Creating-a-new-plugin.html#creatinganewplugin"><span class="std std-ref">created</span></a>, it can be made available through the Open Ephys Plugin Installer by following the instructions on this page. Any plugins distributed this way must first be vetted and polished by the Open Ephys core team. If you have a plugin you believe is ready to be shared with the community, please get in touch!</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Some of the steps on this page require private information and login credentials contained in a private GitHub repository, <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins/open-ephys-plugins-ci</span></code>.</p>
 </div>
-<div class="section" id="setting-up-the-plugin-repository">
-<h2>Setting up the plugin repository<a class="headerlink" href="#setting-up-the-plugin-repository" title="Permalink to this headline">¶</a></h2>
+<section id="setting-up-the-plugin-repository">
+<h2>Setting up the plugin repository<a class="headerlink" href="#setting-up-the-plugin-repository" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Fork the plugin of interest to the <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins</span></code> GitHub account (requires login).</p></li>
 <li><p>Go to <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins</span></code> organization settings and navigate to Secrets-&gt;Actions.</p>
@@ -228,9 +370,9 @@
 <li><p>Update the <code class="code docutils literal notranslate"><span class="pre">ARTIFACTORYAPIKEY</span></code> settings by clicking on Update and then going to Repository access settings.</p></li>
 <li><p>Select and enable your plugin repository from the list of organization repositories, and click on update selection.</p></li>
 </ol>
-</div>
-<div class="section" id="setting-up-the-artifactory-repository">
-<h2>Setting up the Artifactory repository<a class="headerlink" href="#setting-up-the-artifactory-repository" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="setting-up-the-artifactory-repository">
+<h2>Setting up the Artifactory repository<a class="headerlink" href="#setting-up-the-artifactory-repository" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Login to the <a class="reference external" href="https://openephys.jfrog.io/">openephys.jfrog.io</a> account.</p></li>
 <li><p>Go to Administration settings and open Repositories from the left sidebar.</p>
@@ -249,8 +391,8 @@
 <li><p>Now, go to the Artifactory homepage and click on <strong>Artifactory &gt; Artifacts</strong>.</p></li>
 <li><p>Navigate to the repository you just created.</p></li>
 <li><p>Click on properties, and add the following properties to the repository:</p>
-<table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Properties for Artifactory repository</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="table" id="id1">
+<caption><span class="caption-text">Properties for Artifactory repository</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 80%" />
@@ -281,14 +423,14 @@
 <a class="reference external image-reference" href="../_static/images/developerguide/artifactory-repo-properties.png"><img alt="Create Artifactory Repository" src="../_images/artifactory-repo-properties.png" /></a>
 </li>
 </ol>
-</div>
-<div class="section" id="configuring-external-dependencies-if-any">
-<h2>Configuring external dependencies (if any)<a class="headerlink" href="#configuring-external-dependencies-if-any" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="configuring-external-dependencies-if-any">
+<h2>Configuring external dependencies (if any)<a class="headerlink" href="#configuring-external-dependencies-if-any" title="Permalink to this heading">#</a></h2>
 <p>If the plugin has any external dependency that requires its own repository to be built and deployed, you’ll have to follow all the steps mentioned above to set up the GitHub and Artifactory repositories. <strong>Importantly,</strong> while setting up the Artifactory repository properties, make sure you add “Type” property with “CommonLib” as it’s value. There’s no need to specify any other properties.</p>
 <p>Once the external dependency is setup, go to the plugin’s Artifactory repository that needs this dependency. Add the “Dependencies” property and the dependency repository name without the appended “-plugin” string as the value.</p>
-</div>
-<div class="section" id="releasing-the-plugin">
-<h2>Releasing the plugin<a class="headerlink" href="#releasing-the-plugin" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="releasing-the-plugin">
+<h2>Releasing the plugin<a class="headerlink" href="#releasing-the-plugin" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>For each new release, tag the latest commit on GitHub with the version number. Versions should follow the <a class="reference external" href="https://semver.org/">semantic versioning</a> scheme. (Do not add a ‘v’ in front of the version number).</p></li>
 <li><p>Add GitHub Actions workflows for macOS, Linux, and Windows (examples available in the private <code class="code docutils literal notranslate"><span class="pre">open-ephys-plugins-ci</span></code> repository)</p></li>
@@ -305,37 +447,131 @@
 <p class="admonition-title">Note</p>
 <p>If there is an external dependency which also needs to be updated and released, do that prior to releasing the plugin that depends on it.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="Open-Ephys-Plugin-API/File-Sources.html" title="previous page">File Sources</a>
-    <a class='right-next' id="next-link" href="Modifying-the-host-application.html" title="next page">Modifying the host application</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Open-Ephys-Plugin-API/File-Sources.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">File Sources</p>
       </div>
-    </div>
-
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="Modifying-the-host-application.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Modifying the host application</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-plugin-repository">
+   Setting up the plugin repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-artifactory-repository">
+   Setting up the Artifactory repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-external-dependencies-if-any">
+   Configuring external dependencies (if any)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#releasing-the-plugin">
+   Releasing the plugin
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../_sources/Developer-Guide/Distributing-plugins.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>

@@ -1,328 +1,417 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Exploring the user interface &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Building a signal chain" href="Building-a-signal-chain.html" />
     <link rel="prev" title="Installing the GUI" href="Installing-the-GUI.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../index.html">
-    
-      <img src="../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../Tutorials/index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-          
-            
-                <li class="">
-                    <a href="Before-you-begin.html">Before you begin</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Hardware-requirements.html">Hardware requirements</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Installing-the-GUI.html">Installing the GUI</a>
-                </li>
-            
-          
-            
-                <li class="active">
-                    <a href="">Exploring the user interface</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Building-a-signal-chain.html">Building a signal chain</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Recording-data/index.html">Recording data</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Remote-control.html">Remote control</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Whats-new.html">What’s new in version 0.6.x</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Plugins/index.html">Plugins</a>
-                </li>
-            
-          
-        
-        
-        
-        
-        
-        
-        
-        
-      </ul>
+
+
+<a class="navbar-brand logo" href="../index.html">
+
   
-  </nav>
-          </div>
-          
+  
+  
+  
+  
+  
+  
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+  
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#main-components" class="nav-link">Main components</a><ul class="nav section-nav flex-column">
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#processor-list" class="nav-link">1. Processor List</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#signal-chain" class="nav-link">2. Signal Chain</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#message-center" class="nav-link">3. Message Center</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#control-panel" class="nav-link">4. Control Panel</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#global-recording-options" class="nav-link">5. Global Recording Options</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#viewport" class="nav-link">6. Viewport</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#menu-items" class="nav-link">Menu items</a><ul class="nav section-nav flex-column">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#file" class="nav-link">File</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#edit" class="nav-link">Edit</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#view" class="nav-link">View</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#help" class="nav-link">Help</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#debug-console" class="nav-link">Debug console</a><ul class="nav section-nav flex-column">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#linux" class="nav-link">Linux</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#macos" class="nav-link">macOS</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#windows" class="nav-link">Windows</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#log-files" class="nav-link">Log files</a><ul class="nav section-nav flex-column">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#id1" class="nav-link">Linux</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#id2" class="nav-link">macOS</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#id3" class="nav-link">Windows</a>
-        </li>
-    
-            </ul>
-        </li>
-    
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="exploring-the-user-interface">
-<span id="exploringtheui"></span><h1>Exploring the user interface<a class="headerlink" href="#exploring-the-user-interface" title="Permalink to this headline">¶</a></h1>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Before-you-begin.html">Before you begin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hardware-requirements.html">Hardware requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing-the-GUI.html">Installing the GUI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring the user interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Building-a-signal-chain.html">Building a signal chain</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Recording-data/index.html">Recording data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Recording-data/Binary-format.html">Binary Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Recording-data/Open-Ephys-format.html">Open Ephys Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Recording-data/NWB-format.html">NWB Format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Remote-control.html">Remote control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Whats-new.html">What’s new in version 0.6.x</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Plugins/index.html">Plugins</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Arduino-Output.html">Arduino Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Audio-Monitor.html">Audio Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Bandpass-Filter.html">Bandpass Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Channel-Map.html">Channel Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Common-Average-Reference.html">Common Average Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Crossing-Detector.html">Crossing Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Ephys-Socket.html">Ephys Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Event-Broadcaster.html">Event Broadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Event-Translator.html">Event Translator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Falcon-Output.html">Falcon Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/File-Reader.html">File Reader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/LFP-Viewer.html">LFP Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/MATLAB-Interface.html">MATLAB Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Merger.html">Merger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Multiband-Integrator.html">Multi-Band Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Network-Events.html">Network Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Neuropixels-CAR.html">Neuropixels CAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Neuropixels-PXI.html">Neuropixels PXI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/NIDAQmx.html">NI-DAQmx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Online-PSTH.html">Online PSTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Phase-Calculator.html">Phase Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Phase-Detector.html">Phase Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Probe-Viewer.html">Probe Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Pulse-Pal.html">Pulse Pal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Record-Control.html">Record Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Rhythm-Plugins.html">Rhythm Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Spectrum-Viewer.html">Spectrum Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Spike-Detector.html">Spike Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Spike-Sorter.html">Spike Sorter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Spike-Viewer.html">Spike Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Splitter.html">Splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Tracking-Plugin.html">Tracking Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/Virtual-Reference.html">Virtual Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Plugins/ZMQ-Interface.html">ZMQ Interface</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="exploring-the-user-interface">
+<span id="exploringtheui"></span><h1>Exploring the user interface<a class="headerlink" href="#exploring-the-user-interface" title="Permalink to this heading">#</a></h1>
 <p>Functionally, the GUI is very similar to traditional programs for acquiring extracellular electrophysiology data. It allows you to configure input sources, adjust filter settings, visualize spikes and LFPs, and save all of your data to disk. Conceptually, however, the GUI is more similar to audio processing applications, such as <a class="reference external" href="https://www.ableton.com/en/live/">Ableton Live</a>. Rather than hard-coding the signal chain, the processing pathway can be created dynamically by the user. This feature will hopefully make the GUI easier to comprehend, less painful to modify, and more enjoyable to use. While most open-loop electrophysiology experiments require roughly the same signal chain, closed-loop experiments rarely do. A more flexible user-interface also allows neuroscientists to build up a library of plugins that can be re-used and shared, rather than relying on purpose-built code in Matlab or LabVIEW that’s used for one experiment then scrapped.</p>
-<div class="section" id="main-components">
-<h2>Main components<a class="headerlink" href="#main-components" title="Permalink to this headline">¶</a></h2>
+<section id="main-components">
+<h2>Main components<a class="headerlink" href="#main-components" title="Permalink to this heading">#</a></h2>
 <p>The GUI is designed to ensure all of the most important elements are accessible from a single window, to keep everything organized. However, many components can also be collapsed when they are not in use.</p>
 <p>These are the components you’ll be interacting with most often:</p>
 <img alt="The main elements of the GUI's interface" src="../_images/UI_overview-01.png" />
-<div class="section" id="processor-list">
-<h3>1. Processor List<a class="headerlink" href="#processor-list" title="Permalink to this headline">¶</a></h3>
+<section id="processor-list">
+<h3>1. Processor List<a class="headerlink" href="#processor-list" title="Permalink to this heading">#</a></h3>
 <p>Here you’ll find all the available modules for building the signal chain, organized by type. “Sources” bring data into the application, either by communicating with an external device, reading data from a file, or generating samples on the fly. “Filters” alter the data in some way, either by modifying continuous signals or creating new events. “Sinks” send data outside the signal chain, for example to a USB device or a display. “Utilities” are used to construct the signal chain or control recording/audio monitoring, but they don’t modify data in any way. Finally, “Recording” processors are used for saving data. For the most part, “processors” and synonymous with “plugins,” although some processors are built into the GUI, and are therefore not technically plugins.</p>
-</div>
-<div class="section" id="signal-chain">
-<h3>2. Signal Chain<a class="headerlink" href="#signal-chain" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="signal-chain">
+<h3>2. Signal Chain<a class="headerlink" href="#signal-chain" title="Permalink to this heading">#</a></h3>
 <p>The processing pipeline is configured by dragging modules from the Processor List and dropping them in the appropriate order onto the Signal Chain, also known as the “Editor Viewport.” Once a processor has been added to the Signal Chain, its settings will be accessible through a custom interface, called an “editor.” The buttons on the left-hand side of the Signal Chain allow you to toggle between up to 8 different branches of your signal chain (if it contains multiple source processors).</p>
-</div>
-<div class="section" id="message-center">
-<h3>3. Message Center<a class="headerlink" href="#message-center" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="message-center">
+<h3>3. Message Center<a class="headerlink" href="#message-center" title="Permalink to this heading">#</a></h3>
 <p>At the bottom of the user interface, there is a component for sending and receiving messages. The left side displays important notifications that come from the GUI or its plugins, while the right side allows you to record custom messages during an experiment.</p>
-</div>
-<div class="section" id="control-panel">
-<h3>4. Control Panel<a class="headerlink" href="#control-panel" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="control-panel">
+<h3>4. Control Panel<a class="headerlink" href="#control-panel" title="Permalink to this heading">#</a></h3>
 <p>The top of the user interface contains a number of components for controlling the overall behavior of the software, as well as displaying critical status information.</p>
 <p>From left to right:</p>
 <ul class="simple">
@@ -335,21 +424,21 @@
 <li><p><strong>Record</strong>. This button is used to start and stop recording. Recording is only possible if there is at least one Record Node in the signal chain. If the play button hasn’t been pressed yet, the record button will also start data acquisition.</p></li>
 <li><p><strong>Clock</strong>. The clock displays the amount of time elapsed since data acquisition started. Or, if data is being recorded, it turns red and displays the amount of time since the current recording began.</p></li>
 </ul>
-</div>
-<div class="section" id="global-recording-options">
-<h3>5. Global Recording Options<a class="headerlink" href="#global-recording-options" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="global-recording-options">
+<h3>5. Global Recording Options<a class="headerlink" href="#global-recording-options" title="Permalink to this heading">#</a></h3>
 <p>Below the control panel is a collapsible interface for changing recording options. For more information about this component, see the <a class="reference internal" href="Recording-data/index.html#recordingdata"><span class="std std-ref">Recording data</span></a> page.</p>
-</div>
-<div class="section" id="viewport">
-<h3>6. Viewport<a class="headerlink" href="#viewport" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="viewport">
+<h3>6. Viewport<a class="headerlink" href="#viewport" title="Permalink to this heading">#</a></h3>
 <p>The center of the user interface is used for a variety of different displays, each contained in a separate tab. By default, the viewport shows a high-level overview of the signal chain that allows you to jump to the configuration interfaces for each processor. It also holds larger visualizations that do not fit inside the Signal Chain view at the bottom of the window.</p>
-</div>
-</div>
-<div class="section" id="menu-items">
-<h2>Menu items<a class="headerlink" href="#menu-items" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="menu-items">
+<h2>Menu items<a class="headerlink" href="#menu-items" title="Permalink to this heading">#</a></h2>
 <p>Below you’ll find documentation for all of the commands available from the GUI’s menu:</p>
-<div class="section" id="file">
-<h3>File<a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h3>
+<section id="file">
+<h3>File<a class="headerlink" href="#file" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Open</strong>: Browse for a previously saved signal chain XML file, and load it into the GUI.</p></li>
 <li><p><strong>Save</strong>: Save the current signal chain to an XML file.</p></li>
@@ -359,9 +448,9 @@
 <li><p><strong>Load a default config</strong>: Open the interface for selecting a default signal chain.</p></li>
 <li><p><strong>Plugin Installer</strong>: Open the Plugin Installer interface. See the <a class="reference internal" href="Plugins/index.html#plugins"><span class="std std-ref">Plugins</span></a> page for more details.</p></li>
 </ul>
-</div>
-<div class="section" id="edit">
-<h3>Edit<a class="headerlink" href="#edit" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="edit">
+<h3>Edit<a class="headerlink" href="#edit" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Undo</strong>: Undo the most recent action related to building the signal chain (e.g., adding a plugin, deleting a plugin, moving a plugin).</p></li>
 <li><p><strong>Redo</strong>: Redo the signal chain action that was most recently undone.</p></li>
@@ -369,86 +458,268 @@
 <li><p><strong>Paste</strong>: Paste the most recently copied processor to the right of the currently selected processor.</p></li>
 <li><p><strong>Clear signal chain</strong>: Remove all processors from the signal chain.</p></li>
 </ul>
-</div>
-<div class="section" id="view">
-<h3>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="view">
+<h3>View<a class="headerlink" href="#view" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Processor List</strong>: Show/hide the Processor List interface.</p></li>
 <li><p><strong>Signal Chain</strong>: Show/hide the Signal Chain interface.</p></li>
 <li><p><strong>File Info</strong>: Show/hide the Record Options interface.</p></li>
 <li><p><strong>Reset window bounds</strong>: Restore the GUI window to the default size and location (helpful if the window gets lost offscreen).</p></li>
 </ul>
-</div>
-<div class="section" id="help">
-<h3>Help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="help">
+<h3>Help<a class="headerlink" href="#help" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Online documentation…</strong>: Open the GUI’s documentation site in a browser window (requires access to the interent).</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="debug-console">
-<h2>Debug console<a class="headerlink" href="#debug-console" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="debug-console">
+<h2>Debug console<a class="headerlink" href="#debug-console" title="Permalink to this heading">#</a></h2>
 <p>The GUI is able to send debug messages to a console. In many cases, the information displayed there can help locate and solve an issue. The way to access the debug console varies depending on the operating system.</p>
-<div class="section" id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">#</a></h3>
 <p>To display the debug console on Linux, just run the <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> application in a console terminal, and the output will be displayed there.</p>
-</div>
-<div class="section" id="macos">
-<h3>macOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Permalink to this heading">#</a></h3>
 <p>To display the debug console on macOS, open a terminal, navigate to the directory where the GUI application is located and run it inside the console.</p>
 <p>Due to the structure of macOS app bundles, the whole command to run the GUI would be <code class="code docutils literal notranslate"><span class="pre">./open-ephys.app/Contents/MacOS/open-ephys</span></code>. Run this command from the directory which contains the App bundle. Do not access the internal App directories and run <code class="code docutils literal notranslate"><span class="pre">./open-ephys</span></code> from there, as some features will not be available that way.</p>
-</div>
-<div class="section" id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
 <p>Debug console is automatically displayed on Windows when you run the <code class="code docutils literal notranslate"><span class="pre">open-ephys</span></code> application.</p>
-</div>
-</div>
-<div class="section" id="log-files">
-<h2>Log files<a class="headerlink" href="#log-files" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="log-files">
+<h2>Log files<a class="headerlink" href="#log-files" title="Permalink to this heading">#</a></h2>
 <p>Every action taken by the user is logged to a file, along with additional information that can be useful for spotting issues when things go wrong. If the GUI exits sucessfully, the latest log file will be overwritten the next time the GUI is launched. If the GUI crashes, then the name of the latest log file will be appended with a unique date string.</p>
-<div class="section" id="id1">
-<h3>Linux<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3>Linux<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Log files are written to <code class="code docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/open-ephys/configs-api8</span></code></p>
-</div>
-<div class="section" id="id2">
-<h3>macOS<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3>macOS<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Log files are written to <code class="code docutils literal notranslate"><span class="pre">/Users/&lt;username&gt;/Library/Application</span> <span class="pre">Support/open-ephys/configs-api8</span></code>.</p>
-</div>
-<div class="section" id="id3">
-<h3>Windows<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>Log files are written to <code class="code docutils literal notranslate"><span class="pre">C:\ProgramData\Open</span> <span class="pre">Ephys\configs-api8</span></code>.</p>
-</div>
-</div>
-</div>
+</section>
+<section id="id3">
+<h3>Windows<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Log files are written to <code class="code docutils literal notranslate"><span class="pre">C:ProgramDataOpen</span> <span class="pre">Ephysconfigs-api8</span></code>.</p>
+</section>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="Installing-the-GUI.html" title="previous page">Installing the GUI</a>
-    <a class='right-next' id="next-link" href="Building-a-signal-chain.html" title="next page">Building a signal chain</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Installing-the-GUI.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Installing the GUI</p>
       </div>
-    </div>
-
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="Building-a-signal-chain.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Building a signal chain</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-components">
+   Main components
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processor-list">
+     1. Processor List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#signal-chain">
+     2. Signal Chain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#message-center">
+     3. Message Center
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#control-panel">
+     4. Control Panel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-recording-options">
+     5. Global Recording Options
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewport">
+     6. Viewport
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#menu-items">
+   Menu items
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#file">
+     File
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#edit">
+     Edit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#view">
+     View
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#help">
+     Help
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#debug-console">
+   Debug console
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux">
+     Linux
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#macos">
+     macOS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows">
+     Windows
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#log-files">
+   Log files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Linux
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     macOS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Windows
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../_sources/User-Manual/Exploring-the-user-interface.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>

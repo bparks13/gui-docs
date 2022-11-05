@@ -1,279 +1,402 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Recording data &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Binary Format" href="Binary-format.html" />
     <link rel="prev" title="Building a signal chain" href="../Building-a-signal-chain.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../../index.html">
-    
-      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="../index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../Developer-Guide/index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-          
-            
-                <li class="">
-                    <a href="../Before-you-begin.html">Before you begin</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Hardware-requirements.html">Hardware requirements</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Installing-the-GUI.html">Installing the GUI</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Exploring-the-user-interface.html">Exploring the user interface</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Building-a-signal-chain.html">Building a signal chain</a>
-                </li>
-            
-          
-            
-  
-                <li class="active">
-                    <a href="">Recording data</a>
-                    <ul>
-                    
-                        <li class="">
-                            <a href="Binary-format.html">Binary Format</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Open-Ephys-format.html">Open Ephys Format</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="NWB-format.html">NWB Format</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Remote-control.html">Remote control</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Whats-new.html">What’s new in version 0.6.x</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Plugins/index.html">Plugins</a>
-                </li>
-            
-          
-        
-        
-        
-        
-        
-        
-        
-        
-      </ul>
-  
-  </nav>
-          </div>
-          
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
     
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#global-recording-options" class="nav-link">Global recording options</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#available-data-formats" class="nav-link">Available data formats</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#using-the-record-node" class="nav-link">Using the Record Node</a><ul class="nav section-nav flex-column">
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#general-configuration" class="nav-link">General Configuration</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#recording-continuous-channels" class="nav-link">Recording Continuous Channels</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#recording-events" class="nav-link">Recording Events</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#recording-spikes" class="nav-link">Recording Spikes</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#multiple-record-nodes" class="nav-link">Multiple Record Nodes</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#synchronizer" class="nav-link">Synchronizer</a>
-        </li>
-    
-            </ul>
-        </li>
-    
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="recording-data">
-<span id="recordingdata"></span><h1>Recording data<a class="headerlink" href="#recording-data" title="Permalink to this headline">¶</a></h1>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Before-you-begin.html">Before you begin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Hardware-requirements.html">Hardware requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installing-the-GUI.html">Installing the GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exploring-the-user-interface.html">Exploring the user interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Building-a-signal-chain.html">Building a signal chain</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Recording data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Binary-format.html">Binary Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Open-Ephys-format.html">Open Ephys Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NWB-format.html">NWB Format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote-control.html">Remote control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Whats-new.html">What’s new in version 0.6.x</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Plugins/index.html">Plugins</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Arduino-Output.html">Arduino Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Audio-Monitor.html">Audio Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Bandpass-Filter.html">Bandpass Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Channel-Map.html">Channel Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Common-Average-Reference.html">Common Average Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Crossing-Detector.html">Crossing Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Ephys-Socket.html">Ephys Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Event-Broadcaster.html">Event Broadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Event-Translator.html">Event Translator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Falcon-Output.html">Falcon Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/File-Reader.html">File Reader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/LFP-Viewer.html">LFP Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/MATLAB-Interface.html">MATLAB Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Merger.html">Merger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Multiband-Integrator.html">Multi-Band Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Network-Events.html">Network Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Neuropixels-CAR.html">Neuropixels CAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Neuropixels-PXI.html">Neuropixels PXI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/NIDAQmx.html">NI-DAQmx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Online-PSTH.html">Online PSTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Phase-Calculator.html">Phase Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Phase-Detector.html">Phase Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Probe-Viewer.html">Probe Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Pulse-Pal.html">Pulse Pal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Record-Control.html">Record Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Rhythm-Plugins.html">Rhythm Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Spectrum-Viewer.html">Spectrum Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Spike-Detector.html">Spike Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Spike-Sorter.html">Spike Sorter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Spike-Viewer.html">Spike Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Splitter.html">Splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Tracking-Plugin.html">Tracking Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/Virtual-Reference.html">Virtual Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/ZMQ-Interface.html">ZMQ Interface</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="recording-data">
+<span id="recordingdata"></span><h1>Recording data<a class="headerlink" href="#recording-data" title="Permalink to this heading">#</a></h1>
 <p>The GUI provides a great deal of flexibility when it comes to recording data. It’s possible to write data from any point in the signal chain, using separate data directories or even different data formats. However, it’s important to be sure that your recording settings are configured properly, to ensure that you don’t lose valuable data.</p>
 <p>As of version 0.5.0, the GUI won’t save data unless you have at least one Record Node in your signal chain. This is somewhat different from how things worked previously, when every plugin had its own recording selection tab, and all data was streamed to a central data writing interface. This centralization created some unwanted inefficiencies and bottlenecks, which is why the Record Node now behaves like a separate plugin.</p>
 <p>Just like any Filter processor, the Record Node can be placed anywhere except at the very start of a signal chain. However, Record Nodes do not modify the data passing through them, but instead copy and redirect the data to memory using a background thread. Individual Record Nodes inherit settings from the global recording options in the GUI’s control panel, but these settings can be overridden locally.</p>
-<div class="section" id="global-recording-options">
-<h2>Global recording options<a class="headerlink" href="#global-recording-options" title="Permalink to this headline">¶</a></h2>
+<section id="global-recording-options">
+<h2>Global recording options<a class="headerlink" href="#global-recording-options" title="Permalink to this heading">#</a></h2>
 <img alt="The global recording options interface" src="../../_images/global_record_options-01.png" />
 <p>The GUI’s main control panel contains a collapsible panel with the global recording options. These include:</p>
 <ul class="simple">
@@ -295,23 +418,23 @@
 <p class="admonition-title">Note</p>
 <p>To prevent data from being overwritten, files are grouped by “experiments” and “recordings”. Whenever acquisition is stopped, the GUI begins a new experiment; whenever recording is stopped (without stopping acquisition), the GUI begins a new recording. Pressing the <strong>+</strong> button will generate a new data directory the next time recording is started, and the “experiment” and “recording” counters will be reset to 1.</p>
 </div>
-</div>
-<div class="section" id="available-data-formats">
-<h2>Available data formats<a class="headerlink" href="#available-data-formats" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="available-data-formats">
+<h2>Available data formats<a class="headerlink" href="#available-data-formats" title="Permalink to this heading">#</a></h2>
 <p>The GUI currently supports the following data formats:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="Binary-format.html#binaryformat"><span class="std std-ref">Binary Format</span></a> (default format) stores the data as an array of samples in the following order: ch1 sample1, ch2 sample 1, ch3 sample 1, …, chN sample 1, ch1 sample 2, ch2 sample 2, etc. It’s the most compact format, and therefore can be loaded very quickly. Extra data, like timestamps or events are stored in <a class="reference external" href="https://numpy.org/">NumPy</a> format, which can be easily read using standard libraries. Metadata about the recording, such as sample rates or channel counts are stored in an easy-to-parse JSON file.</p></li>
 <li><p><a class="reference internal" href="Open-Ephys-format.html#openephysformat"><span class="std std-ref">Open Ephys Format</span></a> (available via the Plugin Installer) stores data in files that contains both the data samples and markers that allow data to be recovered if any part of the file becomes corrupted. Each channel is stored in a separate file, which can be convenient or inconvenient for analysis, depending on what you need to do. It’s the first format that was used by the GUI, so it’s been around for the longest amount of time. However, it’s specific to Open Ephys, and will likely need to be converted to be compatible with most analysis tools.</p></li>
 <li><p><a class="reference internal" href="NWB-format.html#nwbdataformat"><span class="std std-ref">NWB Format</span></a> (available via the Plugin Installer) stores data inside an HDF5 file, according to the specification defined by the <a class="reference external" href="https://www.nwb.org/">Neurodata Without Borders</a> project. It’s based on a one-file-per-experiment philosophy, and aims to ensure that the data is self-documenting and easy to share. It comes with all the baggage of HDF5, including the need for a large library to access the data, and the inability to read any of the data if the file becomes corrupted. NWB files written by the GUI are compatible with the NWB 2.0 standard and can be read by the <a class="reference external" href="https://pynwb.readthedocs.io/en/latest/">pynwb</a> library.</p></li>
 </ul>
-</div>
-<div class="section" id="using-the-record-node">
-<h2>Using the Record Node<a class="headerlink" href="#using-the-record-node" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-the-record-node">
+<h2>Using the Record Node<a class="headerlink" href="#using-the-record-node" title="Permalink to this heading">#</a></h2>
 <p>The Record Node, found in the “Recording” section of the Processor List, controls how data is written to disk. Every signal chain requires at least one Record Node in order to save data.</p>
 <p>Adding a Record Node into a signal chain brings up the following interface:</p>
 <img alt="The Record Node interface" src="../../_images/recordnode-01.png" />
-<div class="section" id="general-configuration">
-<h3>General Configuration<a class="headerlink" href="#general-configuration" title="Permalink to this headline">¶</a></h3>
+<section id="general-configuration">
+<h3>General Configuration<a class="headerlink" href="#general-configuration" title="Permalink to this heading">#</a></h3>
 <p>On the top-right of the Record Node editor is the <strong>write path selector</strong> which opens up an explorer window to navigate to the desired write directory. Use this to set the root path of where the data files generated from this Record Node will be stored. By default, each Record Node will inherit its data directory from the one indicated in the global recording options interface.</p>
 <p>Directly below, the <strong>engine selector</strong> pull-down lists the available recording formats. By default, only the Binary format is available. The Open Ephys Format and NWB Format are available via the Plugin Installer.</p>
 <div class="admonition note">
@@ -319,34 +442,34 @@
 <p>All Record Nodes must be removed from the signal chain before installing a new data format plugin.</p>
 </div>
 <p>To the left of the engine selector is the <strong>disk space monitor</strong>, which indicates the amount of free space available at the path shown by the write path selector.</p>
-</div>
-<div class="section" id="recording-continuous-channels">
-<h3>Recording Continuous Channels<a class="headerlink" href="#recording-continuous-channels" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="recording-continuous-channels">
+<h3>Recording Continuous Channels<a class="headerlink" href="#recording-continuous-channels" title="Permalink to this heading">#</a></h3>
 <p>The continuous channel configuration interfaces accessed by clicking on the “continuous channel buffer monitors” on the left of the Record Node interface. Hovering over each monitor will display the name of its corresponding data stream (a block of channels that are sampled synchronously).</p>
 <p>The continuous channel buffer monitors track the state of the recording buffer for each subprocessor. If these start to fill up, it indicates that your computer can’t keep up with disk writing. When they become 90% full, recording will automatically stop to prevent data corruption. If this occurs, you can try reducing the number of channels being recorded, or split the disk writing duties across multiple record nodes (see below).</p>
 <p>Clicking on one of the continuous channel buffer monitors opens up a <strong>channel selector interface</strong> as shown below. By default, the interface has every channel set to record. Through the interface, you can toggle individual channels on/off, select ALL or NONE, or indicate a custom range of channels using Matlab-style slicing, as shown in these exaxmples:</p>
 <img alt="Channel selection options" src="../../_images/recordnode-04.png" />
 <p>Click anywhere outside the channel selector or use the ESC key to exit.</p>
-</div>
-<div class="section" id="recording-events">
-<h3>Recording Events<a class="headerlink" href="#recording-events" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="recording-events">
+<h3>Recording Events<a class="headerlink" href="#recording-events" title="Permalink to this heading">#</a></h3>
 <p>Below the engine selector is the <strong>toggle event recording</strong> button, which determines whether this Record Node will save incoming events. This will be turned on by default, and should only be turned off if you’re sure events are being saved by another Record Node. Regardless of the toggle state, underlying events will not be modified by the Record Node.</p>
-</div>
-<div class="section" id="recording-spikes">
-<h3>Recording Spikes<a class="headerlink" href="#recording-spikes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="recording-spikes">
+<h3>Recording Spikes<a class="headerlink" href="#recording-spikes" title="Permalink to this heading">#</a></h3>
 <p>The <strong>toggle spikes recording</strong> button will enable/disable recording of any spike data coming into this Record Node. In order for spikes to be detected by the Record Node, you must have a spike-generating processor somewhere upstream of the Record Node in your signal chain.</p>
-</div>
-<div class="section" id="multiple-record-nodes">
-<h3>Multiple Record Nodes<a class="headerlink" href="#multiple-record-nodes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="multiple-record-nodes">
+<h3>Multiple Record Nodes<a class="headerlink" href="#multiple-record-nodes" title="Permalink to this heading">#</a></h3>
 <p>There are several cases in which it’s useful to have multiple Record Nodes in the same signal chain:</p>
 <ul class="simple">
 <li><p><strong>Recording raw data and spikes</strong>: It’s strongly recommended to record the data exactly as it comes out of each source node, which means placing a Record Node directly to the right of each source in the signal chain. After that, the data can be bandpass filtered to extract spikes without affecting the original signals. If a <a class="reference internal" href="../Plugins/Spike-Detector.html#spikedetector"><span class="std std-ref">Spike Detector</span></a> is used, then a separate Record Node will be needed to record the spike waveforms. This Record Node can optionally have all of the continuous channels disabled, as these have already been written to disk by the upstream Record Node.</p></li>
 <li><p><strong>Recording in multiple data formats</strong>: It may be useful to store the continuous data in Binary format to maximize compatibility, but spikes and events in NWB format to facilitate interactions with particular offline analysis tools. This can easily be accomplished by choosing a different data format for different Record Nodes. <strong>NOTE:</strong> Since the HDF5 library is not thread safe, there can only be one Record Node using NWB format at a time.</p></li>
 <li><p><strong>Distributing data across multiple drives:</strong> If your computer is having trouble saving all incoming channels, or you can’t fit all the data for a single session on a single drive, you can use multiple Record Nodes, each with a base directory located on a different drive. You can then disable non-overlapping subsets of channels within each Record Node.</p></li>
 </ul>
-</div>
-<div class="section" id="synchronizer">
-<h3>Synchronizer<a class="headerlink" href="#synchronizer" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="synchronizer">
+<h3>Synchronizer<a class="headerlink" href="#synchronizer" title="Permalink to this heading">#</a></h3>
 <p>The Record Node has a built-in synchronizer module which can perform real-time alignment of samples from asynchronous data sources. If the Record Node is only processing one data stream (e.g., from the Open Ephys Acquisition Board), then you don’t need to worry about synchronization. However, if there are multiple streams (e.g. from Neuropixels probes), then proper synchronization requires that each data stream has a TTL channel connected to the same physical digital input line. These shared events can be used to align the samples of each data stream to another stream that has been selected as the “main” clock.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -360,38 +483,159 @@
 <img alt="View of the record node when synchronized" src="../../_images/recordnode-06.png" />
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="../Building-a-signal-chain.html" title="previous page">Building a signal chain</a>
-    <a class='right-next' id="next-link" href="Binary-format.html" title="next page">Binary Format</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="../Building-a-signal-chain.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Building a signal chain</p>
       </div>
-    </div>
-
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="Binary-format.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Binary Format</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#global-recording-options">
+   Global recording options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-data-formats">
+   Available data formats
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-record-node">
+   Using the Record Node
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-configuration">
+     General Configuration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recording-continuous-channels">
+     Recording Continuous Channels
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recording-events">
+     Recording Events
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recording-spikes">
+     Recording Spikes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-record-nodes">
+     Multiple Record Nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synchronizer">
+     Synchronizer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../_sources/User-Manual/Recording-data/index.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>

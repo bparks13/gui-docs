@@ -1,393 +1,400 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Tracking Plugin &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Virtual Reference" href="Virtual-Reference.html" />
     <link rel="prev" title="Splitter" href="Splitter.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../../index.html">
-    
-      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="../index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../Developer-Guide/index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-          
-            
-                <li class="">
-                    <a href="../Before-you-begin.html">Before you begin</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Hardware-requirements.html">Hardware requirements</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Installing-the-GUI.html">Installing the GUI</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Exploring-the-user-interface.html">Exploring the user interface</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Building-a-signal-chain.html">Building a signal chain</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Recording-data/index.html">Recording data</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Remote-control.html">Remote control</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Whats-new.html">What’s new in version 0.6.x</a>
-                </li>
-            
-          
-            
-  
-                <li class="active">
-                    <a href="index.html">Plugins</a>
-                    <ul>
-                    
-                        <li class="">
-                            <a href="Arduino-Output.html">Arduino Output</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Audio-Monitor.html">Audio Monitor</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Bandpass-Filter.html">Bandpass Filter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Channel-Map.html">Channel Map</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Common-Average-Reference.html">Common Average Reference</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Crossing-Detector.html">Crossing Detector</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Ephys-Socket.html">Ephys Socket</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Event-Broadcaster.html">Event Broadcaster</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Event-Translator.html">Event Translator</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Falcon-Output.html">Falcon Output</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="File-Reader.html">File Reader</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="LFP-Viewer.html">LFP Viewer</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="MATLAB-Interface.html">MATLAB Interface</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Merger.html">Merger</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Multiband-Integrator.html">Multi-Band Integrator</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Network-Events.html">Network Events</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Neuropixels-CAR.html">Neuropixels CAR</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Neuropixels-PXI.html">Neuropixels PXI</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="NIDAQmx.html">NI-DAQmx</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Online-PSTH.html">Online PSTH</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Phase-Calculator.html">Phase Calculator</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Phase-Detector.html">Phase Detector</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Probe-Viewer.html">Probe Viewer</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Pulse-Pal.html">Pulse Pal</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Record-Control.html">Record Control</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Rhythm-Plugins.html">Rhythm Plugins</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Spectrum-Viewer.html">Spectrum Viewer</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Spike-Detector.html">Spike Detector</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Spike-Sorter.html">Spike Sorter</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Spike-Viewer.html">Spike Viewer</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Splitter.html">Splitter</a>
-                        </li>
-                    
-                        <li class="active">
-                            <a href="">Tracking Plugin</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Virtual-Reference.html">Virtual Reference</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="ZMQ-Interface.html">ZMQ Interface</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-          
-        
-        
-        
-        
-        
-        
-        
-        
-      </ul>
-  
-  </nav>
-          </div>
-          
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
     
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#installing-and-upgrading" class="nav-link">Installing and upgrading</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#plugin-configuration" class="nav-link">Plugin Configuration</a><ul class="nav section-nav flex-column">
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#setting-up-the-camera" class="nav-link">Setting up the camera</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#setting-up-bonsai" class="nav-link">Setting up Bonsai</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#tracking-port" class="nav-link">Tracking Port</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#tracking-stimulator" class="nav-link">Tracking Stimulator</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#tracking-visualizer" class="nav-link">Tracking Visualizer</a>
-        </li>
-    
-            </ul>
-        </li>
-    
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="tracking-plugin">
-<span id="trackingplugin"></span><h1>Tracking Plugin<a class="headerlink" href="#tracking-plugin" title="Permalink to this headline">¶</a></h1>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Before-you-begin.html">Before you begin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Hardware-requirements.html">Hardware requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installing-the-GUI.html">Installing the GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exploring-the-user-interface.html">Exploring the user interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Building-a-signal-chain.html">Building a signal chain</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Recording-data/index.html">Recording data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Recording-data/Binary-format.html">Binary Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Recording-data/Open-Ephys-format.html">Open Ephys Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Recording-data/NWB-format.html">NWB Format</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Remote-control.html">Remote control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Whats-new.html">What’s new in version 0.6.x</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Plugins</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Arduino-Output.html">Arduino Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Audio-Monitor.html">Audio Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bandpass-Filter.html">Bandpass Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Channel-Map.html">Channel Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Common-Average-Reference.html">Common Average Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Crossing-Detector.html">Crossing Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ephys-Socket.html">Ephys Socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Event-Broadcaster.html">Event Broadcaster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Event-Translator.html">Event Translator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Falcon-Output.html">Falcon Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File-Reader.html">File Reader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LFP-Viewer.html">LFP Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Merger.html">Merger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiband-Integrator.html">Multi-Band Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Network-Events.html">Network Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neuropixels-CAR.html">Neuropixels CAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neuropixels-PXI.html">Neuropixels PXI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NIDAQmx.html">NI-DAQmx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Online-PSTH.html">Online PSTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Phase-Calculator.html">Phase Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Phase-Detector.html">Phase Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Probe-Viewer.html">Probe Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pulse-Pal.html">Pulse Pal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Record-Control.html">Record Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rhythm-Plugins.html">Rhythm Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spectrum-Viewer.html">Spectrum Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spike-Detector.html">Spike Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spike-Sorter.html">Spike Sorter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spike-Viewer.html">Spike Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Splitter.html">Splitter</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tracking Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Virtual-Reference.html">Virtual Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ZMQ-Interface.html">ZMQ Interface</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="tracking-plugin">
+<span id="trackingplugin"></span><h1>Tracking Plugin<a class="headerlink" href="#tracking-plugin" title="Permalink to this heading">#</a></h1>
 <img alt="Annotated Tracking Plugin Editors" src="../../_images/trackingplugin-01.png" />
-<table class="colwidths-given table" id="id1">
-<caption><span class="caption-text">Enables closed-loop stimulation based on position information streamed from Bonsai.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="table" id="id1">
+<caption><span class="caption-text">Enables closed-loop stimulation based on position information streamed from Bonsai.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -406,7 +413,7 @@
 <td><p>Alessio Buccino</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin">https://github.com/open-ephys-plugins/tracking-plugin</a></p></td>
+<td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/tracking-plugin">open-ephys-plugins/tracking-plugin</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -414,13 +421,13 @@
 <p class="admonition-title">Note</p>
 <p>The Tracking Plugin is not yet available for GUI version 0.6.X.</p>
 </div>
-<div class="section" id="installing-and-upgrading">
-<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this headline">¶</a></h2>
+<section id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
 <p>The Tracking Plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to  “Tracking Plugin”, and click the “Install” button.</p>
 <p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
-</div>
-<div class="section" id="plugin-configuration">
-<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plugin-configuration">
+<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This documentation is adapted from the <a class="reference external" href="https://github.com/CINPLA/tracking-plugin/wiki">CINPLA wiki</a>). More information about the Tracking Plugin can be found in <a class="reference external" href="https://iopscience.iop.org/article/10.1088/1741-2552/aacf45/meta">this publication</a>.</p>
@@ -432,17 +439,17 @@
 <p>This figure shows a block diagram of the system needed to use the Tracking Plugin effectively. It assumes there is a subject (a freely moving animal) outfitted with <strong>recording electrodes and two LEDs</strong>. The electrophysiology data are acquired with the Open Ephys GUI. In this case, the Open Ephys acquisition board is used as the data interface, but any compatible recording system would also work.</p>
 <p>A <strong>camera</strong> is positioned above the environment to capture the location of the LEDs on the subject’s head. The images are streamed to Bonsai, which extracts the position of the LEDs in real-time and streams this information to the Open Ephys GUI, using the OSC (Open Sound Control) protocol. A PointGrey camera is used in this example, but any camera that is compatible with Bonsai (including webcams) would also work. Synchronization between the camera and electrophysiology data is performed by recording the camera shutter events using the Open Ephys I/O board.</p>
 <p>To deliver closed-loop feedback as a function of position, the Open Ephys GUI must be connected to a <strong>stimulation device</strong>, such as an Arduino (or in this example) as Pulse Pal. The outputs of the stimulation device are used to optical or electrical stimulation to the brain, and the timing of any output pulses are also recorded using the Open Ephys I/O board.</p>
-<div class="section" id="setting-up-the-camera">
-<h3>Setting up the camera<a class="headerlink" href="#setting-up-the-camera" title="Permalink to this headline">¶</a></h3>
+<section id="setting-up-the-camera">
+<h3>Setting up the camera<a class="headerlink" href="#setting-up-the-camera" title="Permalink to this heading">#</a></h3>
 <p>These instructions assume you have a FLIR <a class="reference external" href="https://www.flir.com/products/flea3-usb3/">Flea3</a> (formerly Point Grey) camera. Configuration for other cameras may differ.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Bonsai FlyCapture package has combatibility issues with the FlyCapture SDK version &gt;2.11. Therefore, we recommend installing SDK v2.11 from this <a class="reference external" href="https://groups.google.com/forum/#!msg/bonsai-users/Wq2Bo1DnCD8/jb0BfvIVAgAJ">link on the Bonsai forum</a></p>
 </div>
 <p>From the FlyCapture software, you can activate GPIO triggers that can be recorded with the Open Ephys board for precise synchronization, and also change the frame rate.</p>
-</div>
-<div class="section" id="setting-up-bonsai">
-<h3>Setting up Bonsai<a class="headerlink" href="#setting-up-bonsai" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="setting-up-bonsai">
+<h3>Setting up Bonsai<a class="headerlink" href="#setting-up-bonsai" title="Permalink to this heading">#</a></h3>
 <p>If you haven’t already, <a class="reference external" href="https://bonsai-rx.org/docs/articles/installation.html">install Bonsai</a>. After opening Bonsai, find the package manager and install the <strong>Vision</strong>, <strong>Vision Design</strong>, <strong>PointGrey</strong>, <strong>OSC</strong>, <strong>OSC Design</strong>, and <strong>Scripting</strong> packages.</p>
 <p>Once everything is installed, download and unzip the files in <a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin/raw/master/Resources/tracking-plugin-bonsai.zip">this directory</a>. Then, open the <code class="code docutils literal notranslate"><span class="pre">tracking.bonsai</span></code> workflow file in Bonsai.</p>
 <p>If you don’t have a PointGrey camera available, replace the <code class="code docutils literal notranslate"><span class="pre">FlyCapture</span></code> operator with one that’s compatible with your camera.</p>
@@ -452,17 +459,17 @@
 <li><p><code class="code docutils literal notranslate"><span class="pre">GreenPort</span></code>: port = 27021, address = <code class="code docutils literal notranslate"><span class="pre">/green</span></code>, ip_address = <code class="code docutils literal notranslate"><span class="pre">localhost</span></code></p></li>
 </ul>
 <p>To start the workflow, press the “Play” button within Bonsai. This will start acquiring camera frames, extracting LED positions (if available), and streaming position information via OSC.</p>
-</div>
-<div class="section" id="tracking-port">
-<h3>Tracking Port<a class="headerlink" href="#tracking-port" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tracking-port">
+<h3>Tracking Port<a class="headerlink" href="#tracking-port" title="Permalink to this heading">#</a></h3>
 <p>On the Open Ephys GUI side, the “Tracking Port” plugin receives tracking data from Bonsai. The data are streamed from an OSC (Open Sound Control) server and each packet contains 4 floats: x and y positions, width, and height of the field. You can add and delete new sources using the <code class="code docutils literal notranslate"><span class="pre">+</span></code> and <code class="code docutils literal notranslate"><span class="pre">-</span></code> buttons. The port, address, and color used to represent the incoming data can also be configured within the plugin’s editor.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Tracking Port only support <code class="code docutils literal notranslate"><span class="pre">localhost</span></code> at the moment, so Bonsai must be running on the same computer as the Open Ephys GUI.</p>
 </div>
-</div>
-<div class="section" id="tracking-stimulator">
-<h3>Tracking Stimulator<a class="headerlink" href="#tracking-stimulator" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tracking-stimulator">
+<h3>Tracking Stimulator<a class="headerlink" href="#tracking-stimulator" title="Permalink to this heading">#</a></h3>
 <p>The “Tracking Stimulator”, when placed downstream from the “Tracking Port”, allows the user to create regions of interest within the camera’s field of view. Whenever the subject enters one of these regions, the plugin emits TTL events that can be used to trigger closed-loop feedback.</p>
 <p>Regions of interest can manually drawn, dragged, resized (double click), copied (ctrl+c), pasted (ctrl+v), and deleted (del). Alternatively, the parameters for each circle (x_position, y_position, and radius from 0 to 1) can be entered using the editable labels on the right side of the visualizer. Each circle can be inactivated using the <code class="code docutils literal notranslate"><span class="pre">ON</span></code> toggle button.</p>
 <p>On the top right of the visualizer, the user can select an input source as well as a TTL output channel for each circle.</p>
@@ -472,44 +479,155 @@
 <li><p><strong>UNIFORM</strong>: a TTL train with a constant frequency fmax (user-defined) is generated when the position is within selected regions. In this mode, the colors of the circles are uniformly orange/yellow.</p></li>
 <li><p><strong>GAUSSIAN</strong>: the frequency of the TTL train is Gaussian modulated. When the position is in the center of each circle, the frequency is fmax, when it is on the border of a circle the frequency is sd * fmax. In the case displayed in the following figure, the frequency in the center is 2 Hz and the frequency on the borders is 0.5 * 2 = 1 Hz. In this mode, the colors of the circles are graded, darker in the center and lighter on the borders.</p></li>
 </ul>
-</div>
-<div class="section" id="tracking-visualizer">
-<h3>Tracking Visualizer<a class="headerlink" href="#tracking-visualizer" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="tracking-visualizer">
+<h3>Tracking Visualizer<a class="headerlink" href="#tracking-visualizer" title="Permalink to this heading">#</a></h3>
 <p>The “Tracking Visualizer” displays the tracking data received from the “Tracking Port” (or any other plugin sending Tracking Data binary events) in real-time. The available Tracking Data sources are shown in the Sources list box on the left and multiple selection is allowed. The “clear” button clears the path trajectories.</p>
 <p>The figure below shows a simulated spiral-like trajectory:</p>
 <img alt="Screenshot of the Tracking Visualizer plugin." src="../../_images/trackingvisualizer.png" />
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="Splitter.html" title="previous page">Splitter</a>
-    <a class='right-next' id="next-link" href="Virtual-Reference.html" title="next page">Virtual Reference</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Splitter.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Splitter</p>
       </div>
-    </div>
-
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="Virtual-Reference.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Virtual Reference</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-and-upgrading">
+   Installing and upgrading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plugin-configuration">
+   Plugin Configuration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-the-camera">
+     Setting up the camera
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-bonsai">
+     Setting up Bonsai
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tracking-port">
+     Tracking Port
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tracking-stimulator">
+     Tracking Stimulator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tracking-visualizer">
+     Tracking Visualizer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../_sources/User-Manual/Plugins/Tracking-Plugin.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>

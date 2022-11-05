@@ -1,240 +1,362 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Open Ephys Plugin API &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Processor Plugins" href="Processor-Plugins.html" />
     <link rel="prev" title="Creating a new plugin" href="../Creating-a-new-plugin.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../../index.html">
-    
-      <img src="../../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../User-Manual/index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="../index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../Tutorials/index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-        
-        
-          
-            
-                <li class="">
-                    <a href="../Compiling-the-GUI.html">Compiling the GUI</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Compiling-plugins.html">Compiling plugins</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Creating-a-new-plugin.html">Creating a new plugin</a>
-                </li>
-            
-          
-            
-  
-                <li class="active">
-                    <a href="">Open Ephys Plugin API</a>
-                    <ul>
-                    
-                        <li class="">
-                            <a href="Processor-Plugins.html">Processor Plugins</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Visualizer-Plugins.html">Visualizer Plugins</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Data-Threads.html">Data Threads</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="Record-Engines.html">Record Engines</a>
-                        </li>
-                    
-                        <li class="">
-                            <a href="File-Sources.html">File Sources</a>
-                        </li>
-                    
-                    </ul>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Distributing-plugins.html">Distributing plugins</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="../Modifying-the-host-application.html">Modifying the host application</a>
-                </li>
-            
-          
-        
-        
-        
-        
-        
-        
-      </ul>
-  
-  </nav>
-          </div>
-          
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
     
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#overview" class="nav-link">Overview</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#logging" class="nav-link">Logging</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#core-services" class="nav-link">Core Services</a>
-        </li>
-    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="open-ephys-plugin-api">
-<span id="openephyspluginapi"></span><h1>Open Ephys Plugin API<a class="headerlink" href="#open-ephys-plugin-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../Tutorials/index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Compiling-the-GUI.html">Compiling the GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Compiling-plugins.html">Compiling plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Creating-a-new-plugin.html">Creating a new plugin</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Open Ephys Plugin API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Processor-Plugins.html">Processor Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Visualizer-Plugins.html">Visualizer Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Data-Threads.html">Data Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Record-Engines.html">Record Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="File-Sources.html">File Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Distributing-plugins.html">Distributing plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Modifying-the-host-application.html">Modifying the host application</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="open-ephys-plugin-api">
+<span id="openephyspluginapi"></span><h1>Open Ephys Plugin API<a class="headerlink" href="#open-ephys-plugin-api" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>The Open Ephys Plugin API consists of all of the classes and methods that are accessible by plugins. In order to extend the functionality of the GUI, one only needs to understand the interfaces that compose the API for a particular plugin type. And because plugins are compiled independently from the core application, it is straightforward to share this new functionality with other users.</p>
 <p>The Plugin API defines how plugins can interact with the rest of the GUI, and also provides some convenient functions for building user interfaces and processing data. Classes and methods that are part of the Plugin API are indicated in the source code by the <code class="code docutils literal notranslate"><span class="pre">PLUGIN_API</span></code> macro.</p>
 <p>Detailed information about the five different types of plugins that can be created is available on the following pages:</p>
@@ -248,9 +370,9 @@
 </ul>
 </div>
 <p>Some general features of the plugin API are covered below:</p>
-</div>
-<div class="section" id="logging">
-<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading">#</a></h2>
 <p>When plugins need to log information, they should ideally use the GUI’s built-in logger class, defined in <code class="code docutils literal notranslate"><span class="pre">Utils.h</span></code>. This is preferred to calling <code class="code docutils literal notranslate"><span class="pre">std::cout</span></code> or <cite>printf</cite>, because the logger class will print output to the console as well as to a log file that is created each time the GUI is run.</p>
 <p>The two primary methods are:</p>
 <ul class="simple">
@@ -258,7 +380,7 @@
 <li><p><code class="code docutils literal notranslate"><span class="pre">LOGD</span></code> (“log debug”): prints info to the console in debug mode, and saves it to a log file in release mode</p></li>
 </ul>
 <p>These are used by calling, e.g.:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">LOGC</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span> <span class="p">...);</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">LOGC</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="n">arg2</span><span class="p">,</span><span class="w"> </span><span class="n">arg3</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>where the arguments are strings, integers, floats, etc. – any values that can be converted to strings by <cite>std::cout</cite>. There is no limit to the number of arguments that can be used.</p>
@@ -270,179 +392,179 @@
 <li><p><code class="code docutils literal notranslate"><span class="pre">LOGF</span></code> (“log file”): prints to the log file only.</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">LOGG</span></code> (“log graph”): logs messages related to constructing the GUI’s processor graph.</p></li>
 </ul>
-</div>
-<div class="section" id="core-services">
-<h2>Core Services<a class="headerlink" href="#core-services" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="core-services">
+<h2>Core Services<a class="headerlink" href="#core-services" title="Permalink to this heading">#</a></h2>
 <p>All types of plugins can access the <code class="code docutils literal notranslate"><span class="pre">CoreServices</span></code> class, which includes the following general-purpose methods:</p>
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices13getGUIVersionEv">
-<span id="_CPPv3N12CoreServices13getGUIVersionEv"></span><span id="_CPPv2N12CoreServices13getGUIVersionEv"></span><span id="CoreServices::getGUIVersion"></span>String <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getGUIVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices13getGUIVersionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices13getGUIVersionEv">
+<span id="_CPPv3N12CoreServices13getGUIVersionEv"></span><span id="_CPPv2N12CoreServices13getGUIVersionEv"></span><span id="CoreServices::getGUIVersion"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getGUIVersion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices13getGUIVersionEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The version of the host application as a string. This can be useful if certain aspects of a plugin’s functionality requires a minimum version of the GUI.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices27getDefaultUserSaveDirectoryEv">
-<span id="_CPPv3N12CoreServices27getDefaultUserSaveDirectoryEv"></span><span id="_CPPv2N12CoreServices27getDefaultUserSaveDirectoryEv"></span><span id="CoreServices::getDefaultUserSaveDirectory"></span>File <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getDefaultUserSaveDirectory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27getDefaultUserSaveDirectoryEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices27getDefaultUserSaveDirectoryEv">
+<span id="_CPPv3N12CoreServices27getDefaultUserSaveDirectoryEv"></span><span id="_CPPv2N12CoreServices27getDefaultUserSaveDirectoryEv"></span><span id="CoreServices::getDefaultUserSaveDirectory"></span><span class="n"><span class="pre">File</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getDefaultUserSaveDirectory</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27getDefaultUserSaveDirectoryEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A Juce <code class="code docutils literal notranslate"><span class="pre">File</span></code> object that specifies the location where files are saved by default (typically in the “Documents” directory). This is useful if a plugin needs to save custom data files.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices22getSavedStateDirectoryEv">
-<span id="_CPPv3N12CoreServices22getSavedStateDirectoryEv"></span><span id="_CPPv2N12CoreServices22getSavedStateDirectoryEv"></span><span id="CoreServices::getSavedStateDirectory"></span>File <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getSavedStateDirectory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices22getSavedStateDirectoryEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices22getSavedStateDirectoryEv">
+<span id="_CPPv3N12CoreServices22getSavedStateDirectoryEv"></span><span id="_CPPv2N12CoreServices22getSavedStateDirectoryEv"></span><span id="CoreServices::getSavedStateDirectory"></span><span class="n"><span class="pre">File</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getSavedStateDirectory</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices22getSavedStateDirectoryEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A Juce <code class="code docutils literal notranslate"><span class="pre">File</span></code> object that specifies the location where the GUI’s configuration files are stored. This is useful if a plugin needs to save a custom settings file (although it’s recommended to use the GUI’s built-in XML settings file whenever possible).</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices18saveRecoveryConfigEv">
-<span id="_CPPv3N12CoreServices18saveRecoveryConfigEv"></span><span id="_CPPv2N12CoreServices18saveRecoveryConfigEv"></span><span id="CoreServices::saveRecoveryConfig"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">saveRecoveryConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices18saveRecoveryConfigEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices18saveRecoveryConfigEv">
+<span id="_CPPv3N12CoreServices18saveRecoveryConfigEv"></span><span id="_CPPv2N12CoreServices18saveRecoveryConfigEv"></span><span id="CoreServices::saveRecoveryConfig"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">saveRecoveryConfig</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices18saveRecoveryConfigEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Triggers the GUI to save the recovery configuration file (<code class="code docutils literal notranslate"><span class="pre">recoveryConfig.xml</span></code>). This file is re-generated automatically whenever the signal chain is updated, but a plugin may wish to re-generate it when its internal parameters have changed, so these can be properly re-loaded in the event of a crash.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices17updateSignalChainEP13GenericEditor">
-<span id="_CPPv3N12CoreServices17updateSignalChainEP13GenericEditor"></span><span id="_CPPv2N12CoreServices17updateSignalChainEP13GenericEditor"></span><span id="CoreServices::updateSignalChain__GenericEditorP"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">updateSignalChain</code><span class="sig-paren">(</span>GenericEditor *<em>editor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices17updateSignalChainEP13GenericEditor" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices17updateSignalChainEP13GenericEditor">
+<span id="_CPPv3N12CoreServices17updateSignalChainEP13GenericEditor"></span><span id="_CPPv2N12CoreServices17updateSignalChainEP13GenericEditor"></span><span id="CoreServices::updateSignalChain__GenericEditorP"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">updateSignalChain</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GenericEditor</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">editor</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices17updateSignalChainEP13GenericEditor" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Updates all processors downstream of the specified <code class="code docutils literal notranslate"><span class="pre">GenericEditor</span></code>. This should be called whenever a plugin adds or remove continuous, spike, or event channels, or changes the properties of these channels (such as their name or other metadata).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>editor</strong> – A pointer to the editor of the processor that has been modified.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices15highlightEditorEP13GenericEditor">
-<span id="_CPPv3N12CoreServices15highlightEditorEP13GenericEditor"></span><span id="_CPPv2N12CoreServices15highlightEditorEP13GenericEditor"></span><span id="CoreServices::highlightEditor__GenericEditorP"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">highlightEditor</code><span class="sig-paren">(</span>GenericEditor *<em>editor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices15highlightEditorEP13GenericEditor" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices15highlightEditorEP13GenericEditor">
+<span id="_CPPv3N12CoreServices15highlightEditorEP13GenericEditor"></span><span id="_CPPv2N12CoreServices15highlightEditorEP13GenericEditor"></span><span id="CoreServices::highlightEditor__GenericEditorP"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">highlightEditor</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GenericEditor</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">editor</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices15highlightEditorEP13GenericEditor" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Highlights a plugin’s editor in the Editor Viewport, without updating the signal chain. This will also make the editor visible if it’s not currently seen by the user.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>editor</strong> – The editor to highlight.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices15loadSignalChainE6String">
-<span id="_CPPv3N12CoreServices15loadSignalChainE6String"></span><span id="_CPPv2N12CoreServices15loadSignalChainE6String"></span><span id="CoreServices::loadSignalChain__String"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">loadSignalChain</code><span class="sig-paren">(</span>String <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices15loadSignalChainE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices15loadSignalChainE6String">
+<span id="_CPPv3N12CoreServices15loadSignalChainE6String"></span><span id="_CPPv2N12CoreServices15loadSignalChainE6String"></span><span id="CoreServices::loadSignalChain__String"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">loadSignalChain</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices15loadSignalChainE6String" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Loads a signal chain from the specified absolute path. Note that this will delete all existing plugins from the signal chain.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> – The path to a valid XML Open Ephys settings file.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices20getAcquisitionStatusEv">
-<span id="_CPPv3N12CoreServices20getAcquisitionStatusEv"></span><span id="_CPPv2N12CoreServices20getAcquisitionStatusEv"></span><span id="CoreServices::getAcquisitionStatus"></span>bool <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getAcquisitionStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices20getAcquisitionStatusEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices20getAcquisitionStatusEv">
+<span id="_CPPv3N12CoreServices20getAcquisitionStatusEv"></span><span id="_CPPv2N12CoreServices20getAcquisitionStatusEv"></span><span id="CoreServices::getAcquisitionStatus"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getAcquisitionStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices20getAcquisitionStatusEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">true</span></code> if acquisition is active. If a plugin needs to check this frequently, it’s recommended to store a local variable that’s updated inside the <code class="code docutils literal notranslate"><span class="pre">GenericProcessor::startAcquisition()</span></code> and <code class="code docutils literal notranslate"><span class="pre">GenericProcessor::stopAcquisition()</span></code> methods.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices20setAcquisitionStatusEb">
-<span id="_CPPv3N12CoreServices20setAcquisitionStatusEb"></span><span id="_CPPv2N12CoreServices20setAcquisitionStatusEb"></span><span id="CoreServices::setAcquisitionStatus__b"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setAcquisitionStatus</code><span class="sig-paren">(</span>bool <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices20setAcquisitionStatusEb" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices20setAcquisitionStatusEb">
+<span id="_CPPv3N12CoreServices20setAcquisitionStatusEb"></span><span id="_CPPv2N12CoreServices20setAcquisitionStatusEb"></span><span id="CoreServices::setAcquisitionStatus__b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setAcquisitionStatus</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">enable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices20setAcquisitionStatusEb" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Turns acquisition on and off. This could be used to start and stop acquisition when a particular external trigger is received.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>enable</strong> – Set to <code class="code docutils literal notranslate"><span class="pre">true</span></code> to start acquisition, and <code class="code docutils literal notranslate"><span class="pre">false</span></code> to stop acquisition.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices18getRecordingStatusEv">
-<span id="_CPPv3N12CoreServices18getRecordingStatusEv"></span><span id="_CPPv2N12CoreServices18getRecordingStatusEv"></span><span id="CoreServices::getRecordingStatus"></span>bool <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getRecordingStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices18getRecordingStatusEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices18getRecordingStatusEv">
+<span id="_CPPv3N12CoreServices18getRecordingStatusEv"></span><span id="_CPPv2N12CoreServices18getRecordingStatusEv"></span><span id="CoreServices::getRecordingStatus"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getRecordingStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices18getRecordingStatusEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">true</span></code> if recording is active. If a plugin needs to check this frequently, it’s recommended to store a local variable that’s updated inside the <code class="code docutils literal notranslate"><span class="pre">GenericProcessor::startRecording()</span></code> and <code class="code docutils literal notranslate"><span class="pre">GenericProcessor::stopRecording()</span></code> methods.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices18setRecordingStatusEb">
-<span id="_CPPv3N12CoreServices18setRecordingStatusEb"></span><span id="_CPPv2N12CoreServices18setRecordingStatusEb"></span><span id="CoreServices::setRecordingStatus__b"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setRecordingStatus</code><span class="sig-paren">(</span>bool <em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices18setRecordingStatusEb" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices18setRecordingStatusEb">
+<span id="_CPPv3N12CoreServices18setRecordingStatusEb"></span><span id="_CPPv2N12CoreServices18setRecordingStatusEb"></span><span id="CoreServices::setRecordingStatus__b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setRecordingStatus</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">enable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices18setRecordingStatusEb" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Turns recording on and off. This could be used to start and stop recording when a particular external trigger is received.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>enable</strong> – Set to <code class="code docutils literal notranslate"><span class="pre">true</span></code> to start recording, and <code class="code docutils literal notranslate"><span class="pre">false</span></code> to stop recording.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices17sendStatusMessageERK6String">
-<span id="_CPPv3N12CoreServices17sendStatusMessageERK6String"></span><span id="_CPPv2N12CoreServices17sendStatusMessageERK6String"></span><span id="CoreServices::sendStatusMessage__StringCR"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">sendStatusMessage</code><span class="sig-paren">(</span><em class="property">const</em> String &amp;<em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices17sendStatusMessageERK6String" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices17sendStatusMessageERK6String">
+<span id="_CPPv3N12CoreServices17sendStatusMessageERK6String"></span><span id="_CPPv2N12CoreServices17sendStatusMessageERK6String"></span><span id="CoreServices::sendStatusMessage__StringCR"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sendStatusMessage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices17sendStatusMessageERK6String" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Displays a message to the user in the Message Center (located at the bottom of the GUI’s main window). These messages will not be saved by the Record Node; to write messages that are saved, but not displayed to the user, call <code class="code docutils literal notranslate"><span class="pre">GenericProcessor::broadcastMessage()</span></code> while recording is active.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>text</strong> – The message to display.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices20getSoftwareTimestampEv">
-<span id="_CPPv3N12CoreServices20getSoftwareTimestampEv"></span><span id="_CPPv2N12CoreServices20getSoftwareTimestampEv"></span><span id="CoreServices::getSoftwareTimestamp"></span>int64 <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getSoftwareTimestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices20getSoftwareTimestampEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices20getSoftwareTimestampEv">
+<span id="_CPPv3N12CoreServices20getSoftwareTimestampEv"></span><span id="_CPPv2N12CoreServices20getSoftwareTimestampEv"></span><span id="CoreServices::getSoftwareTimestamp"></span><span class="n"><span class="pre">int64</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getSoftwareTimestamp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices20getSoftwareTimestampEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The current software timestamp (milliseconds since midnight Jan 1st 1970 UTC).</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices21getSoftwareSampleRateEv">
-<span id="_CPPv3N12CoreServices21getSoftwareSampleRateEv"></span><span id="_CPPv2N12CoreServices21getSoftwareSampleRateEv"></span><span id="CoreServices::getSoftwareSampleRate"></span>float <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getSoftwareSampleRate</code><span class="sig-paren">(</span><span class="sig-paren">)</span>;<a class="headerlink" href="#_CPPv4N12CoreServices21getSoftwareSampleRateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices21getSoftwareSampleRateEv">
+<span id="_CPPv3N12CoreServices21getSoftwareSampleRateEv"></span><span id="_CPPv2N12CoreServices21getSoftwareSampleRateEv"></span><span id="CoreServices::getSoftwareSampleRate"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getSoftwareSampleRate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="p"><span class="pre">;</span></span><a class="headerlink" href="#_CPPv4N12CoreServices21getSoftwareSampleRateEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The ticker frequency of the software timestamp clock (1000 Hz).</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices27getRecordingParentDirectoryEv">
-<span id="_CPPv3N12CoreServices27getRecordingParentDirectoryEv"></span><span id="_CPPv2N12CoreServices27getRecordingParentDirectoryEv"></span><span id="CoreServices::getRecordingParentDirectory"></span>File <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getRecordingParentDirectory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27getRecordingParentDirectoryEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices27getRecordingParentDirectoryEv">
+<span id="_CPPv3N12CoreServices27getRecordingParentDirectoryEv"></span><span id="_CPPv2N12CoreServices27getRecordingParentDirectoryEv"></span><span id="CoreServices::getRecordingParentDirectory"></span><span class="n"><span class="pre">File</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getRecordingParentDirectory</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27getRecordingParentDirectoryEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The default recording directory.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices27setRecordingParentDirectoryE6String">
-<span id="_CPPv3N12CoreServices27setRecordingParentDirectoryE6String"></span><span id="_CPPv2N12CoreServices27setRecordingParentDirectoryE6String"></span><span id="CoreServices::setRecordingParentDirectory__String"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setRecordingParentDirectory</code><span class="sig-paren">(</span>String <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27setRecordingParentDirectoryE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices27setRecordingParentDirectoryE6String">
+<span id="_CPPv3N12CoreServices27setRecordingParentDirectoryE6String"></span><span id="_CPPv2N12CoreServices27setRecordingParentDirectoryE6String"></span><span id="CoreServices::setRecordingParentDirectory__String"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setRecordingParentDirectory</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27setRecordingParentDirectoryE6String" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Sets new default recording directory. This will only affect new Record Nodes, and will not be applied to Record Nodes that are already in the signal chain. To set the recording directory for existing Record Nodes, use <code class="code docutils literal notranslate"><span class="pre">CoreServices::RecordNode::setRecordingDirectory()</span></code> (see below).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>dir</strong> – Absolute path of the new recording directory.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib">
-<span id="_CPPv3N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib"></span><span id="_CPPv2N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib"></span><span id="CoreServices::RecordNode::setRecordingDirectory__String.i.b"></span>void <code class="sig-prename descclassname">CoreServices::RecordNode<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setRecordingDirectory</code><span class="sig-paren">(</span>String <em>dir</em>, int <em>nodeId</em>, bool <em>applyToAll</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib">
+<span id="_CPPv3N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib"></span><span id="_CPPv2N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib"></span><span id="CoreServices::RecordNode::setRecordingDirectory__String.i.b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RecordNode</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setRecordingDirectory</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dir</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">nodeId</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">applyToAll</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices10RecordNode21setRecordingDirectoryE6Stringib" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Sets a new recording directory for one or all existing Record Nodes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dir</strong> – The absolute path of the new recording directory.</p></li>
 <li><p><strong>nodeId</strong> – The ID of the Record Node (if only one is being updated).</p></li>
@@ -453,125 +575,214 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices25getAvailableRecordNodeIdsEv">
-<span id="_CPPv3N12CoreServices25getAvailableRecordNodeIdsEv"></span><span id="_CPPv2N12CoreServices25getAvailableRecordNodeIdsEv"></span><span id="CoreServices::getAvailableRecordNodeIds"></span>Array&lt;int&gt; <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getAvailableRecordNodeIds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices25getAvailableRecordNodeIdsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices25getAvailableRecordNodeIdsEv">
+<span id="_CPPv3N12CoreServices25getAvailableRecordNodeIdsEv"></span><span id="_CPPv2N12CoreServices25getAvailableRecordNodeIdsEv"></span><span id="CoreServices::getAvailableRecordNodeIds"></span><span class="n"><span class="pre">Array</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getAvailableRecordNodeIds</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices25getAvailableRecordNodeIdsEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An array of IDs for Record Nodes currently in the signal chain.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices29setRecordingDirectoryBasenameE6String">
-<span id="_CPPv3N12CoreServices29setRecordingDirectoryBasenameE6String"></span><span id="_CPPv2N12CoreServices29setRecordingDirectoryBasenameE6String"></span><span id="CoreServices::setRecordingDirectoryBasename__String"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setRecordingDirectoryBasename</code><span class="sig-paren">(</span>String <em>dir</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices29setRecordingDirectoryBasenameE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices29setRecordingDirectoryBasenameE6String">
+<span id="_CPPv3N12CoreServices29setRecordingDirectoryBasenameE6String"></span><span id="_CPPv2N12CoreServices29setRecordingDirectoryBasenameE6String"></span><span id="CoreServices::setRecordingDirectoryBasename__String"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setRecordingDirectoryBasename</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices29setRecordingDirectoryBasenameE6String" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Sets new basename for the recording directory (does not affect prepend/append text).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>dir</strong> – The recording directory basename (overrides the auto-generated date string).</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices25getRecordingDirectoryNameEv">
-<span id="_CPPv3N12CoreServices25getRecordingDirectoryNameEv"></span><span id="_CPPv2N12CoreServices25getRecordingDirectoryNameEv"></span><span id="CoreServices::getRecordingDirectoryName"></span>String <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getRecordingDirectoryName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices25getRecordingDirectoryNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices25getRecordingDirectoryNameEv">
+<span id="_CPPv3N12CoreServices25getRecordingDirectoryNameEv"></span><span id="_CPPv2N12CoreServices25getRecordingDirectoryNameEv"></span><span id="CoreServices::getRecordingDirectoryName"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getRecordingDirectoryName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices25getRecordingDirectoryNameEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The full name of the current recording directory (or empty string if no recording has been started yet).</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices27createNewRecordingDirectoryEv">
-<span id="_CPPv3N12CoreServices27createNewRecordingDirectoryEv"></span><span id="_CPPv2N12CoreServices27createNewRecordingDirectoryEv"></span><span id="CoreServices::createNewRecordingDirectory"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">createNewRecordingDirectory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27createNewRecordingDirectoryEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices27createNewRecordingDirectoryEv">
+<span id="_CPPv3N12CoreServices27createNewRecordingDirectoryEv"></span><span id="_CPPv2N12CoreServices27createNewRecordingDirectoryEv"></span><span id="CoreServices::createNewRecordingDirectory"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">createNewRecordingDirectory</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices27createNewRecordingDirectoryEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Instructs all Record Ndodes to create a new directory the next time recording is started.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices32getRecordingDirectoryPrependTextEv">
-<span id="_CPPv3N12CoreServices32getRecordingDirectoryPrependTextEv"></span><span id="_CPPv2N12CoreServices32getRecordingDirectoryPrependTextEv"></span><span id="CoreServices::getRecordingDirectoryPrependText"></span>String <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getRecordingDirectoryPrependText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices32getRecordingDirectoryPrependTextEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices32getRecordingDirectoryPrependTextEv">
+<span id="_CPPv3N12CoreServices32getRecordingDirectoryPrependTextEv"></span><span id="_CPPv2N12CoreServices32getRecordingDirectoryPrependTextEv"></span><span id="CoreServices::getRecordingDirectoryPrependText"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getRecordingDirectoryPrependText</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices32getRecordingDirectoryPrependTextEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The text that will be prepended to the basename of newly created recording directories.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices31getRecordingDirectoryAppendTextEv">
-<span id="_CPPv3N12CoreServices31getRecordingDirectoryAppendTextEv"></span><span id="_CPPv2N12CoreServices31getRecordingDirectoryAppendTextEv"></span><span id="CoreServices::getRecordingDirectoryAppendText"></span>String <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">getRecordingDirectoryAppendText</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices31getRecordingDirectoryAppendTextEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices31getRecordingDirectoryAppendTextEv">
+<span id="_CPPv3N12CoreServices31getRecordingDirectoryAppendTextEv"></span><span id="_CPPv2N12CoreServices31getRecordingDirectoryAppendTextEv"></span><span id="CoreServices::getRecordingDirectoryAppendText"></span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getRecordingDirectoryAppendText</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices31getRecordingDirectoryAppendTextEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The text that will be appended to the basename of newly created recording directories.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices32setRecordingDirectoryPrependTextE6String">
-<span id="_CPPv3N12CoreServices32setRecordingDirectoryPrependTextE6String"></span><span id="_CPPv2N12CoreServices32setRecordingDirectoryPrependTextE6String"></span><span id="CoreServices::setRecordingDirectoryPrependText__String"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setRecordingDirectoryPrependText</code><span class="sig-paren">(</span>String <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices32setRecordingDirectoryPrependTextE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices32setRecordingDirectoryPrependTextE6String">
+<span id="_CPPv3N12CoreServices32setRecordingDirectoryPrependTextE6String"></span><span id="_CPPv2N12CoreServices32setRecordingDirectoryPrependTextE6String"></span><span id="CoreServices::setRecordingDirectoryPrependText__String"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setRecordingDirectoryPrependText</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices32setRecordingDirectoryPrependTextE6String" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Sets the text to be prepended to the basename of newly created recording directories.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>text</strong> – The text to prepend.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices31setRecordingDirectoryAppendTextE6String">
-<span id="_CPPv3N12CoreServices31setRecordingDirectoryAppendTextE6String"></span><span id="_CPPv2N12CoreServices31setRecordingDirectoryAppendTextE6String"></span><span id="CoreServices::setRecordingDirectoryAppendText__String"></span>void <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">setRecordingDirectoryAppendText</code><span class="sig-paren">(</span>String <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices31setRecordingDirectoryAppendTextE6String" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices31setRecordingDirectoryAppendTextE6String">
+<span id="_CPPv3N12CoreServices31setRecordingDirectoryAppendTextE6String"></span><span id="_CPPv2N12CoreServices31setRecordingDirectoryAppendTextE6String"></span><span id="CoreServices::setRecordingDirectoryAppendText__String"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setRecordingDirectoryAppendText</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">String</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">text</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices31setRecordingDirectoryAppendTextE6String" title="Permalink to this definition">#</a><br /></dt>
 <dd><p>Sets the text to be appended to the basename of newly created recording directories.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>text</strong> – The text to append.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N12CoreServices29allRecordNodesAreSynchronizedEv">
-<span id="_CPPv3N12CoreServices29allRecordNodesAreSynchronizedEv"></span><span id="_CPPv2N12CoreServices29allRecordNodesAreSynchronizedEv"></span><span id="CoreServices::allRecordNodesAreSynchronized"></span>bool <code class="sig-prename descclassname">CoreServices<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">allRecordNodesAreSynchronized</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices29allRecordNodesAreSynchronizedEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12CoreServices29allRecordNodesAreSynchronizedEv">
+<span id="_CPPv3N12CoreServices29allRecordNodesAreSynchronizedEv"></span><span id="_CPPv2N12CoreServices29allRecordNodesAreSynchronizedEv"></span><span id="CoreServices::allRecordNodesAreSynchronized"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">CoreServices</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">allRecordNodesAreSynchronized</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12CoreServices29allRecordNodesAreSynchronizedEv" title="Permalink to this definition">#</a><br /></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">true</span></code> if all Record Nodes are in a “synchronized” state. A Record Node is synchronized if it only has one data stream as input, or if all of its incoming streams share a hardware sync line that has received at least two events.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="../Creating-a-new-plugin.html" title="previous page">Creating a new plugin</a>
-    <a class='right-next' id="next-link" href="Processor-Plugins.html" title="next page">Processor Plugins</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="../Creating-a-new-plugin.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Creating a new plugin</p>
       </div>
-    </div>
-
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="Processor-Plugins.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Processor Plugins</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging">
+   Logging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#core-services">
+   Core Services
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../_sources/Developer-Guide/Open-Ephys-Plugin-API/index.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>

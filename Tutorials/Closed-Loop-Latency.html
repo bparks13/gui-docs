@@ -1,212 +1,350 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Measuring Closed-Loop Latency &#8212; Open Ephys GUI Docs</title>
-    
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-    
+  
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Synchronizing Data Streams" href="Data-Synchronization.html" />
     <link rel="prev" title="Tutorials" href="index.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    <a class="navbar-brand" href="../index.html">
-    
-      <img src="../_static/oe_logo_gui.svg" class="logo" alt="logo" />
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
-      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../User-Manual/index.html">User Manual</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../Developer-Guide/index.html">Developer Guide</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">Tutorials</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../FAQ/index.html">FAQs</a>
-        </li>
-        
-        
-      </ul>
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
 
-
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/open-ephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/openephys" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-</div>
-    </nav>
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    </div>
+  </div>
 
-    <div class="bd-toc-item active">
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
     
   
-    <ul class="nav bd-sidenav">
-        
-        
-        
-        
-        
-        
-          
-            
-                <li class="active">
-                    <a href="">Measuring Closed-Loop Latency</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="Data-Synchronization.html">Synchronizing Data Streams</a>
-                </li>
-            
-          
-            
-                <li class="">
-                    <a href="How-To-Make-Your-Own-Plugin.html">How To Make Your Own Plugin</a>
-                </li>
-            
-          
-        
-        
-        
-        
-      </ul>
+
+
+<a class="navbar-brand logo" href="../index.html">
+
   
-  </nav>
-          </div>
-          
+  
+  
+  
+  
+  
+  
 
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-              
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+  
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/oe_logo_gui.svg" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#required-hardware" class="nav-link">Required hardware</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#configuring-the-arduinos" class="nav-link">Configuring the Arduinos</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#connecting-the-devices" class="nav-link">Connecting the devices</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#building-the-signal-chain" class="nav-link">Building the signal chain</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#measuring-system-latency" class="nav-link">Measuring system latency</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#settings-that-affect-latency" class="nav-link">Settings that affect latency</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#next-steps" class="nav-link">Next steps</a>
-        </li>
-    
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
     </ul>
 </nav>
+      </div>
+      
+    </div>
 
-
-              
-          </div>
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
           
-
           
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../User-Manual/index.html">
+                        User Manual
+                    </a>
+                </li>
                 
-  <div class="section" id="measuring-closed-loop-latency">
-<span id="closedlooplatency"></span><h1>Measuring Closed-Loop Latency<a class="headerlink" href="#measuring-closed-loop-latency" title="Permalink to this headline">¶</a></h1>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Developer-Guide/index.html">
+                        Developer Guide
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="index.html">
+                        Tutorials
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../FAQ/index.html">
+                        FAQs
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/open-ephys" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/openephys" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Measuring Closed-Loop Latency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data-Synchronization.html">Synchronizing Data Streams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How-To-Make-Your-Own-Plugin.html">How To Make Your Own Plugin</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <section id="measuring-closed-loop-latency">
+<span id="closedlooplatency"></span><h1>Measuring Closed-Loop Latency<a class="headerlink" href="#measuring-closed-loop-latency" title="Permalink to this heading">#</a></h1>
 <p>One of the key features of the Open Ephys GUI is that it provides the ability to reconfigure your signal chains on the fly. “Source” plugins that acquire neural data can be combined with “filter” plugins that detect salient events, which can be linked to “Sink” plugins that can trigger electrical or optical stimulation to the brain. Because of the modular nature of the GUI, the same closed-loop signal chain can be used with a variety of different data sources.</p>
 <p>When using the GUI for closed-loop feedback experiments, all of the data processing happens in <em>software</em>, which limits the speed at which the system can respond to incoming events. In general, you can expect about 20-30 milliseconds of delay between the time at which the external event occurs, and the time at which the GUI generates an output in respond to that event. There are ways to reduce this delay, as this tutorial will explain, but given the limitations of both hardware and software, it will never reach sub-millisecond precision. Nevertheless, this timescale is still useful for a wide range of closed-loop paradigms, including:</p>
 <ul class="simple">
@@ -215,8 +353,8 @@
 <li><p>Activating an output when an analog signal crosses a threshold (using the <a class="reference internal" href="../User-Manual/Plugins/Crossing-Detector.html#crossingdetector"><span class="std std-ref">Crossing Detector</span></a> plugin)</p></li>
 </ul>
 <p>This tutorial will guide you through the steps involved in setting up a signal chain capable of delivering closed-loop feedback. It will show you how to measure the latency of your setup, and will discuss the tradeoffs involved in attempting to minimize latency.</p>
-<div class="section" id="required-hardware">
-<h2>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this headline">¶</a></h2>
+<section id="required-hardware">
+<h2>Required hardware<a class="headerlink" href="#required-hardware" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>1 <a class="reference external" href="https://open-ephys.org/acquisition-system/eux9baf6a5s8tid06hk1mw5aafjdz1">Open Ephys Acquisition Board</a> with 5V power supply and USB cable (headstages are optional)</p></li>
 <li><p>2 <a class="reference external" href="https://open-ephys.org/acquisition-system/io-board-pcb">Open Ephys I/O Boards</a> with HDMI cables</p></li>
@@ -229,9 +367,9 @@
 <p class="admonition-title">Note</p>
 <p>It’s possible to carry out the steps below with an alternative set of hardware components. Cases where substitutes can be used will be explained throughout the tutorial. If you’d like to test closed-loop latency with a different set of components, we recommend reading through the tutorial first.</p>
 </div>
-</div>
-<div class="section" id="configuring-the-arduinos">
-<h2>Configuring the Arduinos<a class="headerlink" href="#configuring-the-arduinos" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="configuring-the-arduinos">
+<h2>Configuring the Arduinos<a class="headerlink" href="#configuring-the-arduinos" title="Permalink to this heading">#</a></h2>
 <p>First, we need to make sure the Arduinos are running the correct firmware.</p>
 <p><strong>Arduino #1</strong> will be generating the signal that our system will respond to. In this example, we will use the “Blink” sketch that’s included as a built-in example in the IDE. This sketch makes one of the Arduino’s digital pins alternate between 0V and 5V levels at 1 second intervals. It can be substituted with a device that can be programmed to generate similar behavior, such as a signal generator or a National Instruments DAQ.</p>
 <p>To configure Arduino #1, follow the steps below:</p>
@@ -249,9 +387,9 @@
 <p><strong>Arduino #2</strong> will be delivering our feedback signal by communicating with the <a class="reference internal" href="../User-Manual/Plugins/Arduino-Output.html#arduinooutput"><span class="std std-ref">Arduino Output</span></a> plugin inside the GUI. It can be substituted with another device that works with the GUI, such as a <a class="reference external" href="https://sanworks.io/shop/viewproduct?productID=1102">Pulse Pal</a> from Sanworks.</p>
 <p>To configure Arduino #2, follow the steps listed above, but upload the “File &gt; Examples &gt; Firmata &gt; StandardFirmata” sketch:</p>
 <img alt="Arduino Firmata sketch" src="../_images/closedlooplatency-02.png" />
-</div>
-<div class="section" id="connecting-the-devices">
-<h2>Connecting the devices<a class="headerlink" href="#connecting-the-devices" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="connecting-the-devices">
+<h2>Connecting the devices<a class="headerlink" href="#connecting-the-devices" title="Permalink to this heading">#</a></h2>
 <p>Once the Arduinos have been configured, connect the various devices according to the schematic below:</p>
 <img alt="Device connections for closed-loop latency tutorial" src="../_images/closedlooplatency-03.png" />
 <ul class="simple">
@@ -263,9 +401,9 @@
 <li><p>Use one BNC cable to connect the <strong>BNC adapter</strong> for Arduino #1 to input channel 1 of I/O board #1</p></li>
 <li><p>Use the other BNC cable to connect the <strong>BNC adapter</strong> for Arduino #2 to input channel 2 of I/O board #2</p></li>
 </ul>
-</div>
-<div class="section" id="building-the-signal-chain">
-<h2>Building the signal chain<a class="headerlink" href="#building-the-signal-chain" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="building-the-signal-chain">
+<h2>Building the signal chain<a class="headerlink" href="#building-the-signal-chain" title="Permalink to this heading">#</a></h2>
 <p>Once all of the devices are connected, launch the Open Ephys GUI. Starting with an empty signal chain, add the following plugins, from left to right:</p>
 <ol class="arabic simple">
 <li><p><strong>Rhythm FPGA</strong> - It should automatically detect and connect to the acquisition board. Press the “ADC” button to add the analog input channels to the data stream.</p></li>
@@ -280,9 +418,9 @@
 <p class="admonition-title">Tip</p>
 <p>Setting the LFP Viewer to trigger when an event appears on channel 1 will ensure that the display is always aligned with the incoming events.</p>
 </div>
-</div>
-<div class="section" id="measuring-system-latency">
-<h2>Measuring system latency<a class="headerlink" href="#measuring-system-latency" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="measuring-system-latency">
+<h2>Measuring system latency<a class="headerlink" href="#measuring-system-latency" title="Permalink to this heading">#</a></h2>
 <p>Press the play button to start data acquisition. You should be able to visualize the signal on ADC channel 1 alternating between 0 and 5 volts (in the example screenshot above, the Arduino signal is emitting a 3.3 V signal). There should be a very short (5 ms) event that coincides with the rising edge of this signal, and another short event that occurs shortly thereafter. The first event represents the time of the low-to-high transition picked up by the Crossing Detector, while the second event represents the digital output delivered by Arduino #2.</p>
 <p>If these events do not appear as expected, double-check that the hardware connections and signal chain are configured correctly.</p>
 <p>Once you can see the events in the LFP Viewer, hit the record button to save data. After about 2 minutes, hit the play button  to stop acquisition and recording.</p>
@@ -311,9 +449,9 @@
 <p>This should generate a plot that looks like this:</p>
 <img alt="Latency histogram for 23 ms buffer." src="../_images/closedlooplatency-05.png" />
 <p>This indicates the distribution of latencies for your system.</p>
-</div>
-<div class="section" id="settings-that-affect-latency">
-<h2>Settings that affect latency<a class="headerlink" href="#settings-that-affect-latency" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="settings-that-affect-latency">
+<h2>Settings that affect latency<a class="headerlink" href="#settings-that-affect-latency" title="Permalink to this heading">#</a></h2>
 <p>The Open Ephys GUI (and most other software for real-time processing) moves data around using <em>buffers</em>. Each buffer contains a block of samples for a set of channels. The larger the buffer (in terms of samples or channels), the more time it takes to process, and hence higher latency. However, larger buffers can typically have higher <em>throughput</em>, because the overhead involved in initiating each buffer exchange consumes a smaller fraction of overall processing time.</p>
 <p>There are two types of buffers that affect the latency in this setup. The first is the hardware-to-software buffer that is used to transmit data between the acquisition board and the Rhythm FPGA plugin. Because the USB protocol has a high amount of overhead for each data packet, this buffer is set to 10 ms at 30 kHz. If using a different type of transmission interface (such as Ethernet or PCIe), much smaller buffer sizes are possible. Changing the size of this buffer for the Rhythm FPGA plugin requires editing the source code and re-compiling the GUI.</p>
 <p>The second, and more easily configurable, type of buffer is the one used to pass data between plugins in the GUI’s signal chain. The size of this buffer can be changed by opening the “Audio Settings” interface, accessible via the “latency” button in the GUI’s control panel. The samples displayed in the latency interface are based on the sample rate of your computer’s audio card (44.1 kHz in most cases).</p>
@@ -323,41 +461,150 @@
 <img alt="Latency histogram for 10 ms and 5 ms buffers." src="../_images/closedlooplatency-06.png" />
 <p>Note the diminishing returns for a 5 ms buffer, due to the fact that overall latency is limited by the size of the USB buffer.</p>
 <p>The minimum latency is also affected by the number of continuous channels that are being processed simultaneously. If your CPU meter is spiking for smaller buffer sizes, try reducing the number of continuous channels by disabling unused channels with a <a class="reference internal" href="../User-Manual/Plugins/Channel-Map.html#channelmap"><span class="std std-ref">Channel Map</span></a> plugin.</p>
-</div>
-<div class="section" id="next-steps">
-<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
 <p>Once you’ve gotten the above setup working, it can be helpful to try using the <a class="reference internal" href="../User-Manual/Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a> plugin to trigger feedback. For example, you could use the <code class="code docutils literal notranslate"><span class="pre">data_stream_16ch_hippocampus</span></code> dataset that’s included in the example data in combination with a <a class="reference internal" href="../User-Manual/Plugins/Bandpass-Filter.html#bandpassfilter"><span class="std std-ref">Bandpass Filter</span></a> and <a class="reference internal" href="../User-Manual/Plugins/Phase-Detector.html#phasedetector"><span class="std std-ref">Phase Detector</span></a> plugin to replicate the theta-phase-specific stimulation used in <a class="reference external" href="https://elifesciences.org/articles/03061">Siegle et al., 2014</a>. In this case, you won’t be able to measure the true latency, but it will allow you to test out a signal chain that can be used in an actual experiment.</p>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
-              
-              
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Tutorials</a>
-    <a class='right-next' id="next-link" href="Data-Synchronization.html" title="next page">Synchronizing Data Streams</a>
-
-              </div>
-              
-          </main>
-          
-
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Tutorials</p>
       </div>
-    </div>
-
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    <p>
-          &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.1.<br/>
-    </p>
+  </a>
+  <a class='right-next' id="next-link" href="Data-Synchronization.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Synchronizing Data Streams</p>
   </div>
-</footer>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#required-hardware">
+   Required hardware
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-the-arduinos">
+   Configuring the Arduinos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-the-devices">
+   Connecting the devices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-the-signal-chain">
+   Building the signal chain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measuring-system-latency">
+   Measuring system latency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#settings-that-affect-latency">
+   Settings that affect latency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next steps
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../_sources/Tutorials/Closed-Loop-Latency.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
   </body>
 </html>
