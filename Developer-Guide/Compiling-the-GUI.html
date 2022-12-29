@@ -353,6 +353,10 @@ $ cmake -G <span class="s2">&quot;Xcode&quot;</span> ..
 <p>Note that the final two periods are critical for getting this command to work.</p>
 <p>Next, launch Xcode and open the <code class="code docutils literal notranslate"><span class="pre">open-ephys-GUI.xcodeproj</span></code> file that now lives in the “Build” directory.</p>
 <p>Inside XCode, hit the “Run” button to build the GUI and plugins from source. To run the GUI from within XCode, select the “open-ephys” scheme from the drop-down menu next to the Run and Stop buttons, instead of “ALL_BUILD”.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you’re building the plugin on a Mac with Apple Silicon, you’ll need to make sure the <code class="code docutils literal notranslate"><span class="pre">ALL_BUILD</span></code> profile is set use “Rosetta”. You will likely need to first set the build target to “Any Mac,” and then select the “My Mac (Rosetta)” option that appears. It is possible to build a version of the GUI that runs natively on Apple Silicon, but there are a few extra steps involved, and it won’t work with plugins downloaded via the Plugin Installer. If you’re interested in this, please reach out to <a class="reference external" href="mailto:support&#37;&#52;&#48;open-ephys&#46;org">support<span>&#64;</span>open-ephys<span>&#46;</span>org</a> for more info.</p>
+</div>
 </section>
 <section id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">#</a></h2>
