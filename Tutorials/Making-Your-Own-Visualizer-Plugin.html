@@ -833,8 +833,8 @@
 
 <span class="w">   </span><span class="p">...</span><span class="w"></span>
 
-<span class="w">   </span><span class="cm">/** Pointer to the Visualizer */</span><span class="w"></span>
-<span class="w">   </span><span class="n">RateViewerCanvas</span><span class="o">*</span><span class="w"> </span><span class="n">canvas</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/** Pointer to the Visualizer -- initialize to nullptr*/</span><span class="w"></span>
+<span class="w">   </span><span class="n">RateViewerCanvas</span><span class="o">*</span><span class="w"> </span><span class="n">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -971,12 +971,53 @@
 </pre></div>
 </div>
 </div>
+<p>We also need to make sure the parameter values are updated in the <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code> method, if the canvas has been initialized:</p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">RateViewer.cpp</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewer::updateSettings</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="c1">// initialize electrodes array, then...</span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">canvas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">parameterValueChanged</span><span class="p">(</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;window_size&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="n">parameterValueChanged</span><span class="p">(</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;bin_size&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we need to make sure the settings are initialized properly when the canvas is created (since the canvas doesn’t exist until it’s opened in a tab or window):</p>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">RateViewerEditor.cpp</span><a class="headerlink" href="#id27" title="Permalink to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Visualizer</span><span class="o">*</span><span class="w"> </span><span class="nf">RateViewerEditor::createNewCanvas</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">RateViewer</span><span class="o">*</span><span class="w"> </span><span class="n">rateViewerNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RateViewer</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">getProcessor</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">RateViewerCanvas</span><span class="o">*</span><span class="w"> </span><span class="n">rateViewerCanvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RateViewerCanvas</span><span class="p">(</span><span class="n">rateViewerNode</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">rateViewerNode</span><span class="o">-&gt;</span><span class="n">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rateViewerCanvas</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// make sure the parameters get updated</span>
+<span class="w">   </span><span class="n">rateViewerCanvas</span><span class="o">-&gt;</span><span class="n">setWindowSizeMs</span><span class="p">(</span><span class="n">rateViewerNode</span><span class="o">-&gt;</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;window_size&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">());</span><span class="w"></span>
+<span class="w">   </span><span class="n">rateViewerCanvas</span><span class="o">-&gt;</span><span class="n">setBinSizeMs</span><span class="p">(</span><span class="n">rateViewerNode</span><span class="o">-&gt;</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;bin_size&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// update list of available electrodes</span>
+<span class="w">   </span><span class="n">selectedStreamHasChanged</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">rateViewerCanvas</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="pushing-spikes-to-the-canvas">
 <h3>Pushing spikes to the canvas<a class="headerlink" href="#pushing-spikes-to-the-canvas" title="Permalink to this heading">#</a></h3>
 <p>Now that all the parameters have been created, we can start pushing information about each incoming spike received by the processor. First, let’s create a function for sending sample numbers to the canvas, and an array to store them.</p>
-<div class="literal-block-wrapper docutils container" id="id26">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id26" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id28" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 
 <span class="w">   </span><span class="cm">/** Adds a spike sample number */</span><span class="w"></span>
@@ -988,8 +1029,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id27">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id27" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id29" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewerCanvas::addSpike</span><span class="p">(</span><span class="n">int64</span><span class="w"> </span><span class="n">sample_num</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">incomingSpikeSampleNums</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sample_num</span><span class="p">);</span><span class="w"></span>
@@ -998,8 +1039,8 @@
 </div>
 </div>
 <p>Next, we can push spikes to the visualizer inside the processor’s <code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">handleSpike()</span></code> method, which is called for every incoming spike. Inside this method we will get the spike sample number and pass it on to the canvas. Note that this function is automatically called because <code class="code docutils literal notranslate"><span class="pre">checkForEvents(true);</span></code> has been added to the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method.</p>
-<div class="literal-block-wrapper docutils container" id="id28">
-<div class="code-block-caption"><span class="caption-text">RateViewer.cpp</span><a class="headerlink" href="#id28" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">RateViewer.cpp</span><a class="headerlink" href="#id30" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewer::handleSpike</span><span class="p">(</span><span class="n">SpikePtr</span><span class="w"> </span><span class="n">spike</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">spike</span><span class="o">-&gt;</span><span class="n">getStreamId</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getEditor</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getCurrentStream</span><span class="p">()</span><span class="w"> </span><span class="c1">// spike stream matches the current stream</span>
@@ -1013,8 +1054,8 @@
 </div>
 </div>
 <p>Since the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method brings in data in blocks (buffers), we need a way to ensure the display only shows spikes that fall within the window defined by the user. This can be done by passing the most recent sample number for the current buffer to the canvas within every process loop. Update the <code class="code docutils literal notranslate"><span class="pre">process()</span></code> method as follows:</p>
-<div class="literal-block-wrapper docutils container" id="id29">
-<div class="code-block-caption"><span class="caption-text">RateViewer.cpp</span><a class="headerlink" href="#id29" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text">RateViewer.cpp</span><a class="headerlink" href="#id31" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewer::process</span><span class="p">(</span><span class="n">AudioBuffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">checkForEvents</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
@@ -1035,8 +1076,8 @@
 </div>
 </div>
 <p>Since the <code class="code docutils literal notranslate"><span class="pre">setMostRecentSample</span></code> function doesn’t exist yet, we need to create it inside <code class="code docutils literal notranslate"><span class="pre">RateViewerCanvas</span></code> class:</p>
-<div class="literal-block-wrapper docutils container" id="id30">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id30" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id32" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 
 <span class="w">   </span><span class="cm">/** Sets the sample index for the latest buffer*/</span><span class="w"></span>
@@ -1048,8 +1089,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id31">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id31" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id33" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewerCanvas::setMostRecentSample</span><span class="p">(</span><span class="n">int64</span><span class="w"> </span><span class="n">sampleNum</span><span class="p">)</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">mostRecentSample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampleNum</span><span class="p">;</span><span class="w"></span>
@@ -1061,8 +1102,8 @@
 <section id="calculating-the-spike-rate">
 <h3>Calculating the spike rate<a class="headerlink" href="#calculating-the-spike-rate" title="Permalink to this heading">#</a></h3>
 <p>Now, we have all the required information for calculating the spike rate. To do the calculation, we first need to calculate the bin edges. The bin edges will allow us to group the incoming spike sample numbers to specific bins, relative to the most recent sample number. We also need to make sure bin edges are updated every time the bin size changes or whenever the active electrode changes. Let’s implement the bin edge calculation inside a function called <code class="code docutils literal notranslate"><span class="pre">recomputeBinEdges()</span></code>, which will be called every time we need to update the bin edges:</p>
-<div class="literal-block-wrapper docutils container" id="id32">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id32" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id34" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 
 <span class="w">   </span><span class="cm">/** Recomputes bin edges */</span><span class="w"></span>
@@ -1073,8 +1114,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id33">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id33" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id35" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewerCanvas::recomputeBinEdges</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 
@@ -1121,8 +1162,8 @@
 </div>
 </div>
 <p>Now we can count the spikes in each bin:</p>
-<div class="literal-block-wrapper docutils container" id="id34">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id34" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id36">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id36" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 
 <span class="w">   </span><span class="cm">/** Recounts spikes/bin; returns true if a new bin is available */</span><span class="w"></span>
@@ -1133,8 +1174,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id35">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id35" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id37">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id37" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">RateViewerCanvas::countSpikes</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 
@@ -1164,8 +1205,8 @@
 </div>
 </div>
 <p>Note that we are using the <code class="code docutils literal notranslate"><span class="pre">maxCount</span></code> value to keep track of the maximum number of spikes counted in a bin, which will then be used to se the plot range. We need to update the plot range whenever the window size is updated or the <code class="code docutils literal notranslate"><span class="pre">maxCount</span></code> value is updated:</p>
-<div class="literal-block-wrapper docutils container" id="id36">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id36" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id38">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.h</span><a class="headerlink" href="#id38" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 
 <span class="w">   </span><span class="cm">/** Change the XY range of the spike rate plot */</span><span class="w"></span>
@@ -1173,8 +1214,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id37">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id37" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id39">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id39" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewerCanvas::updatePlotRange</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="n">XYRange</span><span class="w"> </span><span class="n">range</span><span class="p">;</span><span class="w"></span>
@@ -1221,8 +1262,8 @@
 </div>
 </div>
 <p>Lastly, we need to do the actual plotting. We need to make sure the spikes are counted and plot is updated at regular intervals. To do that, we will use the canvas’ <code class="code docutils literal notranslate"><span class="pre">refresh()</span></code> method which is called at regular intervals. This allows us to recount the incoming spikes and animate the plot. First, lets implement the <code class="code docutils literal notranslate"><span class="pre">refresh()</span></code> method, where we will use the center of the bins in milliseconds as X values and spike rate in Hz as Y-values:</p>
-<div class="literal-block-wrapper docutils container" id="id38">
-<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id38" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id40">
+<div class="code-block-caption"><span class="caption-text">RateViewerCanvas.cpp</span><a class="headerlink" href="#id40" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RateViewerCanvas::refresh</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">countSpikes</span><span class="p">())</span><span class="w"> </span><span class="c1">// returns true if a new bin is available</span>
@@ -1243,8 +1284,8 @@
 </div>
 </div>
 <p>Then, update the processor class to notify the editor to begin animation on the canvas as soon as acquisition starts and stop animation as soon as acquisition stops.</p>
-<div class="literal-block-wrapper docutils container" id="id39">
-<div class="code-block-caption"><span class="caption-text">RateViewer.h</span><a class="headerlink" href="#id39" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id41">
+<div class="code-block-caption"><span class="caption-text">RateViewer.h</span><a class="headerlink" href="#id41" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 
 <span class="w">   </span><span class="cm">/** Enables the editor */</span><span class="w"></span>
@@ -1255,8 +1296,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id40">
-<div class="code-block-caption"><span class="caption-text">RateViewer.h</span><a class="headerlink" href="#id40" title="Permalink to this code">#</a></div>
+<div class="literal-block-wrapper docutils container" id="id42">
+<div class="code-block-caption"><span class="caption-text">RateViewer.h</span><a class="headerlink" href="#id42" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">RateViewer::startAcquisition</span><span class="p">()</span><span class="w"></span>
 <span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="p">((</span><span class="n">RateViewerEditor</span><span class="o">*</span><span class="p">)</span><span class="n">getEditor</span><span class="p">())</span><span class="o">-&gt;</span><span class="n">enable</span><span class="p">();</span><span class="w"></span>
@@ -1436,7 +1477,7 @@
     
 <p class="copyright">
 
-    &copy; Copyright 2010-2022, Open Ephys &amp; Contributors.<br>
+    &copy; Copyright 2010-2023, Open Ephys &amp; Contributors.<br>
 
 </p>
 
