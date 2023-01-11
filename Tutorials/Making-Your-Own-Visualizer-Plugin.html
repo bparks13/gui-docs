@@ -316,6 +316,10 @@
 <p class="admonition-title">Important</p>
 <p>These instructions assume you have already compiled the main application from source. If not, you should start by following the instructions on <a class="reference internal" href="../Developer-Guide/Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">this page</span></a>.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Rate Viewer plugin is currently not loading on Linux, due to an issue with the <code class="code docutils literal notranslate"><span class="pre">InteractivePlot</span></code> class. We’re working to figure out what the issue is, but in the mean time you’ll only be able to complete this tutorial on Windows and Mac.</p>
+</div>
 <section id="creating-a-new-plugin-repository">
 <h2>Creating a new plugin repository<a class="headerlink" href="#creating-a-new-plugin-repository" title="Permalink to this heading">#</a></h2>
 <p>The first step in creating a plugin is to create a new code repository from a template. There are five different types of plugins that include pre-defined templates: <strong>Processor Plugins</strong>, <strong>Visualizer Plugins</strong>, <strong>Data Threads</strong>, <strong>Record Engines</strong>, and <strong>File Sources</strong>. Since in this case we are creating a plugin with a built-in Visualizer, we will use the <strong>Visualizer Plugin</strong> template:</p>
