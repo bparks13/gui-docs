@@ -327,7 +327,8 @@
 </ol>
 <img alt="Processor Plugin Template Repository" src="../_images/makeyourownplugin-01.png" />
 <ol class="arabic simple" start="4">
-<li><p>Name the repository <strong>“ttl-event-generator”</strong>, since the main purpose of this plugin is to generate TTL events.</p></li>
+<li><p>Name the repository <strong>“ttl-event-generator”</strong>, and optionally add a description.</p></li>
+<li><p>Click the “Create repository from template” button to initialize a new repository.</p></li>
 </ol>
 <img alt="Create TTLEventGenerator Repository" src="../_images/makeyourownplugin-02.png" />
 <p>On your local machine, create an “OEPlugins” directory within the same directory that contains your <code class="code docutils literal notranslate"><span class="pre">plugin-GUI</span></code> repository. Then, using the <a class="reference external" href="https://git-scm.com/">git</a> command line interface or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a> app, clone the newly created plugin repository into this directory. Your directory structure should look something like this:</p>
@@ -396,7 +397,13 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Next, rename the <code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.cpp</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.h</span></code> files to <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.cpp</span></code> and <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code>, and find and replace the <strong>ProcessorPlugin</strong> class name with <strong>TTLEventGenerator</strong> in the .cpp and .h files. Do the same with <code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.cpp</span></code> &amp; <code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.h</span></code></p>
+<p>Next, rename the source files:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.h</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.cpp</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.cpp</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.h</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.h</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.cpp</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.cpp</span></code></p></li>
+</ul>
 <p>Finally, update the include inside <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> from <code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;ProcessorPlugin.h&quot;</span></code> to <code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;TTLEventGenerator.h&quot;</span></code>.</p>
 </section>
 <section id="compiling-your-plugin">
@@ -417,7 +424,7 @@
 </pre></div>
 </div>
 </div>
-<p>In the plugin’s <code class="code docutils literal notranslate"><span class="pre">.cpp</span></code> file, add the following line to <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code>:</p>
+<p>In the plugin’s <code class="code docutils literal notranslate"><span class="pre">.cpp</span></code> file, add the following lines to <code class="code docutils literal notranslate"><span class="pre">updateSettings()</span></code>:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">TTLEventGenerator.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TTLEventGenerator::updateSettings</span><span class="p">()</span><span class="w"></span>
@@ -447,7 +454,7 @@
 
 <span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// counts the total number of incoming samples</span>
-<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// holds the state of the current TTL line (on or off)</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// holds the state of the current TTL line (on or off)</span>
 </pre></div>
 </div>
 </div>
@@ -493,7 +500,8 @@
 <span class="w">               </span><span class="c1">// add on or off event at the correct offset</span>
 <span class="w">               </span><span class="n">TTLEventPtr</span><span class="w"> </span><span class="n">eventPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TTLEvent</span><span class="o">::</span><span class="n">createTTLEvent</span><span class="p">(</span><span class="n">ttlChannel</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="n">startSampleForBlock</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="n">outputLine</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">outputLine</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">state</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">               </span><span class="n">addEvent</span><span class="p">(</span><span class="n">eventPtr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
 
@@ -586,7 +594,7 @@
 <span class="w">   </span><span class="n">desiredWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">180</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">   </span><span class="c1">// event frequency slider</span>
-<span class="w">        </span><span class="n">addSliderParameterEditor</span><span class="p">(</span><span class="s">&quot;interval&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span><span class="w"> </span><span class="c1">// parameter name, x pos, y pos</span>
+<span class="w">   </span><span class="n">addSliderParameterEditor</span><span class="p">(</span><span class="s">&quot;interval&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span><span class="w"> </span><span class="c1">// parameter name, x pos, y pos</span>
 
 <span class="p">}</span><span class="w"></span>
 </pre></div>
@@ -623,7 +631,7 @@
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">TTLEventGeneratorEditor.cpp</span><a class="headerlink" href="#id12" title="Permalink to this code">#</a></div>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// event output line</span>
-<span class="w">     </span><span class="n">addComboBoxParameterEditor</span><span class="p">(</span><span class="s">&quot;ttl_line&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span><span class="w"> </span><span class="c1">// parameter name, x pos, y pos</span>
+<span class="n">addComboBoxParameterEditor</span><span class="p">(</span><span class="s">&quot;ttl_line&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">);</span><span class="w"> </span><span class="c1">// parameter name, x pos, y pos</span>
 </pre></div>
 </div>
 </div>
@@ -730,11 +738,11 @@
 
 <span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldTriggerEvent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// true if an event should be manually triggered</span>
-<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">eventWasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// true if an event was manually triggered</span>
-<span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">triggeredEventCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// counter for manually triggered events</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">eventWasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// true if an event was manually triggered</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">triggeredEventCounter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// counter for manually triggered events</span>
 
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">eventIntervalMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000.0f</span><span class="p">;</span><span class="w"> </span><span class="c1">// time between events</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">outputLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TTL output line</span>
+<span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">eventIntervalMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000.0f</span><span class="p">;</span><span class="w"> </span><span class="c1">// time between events</span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">outputLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TTL output line</span>
 </pre></div>
 </div>
 </div>
