@@ -319,8 +319,34 @@
   <section id="compiling-plugins">
 <span id="compilingplugins"></span><h1>Compiling plugins<a class="headerlink" href="#compiling-plugins" title="Permalink to this heading">#</a></h1>
 <p>Whether you’re creating a new plugin or you cloned an existing plugin repository, the following steps will allow you to compile your plugin across all three platforms. Note that <a class="reference external" href="https://cmake.org/">CMake</a> is required in all cases. See the <a class="reference internal" href="Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">compiling the GUI</span></a> page for recommended instructions for installing CMake if you don’t have it already.</p>
-<p>The first step for compiling a pre-existing plugin is downloading the source code. If you’re planning to make your own changes to the plugin, we recommend first forking the plugin’s GitHub repository to your own account, then cloning the fork via the <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-using-the-command-linee">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>. If you’re not planning to make any changes to the plugin, you can clone the original repository or download the code as a <strong>.zip</strong> file.</p>
 <p>Most Open Ephys GUI plugins work equally well on Windows, Linux, and Mac. However, there are some plugins that rely on platform-specific libraries, and can only be compiled for certain platforms. Be sure to check the relevant <a class="reference internal" href="../User-Manual/Plugins/index.html#plugins"><span class="std std-ref">plugin documentation</span></a> page for platform compatibility.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>These instructions assume you have already compiled the main application from source. If not, you should start by following the instructions on <a class="reference internal" href="Compiling-the-GUI.html#compilingthegui"><span class="std std-ref">this page</span></a>.</p>
+</div>
+<section id="obtaining-the-source-code">
+<h2>Obtaining the source code<a class="headerlink" href="#obtaining-the-source-code" title="Permalink to this heading">#</a></h2>
+<p>The first step for compiling a pre-existing plugin is downloading the source code. If you’re planning to make your own changes to the plugin, we recommend first forking the plugin’s GitHub repository to your own account, then cloning the fork via the <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-using-the-command-linee">command line</a> or the <a class="reference external" href="https://desktop.github.com/">GitHub Desktop app</a>. If you’re not planning to make any changes to the plugin, you can clone the original repository or download the code as a <strong>.zip</strong> file.</p>
+<p>All of the officially supported plugins assume that the plugin source code is contained within a separate directory <em>at the same level</em> as that of the host application (the <code class="code docutils literal notranslate"><span class="pre">plugin-GUI</span></code> GitHub repository). Before attempting to compile your plugin, make sure your directory structure looks something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Code
+├── plugin-GUI
+│   ├── Build
+│   ├── Source
+│   └── ...
+│
+├── OEPlugins
+│   └── plugin-1
+│   │   ├── Build
+│   │   ├── Source
+│   │   └── ...
+│   │
+│   └── plugin-2
+│       ├── Build
+│       ├── Source
+│       └── ...
+</pre></div>
+</div>
+</section>
 <section id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h2>
 <p>Generate the Visual Studio 2022 project files by typing the following from the command prompt inside the plugin’s top-level directory:</p>
@@ -413,6 +439,11 @@ $ cmake -G <span class="s2">&quot;Unix Makefiles&quot;</span> ..
 </div>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obtaining-the-source-code">
+   Obtaining the source code
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#windows">
    Windows

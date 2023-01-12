@@ -382,7 +382,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This documentation is adapted from the <a class="reference external" href="https://github.com/CINPLA/tracking-plugin/wiki">CINPLA wiki</a>). More information about the Tracking Plugin can be found in <a class="reference external" href="https://iopscience.iop.org/article/10.1088/1741-2552/aacf45/meta">this publication</a>.</p>
+<p>This documentation is adapted from the <a class="reference external" href="https://github.com/CINPLA/tracking-plugin/wiki">CINPLA wiki</a>. More information about the Tracking Plugin can be found in <a class="reference external" href="https://iopscience.iop.org/article/10.1088/1741-2552/aacf45/meta">this publication</a>.</p>
 </div>
 <section id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
@@ -396,19 +396,19 @@
 <section id="plugin-configuration">
 <h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
 <img alt="Overview of the components needed to use the Tracking Plugin effectively." src="../../_images/trackingplugin-04.png" />
-<p>This figure shows a block diagram of the basic components needed to use the Tracking Plugin:</p>
+<p>This figure shows the basic components needed to use the Tracking Plugin:</p>
 <ol class="arabic simple">
 <li><p>A freely moving subject outfitted with <strong>one or more tracking LEDs</strong>.</p></li>
 <li><p>A Bonsai-compatible <strong>camera</strong> positioned above the environment to capture the location of the LEDs on the subject’s head.</p></li>
-<li><p>A Bonsai workflow configured to package tracking points as OSC messages.</p></li>
-<li><p>An instance of the Open Ephys GUI with the Tracking Plugin installed (on the same machine running Bonsai).</p></li>
+<li><p>A <strong>Bonsai workflow</strong> configured to package tracking points as OSC messages.</p></li>
+<li><p>An instance of the <strong>Open Ephys GUI with the Tracking Plugin installed</strong> (on the same machine running Bonsai).</p></li>
 <li><p>A <strong>stimulation device</strong>, such as an Arduino or Pulse Pal, used to deliver closed-loop feedback.</p></li>
 </ol>
 <section id="setting-up-bonsai">
 <h3>Setting up Bonsai<a class="headerlink" href="#setting-up-bonsai" title="Permalink to this heading">#</a></h3>
 <p>If you haven’t already, <a class="reference external" href="https://bonsai-rx.org">install Bonsai</a>. After opening Bonsai, find the package manager and install the <strong>Vision</strong>, <strong>Vision Design</strong>, <strong>OSC</strong>, <strong>OSC Design</strong>, and <strong>Scripting</strong> packages. If your camera isn’t a USB webcam, you’ll also need to install the appropriate Bonsai package to interface with it (e.g. <strong>Spinnaker</strong>, <strong>Pylon</strong>, <strong>Vimba</strong>).</p>
-<p>Once everything is installed, download and open the <a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin/blob/main/Resources/Bonsai/tracking-camera.bonsai">tracking-camera.bonsai</a> workflow.</p>
-<p>To start the workflow, press the “Play” button within Bonsai. This will start acquiring camera frames, extracting red and green LED positions (if available), and streaming position information via OSC.</p>
+<p>Once everything is installed, download and open the <a class="reference external" href="https://github.com/open-ephys-plugins/tracking-plugin/blob/main/Resources/Bonsai/tracking-camera.bonsai">tracking-camera.bonsai</a> workflow. If necessary, replace the <strong>CameraCapture</strong> node with one that’s compatible with your camera.</p>
+<p>To start the workflow, press the “Play” button within Bonsai. This will start acquiring camera frames, extracting red and green LED positions (if available), and streaming position information.</p>
 <p>The data are streamed via OSC (Open Sound Control), with each packet containing 4 float values:</p>
 <ol class="arabic simple">
 <li><p>Relative x position of the tracked point (as a fraction of the overall width of the image)</p></li>
@@ -419,8 +419,8 @@
 </section>
 <section id="tracking-sources">
 <h3>Tracking sources<a class="headerlink" href="#tracking-sources" title="Permalink to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p>These instructions apply to the Tracking Plugin for GUI version 0.6.x and higher. All of the functionality is now contained in a single Filter plugin, as opposed to the separate Source, Filter, and Sink plugins that were used previously.</p>
 </div>
 <p>After adding the Tracking Plugin to the Open Ephys signal chain, you first need to define at least one “tracking source.” You can add and delete new sources using the <code class="code docutils literal notranslate"><span class="pre">+</span></code> and <code class="code docutils literal notranslate"><span class="pre">-</span></code> buttons. The port number, OSC address, and color used to represent the incoming data can also be configured within the plugin’s editor. Make sure these match the OSC settings in Bonsai (which must be running on the same computer).</p>
@@ -428,13 +428,13 @@
 </section>
 <section id="creating-rois">
 <h3>Creating ROIs<a class="headerlink" href="#creating-rois" title="Permalink to this heading">#</a></h3>
-<p>The Tracking Plugin visualizer allows the user to create regions of interest (ROIs) within the camera’s field of view. Whenever the subject enters one of these regions, the plugin emits TTL events that can be used to trigger closed-loop feedback. There are three operation modes for the circles:</p>
+<p>The Tracking Plugin visualizer allows the user to create regions of interest (ROIs) within the camera’s field of view. Whenever the subject enters one of these regions, the plugin emits TTL events that can be used to trigger closed-loop feedback. There are three operation modes for ROIs:</p>
 <ul class="simple">
 <li><p><strong>UNIFORM</strong>: a TTL train with a constant, user-defined frequency is generated when the position is within any ROI.</p></li>
 <li><p><strong>GAUSSIAN</strong>: the frequency of the TTL train is Gaussian modulated. When the position is in the center of any ROI, the frequency is equal to fmax (the user-defined frequency), and when it is on the border of a circle the frequency is sd * fmax.</p></li>
 <li><p><strong>SINGLE</strong>: the plugin emits a single pulse of the specified duration immediately when the position enters an ROI.</p></li>
 </ul>
-<p>Then, circular regions of interest can manually drawn, dragged, resized, and deleted. The parameters for each circle (x_position, y_position, and radius from 0 to 1) can be entered using the popup menus accessible via the “New” and “Edit” buttons. Each circle can be inactivated or reactivated using the <code class="code docutils literal notranslate"><span class="pre">Enabled</span></code> toggle button, or removed using the “Delete” button:</p>
+<p>Circular regions of interest can manually drawn, dragged, resized, and deleted. The parameters for each circle (x_position, y_position, and radius) can be entered using the popup menus accessible via the “New” and “Edit” buttons. Each circle can be inactivated or reactivated using the <code class="code docutils literal notranslate"><span class="pre">Enabled</span></code> toggle button, or removed using the “Delete” button:</p>
 <img alt="Screenshot of the Tracking Visualizer plugin." src="../../_images/trackingplugin-02.png" />
 </section>
 </section>
