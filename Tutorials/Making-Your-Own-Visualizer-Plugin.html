@@ -318,7 +318,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Rate Viewer plugin is currently not loading on Linux, due to an issue with the <code class="code docutils literal notranslate"><span class="pre">InteractivePlot</span></code> class. We’re working to figure out what the issue is, but in the mean time you’ll only be able to complete this tutorial on Windows and Mac.</p>
+<p>On Linux, you’ll need to make a small change to the GUI’s source code to get the Rate Viewer plugin to work. Change line 208 of <code class="code docutils literal notranslate"><span class="pre">InteractivePlot.h</span></code> to <code class="code docutils literal notranslate"><span class="pre">class</span> <span class="pre">PLUGIN_API</span> <span class="pre">DrawComponent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">Component</span></code>. This change has been added to the <strong>development</strong> branch, and will be merged into the <strong>main</strong> branch soon.</p>
 </div>
 <section id="creating-a-new-plugin-repository">
 <h2>Creating a new plugin repository<a class="headerlink" href="#creating-a-new-plugin-repository" title="Permalink to this heading">#</a></h2>
