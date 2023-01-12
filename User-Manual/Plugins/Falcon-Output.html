@@ -357,7 +357,7 @@
 <span id="falconoutput"></span><h1>Falcon Output<a class="headerlink" href="#falcon-output" title="Permalink to this heading">#</a></h1>
 <img alt="Annotated Falcon Output Editor" src="../../_images/falconoutput-01.png" />
 <table class="table" id="id1">
-<caption><span class="caption-text">Streams all continuous channels with low latency.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Streams continuous channels with low latency.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -380,10 +380,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Falcon Output plugin is not yet available for GUI version 0.6.X.</p>
-</div>
 <section id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
 <p>The Falcon Output plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to the “Falcon Output” plugin, and click the “Install” button.</p>
@@ -391,7 +387,20 @@
 </section>
 <section id="plugin-configuration">
 <h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
-<p>This plugin will stream all incoming continuous channels via a ZMQ socket. The only setting available to the user is the output port. To use a port other than the default (3335), change the text field in the plugin’s editor to the desired port number, and click “Set Port.”</p>
+<p>Each Falcon Output plugin sends continuous data and event codes for one data stream. To select the data stream (if multiple streams are available), use the drop-down menu in the plugin editor. Once a stream has been selected, the channels to send can be changed by clicking the “Channels” button. If not all continuous channels are needed by the client, then deselecting the unused channels is recommended.</p>
+<p>To use a network port other than the default (3335), change the text field in the plugin’s editor to the desired port number.</p>
+<p>See the <a class="reference external" href="https://falcon-core.readthedocs.io/en/latest/">Falcon</a> documentation for information on setting up a Falcon client.</p>
+</section>
+<section id="creating-a-custom-client">
+<h2>Creating a custom client<a class="headerlink" href="#creating-a-custom-client" title="Permalink to this heading">#</a></h2>
+<p>The Falcon Output plugin uses ZeroMQ to stream data. Unlike the <a class="reference internal" href="ZMQ-Interface.html#zmqinterface"><span class="std std-ref">ZMQ Interface</span></a> plugin, this plugin uses the <a class="reference external" href="https://google.github.io/flatbuffers/">FlatBuffers</a> serialization library to reduce latency. An example C++ client can be found in the <code class="code docutils literal notranslate"><span class="pre">clients</span></code> directory of the plugin repository.</p>
+</section>
+<section id="falcon-input">
+<h2>Falcon Input<a class="headerlink" href="#falcon-input" title="Permalink to this heading">#</a></h2>
+<img alt="Annotated Falcon Input Editor" src="../../_images/falconoutput-02.png" />
+<p>In GUI version 0.6.x, installing the Falcon Output plugin also adds a source plugin called “Falcon Input.” This can be used to read data from a Falcon Output plugin that lives in a different instance of the Open Ephys GUI. For example, you could configure the GUI on one computer with a source node, a Record Node, and a Falcon Output, and then use a Falcon Input plugin as the source for visualization and/or closed-loop feedback on a different machine.</p>
+<p>It’s also possible to use Falcon Input and Output plugins within the same instance of the GUI. In the example image below, data from the Falcon Input is merged together with the original File Reader stream. The LFP Viewer shows the same data from both streams, with a slight delay on the Falcon Input stream:</p>
+<img alt="Using Falcon Input and Output in the same signal chain" src="../../_images/falconoutput-03.png" />
 </section>
 <section id="latency-measurements">
 <h2>Latency Measurements<a class="headerlink" href="#latency-measurements" title="Permalink to this heading">#</a></h2>
@@ -456,6 +465,16 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plugin-configuration">
    Plugin Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-custom-client">
+   Creating a custom client
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#falcon-input">
+   Falcon Input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">

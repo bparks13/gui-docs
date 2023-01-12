@@ -388,17 +388,42 @@
 <section id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
 <p>The Online PSTH plugin won’t work unless there is at least one event-generating plugin and one spike-generating plugin upstream from it in the signal chain. Assuming this is true, use the following steps to configure the plugin:</p>
-<ol class="arabic simple">
-<li><p>Select the TTL line to use for triggering.</p></li>
-<li><p>Enter the histogram bin size (default: 25 ms).</p></li>
-<li><p>Enter the pre-event and post-event window size (default: 500 ms).</p></li>
-</ol>
+<section id="define-the-trigger-conditions">
+<h3>Define the trigger conditions<a class="headerlink" href="#define-the-trigger-conditions" title="Permalink to this heading">#</a></h3>
+<p>Click the “Configure” button to bring up the trigger condition interface:</p>
+<img alt="Trigger condition interface" src="../../_images/onlinepsth-02.png" />
+<p>By default, there are no conditions defined. Click the “+” button to create a new condition. Each condition has the following parameters:</p>
+<ul class="simple">
+<li><p><em>Name</em>: can be edited by double-clicking</p></li>
+<li><p><em>TTL Line</em>: select from lines 1-16 by clicking once on the line name</p></li>
+<li><p><em>Type</em>: click on the icon to change the trigger type</p></li>
+</ul>
+<p>The Online PSTH plugin will automatically create a separate histogram for each condition + electrode combination:</p>
+<img alt="Example histograms" src="../../_images/onlinepsth-03.png" />
+<section id="triggering-methods">
+<h4>Triggering methods<a class="headerlink" href="#triggering-methods" title="Permalink to this heading">#</a></h4>
+<p>The “type” of each condition defines how individual trials are triggered:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">TTL</span></code>: (default) every “ON” TTL event on the specified line triggers a new trial</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">TTL</span> <span class="pre">+</span> <span class="pre">MSG</span></code>: a new trial is only triggered by the specified TTL line after receiving a broadcast message containing the condition name. Broadcast messages can be sent using the HTTP server, or by entering a string into the message center at the bottom of the GUI. This option makes it possible to define many unique conditions using only one TTL input line.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">MSG</span></code>: a new trial is triggered by broadcast messages containing the condition name. The timing of the trial start will be accurate to within one software buffer length (typically around 20 ms)</p></li>
+</ul>
+</section>
+</section>
+<section id="define-the-window-size">
+<h3>Define the window size<a class="headerlink" href="#define-the-window-size" title="Permalink to this heading">#</a></h3>
+<p>It’s possible to change the the histogram bin size (default: 25 ms) and pre-event and post-event window size (default: 500 ms) at any time. Note that if the histogram display has been active for many trials without clearing the spikes, recalculating the histograms may be slow.</p>
+</section>
+<section id="select-the-display-type">
+<h3>Select the display type<a class="headerlink" href="#select-the-display-type" title="Permalink to this heading">#</a></h3>
+<p>The visualizer can display data as histograms, spike rasters, or lines, with the option to overlay the rasters on top of the histograms or lines.</p>
+</section>
 </section>
 <section id="plugin-usage">
 <h2>Plugin usage<a class="headerlink" href="#plugin-usage" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Use the buttons in the upper-right of the editor to open the visualizer in a separate tab or window to scroll through detected electrodes.</p></li>
-<li><p>Mouse over data points to view the corresponding time window and number of spikes in a given bin.</p></li>
+<li><p>Mouse over data points to view the corresponding time window and average firing rate in a given bin.</p></li>
 <li><p>Press the “clear” button in the top left of the window to reset the histograms.</p></li>
 </ul>
 <div class="line-block">
@@ -454,6 +479,30 @@
   <a class="reference internal nav-link" href="#plugin-configuration">
    Plugin configuration
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-the-trigger-conditions">
+     Define the trigger conditions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#triggering-methods">
+       Triggering methods
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-the-window-size">
+     Define the window size
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-the-display-type">
+     Select the display type
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plugin-usage">

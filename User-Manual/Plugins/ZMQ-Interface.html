@@ -397,18 +397,33 @@
 <li><p><strong>Channels:</strong> The continuous data channels to send (all are selected by default).</p></li>
 <li><p><strong>Data Port:</strong> Port number for the ZMQ socket.</p></li>
 </ol>
-<p>The editor also shows a list of clients connected to the plugin via the listening port (5557). If a client is successfully connected, then its name will show up in green in the list once acquisition has started. If the client disconnects while acquisition is active, its name will turn red.</p>
+<p>The editor also shows a list of clients connected to the plugin via the listening port (data port + 1). For example, if the data port is 5556, the listening port will be 5557. If a client is successfully connected (a heartbeat message is received), then its name will show up in green in the list once acquisition has started. If the client fails to send a heartbeat message within 5 seconds, its name will turn red.</p>
+</section>
+<section id="using-multiple-plugins">
+<h2>Using multiple plugins<a class="headerlink" href="#using-multiple-plugins" title="Permalink to this heading">#</a></h2>
+<p>It is possible to use multiple ZMQ Interface plugins in the same signal chain, for example to send data after different processing steps, or to send data from different streams. It’s also possible to use one plugin to stream continuous data and one to stream events and/or spikes, in order to route each type of data to different clients.</p>
+<p>To prevent conflicting port numbers, each additional ZMQ Interface added to the signal chain will automatically increase its data port number by two until an available port is found. Unique port numbers can also be assigned manually.</p>
+</section>
+<section id="heartbeat-messages">
+<h2>Heartbeat messages<a class="headerlink" href="#heartbeat-messages" title="Permalink to this heading">#</a></h2>
+<p>In order for a client to be detected, it must periodically send heartbeat messages to the plugin’s listening port. Each heartbeat message is a JSON string with the following fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;application&quot;</span> <span class="p">:</span> <span class="n">application</span> <span class="n">name</span>
+<span class="s2">&quot;uuid&quot;</span> <span class="p">:</span> <span class="n">universally</span> <span class="n">unique</span> <span class="n">identifier</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;heartbeat&quot;</span>
+</pre></div>
+</div>
+<p>The recommended heartbeat interval is 2 seconds.</p>
 </section>
 <section id="data-packets">
 <h2>Data Packets<a class="headerlink" href="#data-packets" title="Permalink to this heading">#</a></h2>
-<p>The ZMQ Interface send multi-part ZMQ messages. Each message consists of three parts:</p>
+<p>The ZMQ Interface sends multi-part ZMQ messages. Each message consists of three parts:</p>
 <section id="message-envelope">
 <h3>Message Envelope<a class="headerlink" href="#message-envelope" title="Permalink to this heading">#</a></h3>
 <p>Contains the type of message being received (<code class="code docutils literal notranslate"><span class="pre">data</span></code>, <code class="code docutils literal notranslate"><span class="pre">spike</span></code>, or <code class="code docutils literal notranslate"><span class="pre">event</span></code>), as well as the index of the message (<code class="code docutils literal notranslate"><span class="pre">message_num</span></code>).</p>
 </section>
 <section id="message-header">
 <h3>Message Header<a class="headerlink" href="#message-header" title="Permalink to this heading">#</a></h3>
-<p>A JSON string containing information about the incoming data packet.</p>
+<p>A JSON string containing information about the incoming data packet:</p>
 <section id="continuous-data">
 <h4>Continuous data<a class="headerlink" href="#continuous-data" title="Permalink to this heading">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;stream&quot;</span> <span class="p">:</span> <span class="n">stream</span> <span class="n">name</span>
@@ -467,10 +482,8 @@
 </section>
 <section id="example-code">
 <h2>Example Code<a class="headerlink" href="#example-code" title="Permalink to this heading">#</a></h2>
-<p>The example code for receiving continuous data is written in Python, although in principle it should be possible from any language supporting ZeroMQ.</p>
 <p>In the <strong>Resources/python_client</strong> directory of the plugin repository, there is an example Python client called <code class="code docutils literal notranslate"><span class="pre">simple_plotter_zmq.py`</span></code> which plots the continuous data received from the Open Ephys GUI over a network port (see image below).</p>
 <img alt="ZMQ Client in Python" src="../../_images/zmqinterface-02.png" />
-<p>In addition to receiving and processing data, each client app must use a heartbeat protocol to maintain the connection with the ZMQ Interface plugin.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -523,6 +536,16 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plugin-configuration">
    Plugin Configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-multiple-plugins">
+   Using multiple plugins
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heartbeat-messages">
+   Heartbeat messages
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
