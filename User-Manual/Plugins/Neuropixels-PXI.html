@@ -301,6 +301,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Falcon-Output.html">Falcon Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="File-Reader.html">File Reader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LFP-Viewer.html">LFP Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LSL-Inlet.html">LSL Inlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Merger.html">Merger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Multiband-Integrator.html">Multi-Band Integrator</a></li>
@@ -309,18 +310,21 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Neuropixels PXI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NIDAQmx.html">NI-DAQmx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Online-PSTH.html">Online PSTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OSC-Events.html">OSC Events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Phase-Calculator.html">Phase Calculator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Phase-Detector.html">Phase Detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Probe-Viewer.html">Probe Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pulse-Pal.html">Pulse Pal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Record-Control.html">Record Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Rhythm-Plugins.html">Rhythm Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ripple-Detector.html">Ripple Detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spectrum-Viewer.html">Spectrum Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spike-Detector.html">Spike Detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spike-Sorter.html">Spike Sorter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spike-Viewer.html">Spike Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Splitter.html">Splitter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tracking-Plugin.html">Tracking Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TTL-Panels.html">TTL Panels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Virtual-Reference.html">Virtual Reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ZMQ-Interface.html">ZMQ Interface</a></li>
 </ul>
@@ -389,74 +393,94 @@
 <h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>One <strong>computer</strong> (see <a class="reference internal" href="../Hardware-requirements.html#hardwarerequirements"><span class="std std-ref">Hardware requirements</span></a> for recommended specs)</p></li>
-<li><p>One <strong>PXI chassis</strong> (so far we’ve tested National Instruments PXIe-1071 and PXIe-1082, and ADLINK PXES-2301)</p></li>
-<li><p>One <strong>PXI remote control module</strong>, housed in the PXI chassis (we’ve tested National Instruments PXIe-8381 and PXIe-8398) – requires <a class="reference external" href="https://www.ni.com/en-us/support/downloads/drivers/download.ni-daqmx.html">NIDAQmx driver</a></p></li>
-<li><p>One <strong>PCIe interface card</strong>, housed in the computer (we’ve tested National Instruments PCIe-8381 and PCIe-8398)</p></li>
+<li><p>One <strong>PXI chassis</strong> (e.g. NI PXIe-1071, PXIe-1082, PXIe-1083, or ADLINK PXES-2301)</p></li>
+<li><p>One <strong>PXI remote control module</strong>, housed in the PXI chassis – requires <a class="reference external" href="https://www.ni.com/en-us/support/downloads/drivers/download.ni-daqmx.html">NIDAQmx driver</a> (note that chassis such as PXIe-1083 have a built-in control module)</p></li>
+<li><p>One <strong>PCIe or Thunderbolt interface card</strong> in your workstation (whichever is compatible with your remote control module)</p></li>
 <li><p><em>(optional)</em> One <strong>PXI-based analog and digital I/O module</strong> (see the <a class="reference internal" href="NIDAQmx.html#ni-daqmx"><span class="std std-ref">NI-DAQmx</span></a> page for a list of hardware we’ve tested)</p></li>
-<li><p><strong>Cables</strong> to connect the remote control module to the PCIe card (e.g., National Instruments MXI-Express Cables, Gen 2 x8)</p></li>
+<li><p><strong>Cables</strong> to connect the remote control module to the PCIe card (e.g., NI MXI-Express or Thunderbolt cables)</p></li>
 <li><p>One or more <strong>Neuropixels basestations</strong> (available from IMEC)</p></li>
 <li><p>One or more <strong>Neuropixels cables</strong> (black + yellow twisted pair, USB-C to Omnetics, available from IMEC)</p></li>
 <li><p>One or more <strong>Neuropixels headstages</strong> (available from IMEC)</p></li>
 <li><p>One or more <strong>Neuropixels probes</strong> (available from IMEC)</p></li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Some users have reported not being able detect the PXIe remote control module, despite it being properly connected to the motherboard. In general, any physical x16 PCIe slot should be fine, but there are motherboards that contain x16 slots that are actually wired as x4, which won’t work. There are also motherboards that have not been able to communicate with the PXI hardware for unknown reasons. If you are unsure whether your machine has the appropriate PCIe slots, please get in touch.</p>
-</div>
 </section>
 <section id="compatible-probes">
 <h2>Compatible probes<a class="headerlink" href="#compatible-probes" title="Permalink to this heading">#</a></h2>
 <p>This plugin can stream data from the following Neuropixels probe types:</p>
 <table class="table">
 <colgroup>
-<col style="width: 29%" />
-<col style="width: 24%" />
-<col style="width: 47%" />
+<col style="width: 35%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 25%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Probe</strong></p></td>
 <td><p><strong>Channels</strong></p></td>
-<td><p><strong>Notes</strong></p></td>
+<td><p><strong>Plugin Version</strong></p></td>
+<td><p><strong>Min. PXI Firmware</strong></p></td>
 </tr>
 <tr class="row-even"><td><p>Neuropixels 1.0</p></td>
 <td><p>384 AP, 384 LFP</p></td>
 <td></td>
-</tr>
-<tr class="row-odd"><td><p>Neuropixels NHP Active</p></td>
-<td><p>384 AP, 384 LFP</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Neuropixels NHP Passive</p></td>
+<tr class="row-odd"><td><p>Neuropixels NHP Prototype (10 mm, 25 mm, and 45 mm)</p></td>
+<td><p>384 AP, 384 LFP</p></td>
+<td><p>≥0.2.x</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Neuropixels NHP 128 CH Passive</p></td>
 <td><p>128 AP, 128 LFP</p></td>
-<td><p>May require <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">firmware update</span></a></p></td>
+<td><p>≥0.2.x</p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.4.x.zip">BS137, BSC176</a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Neuropixels Ultra - Fixed</p></td>
+<tr class="row-odd"><td><p>Neuropixels NHP Commercial (10 mm)</p></td>
+<td><p>384 AP, 384 LFP</p></td>
+<td><p><strong>≥0.5.x</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.5.x.zip">BS169, BSC176</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Neuropixels UHD Phase 1</p></td>
 <td><p>384 AP, 384 LFP</p></td>
 <td></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><p>Neuropixels Ultra - Switchable</p></td>
+<tr class="row-odd"><td><p>Neuropixels UHD Phase 2 (switchable)</p></td>
 <td><p>384 AP, 384 LFP</p></td>
-<td><p>May require <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">firmware update</span></a></p></td>
+<td><p>≥0.2.x</p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.4.x.zip">BS137, BSC176</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Neuropixels UHD Phase 3 (ultradense)</p></td>
+<td><p>384 AP, 384 LFP</p></td>
+<td><p><strong>≥0.5.x</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.5.x.zip">BS169, BSC176</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Neuropixels 2.0 Single Shank</p></td>
 <td><p>384 wideband</p></td>
-<td><p>May require <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">firmware update</span></a></p></td>
+<td><p>≥0.2.x</p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.4.x.zip">BS137, BSC176</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Neuropixels 2.0 Four Shank</p></td>
 <td><p>384 wideband</p></td>
-<td><p>May require <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">firmware update</span></a></p></td>
+<td><p>≥0.2.x</p></td>
+<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.4.x.zip">BS137, BSC176</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Neuropixels Opto</p></td>
 <td><p>384 AP, 384 LFP</p></td>
-<td><p>Requires an Opto basestation</p></td>
+<td><p>≥0.4.x</p></td>
+<td><p>Special basestation required</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Regardless of which probe type you’re using, we recommend updating to the latest Neuropixels PXI plugin and basestation firmware (<a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.5.x.zip">BS169, BSC176</a>). This firmware is required for plugin version <strong>0.5.x</strong> and higher, as well as the latest version of SpikeGLX. See <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">Updating basestation firmware</span></a> section for information on how to modify your firmware.</p>
+</div>
 </section>
 <section id="connecting-to-the-pxi-system">
 <h2>Connecting to the PXI system<a class="headerlink" href="#connecting-to-the-pxi-system" title="Permalink to this heading">#</a></h2>
 <p>Before using this plugin, make sure you’ve followed all of the steps in the <a class="reference external" href="https://www.neuropixels.org/support">Neuropixels User Manual</a> to set up and configure your hardware. Prior to using your Neuropixels PXI basestation, you must install the Enclustra drivers (available for <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/main/Resources/Enclustra_Win7%268.zip">Windows 7/8</a> and <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/main/Resources/Enclustra_Win10.zip">Windows 10</a>). See section 4.2.2 of the User Manual for installation instructions.</p>
-<p>Once your PXI system is up and running, you can drag and drop the “Neuropix-PXI” module from the Processor List onto the Editor Viewport. The GUI will automatically connect to any available basestations in your connected PXI chassis. If no PXI basestations are found, the plugin can be run in <a class="reference internal" href="#simulation-mode"><span class="std std-ref">simulation mode</span></a>.</p>
+<p>Once your PXI system is up and running, you can drag and drop the “Neuropix-PXI” module from the Processor List onto the Editor Viewport. The GUI will automatically connect to any available basestations in your PXI chassis with probes connected. If no probes are found, the plugin can be run in <a class="reference internal" href="#simulation-mode"><span class="std std-ref">simulation mode</span></a>.</p>
 <p>The editor will automatically create a probe selection interface for each basestation that’s available. Each basestation can communicate with up to 4 probes (for Neuropixels 1.0, NHP, and Ultra) or 8 probes (for 2.0). When the probes are initially detected, they show up as orange circles. Once they are initialized, connected probes become green. After the probes turn green, the plugin is ready to begin data acquisition.</p>
 </section>
 <section id="troubleshooting-connections">
@@ -476,7 +500,7 @@
 </ul>
 <p>Any probes detected by the Neuropixels PXI plugin will be calibrated automatically when the plugin is loaded, provided that calibration files are stored in one of the following locations:</p>
 <ul class="simple">
-<li><p><code class="code docutils literal notranslate"><span class="pre">C:\ProgramData\Open</span> <span class="pre">Ephys\CalibrationInfo\&lt;probe_serial_number&gt;</span></code> (recommended)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">C:\ProgramData\Open</span> <span class="pre">Ephys\CalibrationInfo\&lt;probe_serial_number&gt;</span></code> (recommended - note that <strong>ProgramData</strong> may be a hidden folder on your system, so you’ll need to change the File Explorer options to show hidden files)</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">&lt;open-ephys-executable-folder&gt;\CalibrationInfo\&lt;probe_serial_number&gt;</span></code> (if you used the Open Ephys installer, the executable will be located in <code class="code docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Open</span> <span class="pre">Ephys</span></code>)</p></li>
 </ul>
 <p>If these files cannot be found, a warning message will appear. It’s still possible to acquire data from uncalibrated probes, but this data should be used for testing purposes only. The calibration files must copied to the correct location prior to running any actual experiments.</p>
@@ -655,21 +679,21 @@
 <a class="reference internal image-reference" href="../../_images/HST.png"><img alt="Headstage test board popup window" src="../../_images/HST.png" style="width: 400px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The headstage test module will only work if you have <em>not</em> updated your basestation firmware. However, we have also found that the headstage tests are rarely needed to accurately diagnose a problem with data transmission. If you are unsure whether your headstage is functional, swapping it out with a different headstage is usually more informative than running the headstage tests.</p>
+<p>The headstage tests have been re-enabled as of plugin version 0.5.x. However, we have also found that the headstage tests are rarely needed to accurately diagnose a problem with data transmission. If you are unsure whether your headstage is functional, swapping it out with a different headstage is usually more informative than running the headstage tests.</p>
 </div>
 </section>
 <section id="updating-basestation-firmware">
 <h2>Updating basestation firmware<a class="headerlink" href="#updating-basestation-firmware" title="Permalink to this heading">#</a></h2>
-<p>This plugin is compatible with any recent basestation firmware version. However, if you’re using Neuropixels 2.0, NHP Passive, or switchable Ultra probes, you’ll need to upgrade to the latest firmware (available <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/main/Resources/Neuropixels_PXI_APIv3_Firmware.zip">here</a>).</p>
-<p>The currently installed firmware version will appear in the info section of the Neuropixels settings interface (upper right text block). If your basesation firmware version is “2.0137” and your basestation connect board firmware version is “3.2176”, you already have the latest firmware installed.</p>
+<p>Version <strong>0.5.x</strong> of the Neuropixels PXI plugin requires a basestation firmware update. The latest firmware (BS169, BSC176) can be downloaded <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/add-geometries/Resources/imec-firmware-for-plugin-0.5.x.zip">here</a>.</p>
+<p>The currently installed firmware version will appear in the info section of the Neuropixels settings interface (upper right text block). If your basesation firmware version is “2.0169” and your basestation connect board firmware version is “3.2176”, you already have the latest firmware installed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you’ve been using SpikeGLX version 3.0 or higher, your basestation already has the latest firmware.</p>
+<p>If you’ve been using SpikeGLX 3.0 Release 20220101 or higher, your basestation already has the latest firmware.</p>
 </div>
 <p>If you need to update your firmware, first click the “UPDATE FIRMWARE” button to open the firmware update interface:</p>
 <img alt="Interface for updating firmware" src="../../_images/neuropix-pxi-08.png" />
-<p>Next, select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the basestation connect board (<code class="code docutils literal notranslate"><span class="pre">QBSC*.bin</span></code>), and click “UPLOAD”. The upload process can take anywhere from 10-15 minutes, so please be patient.</p>
-<p>Immediately after the basestation connect board firmware upload finished, use the lower drop-down menu to select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the basestation (<code class="code docutils literal notranslate"><span class="pre">BS*.bin</span></code>), and click “UPLOAD”.</p>
+<p>Next, select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the <strong>basestation connect board</strong> (<code class="code docutils literal notranslate"><span class="pre">QBSC*.bin</span></code>), and click “UPLOAD”. The upload process can take anywhere from 10-15 minutes, so please be patient.</p>
+<p>Immediately after the basestation connect board firmware upload finished, use the lower drop-down menu to select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the <strong>basestation</strong> (<code class="code docutils literal notranslate"><span class="pre">BS*.bin</span></code>), and click “UPLOAD”.</p>
 <p>Finally, once the basestation firmware is finished uploading, restart your computer and power cycle the PXI chassis for the changes to take effect.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
