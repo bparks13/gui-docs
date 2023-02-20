@@ -396,14 +396,29 @@
 <ul class="simple">
 <li><p>One <strong>computer</strong> (see <a class="reference internal" href="../Hardware-requirements.html#hardwarerequirements"><span class="std std-ref">Hardware requirements</span></a> for recommended specs)</p></li>
 <li><p>One <strong>PXI chassis</strong> (e.g. NI PXIe-1071, PXIe-1082, PXIe-1083, or ADLINK PXES-2301)</p></li>
-<li><p>One <strong>PXI remote control module</strong>, housed in the PXI chassis – requires <a class="reference external" href="https://www.ni.com/en-us/support/downloads/drivers/download.ni-daqmx.html">NIDAQmx driver</a> (note that chassis such as PXIe-1083 have a built-in control module)</p></li>
-<li><p>One <strong>PCIe or Thunderbolt interface card</strong> in your workstation (whichever is compatible with your remote control module)</p></li>
 <li><p><em>(optional)</em> One <strong>PXI-based analog and digital I/O module</strong> (see the <a class="reference internal" href="NIDAQmx.html#ni-daqmx"><span class="std std-ref">NI-DAQmx</span></a> page for a list of hardware we’ve tested)</p></li>
-<li><p><strong>Cables</strong> to connect the remote control module to the PCIe card (e.g., NI MXI-Express or Thunderbolt cables)</p></li>
-<li><p>One or more <strong>Neuropixels basestations</strong> (available from IMEC)</p></li>
-<li><p>One or more <strong>Neuropixels cables</strong> (black + yellow twisted pair, USB-C to Omnetics, available from IMEC)</p></li>
-<li><p>One or more <strong>Neuropixels headstages</strong> (available from IMEC)</p></li>
-<li><p>One or more <strong>Neuropixels probes</strong> (available from IMEC)</p></li>
+</ul>
+<p>For chassis without a built-in controller (e.g. NI PXIe-1071, NI PXIe-1082, or ADLINK PXES-2301), you’ll need:</p>
+<ul class="simple">
+<li><p>One <strong>PXI remote control module</strong> (we’ve tested NI PXIe-8381 and PXIe-8398) – requires NIDAQmx driver</p></li>
+<li><p>One <strong>PCIe interface card</strong> (we’ve tested National Instruments PCIe-8381 and PCIe-8398)</p></li>
+<li><p><strong>MXI-Express Cables</strong> to connect the remote control module to the PCIe card</p></li>
+</ul>
+<p>For chassis with a built-in Thunderbolt controller (e.g. PXIe-1083):</p>
+<ul class="simple">
+<li><p>One <strong>Thunderbolt interface card</strong> that’s compatible with your motherboard</p></li>
+<li><p>One sufficiently long <strong>Thunderbolt 3 cable</strong></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Thunderbolt 4 cables will not work, as the Neuropixels basestations cannot be detected with these newer cables.</p>
+</div>
+<p>Ordered via <a class="reference external" href="https://neuropixels.org">neuropixels.org</a>:</p>
+<ul class="simple">
+<li><p>One or more <strong>Neuropixels basestations</strong> (can acquire data from 4 Neuropixels 1.0 probes per basestation)</p></li>
+<li><p>One or more <strong>Neuropixels cables</strong> (black + yellow twisted pair, USB-C to Omnetics)</p></li>
+<li><p>One or more <strong>Neuropixels headstages</strong></p></li>
+<li><p>One or more <strong>Neuropixels probes</strong></p></li>
 </ul>
 </section>
 <section id="compatible-probes">

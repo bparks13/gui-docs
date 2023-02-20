@@ -362,6 +362,10 @@
   <section id="hardware-requirements">
 <span id="hardwarerequirements"></span><h1>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this heading">#</a></h1>
 <p>You can demo the Open Ephys GUI on any computer using the <a class="reference internal" href="Plugins/File-Reader.html#filereader"><span class="std std-ref">File Reader</span></a> to read in data that’s already been saved. But if you are planning to run experiments, you’ll need to make sure your system is capable enough to keep up with data acquisition. In general, the minimum requirements will depend on how many channels you’d like to acquire simultaneously, and whether you need low-latency closed-loop feedback. Below, we provide some guidelines for configuring your data acquisition machine.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The most important thing you can do to improve performance is use a solid-state drive (ideally NVMe) for writing data. And if you need to record ≥128 channels simultaneously, an SSD is required.</p>
+</div>
 <section id="for-the-open-ephys-acquisition-board">
 <h2>For the Open Ephys acquisition board<a class="headerlink" href="#for-the-open-ephys-acquisition-board" title="Permalink to this heading">#</a></h2>
 <img alt="Acquisition board hardware" src="../_images/acq-board.jpg" />
@@ -373,8 +377,8 @@
 <li><p><strong>Operating system</strong> - the acquisition board works equally well on macOS, Windows, and Linux (all distros).</p></li>
 <li><p><strong>Processor</strong> - A 4-core, 3.0+ GHz processor is fine for 32-channel recordings, but you’ll want more cores and more speed as you scale up. Having a faster processor will allow you to build more complex signal chains without worrying about CPU overload. The GUI uses multithreading for data acquisition and recording, so having more cores is also helpful.</p></li>
 <li><p><strong>Memory</strong> - at least 1 GB of memory per 32 channels.</p></li>
-<li><p><strong>Data storage</strong> - a solid state drive is <em>strongly</em> recommended, and required for any recordings involving more than 128 channels.</p></li>
-<li><p><strong>Graphics card</strong> - the GUI doesn’t rely much on the GPU for processing, so a good graphics card is not important for data acquisition. However, consider upgrading your graphics card to speed up offline analysis steps (such as spike sorting).</p></li>
+<li><p><strong>Data storage</strong> - a solid state drive for writing data is <em>strongly</em> recommended for all configurations, and required for any recordings involving at least 128 channels.</p></li>
+<li><p><strong>Graphics card</strong> - the GUI doesn’t rely much on the GPU for processing, so a good graphics card is not critical for data acquisition. However, consider upgrading your graphics card to speed up offline analysis steps (such as spike sorting).</p></li>
 <li><p><strong>Connections</strong> - At least one USB 3.0 port</p></li>
 </ul>
 </section>
@@ -407,13 +411,25 @@
 <h3>Other hardware<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>The following summarizes the additional hardware you’ll need to buy to run Neuropixels experiments. Full details can be found on the <a class="reference internal" href="Plugins/Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin page.</p>
 <ul class="simple">
-<li><p>One <strong>PXI chassis</strong> (so far we’ve tested National Instruments PXIe-1071 and PXIe-1082)</p></li>
-<li><p>One <strong>PXI remote control module</strong> (we’ve tested National Instruments PXIe-8381 and PXIe-8398) – requires NIDAQmx driver</p></li>
-<li><p>One <strong>PCIe interface card</strong> (we’ve tested National Instruments PCIe-8381 and PCIe-8398)</p></li>
+<li><p>From IMEC: Neuropixels basestations, cables, headstages, and probes</p></li>
+<li><p>One <strong>PXI chassis</strong> (so far we’ve tested National Instruments PXIe-1071, PXIe-1082, and PXIe-1083 and ADLINK PXES-2301)</p></li>
 <li><p><em>(optional)</em> One <strong>PXI-based analog and digital I/O module</strong> (see the <a class="reference internal" href="Plugins/NIDAQmx.html#ni-daqmx"><span class="std std-ref">NI-DAQmx</span></a> page for a list of hardware we’ve tested)</p></li>
-<li><p><strong>Cables</strong> to connect the remote control module to the PCIe card (e.g., National Instruments MXI-Express Cables, Gen 2 x8)</p></li>
-<li><p>From IMEC: Neuropixels PXIe module, cables, headstages, and probes</p></li>
 </ul>
+<p>For chassis without a built-in controller (e.g. PXIe-1071, PXIe-1082), you’ll need:</p>
+<ul class="simple">
+<li><p>One <strong>PXI remote control module</strong> (we’ve tested NI PXIe-8381 and PXIe-8398) – requires NIDAQmx driver</p></li>
+<li><p>One <strong>PCIe interface card</strong> (we’ve tested NI PCIe-8381 and PCIe-8398)</p></li>
+<li><p><strong>MXI-Express Cables</strong> to connect the remote control module to the PCIe card</p></li>
+</ul>
+<p>For chassis with a built-in Thunderbolt controller (e.g. PXIe-1083):</p>
+<ul class="simple">
+<li><p>One <strong>Thunderbolt interface card</strong> that’s compatible with your motherboard</p></li>
+<li><p>One sufficiently long <strong>Thunderbolt 3 cable</strong></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Thunderbolt 4 cables will not work, as the Neuropixels basestations cannot be detected with these newer cables.</p>
+</div>
 </section>
 </section>
 </section>
