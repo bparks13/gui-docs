@@ -388,18 +388,14 @@
 </table>
 <section id="recommended-signal-chain">
 <h2>Recommended signal chain<a class="headerlink" href="#recommended-signal-chain" title="Permalink to this heading">#</a></h2>
-<p>The Event Translator plugin only works if it has multiple data streams passing through it. This can happen when using a source plugin that generates multiple streams on its own (such as :ref`neuropixelspxi`), or when using a <a class="reference internal" href="Merger.html#merger"><span class="std std-ref">Merger</span></a> with multiple source nodes.</p>
+<p>The Event Translator plugin only works if it has multiple data streams passing through it. This can happen when using a source plugin that generates multiple streams on its own (such as <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a>), or when using a <a class="reference internal" href="Merger.html#merger"><span class="std std-ref">Merger</span></a> with multiple source nodes.</p>
 <p>All incoming streams <em>must</em> share a digital input, with relatively slow (~1 Hz or less) TTL events at regular or random intervals. This shared hardware input makes it possible to determine the exact offset and scaling of each source’s sample clock relative to the “main” data stream.</p>
 </section>
 <section id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
 <p>By default, the Event Translator will set the first stream as the main stream, and TTL line 1 (1-based indexing) as the sync line.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>To change the main stream, click on one of the gray sync buttons and select “Set as main clock.”</p></li>
-</ul>
-</div></blockquote>
 <ul class="simple">
+<li><p>To change the main stream, click on one of the gray sync buttons and select “Set as main clock.”</p></li>
 <li><p>To change the sync line for individual streams, click on one of the gray sync buttons and select the line to which the shared digital input is connected.</p></li>
 </ul>
 <p>It’s possible to change the main stream and sync lines while acquisition is active, but not after recording has started.</p>
