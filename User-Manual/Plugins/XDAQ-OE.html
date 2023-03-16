@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Multi-Band Integrator &#8212; Open Ephys GUI Docs</title>
+    <title>XDAQ &#8212; Open Ephys GUI Docs</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -42,8 +42,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Network Events" href="Network-Events.html" />
-    <link rel="prev" title="Merger" href="Merger.html" />
+    <link rel="next" title="ZMQ Interface" href="ZMQ-Interface.html" />
+    <link rel="prev" title="Virtual Reference" href="Virtual-Reference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -306,7 +306,7 @@
 <li class="toctree-l2"><a class="reference internal" href="LSL-Inlet.html">LSL Inlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Merger.html">Merger</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-Band Integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiband-Integrator.html">Multi-Band Integrator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Network-Events.html">Network Events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Neuropixels-CAR.html">Neuropixels CAR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Neuropixels-PXI.html">Neuropixels PXI</a></li>
@@ -329,7 +329,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Tracking-Plugin.html">Tracking Plugin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TTL-Panels.html">TTL Panels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Virtual-Reference.html">Virtual Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="XDAQ-OE.html">XDAQ</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">XDAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ZMQ-Interface.html">ZMQ Interface</a></li>
 </ul>
 </li>
@@ -361,18 +361,18 @@
             
             <article class="bd-article" role="main">
               
-  <section id="multi-band-integrator">
-<span id="multibandintegrator"></span><h1>Multi-Band Integrator<a class="headerlink" href="#multi-band-integrator" title="Permalink to this heading">#</a></h1>
-<img alt="Annotated Multi-Band Integrator Editor" src="../../_images/multibandintegrator-01.png" />
+  <section id="xdaq">
+<span id="xdaq-oe"></span><h1>XDAQ<a class="headerlink" href="#xdaq" title="Permalink to this heading">#</a></h1>
+<img alt="Annotated settings interface for the XDAQ plugin" src="../../_images/xdaq-oe-01.png" />
 <table class="table" id="id1">
-<caption><span class="caption-text">Mixes, weights, and applies a rolling average to bandwidths of interest on a single channel. This plugin can be used to trigger feedback based on neural oscillations.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Streams data from XDAQ Systems.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
-<td><p>Filter</p></td>
+<td><p>Source</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Platforms</em></p></td>
 <td><p>Windows, Linux, macOS</p></td>
@@ -381,36 +381,73 @@
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Michelle Fogerson</p></td>
+<td><p>Stone Lin</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/multi-band-integrator">open-ephys-plugins/multi-band-integrator</a></p></td>
+<td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/XDAQ-OE">open-ephys-plugins/XDAQ-OE</a></p></td>
 </tr>
 </tbody>
 </table>
-<p>The output of the Multi-Band Integrated can be thought of as a real-time power signal for waveforms with complex but well-specified frequency components. It can be paired with the <a class="reference internal" href="Crossing-Detector.html#crossingdetector"><span class="std std-ref">Crossing Detector</span></a> plugin to trigger events when the output power reaches a threshold.</p>
-<p>It was originally developed by Michelle Fogerson in the Huguenard Lab at Stanford to detect absence-like seizures in mice based on their spectral properties (see <a class="reference external" href="https://www.cell.com/neuron/comments/S0896-6273(16)30864-9">Sorokin et al., 2016</a> for more details). The default parameters are set for detecting these oscillations:</p>
-<ul class="simple">
-<li><p><strong>Band 1:</strong> 6-9 Hz, gain = 4</p></li>
-<li><p><strong>Band 2:</strong> 13-18 Hz, gain = 7</p></li>
-<li><p><strong>Band 3:</strong> 1-4 Hz, gain = -1</p></li>
-</ul>
-<p>It can also be configured to detect oscillations in different frequency bands, such as ripples, spindles, or alpha waves, although this hasn’t been tested yet.</p>
-<section id="installing-and-upgrading">
-<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
-<p>The Multi-Band Integrator plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “Multi-Band Integrator” plugin, and click the “Install” button.</p>
-<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
-</section>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more in-depth documentation on the XDAQ, please refer to the <a class="reference external" href="https://help.kontex.io/">XDAQ help site</a>.</p>
+</div>
 <section id="plugin-configuration">
-<h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
-<p>The plugin editor allows the user to specify:</p>
-<ul class="simple">
-<li><p><strong>Rolling average window duration</strong>: Window over which to smooth the output of the multi-band integrator.</p></li>
-<li><p><strong>Channels</strong>: The continuous channels that will be analyzed. These channels will be overwritten by the result of the multi-band integration operation, so make sure you have your Record Node placed <em>before</em> the Multi-Band Integrator in the signal chain.</p></li>
-<li><p><strong>Frequency Bands</strong>: For each of 3 frequency bands, you can configure the <strong>lower bound</strong>, <strong>upper bound</strong>, and <strong>gain</strong>. To use fewer than three bands, set one or more of the gains to 0. Gains can also be set to negative values in order to subtract power in particular bands from the output.</p></li>
-</ul>
-<p>The plugin is typically used in conjunction with the <a class="reference internal" href="Crossing-Detector.html#crossingdetector"><span class="std std-ref">Crossing Detector</span></a>. The screenshot below shows an example of detecting absence-like seizures, using the example data found in the <a class="reference external" href="https://github.com/open-ephys-plugins/multi-band-integrator">Multi-Band Integrator GitHub repository</a>:</p>
-<img alt="Multi-Band Integrator in action" src="../../_images/multibandintegrator-02.png" />
+<h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
+<section id="headstages">
+<h3>Headstages<a class="headerlink" href="#headstages" title="Permalink to this heading">#</a></h3>
+<p>XDAQ Systems (ONE, CORE…) can support up to 16 RHD headstage chips depending on model and configuration. Each row corresponds to one HDMI port on the XDAQ, and each column corresponds to one headstage chip on that port.:</p>
+<img alt="../../_images/xdaq-oe-02.png" src="../../_images/xdaq-oe-02.png" />
+<p>X-Headstages are manufactured using advanced packaging technology. Thus, one X-Headstage may contain multiple headstage chips and will display multiple chips in the GUI. For example, an X6R128 headstage will display as two 64-channel headstages in the GUI.</p>
+<p>Each XDAQ ONE port supports up to 4 RHD chips (2 for XDAQ CORE). Use an adapter to run multiple X-Headstages if necessary.</p>
+<p>The module will automatically detect headstages that are connected. However, if you add or remove headstages after the module has been loaded, you need to press the “RESCAN” button.</p>
+</section>
+<section id="sample-rate-selection">
+<h3>Sample rate selection<a class="headerlink" href="#sample-rate-selection" title="Permalink to this heading">#</a></h3>
+<p>Sample rates between 1 and 30 kHz can be selected with this drop-down menu. This will determine the sample rate for all headstages, digital inputs, and ADCs.</p>
+</section>
+<section id="bandwidth-interface">
+<h3>Bandwidth interface<a class="headerlink" href="#bandwidth-interface" title="Permalink to this heading">#</a></h3>
+<p>Used to determine the settings for the analog high and low cut filters on the Intan chip. Because only certain values are possible for each, the number that appears may be different from the number you typed in; the chip will automatically select the nearest value, and that will be indicated in the GUI.</p>
+</section>
+<section id="dsp-button">
+<h3>DSP button<a class="headerlink" href="#dsp-button" title="Permalink to this heading">#</a></h3>
+<p>in addition to the analog filters, the Intan chips also have an on-chip DSP high-pass filter for removing the DC offset on each channel. This can be toggled on and off by clicking the “DSP” button (yellow = on), and the cutoff frequency can be changed by typing a value into the associated text box. Again, there are only certain values for the cutoff frequency; the chip will choose the one closest to what you selected and return this value to the GUI.</p>
+</section>
+<section id="audio-output">
+<h3>Audio output<a class="headerlink" href="#audio-output" title="Permalink to this heading">#</a></h3>
+<p>The “AUDIO OUT” interface will allow you select up to 2 channels to preview in real time, directly from the acquisition board/evaluation board.
+There is an audio jack that’s mirrored to the first two analog output channels (CH1 and CH2 of the Analog I/O for L and R sound outputs when connected to HDMI port for analog output).
+To select a channel for monitoring, click on one of the two “Audio Out” buttons to reveal the pop-up channel selector.</p>
+</section>
+<section id="noise-slicer">
+<h3>Noise slicer<a class="headerlink" href="#noise-slicer" title="Permalink to this heading">#</a></h3>
+<p>Sets the threshold for the noise slicer on the hardware audio outputs (sets any values below threshold to zero, to improve the signal-to-noise ratio). In practice, this doesn’t work particularly well.</p>
+</section>
+<section id="adc-selection">
+<h3>ADC selection<a class="headerlink" href="#adc-selection" title="Permalink to this heading">#</a></h3>
+<p>Pressing the “ADC 1–8” button toggles the ADC inputs on and off. If the button is off (gray), the ADC channels on the acquisition board/evaluation board will be discarded. If the button is on (yellow), they will be sent as parallel data channels, with the same sampling rate as the neural data. A Digital &amp; Analog I/O board needs to be connected to the second HDMI port from the left.</p>
+</section>
+<section id="dac-ttls">
+<h3>DAC TTLs<a class="headerlink" href="#dac-ttls" title="Permalink to this heading">#</a></h3>
+<p><em>UNTESTED FEATURE</em></p>
+</section>
+<section id="dac-high-pass-filter">
+<h3>DAC High-pass filter<a class="headerlink" href="#dac-high-pass-filter" title="Permalink to this heading">#</a></h3>
+<p><em>UNTESTED FEATURE</em> Sets the high-pass filter cutoff for the DAC outputs</p>
+</section>
+<section id="ttl-settle">
+<h3>TTL settle<a class="headerlink" href="#ttl-settle" title="Permalink to this heading">#</a></h3>
+<p><em>UNTESTED FEATURE</em> Ties one of the digital inputs on the acquisition board/evaluation board to the “fast-settle” functionality of the Intan chips. If the selected digital input channel goes high, it will trigger the reset of the amplifiers across all headstages.</p>
+</section>
+<section id="impedance-testing">
+<h3>Impedance testing<a class="headerlink" href="#impedance-testing" title="Permalink to this heading">#</a></h3>
+<p>To open the impedance measurement interface, click the “window” or “tab” buttons at the top of the plugin editor. This will bring up an impedance measurement interface that looks like this:</p>
+<img alt="Annotated impedance measurement interface" src="../../_images/xdaq-oe-03.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -422,17 +459,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="Merger.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="Virtual-Reference.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Merger</p>
+          <p class="prev-next-title">Virtual Reference</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="Network-Events.html" title="next page">
+  <a class='right-next' id="next-link" href="ZMQ-Interface.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Network Events</p>
+      <p class="prev-next-title">ZMQ Interface</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -453,14 +490,66 @@
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-and-upgrading">
-   Installing and upgrading
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plugin-configuration">
-   Plugin Configuration
+   Plugin configuration
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#headstages">
+     Headstages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-rate-selection">
+     Sample rate selection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bandwidth-interface">
+     Bandwidth interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dsp-button">
+     DSP button
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#audio-output">
+     Audio output
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#noise-slicer">
+     Noise slicer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adc-selection">
+     ADC selection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dac-ttls">
+     DAC TTLs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dac-high-pass-filter">
+     DAC High-pass filter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ttl-settle">
+     TTL settle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impedance-testing">
+     Impedance testing
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 

@@ -329,6 +329,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Plugins/Tracking-Plugin.html">Tracking Plugin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Plugins/TTL-Panels.html">TTL Panels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Plugins/Virtual-Reference.html">Virtual Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Plugins/XDAQ-OE.html">XDAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Plugins/ZMQ-Interface.html">ZMQ Interface</a></li>
 </ul>
 </li>
@@ -449,11 +450,13 @@
 </section>
 <section id="reading-data-in-matlab">
 <h2>Reading data in Matlab<a class="headerlink" href="#reading-data-in-matlab" title="Permalink to this heading">#</a></h2>
-<p>For now, use Matlab’s <code class="code docutils literal notranslate"><span class="pre">h5read</span></code> method to open datasets within an NWB file, e.g.:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">h5read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">dataset</span><span class="p">)</span><span class="w"></span>
-</pre></div>
+<ul class="simple">
+<li><p>Use the <cite>open-ephys-matlab-tools</cite> &lt;<a class="github reference external" href="https://github.com/open-ephys/open-ephys-matlab-tools">open-ephys/open-ephys-matlab-tools</a>&gt;`__ library.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NWB files written by the Open Ephys GUI are not currently compatible with the <code class="code docutils literal notranslate"><span class="pre">MatNWB</span></code> library. We are working on a fix!</p>
 </div>
-<p>NWB-specific loading functions are coming soon.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
