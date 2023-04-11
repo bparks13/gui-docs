@@ -365,7 +365,7 @@
 <span id="spectrumviewer"></span><h1>Spectrum Viewer<a class="headerlink" href="#spectrum-viewer" title="Permalink to this heading">#</a></h1>
 <img alt="Annotated Spectrum Viewer Editor" src="../../_images/spectrumviewer-01.png" />
 <table class="table" id="id1">
-<caption><span class="caption-text">Displays the real-time power spectrum for 1 or 2 continuous channels.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Displays the real-time power spectrum for up to 8 continuous channels.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
@@ -381,17 +381,13 @@
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Sumedh Nagrale, Mark Schatza, Josh Siegle</p></td>
+<td><p>Sumedh Nagrale, Mark Schatza, Josh Siegle, Anjal Doshi</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
 <td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/spectrum-viewer">open-ephys-plugins/spectrum-viewer</a></p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Spectrum Viewer plugin is not yet available for GUI version 0.6.X.</p>
-</div>
 <section id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
 <p>The Spectrum Viewer plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> to access the Plugin Installer, browse to the “Spectrum Viewer” plugin, and click the “Install” button.</p>
@@ -399,17 +395,31 @@
 </section>
 <section id="plugin-configuration">
 <h2>Plugin Configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
-<p>First, make sure the correct sub-processor is selected in the plugin editor. Then, select one or two channels to display. The first channel (A) will appear in yellow. The second channel (B) will appear in green.</p>
-<p>You can update the selected channels, but not the selected sub-processor, while acquisition is active.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Spectrum Viewer plugin may take a few seconds to initialize, so please be patient!</p>
+</div>
+<p>First, make sure the correct stream is selected in the plugin editor. Then, use the “Channels” button to select up to 8 channels to display from the selected stream. A legend shows the colors and names of each selected channel.</p>
+<p>Use the “Display” drop-down menu to switch between “Power Spectrum” and “Spectogram” mode. In “Spectrogram” mode, only the first selected channel will be plotted.</p>
+<p>The frequency range can be changed between 4 options: <code class="code docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">100Hz</span></code>, <code class="code docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">500Hz</span></code>, <code class="code docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">1000Hz</span></code> (default), or the maximum frequency range possible for the selected stream.</p>
+<p>You can update the selected channels and the display type while acquisition is active, but not the selected stream or the display frequency range.</p>
 </section>
-<section id="spectrum-display">
-<h2>Spectrum Display<a class="headerlink" href="#spectrum-display" title="Permalink to this heading">#</a></h2>
-<img alt="Annotated Spectrum Viewer Editor" src="../../_images/spectrumviewer-02.png" />
-<p>The Spectrum Viewer analyzes the incoming data in 250 ms segments, and overlays the resulting power spectra for 5 adjacent segments. The power is plotted on a log scale, and the frequency range is fixed between 4 and 500 Hz.</p>
-<p>We are planning to add more features to the spectrum display over time.</p>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
+<p>The Spectrum Viewer performs a fast Fourier transform on the incoming signal in chunks of 2 s, 500 ms, 250 ms, or 100 ms, depending on the selected frequency range. New data blocks are added every 20 ms and multiplied by a Hamming window before computing the FFT. The power is plotted on a log scale.</p>
+<section id="power-spectrum">
+<h3>Power Spectrum<a class="headerlink" href="#power-spectrum" title="Permalink to this heading">#</a></h3>
+<img alt="Power Spectrum display example" src="../../_images/spectrumviewer-02.png" />
+<p>By default, the Spectrum Viewer plots the 1D power spectra of the incoming signals, with frequency on the x-axis.  A low-pass Butterworth filter is used to smooth over time, and then a 9-point averaging filter is used to smooth across frequencies.</p>
+</section>
+<section id="spectrogram">
+<h3>Spectrogram<a class="headerlink" href="#spectrogram" title="Permalink to this heading">#</a></h3>
+<img alt="Power Spectrum display example" src="../../_images/spectrumviewer-03.png" />
+<p>The Spectrum Viewer can also display the incoming data from the first selected channel as a 2D spectrogram with time on the x-axis and frequency on the y-axis, and color representing relative power.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -462,9 +472,21 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#spectrum-display">
-   Spectrum Display
+  <a class="reference internal nav-link" href="#visualization">
+   Visualization
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-spectrum">
+     Power Spectrum
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spectrogram">
+     Spectrogram
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
