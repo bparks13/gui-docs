@@ -461,32 +461,37 @@ document.write(`
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv412updateBufferv">
 <span id="_CPPv312updateBufferv"></span><span id="_CPPv212updateBufferv"></span><span id="updateBuffer"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">updateBuffer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412updateBufferv" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Adds any available data to a buffer (using <code class="code docutils literal notranslate"><span class="pre">DataBuffer::addToBuffer()</span></code>. Any data in this buffer will be automatically copied into the GUI’s signal chain during the next <code class="code docutils literal notranslate"><span class="pre">process()</span></code> callback.</p>
+<dd><p>Adds any available data to a buffer (using <code class="code docutils literal notranslate"><span class="pre">DataBuffer::addToBuffer()</span></code>). Any data in this buffer will be automatically copied into the GUI’s signal chain during the next <code class="code docutils literal notranslate"><span class="pre">process()</span></code> callback. The size of the data should be the number input of channels multiplied by the total number of samples read per callback.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns bool<span class="colon">:</span></dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">true</span></code> if communication with the data acquisition device is intact. If the connection to the device is lost, return <code class="code docutils literal notranslate"><span class="pre">false</span></code> to terminate acquisition.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <p>The following is an example of a minimal implementation of <code class="code docutils literal notranslate"><span class="pre">DataThread::updateBuffer()</span></code>:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">raw_samples</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">];</span>
-<span class="kt">float</span><span class="w"> </span><span class="n">scaled_samples</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">];</span>
-<span class="n">int64</span><span class="w"> </span><span class="n">sample_numbers</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">];</span>
-<span class="n">uint64</span><span class="w"> </span><span class="n">event_codes</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">];</span>
-<span class="kt">double</span><span class="w"> </span><span class="n">timestamps</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">];</span>
-<span class="n">int64</span><span class="w"> </span><span class="n">totalSamples</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">NUM_CHANNELS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">raw_samples</span><span class="p">[</span><span class="n">NUM_CHANNELS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">];</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">scaled_samples</span><span class="p">[</span><span class="n">NUM_CHANNELS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">];</span>
+<span class="n">int64</span><span class="w"> </span><span class="n">sample_numbers</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">];</span>
+<span class="n">uint64</span><span class="w"> </span><span class="n">event_codes</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">];</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">timestamps</span><span class="p">[</span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">];</span>
+<span class="n">int64</span><span class="w"> </span><span class="n">totalSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="n">AcquisitionDevice</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">;</span>
 <span class="n">DataBuffer</span><span class="o">*</span><span class="w"> </span><span class="n">dataBuffer</span><span class="p">;</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">CustomDataThread::updateBuffer</span><span class="p">()</span>
 <span class="p">{</span>
 
-<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">numRead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">readData</span><span class="p">(</span><span class="n">raw_samples</span><span class="p">,</span><span class="w"> </span><span class="n">event_codes</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_SAMPLES_PER_BUFFER</span><span class="p">);</span>
+<span class="w">   </span><span class="n">device</span><span class="o">-&gt;</span><span class="n">readData</span><span class="p">(</span><span class="o">&amp;</span><span class="n">raw_samples</span><span class="p">,</span><span class="w"> </span><span class="n">event_codes</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_CHANNELS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">);</span>
 
-<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numRead</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">   </span><span class="p">{</span>
-<span class="w">      </span><span class="n">scaled_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raw_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_factor</span><span class="p">;</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_CHANNELS</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="n">scaled_samples</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">NUM_CHANNELS</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raw_samples</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">NUM_CHANNELS</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale_factor</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
 <span class="w">      </span><span class="n">sample_numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">totalSamples</span><span class="o">++</span><span class="p">;</span>
 <span class="w">   </span><span class="p">}</span>
 
@@ -494,18 +499,18 @@ document.write(`
 <span class="w">                           </span><span class="n">sample_numbers</span><span class="p">,</span>
 <span class="w">                           </span><span class="n">timestamps</span><span class="p">,</span>
 <span class="w">                           </span><span class="n">event_codes</span><span class="p">,</span>
-<span class="w">                           </span><span class="n">numRead</span><span class="p">);</span>
+<span class="w">                           </span><span class="n">MAX_SAMPLES_PER_CHANNEL</span><span class="p">);</span>
 
 <span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In order to inform downstream plugins about the channels generated by a Data Thread, the following method must be implemented:</p>
+<p>In order to inform downstream plugins about the datastreams, channels, and data buffers generated by a Data Thread, the following method must be implemented:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv414updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE">
 <span id="_CPPv314updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE"></span><span id="_CPPv214updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE"></span><span id="updateSettings__OwnedArray:ContinuousChannel:P.OwnedArray:EventChannel:P.OwnedArray:SpikeChannel:P.OwnedArray:DataStream:P.OwnedArray:DeviceInfo:P.OwnedArray:ConfigurationObject:P"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">updateSettings</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">OwnedArray</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">ContinuousChannel</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">continuousChannels</span></span>, <span class="n"><span class="pre">OwnedArray</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">EventChannel</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">eventChannels</span></span>, <span class="n"><span class="pre">OwnedArray</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">SpikeChannel</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">spikeChannels</span></span>, <span class="n"><span class="pre">OwnedArray</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">DataStream</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sourceStreams</span></span>, <span class="n"><span class="pre">OwnedArray</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">DeviceInfo</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">devices</span></span>, <span class="n"><span class="pre">OwnedArray</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">ConfigurationObject</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">configurationObjects</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414updateSettingsP10OwnedArrayI17ContinuousChannelEP10OwnedArrayI12EventChannelEP10OwnedArrayI12SpikeChannelEP10OwnedArrayI10DataStreamEP10OwnedArrayI10DeviceInfoEP10OwnedArrayI19ConfigurationObjectE" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Passes pointers to the Source processor’s info objects to the Data Thread, to allow them to be configured as needed. Note that only channels that have been added to a <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> object will be registered by downstream processors. And each <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> can only have one <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> associated with it.</p>
+<dd><p>Passes pointers to the Source processor’s info objects to the Data Thread, to allow them to be configured as needed. Note that only channels that have been added to a <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> object will be registered by downstream processors, and each <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> can only have one <code class="code docutils literal notranslate"><span class="pre">EventChannel</span></code> associated with it.  Also, for each <code class="code docutils literal notranslate"><span class="pre">DataStream</span></code> created, a new <code class="code docutils literal notranslate"><span class="pre">DataBuffer</span></code> also needs to be created and added to the <code class="code docutils literal notranslate"><span class="pre">sourceBuffer</span></code> array, owned by the DataThread.</p>
 </dd></dl>
 
 <p>The following is an example of a minimal implementation of <code class="code docutils literal notranslate"><span class="pre">DataThread::updateSettings()</span></code>:</p>
@@ -516,8 +521,9 @@ document.write(`
 <span class="w">     </span><span class="n">OwnedArray</span><span class="o">&lt;</span><span class="n">DeviceInfo</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">devices</span><span class="p">,</span>
 <span class="w">     </span><span class="n">OwnedArray</span><span class="o">&lt;</span><span class="n">ConfigurationObject</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">configurationObjects</span><span class="p">)</span>
 <span class="p">{</span>
-
+<span class="w">   </span><span class="c1">// Clear previous values</span>
 <span class="w">   </span><span class="n">sourceStreams</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">   </span><span class="n">sourceBuffers</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="c1">// DataThread class memeber</span>
 <span class="w">   </span><span class="n">continuousChannels</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">   </span><span class="n">eventChannels</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
 
@@ -533,7 +539,11 @@ document.write(`
 
 <span class="w">   </span><span class="n">sourceStreams</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span><span class="w"> </span><span class="c1">// add pointer to owned array</span>
 
-<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numChannels</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">   </span><span class="c1">// create a data buffer and add it to the sourceBuffer array</span>
+<span class="w">   </span><span class="n">sourceBuffers</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">DataBuffer</span><span class="p">(</span><span class="n">NUM_CHANNELS</span><span class="p">,</span><span class="w"> </span><span class="mi">48000</span><span class="p">));</span>
+<span class="w">   </span><span class="n">dataBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sourceBuffers</span><span class="p">.</span><span class="n">getLast</span><span class="p">();</span>
+
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_CHANNELS</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">   </span><span class="p">{</span>
 <span class="w">      </span><span class="n">ContinuousChannel</span><span class="o">::</span><span class="n">Settings</span><span class="w"> </span><span class="n">settings</span><span class="p">{</span>
 <span class="w">                             </span><span class="n">ContinuousChannel</span><span class="o">::</span><span class="n">Type</span><span class="o">::</span><span class="n">ELECTRODE</span><span class="p">,</span><span class="w"> </span><span class="c1">// channel type</span>
@@ -560,7 +570,7 @@ document.write(`
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>A Data Thread must also implement the following three methods in order to be complete:</p>
+<p>A Data Thread <strong>must</strong> also implement the following three methods in order to be complete:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv416foundInputSourcev">
 <span id="_CPPv316foundInputSourcev"></span><span id="_CPPv216foundInputSourcev"></span><span id="foundInputSource"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">foundInputSource</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416foundInputSourcev" title="Permalink to this definition">#</a><br /></dt>
@@ -575,7 +585,7 @@ document.write(`
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv416startAcquisitionv">
 <span id="_CPPv316startAcquisitionv"></span><span id="_CPPv216startAcquisitionv"></span><span id="startAcquisition"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startAcquisition</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416startAcquisitionv" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Called just before acquisition begins, to signal that Data Thread should start streaming data from its device.</p>
+<dd><p>Called just before acquisition begins, to signal that Data Thread should start streaming data from its device. It is important to start the Data Thread here.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns bool<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">false</span></code> if there is an error in starting data transfer, which will cancel the request to start data acquisition.</p>
@@ -583,10 +593,18 @@ document.write(`
 </dl>
 </dd></dl>
 
+<p>Minimal implementation of <code class="code docutils literal notranslate"><span class="pre">DataThread::startAcquisition()</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">CustomDataThread::startAcquisition</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">startThread</span><span class="p">();</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv415stopAcquisitionv">
 <span id="_CPPv315stopAcquisitionv"></span><span id="_CPPv215stopAcquisitionv"></span><span id="stopAcquisition"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stopAcquisition</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415stopAcquisitionv" title="Permalink to this definition">#</a><br /></dt>
-<dd><p>Called just before acquisition ends, to signal that Data Thread should stop streaming data from its device.</p>
+<dd><p>Called just before acquisition ends, to signal that Data Thread should stop streaming data from its device. It is important to stop the Data Thread here.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns bool<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="code docutils literal notranslate"><span class="pre">false</span></code> if there is an error in stopping data transfer (this return value is not currently handled).</p>
@@ -594,6 +612,21 @@ document.write(`
 </dl>
 </dd></dl>
 
+<p>Minimal implementation of <code class="code docutils literal notranslate"><span class="pre">DataThread::stopAcquisition()</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">CustomDataThread::stopAcquisition</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isThreadRunning</span><span class="p">())</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">signalThreadShouldExit</span><span class="p">();</span><span class="w"> </span><span class="c1">//stop thread</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="n">waitForThreadToExit</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">   </span><span class="n">dataBuffer</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>In addition, the following virtual methods can be overriden to extend the functionality of a Data Thread:</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv412createEditorP10SourceNode">
