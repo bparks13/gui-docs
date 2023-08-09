@@ -522,7 +522,7 @@ document.write(`
 <p>For chassis without a built-in controller (e.g. NI PXIe-1071, NI PXIe-1082, or ADLINK PXES-2301), you’ll need:</p>
 <ul class="simple">
 <li><p>One <strong>PXI remote control module</strong> (we’ve tested NI PXIe-8381 and PXIe-8398) – requires NIDAQmx driver</p></li>
-<li><p>One <strong>PCIe interface card</strong> (we’ve tested National Instruments PCIe-8381 and PCIe-8398)</p></li>
+<li><p>One <strong>PCIe interface card</strong> (we’ve tested National Instruments PCIe-8381, PCIe-8382, and PCIe-8398)</p></li>
 <li><p><strong>MXI-Express Cables</strong> to connect the remote control module to the PCIe card</p></li>
 </ul>
 <p>For chassis with a built-in Thunderbolt controller (e.g. PXIe-1083):</p>
@@ -834,6 +834,50 @@ document.write(`
 <p>If you need to update the firmware for multiple basestations in one chassis, please perform all firmware updates prior to restarting your chassis/computer. Alternatively, you can update each basestation separately if only one basestation at a time is inserted into the chassis. The Neuropixels plugin can only communicate with sets of basestations that are running the same firmware.</p>
 </div>
 </section>
+<section id="remote-control">
+<h2>Remote control<a class="headerlink" href="#remote-control" title="Permalink to this heading">#</a></h2>
+<p>A number of Neuropixels probe settings can be changed via the GUI’s built-in HTTP server. Commands are sent as “config messages” to the Neuropix-PXI processor.</p>
+<p>The following commands are available:</p>
+<ol class="arabic simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">NP</span> <span class="pre">INFO</span></code> : returns a JSON string containing information about all available probes</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">NP</span> <span class="pre">REFERENCE</span> <span class="pre">&lt;bs&gt;</span> <span class="pre">&lt;port&gt;</span> <span class="pre">&lt;dock&gt;</span> <span class="pre">&lt;EXT/TIP&gt;</span></code> : set the reference for a specific probe</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">NP</span> <span class="pre">GAIN</span> <span class="pre">&lt;bs&gt;</span> <span class="pre">&lt;port&gt;</span> <span class="pre">&lt;dock&gt;</span> <span class="pre">&lt;AP/LFP&gt;</span> <span class="pre">&lt;gainval&gt;</span></code> : set the AP or LFP gain for a specific probe (Neuropixels 1.0 only)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">NP</span> <span class="pre">FILTER</span> <span class="pre">&lt;bs&gt;</span> <span class="pre">&lt;port&gt;</span> <span class="pre">&lt;dock&gt;</span> <span class="pre">&lt;ON/OFF&gt;</span></code> : turn the AP filter cut on or off (Neuropixels 1.0 only)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">NP</span> <span class="pre">SELECT</span> <span class="pre">&lt;bs&gt;</span> <span class="pre">&lt;port&gt;</span> <span class="pre">&lt;dock&gt;</span> <span class="pre">&lt;electrode&gt;</span> <span class="pre">&lt;electrode&gt;</span> <span class="pre">&lt;electrode&gt;</span> <span class="pre">...</span></code> : select electrodes by index</p></li>
+</ol>
+<p>Note that the <code class="code docutils literal notranslate"><span class="pre">bs</span></code>, <code class="code docutils literal notranslate"><span class="pre">port</span></code>, and <code class="code docutils literal notranslate"><span class="pre">dock</span></code> parameters all use 1-based indexing, and the <code class="code docutils literal notranslate"><span class="pre">dock</span></code> parameter is always 1 for Neuropixels 1.0 probes.</p>
+<p>For example, the <code class="code docutils literal notranslate"><span class="pre">NP</span> <span class="pre">SELECT</span></code> command can be used to automatically cycle through different electrode banks. The following code shows how to do this using the <code class="code docutils literal notranslate"><span class="pre">open-ephys-python-tools</span></code> package (version 0.1.6 and higher):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">open_ephys.control</span> <span class="kn">import</span> <span class="n">OpenEphysHTTPServer</span>
+
+<span class="n">gui</span> <span class="o">=</span> <span class="n">OpenEphysHTTPServer</span><span class="p">()</span>
+
+<span class="c1"># configuration parameters</span>
+<span class="n">processor_id</span> <span class="o">=</span> <span class="mi">106</span>
+<span class="n">basestation</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">slot</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">dock</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># always 1 for NP 1.0</span>
+
+<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;NP SELECT </span><span class="si">{</span><span class="n">basestation</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">slot</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dock</span><span class="si">}</span><span class="s1"> &#39;</span>
+
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">385</span><span class="p">)</span> <span class="c1"># 1-based indexing</span>
+<span class="n">electrode_string</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">electrodes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">))</span>
+
+<span class="n">gui</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">processor_id</span><span class="p">,</span> <span class="n">command</span> <span class="o">+</span> <span class="n">electrode_string</span><span class="p">)</span>
+
+<span class="n">gui</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="c1"># record for 60 seconds</span>
+
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">384</span><span class="p">,</span><span class="mi">767</span><span class="p">)</span> <span class="c1"># 1-based indexing</span>
+<span class="n">electrode_string</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">electrodes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">))</span>
+
+<span class="n">gui</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">processor_id</span><span class="p">,</span> <span class="n">command</span> <span class="o">+</span> <span class="n">electrode_string</span><span class="p">)</span>
+
+<span class="n">gui</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="c1"># record for 60 seconds</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -908,6 +952,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-self-tests">Built-in self tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headstage-tests">Headstage tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-basestation-firmware">Updating basestation firmware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-control">Remote control</a></li>
 </ul>
   </nav></div>
 
