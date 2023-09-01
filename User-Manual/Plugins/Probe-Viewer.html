@@ -534,7 +534,7 @@ document.write(`
 <h2>Anatomy overlay<a class="headerlink" href="#anatomy-overlay" title="Permalink to this heading">#</a></h2>
 <p>As of plugin version 0.3.1, the Probe Viewer can display information about the brain regions that a Neuropixels probe passes through via integration with external software. An example of this is shown in the image below:</p>
 <img alt="Probe Viewer with anatomy overlay" src="../../_images/probeviewer-03.png" />
-<p>Using this feature requires that a <span class="xref std std-ref">neuropix-pxi</span> plugin is upstream of the Probe Viewer.</p>
+<p>Using this feature requires that a <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin is upstream of the Probe Viewer.</p>
 <p>This information can be sent to the Probe Viewer in at least two ways:</p>
 <section id="via-pinpoint">
 <h3>Via Pinpoint<a class="headerlink" href="#via-pinpoint" title="Permalink to this heading">#</a></h3>
@@ -555,7 +555,7 @@ document.write(`
 <section id="via-config-messages">
 <h3>Via config messages<a class="headerlink" href="#via-config-messages" title="Permalink to this heading">#</a></h3>
 <p>The Probe Viewer accepts config messages in the following format:</p>
-<div class="highlight-&lt;probe_name&gt;;&lt;start1&gt;-&lt;end1&gt;,&lt;region_ID_1&gt;,&lt;hex_color_1&gt;;&lt;start2&gt;-&lt;end2&gt;,... notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">probe_name</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">start1</span><span class="o">&gt;-&lt;</span><span class="n">end1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">region_ID_1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">hex_color_1</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">start2</span><span class="o">&gt;-&lt;</span><span class="n">end2</span><span class="o">&gt;</span><span class="p">,</span><span class="o">...</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -565,7 +565,12 @@ document.write(`
 <li><p><code class="code docutils literal notranslate"><span class="pre">region_ID_1</span></code>: the abbreviated name of region 1 (e.g. “VISp”)</p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">hex_color_1</span></code>: the 6-character hex color ID for region 1</p></li>
 </ul>
-<p>For example, to update a probe named “Probe A” in a Probe Viewer with processor ID 105, you can send the following JSON string using the Python <code class="code docutils literal notranslate"><span class="pre">requests</span></code> library:</p>
+<p>For example, to update a probe named <code class="code docutils literal notranslate"><span class="pre">Probe</span> <span class="pre">A`</span></code> in a Probe Viewer with processor ID <code class="code docutils literal notranslate"><span class="pre">105</span></code>, you can send the following JSON string using the Python <code class="code docutils literal notranslate"><span class="pre">requests</span></code> library:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+    <span class="s2">&quot;http://localhost:37497/api/processors/105/config&quot;</span><span class="p">,</span>
+    <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;text&quot;</span> <span class="p">:</span> <span class="s2">&quot;ProbeA;0-69,PT,FF909F;70-97,PVT,FF909F;98-161,-,000000;162-173,-,000000,174-185,SF,90CBED;...&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
 <p>Note that the start and end indices refer to <em>electrodes</em>, not <em>channels</em>. The Probe Viewer will automatically display the anatomical information for the electrodes that are selected. For example, for a Neuropixels 1.0 probe, you can send region info for up to 960 electrodes, but only 384 will be displayed at a time.</p>
 <div class="line-block">
 <div class="line"><br /></div>
