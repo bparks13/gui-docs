@@ -528,6 +528,45 @@ document.write(`
 <li><p><strong>Freq. Band Power</strong> - Color corresponds to the spectral power at a given center frequency. For example, this can be used to visualize theta-band (8 Hz) power across depth.</p></li>
 <li><p><strong>Spike Rate</strong> - Color corresponds to the number of threshold crossings per unit time within each pixel window. The threshold voltage can be adjusted.</p></li>
 </ol>
+</section>
+</section>
+<section id="anatomy-overlay">
+<h2>Anatomy overlay<a class="headerlink" href="#anatomy-overlay" title="Permalink to this heading">#</a></h2>
+<p>As of plugin version 0.3.1, the Probe Viewer can display information about the brain regions that a Neuropixels probe passes through via integration with external software. An example of this is shown in the image below:</p>
+<img alt="Probe Viewer with anatomy overlay" src="../../_images/probeviewer-03.png" />
+<p>Using this feature requires that a <span class="xref std std-ref">neuropix-pxi</span> plugin is upstream of the Probe Viewer.</p>
+<p>This information can be sent to the Probe Viewer in at least two ways:</p>
+<section id="via-pinpoint">
+<h3>Via Pinpoint<a class="headerlink" href="#via-pinpoint" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://virtualbrainlab.org/index.html">Pinpoint</a> is open-source software for planning Neuropixels insertions. In order to send anatomical information from Pinpoint to Open Ephys, you need to use the Desktop version (not the web-based version).</p>
+<img alt="Pinpoint API settings" src="../../_images/probeviewer-04.png" />
+<ol class="arabic simple">
+<li><p>Add at least one probe to the Pinpoint scene</p></li>
+<li><p>Press Escape to open the settings menu</p></li>
+<li><p>Navigate to the “API” tab</p></li>
+<li><p>Make sure the “OpenEphys API” section points to the correct endpoint. This should be <code class="code docutils literal notranslate"><span class="pre">http://localhost:37497</span></code> if you’re running Open Ephys and Pinpoint on the same machine; otherwise, replace <code class="code docutils literal notranslate"><span class="pre">localhost</span></code> with the IP address of the Open Ephys machine.</p></li>
+<li><p>Click the checkbox to connect to the Open Ephys GUI</p></li>
+<li><p>If the Probe Viewer processor ID (Viewer Processor #) is not found automatically, use the drop-down menu to select the correct one.</p></li>
+<li><p>Use the interface on the right to associate probes in the Pinpoint scene to probes in the Open Ephys GUI.</p></li>
+</ol>
+<p>After that, the anatomical information in the Probe Viewer should update every time the associated probe in moved in Pinpoint.</p>
+<p>See <a class="reference external" href="https://virtualbrainlab.org/pinpoint/tutorial.html#api">this tutorial</a> for alternative instructions on how to send anatomical information from Pinpoint to Open Ephys.</p>
+</section>
+<section id="via-config-messages">
+<h3>Via config messages<a class="headerlink" href="#via-config-messages" title="Permalink to this heading">#</a></h3>
+<p>The Probe Viewer accepts config messages in the following format:</p>
+<div class="highlight-&lt;probe_name&gt;;&lt;start1&gt;-&lt;end1&gt;,&lt;region_ID_1&gt;,&lt;hex_color_1&gt;;&lt;start2&gt;-&lt;end2&gt;,... notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">probe_name</span></code> : the name of a Neuropixels probe in the Neuropix-PXI plugin (with no spaces)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">start1</span></code>: the index of the first electrode in region 1</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">end1</span></code>: the index of the last electrode in region 1</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">region_ID_1</span></code>: the abbreviated name of region 1 (e.g. “VISp”)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">hex_color_1</span></code>: the 6-character hex color ID for region 1</p></li>
+</ul>
+<p>For example, to update a probe named “Probe A” in a Probe Viewer with processor ID 105, you can send the following JSON string using the Python <code class="code docutils literal notranslate"><span class="pre">requests</span></code> library:</p>
+<p>Note that the start and end indices refer to <em>electrodes</em>, not <em>channels</em>. The Probe Viewer will automatically display the anatomical information for the electrodes that are selected. For example, for a Neuropixels 1.0 probe, you can send region info for up to 960 electrodes, but only 384 will be displayed at a time.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -587,6 +626,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-signal-chain">Recommended signal chain</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-configuration">Plugin configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#render-modes">Render modes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-overlay">Anatomy overlay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-pinpoint">Via Pinpoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-config-messages">Via config messages</a></li>
 </ul>
 </li>
 </ul>

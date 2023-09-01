@@ -571,7 +571,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>Neuropixels NHP Commercial (10 mm)</p></td>
 <td><p>384 AP, 384 LFP</p></td>
-<td><p><strong>≥0.5.x</strong></p></td>
+<td><p>≥0.5.x</p></td>
 <td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.5.x.zip">BS169, BSC176</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Neuropixels UHD Phase 1</p></td>
@@ -586,18 +586,18 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>Neuropixels UHD Phase 3 (ultradense)</p></td>
 <td><p>384 AP, 384 LFP</p></td>
-<td><p><strong>≥0.5.x</strong></p></td>
+<td><p>≥0.5.x</p></td>
 <td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.5.x.zip">BS169, BSC176</a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Neuropixels 2.0 Single Shank</p></td>
+<tr class="row-odd"><td><p>Neuropixels 2.0 (beta)</p></td>
 <td><p>384 wideband</p></td>
 <td><p>≥0.2.x</p></td>
 <td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.4.x.zip">BS137, BSC176</a></p></td>
 </tr>
-<tr class="row-even"><td><p>Neuropixels 2.0 Four Shank</p></td>
+<tr class="row-even"><td><p>Neuropixels 2.0 (public release)</p></td>
 <td><p>384 wideband</p></td>
-<td><p>≥0.2.x</p></td>
-<td><p><a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.4.x.zip">BS137, BSC176</a></p></td>
+<td><p><strong>“≥0.6.x”</strong></p></td>
+<td><p><a href="#id3"><span class="problematic" id="id4">`BS137, BSC189`_</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Neuropixels Opto</p></td>
 <td><p>384 AP, 384 LFP</p></td>
@@ -608,18 +608,18 @@ document.write(`
 </table>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Regardless of which probe type you’re using, we recommend updating to the most recent Neuropixels PXI plugin and basestation firmware (<a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.5.x.zip">BS169, BSC176</a>). This firmware is required for plugin version <strong>0.5.x</strong> and higher, as well as the latest version of SpikeGLX. See <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">Updating basestation firmware</span></a> section for information on how to modify your firmware.</p>
+<p>Regardless of which probe type you’re using, we recommend updating to the most recent Neuropixels PXI plugin and basestation firmware (<a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.6.x.zip">BS169, BSC189</a>). This firmware is required for plugin version <strong>0.6.x</strong> and higher, as well as the latest version of SpikeGLX. See <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">Updating basestation firmware</span></a> section for information on how to modify your firmware.</p>
 </div>
 </section>
 <section id="connecting-to-the-pxi-system">
 <h2>Connecting to the PXI system<a class="headerlink" href="#connecting-to-the-pxi-system" title="Permalink to this heading">#</a></h2>
 <p>Before using this plugin, make sure you’ve followed all of the steps in the <a class="reference external" href="https://www.neuropixels.org/support">Neuropixels User Manual</a> to set up and configure your hardware. Prior to using your Neuropixels PXI basestation, you must install the Enclustra drivers (available for <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/main/Resources/Enclustra_Win7%268.zip">Windows 7/8</a> and <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/raw/main/Resources/Enclustra_Win10.zip">Windows 10</a>). See section 4.2.2 of the User Manual for installation instructions.</p>
-<p>Once your PXI system is up and running, you can drag and drop the “Neuropix-PXI” module from the Processor List onto the Editor Viewport. The GUI will automatically connect to any available basestations in your PXI chassis with probes connected. If no probes are found, the plugin can be run in <a class="reference internal" href="#simulation-mode"><span class="std std-ref">simulation mode</span></a>.</p>
+<p>Once your PXI system is up and running, you can drag and drop the “Neuropix-PXI” module from the Processor List onto the Editor Viewport. The GUI will automatically connect to any available basestations in your PXI chassis with probes connected. If no basestations are found, the plugin can be run in simulation mode. If no probes are found, the plugin editor will display information about each basestation, and can be used to perform a firmware update (see <a class="reference internal" href="#updating-basestation-firmware"><span class="std std-ref">Updating basestation firmware</span></a> below).</p>
 <p>The editor will automatically create a probe selection interface for each basestation that’s available. Each basestation can communicate with up to 4 probes (for Neuropixels 1.0, NHP, and Ultra) or 8 probes (for 2.0). When the probes are initially detected, they show up as orange circles. Once they are initialized, connected probes become green. After the probes turn green, the plugin is ready to begin data acquisition.</p>
 </section>
 <section id="troubleshooting-connections">
 <h2>Troubleshooting connections<a class="headerlink" href="#troubleshooting-connections" title="Permalink to this heading">#</a></h2>
-<p>If no probes are connected to any basestations, the plugin will display the “No basestations found” message and ask to run in simulation mode. This is because the plugin cannot function unless at least one probe is available. If a probe is attached but you are still seeing this message, the most likely explanation is that the probe is not properly seated in the headstage ZIF connector.</p>
+<p>If no basestations are detected, the plugin will display the “No basestations found” message and ask to run in simulation mode. As of plugin version <code class="code docutils literal notranslate"><span class="pre">0.6.0</span></code>, if a basestation is found but no probes are detected, you will be able to update basestation firmware but not start data acquisition. If a probe is attached but the plugin is still appearing grayed out, the most likely explanation is that the probe is not properly seated in the headstage ZIF connector.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If a basestation is available but no probes are detected, the GUI may print a message about a “firmware version mismatch” to the console. This is an automatic output of the Neuropixels API and can be ignored. Once probes are successfully detected, it should disappear.</p>
@@ -818,15 +818,15 @@ document.write(`
 </section>
 <section id="updating-basestation-firmware">
 <h2>Updating basestation firmware<a class="headerlink" href="#updating-basestation-firmware" title="Permalink to this heading">#</a></h2>
-<p>Version <strong>0.5.x</strong> of the Neuropixels PXI plugin requires a basestation firmware update. The latest firmware (BS169, BSC176) can be downloaded <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.5.x.zip">here</a>.</p>
-<p>The currently installed firmware version will appear in the info section of the Neuropixels settings interface (upper right text block). If your basesation firmware version is “2.0169” and your basestation connect board firmware version is “3.2176”, you already have the latest firmware installed.</p>
+<p>Version <strong>0.6.x</strong> of the Neuropixels PXI plugin requires a basestation firmware update. The latest firmware (BS169, BSC189) can be downloaded <a class="reference external" href="https://github.com/open-ephys-plugins/neuropixels-pxi/blob/main/Resources/imec-firmware-for-plugin-0.6.x.zip">here</a>.</p>
+<p>The currently installed firmware version will appear in the info section of the Neuropixels settings interface (upper right text block). If your basesation firmware version is “2.0169” and your basestation connect board firmware version is “3.2189”, you already have the latest firmware installed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you’ve been using SpikeGLX 3.0 Release 20220101 or higher, your basestation already has the latest firmware.</p>
+<p>If you’ve been using SpikeGLX 3.0 Release 2023XXXX or higher, your basestation already has the latest firmware.</p>
 </div>
 <p>If you need to update your firmware, first click the “UPDATE FIRMWARE” button to open the firmware update interface:</p>
 <img alt="Interface for updating firmware" src="../../_images/neuropix-pxi-08.png" />
-<p>Next, select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the <strong>basestation connect board</strong> (<code class="code docutils literal notranslate"><span class="pre">QBSC*.bin</span></code>), and click “UPLOAD”. The upload process can take anywhere from 10-15 minutes, so please be patient.</p>
+<p>Next, select the <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the <strong>basestation connect board</strong> (<code class="code docutils literal notranslate"><span class="pre">QBSC*.bin</span></code>), and click “UPLOAD”. The upload process can take anywhere from 10-15 minutes, so please be patient.</p>
 <p>Immediately after the basestation connect board firmware upload finished, use the lower drop-down menu to select a <code class="code docutils literal notranslate"><span class="pre">.bin</span></code> file for the <strong>basestation</strong> (<code class="code docutils literal notranslate"><span class="pre">BS*.bin</span></code>), and click “UPLOAD”.</p>
 <p>Finally, once the basestation firmware is finished uploading, restart your computer and power cycle the PXI chassis for the changes to take effect.</p>
 <div class="admonition note">
