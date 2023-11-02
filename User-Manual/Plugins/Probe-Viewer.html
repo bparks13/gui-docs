@@ -552,6 +552,14 @@ document.write(`
 <p>After that, the anatomical information in the Probe Viewer should update every time the associated probe in moved in Pinpoint.</p>
 <p>See <a class="reference external" href="https://virtualbrainlab.org/pinpoint/tutorial.html#api">this tutorial</a> for alternative instructions on how to send anatomical information from Pinpoint to Open Ephys.</p>
 </section>
+<section id="via-neuropixels-trajectory-explorer">
+<h3>Via Neuropixels Trajectory Explorer<a class="headerlink" href="#via-neuropixels-trajectory-explorer" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/petersaj/neuropixels_trajectory_explorer/wiki">Neuropixels Trajectory Explorer</a> insertion-planning software that can be run from within MATLAB or as a standalone application.</p>
+<img alt="Connecting NTE to recording software" src="../../_images/probeviewer-05.png" />
+<p>From the “Connect” menu, select “Recording” then “OpenEphys”.</p>
+<p>The Probe Viewer has a <a class="reference internal" href="Neuropixels-PXI.html#neuropixelspxi"><span class="std std-ref">Neuropixels PXI</span></a> plugin upstream, the anatomical overlay should update every time the probe in moved in Neuropixels Trajectory explorer.</p>
+<p>See <a class="reference external" href="https://github.com/petersaj/neuropixels_trajectory_explorer/wiki/Recording-software-interfacing">this tutorial</a> for additional information on how to send anatomical information from Neuropixels Trajectory Explorer to Open Ephys.</p>
+</section>
 <section id="via-config-messages">
 <h3>Via config messages<a class="headerlink" href="#via-config-messages" title="Permalink to this heading">#</a></h3>
 <p>The Probe Viewer accepts config messages in the following format:</p>
@@ -635,6 +643,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-overlay">Anatomy overlay</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-pinpoint">Via Pinpoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-neuropixels-trajectory-explorer">Via Neuropixels Trajectory Explorer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-config-messages">Via config messages</a></li>
 </ul>
 </li>
