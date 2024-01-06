@@ -43,7 +43,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LSL Inlet" href="LSL-Inlet.html" />
-    <link rel="prev" title="File Reader" href="File-Reader.html" />
+    <link rel="prev" title="Intan RHD USB" href="Intan-RHD-USB.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -375,6 +375,8 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../Remote-control.html">Remote control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Whats-new.html">What’s new in version 0.6.x</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Plugins</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Acq-Board-Output.html">Acq Board Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Acquisition-Board.html">Acquisition Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Arduino-Output.html">Arduino Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Audio-Monitor.html">Audio Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bandpass-Filter.html">Bandpass Filter</a></li>
@@ -388,6 +390,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Event-Translator.html">Event Translator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Falcon-Output.html">Falcon Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="File-Reader.html">File Reader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Intan-RHD-USB.html">Intan RHD USB</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">LFP Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LSL-Inlet.html">LSL Inlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
@@ -397,6 +400,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Neuropixels-CAR.html">Neuropixels CAR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Neuropixels-PXI.html">Neuropixels PXI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NIDAQmx.html">NI-DAQmx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OE-FPGA-Acquisition-Board.html">OE FPGA Acquisition Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Online-PSTH.html">Online PSTH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OSC-Events.html">OSC Events</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Phase-Calculator.html">Phase Calculator</a></li>
@@ -404,8 +408,10 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Probe-Viewer.html">Probe Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pulse-Pal.html">Pulse Pal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Python-Processor.html">Python Processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rec-Controller-Output.html">Rec Controller Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Record-Control.html">Record Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Rhythm-Plugins.html">Rhythm Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Record-Node.html">Record Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RHD-Rec-Controller.html">RHD Rec Controller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Ripple-Detector.html">Ripple Detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="River-Output.html">River Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spectrum-Viewer.html">Spectrum Viewer</a></li>
@@ -572,6 +578,13 @@ document.write(`
 <p>Double-clicking on any channel in the LFP Viewer will switch the display into single-channel mode. When single-channel mode is active, the mean and standard deviation of the current channel are shown on the left-hand side of the display. In addition, clicking anywhere within the display will update the “uV” value based on the y-position of the cursor. This feature can be used to measure the approximate amplitude of spikes by clicking on the location of the peak and trough.</p>
 <p>The full height of the display is determined by the “range” parameter in the main options bar. Horizontal lines appear at -25%, 0%, and 25% of the range value. For the default range of 250 µV, the display will stretch from -125 to +125 µV, with lines indicating -62.5, 0, and +62.5 µV.</p>
 </section>
+<section id="audio-monitoring">
+<h2>Audio monitoring<a class="headerlink" href="#audio-monitoring" title="Permalink to this heading">#</a></h2>
+<p>If you have an <a class="reference internal" href="Audio-Monitor.html#audiomonitor"><span class="std std-ref">Audio Monitor</span></a> plugin in your signal chain, you can select which channels to monitor by right-clicking on them in the LFP Viewer.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 
 
@@ -586,12 +599,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="File-Reader.html"
+       href="Intan-RHD-USB.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">File Reader</p>
+        <p class="prev-next-title">Intan RHD USB</p>
       </div>
     </a>
     <a class="right-next"
@@ -634,6 +647,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-channel-mode">Single-channel mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#audio-monitoring">Audio monitoring</a></li>
 </ul>
   </nav></div>
 
@@ -684,7 +698,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2010-2023, Open Ephys &amp; Contributors.
+      © Copyright 2010-2024, Open Ephys &amp; Contributors.
       <br/>
     
   </p>
