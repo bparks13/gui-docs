@@ -435,8 +435,8 @@ document.write(`
 <p>In this example, there are a few sample numbers that are important to note:</p>
 <ul class="simple">
 <li><p>The samples at which the recordings were stopped and started (<strong>10</strong> and <strong>114</strong> for <em>Stream A</em>, and <strong>25</strong> and <strong>127</strong> for <em>Stream B</em>).</p></li>
-<li><p>The samples at which the first recorded low-to-high transition on the sync line occurred (<strong>112</strong> for <em>Stream A</em> and <strong>27</strong> for <em>Stream B</em>).</p></li>
-<li><p>The samples at which the last recorded low-to-high transition on the sync line occurred (<strong>27</strong> for <em>Stream A</em> and <strong>125</strong> for <em>Stream B</em>).</p></li>
+<li><p>The samples at which the first recorded low-to-high transition on the sync line occurred (<strong>12</strong> for <em>Stream A</em> and <strong>27</strong> for <em>Stream B</em>).</p></li>
+<li><p>The samples at which the last recorded low-to-high transition on the sync line occurred (<strong>112</strong> for <em>Stream A</em> and <strong>125</strong> for <em>Stream B</em>).</p></li>
 </ul>
 <p>With this information in hand, we can translate all of the timestamps from <em>Stream A</em> into timestamps from <em>Stream B</em>, and vice versa.</p>
 <p>First, we’ll compute a scaling factor, which is the ratio of the total number of samples between the first and last sync transitions:</p>
