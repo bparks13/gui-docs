@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Splitter &#8212; Open Ephys GUI Docs</title>
+    <title>Mean Spike Rate &#8212; Open Ephys GUI Docs</title>
   
   
   
@@ -42,8 +42,8 @@
     <link rel="icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Tracking Plugin" href="Tracking-Plugin.html" />
-    <link rel="prev" title="Spike Viewer" href="Spike-Viewer.html" />
+    <link rel="next" title="Merger" href="Merger.html" />
+    <link rel="prev" title="MATLAB Interface" href="MATLAB-Interface.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -394,7 +394,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="LFP-Viewer.html">LFP Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LSL-Inlet.html">LSL Inlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Mean-Spike-Rate.html">Mean Spike Rate</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mean Spike Rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Merger.html">Merger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Multiband-Integrator.html">Multi-Band Integrator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Network-Events.html">Network Events</a></li>
@@ -419,7 +419,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Spike-Detector.html">Spike Detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spike-Sorter.html">Spike Sorter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Spike-Viewer.html">Spike Viewer</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Splitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Splitter.html">Splitter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tracking-Plugin.html">Tracking Plugin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TTL-Panels.html">TTL Panels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Virtual-Reference.html">Virtual Reference</a></li>
@@ -470,7 +470,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Plugins</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Splitter</li>
+    <li class="breadcrumb-item active" aria-current="page">Mean Spike Rate</li>
   </ul>
 </nav>
 </div>
@@ -487,47 +487,47 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="splitter">
-<span id="id1"></span><h1>Splitter<a class="headerlink" href="#splitter" title="Permalink to this heading">#</a></h1>
-<img alt="Annotated Splitter editor" src="../../_images/splitter-01.png" />
-<table class="table" id="id2">
-<caption><span class="caption-text">Creates a copy of all incoming continuous channels, spikes, and events, allowing data to be processed independently along two branches of the signal chain.</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+  <section id="mean-spike-rate">
+<span id="meanspikerate"></span><h1>Mean Spike Rate<a class="headerlink" href="#mean-spike-rate" title="Permalink to this heading">#</a></h1>
+<img alt="Annotated Mean Spike Rate editor" src="../../_images/meanspikerate.png" />
+<table class="table" id="id1">
+<caption><span class="caption-text">Estimates the mean spike rate across time and channels. Uses an exponentially weighted moving average to estimate a temporal mean (with adjustable time constant), and averages the rate across selected spike channels (electrodes). Outputs the resulting rate onto a selected continuous channel (overwriting its contents).</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
-<td><p>Utility</p></td>
+<td><p>Filter</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Platforms</em></p></td>
-<td><p>Windows, Linux, macOS</p></td>
+<td><p>Windows, Mac, Linux</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Built in?</em></p></td>
-<td><p>Yes</p></td>
+<td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Josh Siegle, Aarón Cuevas López</p></td>
+<td><p>Ethan Blackwood</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="github reference external" href="https://github.com/open-ephys/plugin-GUI/tree/main/Source/Processors/Splitter">open-ephys/plugin-GUI</a></p></td>
+<td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/mean-spike-rate">open-ephys-plugins/mean-spike-rate</a></p></td>
 </tr>
 </tbody>
 </table>
-<section id="recommended-usage">
-<h2>Recommended usage<a class="headerlink" href="#recommended-usage" title="Permalink to this heading">#</a></h2>
-<p>Splitters make it possible to process data in parallel along two independent branches; any changes to the data on one branch will have no effect on the other. The classic use case is to apply two separate filtering operations to the same data, one high-pass filter for spike detection, and one low-pass filter for viewing the local field potential. However, there is significant overhead involved in splitting the signal chain, since all of the incoming data needs to be copied into a new buffer. Therefore, it’s recommended to avoid using Splitter unless they are required for your use case.</p>
-<p>In an earlier version of the GUI, “sink” plugins had to terminate a signal chain, which meant that Splitters were required in any cases in which multiple sinks were used. That is no longer the case; now that sinks can be placed anywhere in a signal chain (except the very beginning), data can be processed in more flexible ways without the need for Splitters.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>It is not currently possible to use a <a class="reference internal" href="Merger.html#merger"><span class="std std-ref">Merger</span></a> to reconnect split branches of a signal chain. Once the signal chain has been split, it cannot be merged back together.</p>
-</div>
+<section id="installing-and-upgrading">
+<h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
+<p>The Mean Spike Rate plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to access the Plugin Installer, browse to the “Mean Spike Rate” plugin, and click the “Install” button.</p>
+<p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
 </section>
 <section id="plugin-configuration">
 <h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
-<p>The Splitter is first dropped into the signal chain to the left of the point at which the data should be split. Then, the two output paths are selected by clicking the arrow buttons on the Splitter editor. Additional plugins can be dropped to the right of either output path. If a Splitter is only connected to one output, it will have no effect on the signal chain.</p>
-<p>The names of the data streams in each branch of the signal chain will be appended with “<strong>-A</strong>” or “<strong>-B</strong>” to indicate that they have passed through a Splitter:</p>
-<img alt="Splitter graph view" src="../../_images/splitter-02.png" />
+<p>The plugin editor allows the user to set the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Active Spike Channels:</strong> The spike channels to include in the mean spike rate calculation.</p></li>
+<li><p><strong>Inactive Spike Channels:</strong> The spike channels to exclude from the mean spike rate calculation.</p></li>
+<li><p><strong>Output:</strong> The continuous channel to output the mean spike rate onto. The mean spike rate will overwrite the contents of this channel.</p></li>
+<li><p><strong>Time Constant</strong> (ms): The time constant of the exponentially weighted moving average used to estimate the mean spike rate.</p></li>
+</ul>
 </section>
 </section>
 
@@ -543,20 +543,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Spike-Viewer.html"
+       href="MATLAB-Interface.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Spike Viewer</p>
+        <p class="prev-next-title">MATLAB Interface</p>
       </div>
     </a>
     <a class="right-next"
-       href="Tracking-Plugin.html"
+       href="Merger.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tracking Plugin</p>
+        <p class="prev-next-title">Merger</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -578,7 +578,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-usage">Recommended usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-upgrading">Installing and upgrading</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-configuration">Plugin configuration</a></li>
 </ul>
   </nav></div>
@@ -586,7 +586,7 @@ document.write(`
   <div class="sidebar-secondary-item">
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/open-ephys/gui-docs/edit/main/source/User-Manual/Plugins/Splitter.rst">
+    <a href="https://github.com/open-ephys/gui-docs/edit/main/source/User-Manual/Plugins/Mean-Spike-Rate.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -600,7 +600,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../../_sources/User-Manual/Plugins/Splitter.rst.txt">
+    <a href="../../_sources/User-Manual/Plugins/Mean-Spike-Rate.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
