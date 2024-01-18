@@ -512,12 +512,17 @@ document.write(`
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Next, rename the source files:</p>
+<p>Next, rename the source files to match the name of your plugin</p>
 <ul class="simple">
 <li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.h</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.h</span></code></p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin.cpp</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator.cpp</span></code></p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.h</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.h</span></code></p></li>
 <li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor.cpp</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor.cpp</span></code></p></li>
+</ul>
+<p>and update the class names inside each file to match the new names:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPlugin</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGenerator</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ProcessorPluginEditor</span></code> –&gt; <code class="code docutils literal notranslate"><span class="pre">TTLEventGeneratorEditor</span></code></p></li>
 </ul>
 <p>Finally, update the include inside <code class="code docutils literal notranslate"><span class="pre">OpenEphysLib.cpp</span></code> from <code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;ProcessorPlugin.h&quot;</span></code> to <code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;TTLEventGenerator.h&quot;</span></code>.</p>
 </section>

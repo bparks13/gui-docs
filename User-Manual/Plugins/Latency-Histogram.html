@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Python Processor &#8212; Open Ephys GUI Docs</title>
+    <title>Latency Histogram &#8212; Open Ephys GUI Docs</title>
   
   
   
@@ -42,8 +42,8 @@
     <link rel="icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Rec Controller Output" href="Rec-Controller-Output.html" />
-    <link rel="prev" title="Pulse Pal" href="Pulse-Pal.html" />
+    <link rel="next" title="LFP Viewer" href="LFP-Viewer.html" />
+    <link rel="prev" title="Intan RHD USB" href="Intan-RHD-USB.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -391,7 +391,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Falcon-Output.html">Falcon Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="File-Reader.html">File Reader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Intan-RHD-USB.html">Intan RHD USB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Latency-Histogram.html">Latency Histogram</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Latency Histogram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LFP-Viewer.html">LFP Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LSL-Inlet.html">LSL Inlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
@@ -409,7 +409,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Phase-Detector.html">Phase Detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Probe-Viewer.html">Probe Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Pulse-Pal.html">Pulse Pal</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python Processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-Processor.html">Python Processor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Rec-Controller-Output.html">Rec Controller Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Record-Control.html">Record Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Record-Node.html">Record Node</a></li>
@@ -471,7 +471,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Plugins</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Python Processor</li>
+    <li class="breadcrumb-item active" aria-current="page">Latency Histogram</li>
   </ul>
 </nav>
 </div>
@@ -488,18 +488,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="python-processor">
-<span id="pythonprocessor"></span><h1>Python Processor<a class="headerlink" href="#python-processor" title="Permalink to this heading">#</a></h1>
-<img alt="Annotated Python Processor editor" src="../../_images/pythonprocessor-01.png" />
+  <section id="latency-histogram">
+<span id="latencyhistogram"></span><h1>Latency Histogram<a class="headerlink" href="#latency-histogram" title="Permalink to this heading">#</a></h1>
+<img alt="Annotated Latency Histogram interface" src="../../_images/latencyhistogram-01.png" />
 <table class="table" id="id1">
-<caption><span class="caption-text">Modifies incoming continuous data and handles events and spikes using custom code written in Python.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-text">Displays latencies between events on two TTL lines as a histogram.</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 82%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><em>Plugin Type</em></p></td>
-<td><p>Filter</p></td>
+<td><p>Sink</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Platforms</em></p></td>
 <td><p>Windows, Linux, macOS</p></td>
@@ -508,178 +508,37 @@ document.write(`
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p><em>Key Developers</em></p></td>
-<td><p>Spencer Blackwood, Anjal Doshi</p></td>
+<td><p>Josh Siegle</p></td>
 </tr>
 <tr class="row-odd"><td><p><em>Source Code</em></p></td>
-<td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/python-processor">open-ephys-plugins/python-processor</a></p></td>
+<td><p><a class="github reference external" href="https://github.com/open-ephys-plugins/latency-histogram">open-ephys-plugins/latency-histogram</a></p></td>
 </tr>
 </tbody>
 </table>
 <section id="installing-and-upgrading">
 <h2>Installing and upgrading<a class="headerlink" href="#installing-and-upgrading" title="Permalink to this heading">#</a></h2>
-<p>The Python Processor is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Python Processor” plugin, and click the “Install” button.</p>
+<p>The Latency Histogram plugin is not included by default in the Open Ephys GUI. To install, use <strong>ctrl-P</strong> or <strong>⌘P</strong> to open the Plugin Installer, browse to the “Latency Histogram” plugin, and click the “Install” button.</p>
 <p>The Plugin Installer also allows you to upgrade to the latest version of this plugin, if it’s already installed.</p>
 </section>
-<section id="setting-up-a-python-environment">
-<h2>Setting up a Python environment<a class="headerlink" href="#setting-up-a-python-environment" title="Permalink to this heading">#</a></h2>
-<p>This plugin must be able to find a local installation of Python version <strong>3.10</strong> with <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> installed correctly.</p>
-<p>To avoid conflicts with other Python installations, we recommend using <a class="reference external" href="https://docs.conda.io/projects/conda/en/stable/index.html">Conda</a> to manage your Python environments. You can install Conda either using Miniconda or Anaconda by following the instructions <a class="reference external" href="https://docs.conda.io/projects/conda/en/stable/user-guide/install/download.html">here</a>. More information on how to use Conda can be found <a class="reference external" href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">here</a>.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>On macOS, conda needs to be installed using the x86_64 Miniconda / Anaconda installer.</p>
-</div>
-<p>To create a new Conda environment that uses Python 3.10, enter the following <code class="code docutils literal notranslate"><span class="pre">conda</span></code> command in your Anaconda prompt (Windows) or Terminal (Linux and macOS):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>oe-python-plugin<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
-</pre></div>
-</div>
-<p>This will create a new Conda environment with Python 3.10 installed. Then, activate this newly created environment like so:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>oe-python-plugin
-</pre></div>
-</div>
-<p>After this, <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> needs to be installed in the same environment as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
-</pre></div>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>On Windows, if you use <code class="code docutils literal notranslate"><span class="pre">pip</span></code> to install Python packages, the plugin will fail to load your Python module. We are still investigating the cause of this issue.</p>
-</div>
-<section id="setting-the-python-interpreter-path">
-<h3>Setting the Python Interpreter Path<a class="headerlink" href="#setting-the-python-interpreter-path" title="Permalink to this heading">#</a></h3>
-<p>Once a dedicated Python 3.10 Conda environment has been created, the plugin is ready to be loaded into any desired signal chain. As soon as the plugin is dropped into the signal chain, it asks for the path to Python Home directory, which is where the Python Interpreter is located. This allows the plugin to be flexible in terms of which Python libraries to use during runtime, and not rely on the system PATH to figure out the Python Home location.</p>
-<p>When using Conda, this path is usually where the Conda environment got created. Some examples of where it may be located:</p>
+<section id="plugin-configuration">
+<h2>Plugin configuration<a class="headerlink" href="#plugin-configuration" title="Permalink to this heading">#</a></h2>
+<p>The following parameters can be modified in the plugin editor:</p>
 <ul class="simple">
-<li><p>Windows: <code class="code docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\miniconda3</span></code> or <code class="code docutils literal notranslate"><span class="pre">C:\miniconda3</span></code></p></li>
-<li><p>macOS - <code class="code docutils literal notranslate"><span class="pre">~/miniconda3</span></code> or <code class="code docutils literal notranslate"><span class="pre">/Users/&lt;username&gt;/miniconda3</span></code></p></li>
-<li><p>Linux - <code class="code docutils literal notranslate"><span class="pre">~/miniconda3</span></code> or <code class="code docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/miniconda3</span></code></p></li>
+<li><p><strong>TTL A</strong> - The event line to use as the first reference.</p></li>
+<li><p><strong>TTL B</strong> - The event line to use as the second reference.</p></li>
 </ul>
-<p>The Python image in a Conda environment called “oe-python-plugin” might be in a location such as <code class="code docutils literal notranslate"><span class="pre">${USERHOME}\miniconda3\envs\oe-python-plugin</span></code></p>
-<p>If you have installed Anaconda instead of Miniconda, the folder might be named <code class="code docutils literal notranslate"><span class="pre">Anaconda</span></code> or <code class="code docutils literal notranslate"><span class="pre">Anaconda3</span></code>.</p>
-<p>Once the path is selected, the plugin should load into the signal chain successfully. If it fails to load the Python Interpreter, then it will ask for the PATH to Python Home again. This means that either the provided PATH was incorrect, or an incompatible version of Python was installed (i.e., not 3.10). If this happens, it is recommended to close and relaunch the GUI to reset the PATH variables.</p>
-</section>
-</section>
-<section id="creating-loading-a-python-module">
-<h2>Creating &amp; loading a Python Module<a class="headerlink" href="#creating-loading-a-python-module" title="Permalink to this heading">#</a></h2>
-<p>Once the plugin is loaded into the signal chain, a Python module (script) needs to be loaded into the GUI. This module should take the same form as the <a class="reference external" href="https://github.com/open-ephys-plugins/python-processor/blob/main/Modules/template/processor_template.py">processor template</a> provided in the plugin’s GitHub repository. The <code class="code docutils literal notranslate"><span class="pre">PyProcessor</span></code> class is designed to expose the following functions to the Python module to allow interaction with the incoming data:</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#init__" title="Permalink to this definition">#</a></dt>
-<dd><p>A new processor is initialized when the module is imported/reloaded, or the plugin’s settings are updated (i.e., the number of input channels changes, or a new stream is selected).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>num_channels</strong> – number of input channels from the selected stream</p></li>
-<li><p><strong>sample_rate</strong> – the selected stream’s sample rate</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#process" title="Permalink to this definition">#</a></dt>
-<dd><p>Process each incoming data buffer. Any modifications to the <code class="code docutils literal notranslate"><span class="pre">data</span></code> variable will be passed to downstream processors.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>ndarray</em>) – incoming data buffer</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="start_acquisition">
-<span class="sig-name descname"><span class="pre">start_acquisition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#start_acquisition" title="Permalink to this definition">#</a></dt>
-<dd><p>Called before starting acquisition. Allows the script to do some setup/initialization before acquisition starts.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="stop_acquisition">
-<span class="sig-name descname"><span class="pre">stop_acquisition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stop_acquisition" title="Permalink to this definition">#</a></dt>
-<dd><p>Called after stopping acquisition. Allows the script to do some finalization after acquisition stops.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="start_recording">
-<span class="sig-name descname"><span class="pre">start_recording</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recording_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#start_recording" title="Permalink to this definition">#</a></dt>
-<dd><p>Called before starting recording. Informs the plugin that the GUI is now recording data, in case it needs to save any information of its own.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>recording_dir</strong> – directory where recording related files are supposed to be stored</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="stop_recording">
-<span class="sig-name descname"><span class="pre">stop_recording</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stop_recording" title="Permalink to this definition">#</a></dt>
-<dd><p>Called before stopping recording. Informs the plugin that the GUI is no longer recording data.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="handle_ttl_event">
-<span class="sig-name descname"><span class="pre">handle_ttl_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_ttl_event" title="Permalink to this definition">#</a></dt>
-<dd><p>Handle each incoming ttl event.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>source_node</strong> – id of the processor this event was generated from</p></li>
-<li><p><strong>channel</strong> – name of the event channel</p></li>
-<li><p><strong>sample_number</strong> – sample number of the event</p></li>
-<li><p><strong>line</strong> – the line on which event was generated (0-255)</p></li>
-<li><p><strong>state</strong> – event state True (ON) or False (OFF)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="handle_spike">
-<span class="sig-name descname"><span class="pre">handle_spike</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">electrode_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorted_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#handle_spike" title="Permalink to this definition">#</a></dt>
-<dd><p>Handle each incoming spike.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>source_node</strong> – id of the processor this spike was generated from</p></li>
-<li><p><strong>electrode_name</strong> – name of the electrode</p></li>
-<li><p><strong>num_channels</strong> – number of channels associated with the electrode type</p></li>
-<li><p><strong>num_samples</strong> – total number of samples in the spike waveform</p></li>
-<li><p><strong>sample_number</strong> – sample number of the spike</p></li>
-<li><p><strong>sorted_id</strong> – the sorted ID for this spike</p></li>
-<li><p><strong>spike_data</strong> – waveform as N x M numpy array, where N = num_channels &amp; M = num_samples (read-only).</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<p>Using this template, any type of data processing can be done in Python in real-time. The data buffer should be overwritten with the new processed data, which will be received by downstream processors.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Pay careful attention to the latency introduced by processing data in Python, especially with high-channel-count data.</p>
-</div>
-<p>There is also a way to send TTL events back from Python to C++. These events will be added to the event buffer for the downstream processors to handle. It is possible using a C++ function exposed to the Python module via an embedded module called <code class="code docutils literal notranslate"><span class="pre">oe_pyprocessor</span></code>. To use this function, the <code class="code docutils literal notranslate"><span class="pre">oe_pyprocessor</span></code> module needs to be imported inside the script and then the C++ function can be invoked like this: <code class="code docutils literal notranslate"><span class="pre">oe_pyprocessor.add_python_event(line,</span> <span class="pre">state)</span></code></p>
-<dl class="py function">
-<dt class="sig sig-object py" id="add_python_event">
-<span class="sig-name descname"><span class="pre">add_python_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#add_python_event" title="Permalink to this definition">#</a></dt>
-<dd><p>Send TTL event from Python to C++</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>line</strong> – (int) event line number [0-255]</p></li>
-<li><p><strong>electrode_name</strong> – (bool) event state True (ON) or False (OFF)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<p>An example script is provided in the plugin’s GitHub repository in the form of a <a class="reference external" href="https://github.com/open-ephys-plugins/python-processor/blob/main/Modules/examples/bandpass_filter.py">Butterworth Bandpass filter</a>. This filter is the same as the one used in the GUI’s built-in Filter Node plugin.</p>
-</section>
-<section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<p>The following actions can be performed inside the Histogram view by right-clicking anywhere inside the view.</p>
 <ul class="simple">
-<li><p>Unlike continuous data and events, sending spikes back from Python is not currently possible.</p></li>
-<li><p>Only one instance of the plugin is allowed at a time in a signal chain. Having multiple instances of the plugin in the same signal chain will result in random crashes.</p></li>
-<li><p>Creating visualizations in real-time using Python libraries such as <code class="code docutils literal notranslate"><span class="pre">matplotlib</span></code> is not possible.</p></li>
+<li><p><strong>Clear</strong> - Clears the histogram display and its values</p></li>
+<li><p><strong>Save values</strong> - Saves the histogram statistics to a JSON file</p></li>
 </ul>
+</section>
+<section id="plugin-usage">
+<h2>Plugin usage<a class="headerlink" href="#plugin-usage" title="Permalink to this heading">#</a></h2>
+<p>Select the two TTL event lines for which you want to calculate the latency. The histogram will display the latency between the two TTL lines in milliseconds. The histogram will be updated in real time as events are received. You can see the count of any bin and the range of that bin by hovering over the respective histogram bar. You can clear the plot at any time by right-clicking inside the plot and selecting “Clear”. You can also save the histogram statistics to a JSON file by right-clicking inside the plot and selecting “Save values”.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 </section>
 
@@ -695,20 +554,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Pulse-Pal.html"
+       href="Intan-RHD-USB.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Pulse Pal</p>
+        <p class="prev-next-title">Intan RHD USB</p>
       </div>
     </a>
     <a class="right-next"
-       href="Rec-Controller-Output.html"
+       href="LFP-Viewer.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Rec Controller Output</p>
+        <p class="prev-next-title">LFP Viewer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -731,30 +590,15 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-upgrading">Installing and upgrading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-a-python-environment">Setting up a Python environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-python-interpreter-path">Setting the Python Interpreter Path</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-loading-a-python-module">Creating &amp; loading a Python Module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init__"><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#process"><code class="docutils literal notranslate"><span class="pre">process()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start_acquisition"><code class="docutils literal notranslate"><span class="pre">start_acquisition()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop_acquisition"><code class="docutils literal notranslate"><span class="pre">stop_acquisition()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start_recording"><code class="docutils literal notranslate"><span class="pre">start_recording()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop_recording"><code class="docutils literal notranslate"><span class="pre">stop_recording()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle_ttl_event"><code class="docutils literal notranslate"><span class="pre">handle_ttl_event()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle_spike"><code class="docutils literal notranslate"><span class="pre">handle_spike()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add_python_event"><code class="docutils literal notranslate"><span class="pre">add_python_event()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-configuration">Plugin configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-usage">Plugin usage</a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/open-ephys/gui-docs/edit/main/source/User-Manual/Plugins/Python-Processor.rst">
+    <a href="https://github.com/open-ephys/gui-docs/edit/main/source/User-Manual/Plugins/Latency-Histogram.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -768,7 +612,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
-    <a href="../../_sources/User-Manual/Plugins/Python-Processor.rst.txt">
+    <a href="../../_sources/User-Manual/Plugins/Latency-Histogram.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

@@ -391,6 +391,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="Falcon-Output.html">Falcon Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="File-Reader.html">File Reader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Intan-RHD-USB.html">Intan RHD USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Latency-Histogram.html">Latency Histogram</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LFP-Viewer.html">LFP Viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LSL-Inlet.html">LSL Inlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MATLAB-Interface.html">MATLAB Interface</a></li>
@@ -531,7 +532,7 @@ document.write(`
 <section id="ttl-events">
 <h3>TTL Events<a class="headerlink" href="#ttl-events" title="Permalink to this heading">#</a></h3>
 <p>The primary purpose of the Network Events module is to add TTL events to one or more of the GUI’s data streams via a remote connection. This makes it straightforward to store event times and trigger outputs from external software, such as Python or Matlab scripts.</p>
-<p><code class="code docutils literal notranslate"><span class="pre">TTL</span> <span class="pre">[Line=0-255]</span> <span class="pre">[State=0/1]</span></code> – Sends an <strong>ON</strong> (1) or <strong>OFF</strong> (0) TTL event on the specified TTL line.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">TTL</span> <span class="pre">[Line=1-256]</span> <span class="pre">[State=0/1]</span></code> – Sends an <strong>ON</strong> (1) or <strong>OFF</strong> (0) TTL event on the specified TTL line.</p>
 </section>
 <section id="other-commands">
 <h3>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this heading">#</a></h3>
