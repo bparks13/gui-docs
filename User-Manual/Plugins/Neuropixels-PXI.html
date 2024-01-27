@@ -861,10 +861,10 @@ document.write(`
 <span class="c1"># configuration parameters</span>
 <span class="n">processor_id</span> <span class="o">=</span> <span class="mi">106</span>
 <span class="n">basestation</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">slot</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">dock</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># always 1 for NP 1.0</span>
 
-<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;NP SELECT </span><span class="si">{</span><span class="n">basestation</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">slot</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dock</span><span class="si">}</span><span class="s1"> &#39;</span>
+<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;NP SELECT </span><span class="si">{</span><span class="n">basestation</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dock</span><span class="si">}</span><span class="s1"> &#39;</span>
 
 <span class="n">electrodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">385</span><span class="p">)</span> <span class="c1"># 1-based indexing</span>
 <span class="n">electrode_string</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">electrodes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">))</span>
